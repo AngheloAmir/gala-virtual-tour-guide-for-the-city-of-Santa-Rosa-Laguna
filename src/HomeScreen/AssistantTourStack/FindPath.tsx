@@ -9,17 +9,9 @@ interface Location {
     lng :number;
 }
 
-/*
-    bayan           14.313759,121.112418
-    SM --           14.313375,121.099721
-    KFC complex     14.29353,121.103716,
-    enchanted       14.281996,121.097719
-    
-*/
-
 export async function FindPath(from :Location, to :Location) {
-    const position1 = from; //{lat: 14.313759, lng: 121.112418, };
-    const position2 = to; //{lat: 14.281996, lng: 121.097719,  };
+    const position1 = from;
+    const position2 = to;
 
     //First, obtain the node (street nodes in OSM) that connects two places
     const osrm_response = await fetch(`http://router.project-osrm.org/route/v1/driving/${position1.lng},${position1.lat};${position2.lng},${position2.lat}?alternatives=false&annotations=nodes`);

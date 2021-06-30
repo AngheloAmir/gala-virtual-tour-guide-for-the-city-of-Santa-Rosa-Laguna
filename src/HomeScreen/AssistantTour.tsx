@@ -72,7 +72,7 @@ function AssistantTourIndex( {navigation} :any) {
               <Image source={require('../../assets/icons/gala.png')}  resizeMode='contain' style={{width: 100, height: 100}}/>
               <Text style={styles.title}> Welcome To Assistant Tour!</Text>
             </View>
-            <Text style={styles.description}> Hi! My name is Gala, your virtual tour guide (assistant tour). I'll help you the best I can amid your travel to Santa Rosa City. This feature requires Location (GPS) enable and internet connection. Have a great day! </Text>
+            <Text style={styles.description}> Hi! My name is Gala, your virtual tour guide (assistant tour). I'll help you the best I can amid your travel to Santa Rosa City. This feature requires LOCATION (GPS) enable and MOBILE DATA (internet) connection. Have a great day! </Text>
               
               <View style={styles.noticeContainer}>
                 <TouchableOpacity onPress={() => setDisclaimer(true)}>

@@ -48,6 +48,7 @@ export default function Tools( props :propsReceive) {
     })
 
     function setvisiblepoints(point :string) :void{
+        /*
         switch(point) {
             case 'mall':
                 dispatch(setVisiblePoint({...state.tourvirtual.visiblePoints, mall: !state.tourvirtual.visiblePoints.mall}));
@@ -73,6 +74,7 @@ export default function Tools( props :propsReceive) {
             default:
                 dispatch(setVisiblePoint({...state.tourvirtual.visiblePoints, info: !state.tourvirtual.visiblePoints.info}));
         }
+        */
     }
 
     function col(point :boolean) :string {
@@ -131,56 +133,56 @@ export default function Tools( props :propsReceive) {
             <View style={styles.containerAdditonal}>
                 <TouchableOpacity style={styles.toolsItem} onPress={() => setvisiblepoints('mall')}>
                     <MaterialIcons name='local-mall' size={32}
-                        color={col(state.tourvirtual.visiblePoints.mall)}
+                        //color={col(state.tourvirtual.visiblePoints.mall)}
                         style={styles.toolsIcon}
                     />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.toolsItem} onPress={() => setvisiblepoints('resto')}>
                     <MaterialIcons name='local-restaurant' size={32}
-                        color={col(state.tourvirtual.visiblePoints.resto)}
+                        //color={col(state.tourvirtual.visiblePoints.resto)}
                         style={styles.toolsIcon}
                     />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.toolsItem} onPress={() => setvisiblepoints('gas')}>
                     <MaterialIcons name='local-gas-station' size={32}
-                        color={col(state.tourvirtual.visiblePoints.gas)}
+                        //color={col(state.tourvirtual.visiblePoints.gas)}
                         style={styles.toolsIcon}
                     />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.toolsItem} onPress={() => setvisiblepoints('hotel')}>
                     <MaterialIcons name='local-hotel' size={32}
-                        color={col(state.tourvirtual.visiblePoints.hotel)}
+                        //color={col(state.tourvirtual.visiblePoints.hotel)}
                         style={styles.toolsIcon}
                     />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.toolsItem} onPress={() => setvisiblepoints('hospital')}>
                     <MaterialIcons name='local-hospital' size={32}
-                        color={col(state.tourvirtual.visiblePoints.hospital)}
+                        //color={col(state.tourvirtual.visiblePoints.hospital)}
                         style={styles.toolsIcon}
                     />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.toolsItem} onPress={() => setvisiblepoints('police')}>
                     <MaterialIcons name='local-police' size={32}
-                        color={col(state.tourvirtual.visiblePoints.police)}
+                        //color={col(state.tourvirtual.visiblePoints.police)}
                         style={styles.toolsIcon}
                     />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.toolsItem} onPress={() => setvisiblepoints('bus')}>
                     <MaterialIcons name='directions-car' size={32}
-                        color={col(state.tourvirtual.visiblePoints.bus)}
+                        //color={col(state.tourvirtual.visiblePoints.bus)}
                         style={styles.toolsIcon}
                     />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.toolsItem} onPress={() => setvisiblepoints('info')}>
                     <MaterialIcons name='info-outline' size={32}
-                        color={col(state.tourvirtual.visiblePoints.info)}
+                        //color={col(state.tourvirtual.visiblePoints.info)}
                         style={styles.toolsIcon}
                     />
                 </TouchableOpacity>

@@ -22,17 +22,6 @@ export const mapLayers: Array<MapLayer> = [
     },
 ];
 
-/*
-const mapMarkers: MapMarker[] = [
-    {
-      id: '1',
-      position: position,
-      icon: '👣',
-      size: [32, 32],
-    },
-];
-*/
-
 export const mapShapes: Array<MapShape | any> = [
     {
       shapeType: 'circle',
