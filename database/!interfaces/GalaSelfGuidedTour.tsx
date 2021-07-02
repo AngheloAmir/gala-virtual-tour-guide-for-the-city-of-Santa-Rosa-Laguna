@@ -6,12 +6,14 @@ export interface DestinationLocation {
     voiceasset? :() => any;
 }
 
+export interface FromToInterface {
+    from     :'user' | DestinationLocation,
+    to       :DestinationLocation,
+}
+
 export interface GalaSelfGuidedTour {
     name                :string;
     description         :string;
     pointOfInterests?   :Array<DestinationLocation>;
-    destinations        :Array<{
-        from     :'user' | DestinationLocation,
-        to       :DestinationLocation,
-    }>;
+    destinations        :Array<FromToInterface>;
 }

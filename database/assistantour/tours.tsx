@@ -7,10 +7,16 @@
 
 import { GalaSelfGuidedTour } from '../!interfaces/GalaSelfGuidedTour';
 
+//Set the range of working GPS
+export const GPSRANGE = {
+    x:      121.041694,  endy: 14.21141, //041406
+    endx:   121.135533,  y: 14.339070,   //339077
+};
+
 export const GalaTours :Array<GalaSelfGuidedTour> = [
     {
         name: 'Bisita Iglesia',
-        description: 'Catholic churches in Santa Rosa',
+        description: 'Visit catholic churches',
         destinations: [
             {
                 from: 'user',
@@ -21,7 +27,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
                 },
             },
             {
-                from: { lat: 14.294119, lng: 121.105482, name: 'Chair of St. Peter Church - Balibago'},
+                from: 'user',
                 to:  {
                     lat: 14.313694, lng: 121.111536, name: 'Santa Rosa De Lima Parish Church',
                     commute: 'Ride a jeep with a sign "Bayan" or "Tagapo". The common fare rate is P10',
@@ -33,7 +39,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
 
     {
         name: 'Glimpse Of Santa Rosa',
-        description: 'The a look into the past',
+        description: 'Take look into the city',
         destinations: [
             {
                 from: 'user',
@@ -43,10 +49,6 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
                     voiceasset: () => undefined,
                 }
             },
-            {
-                from: { lat: 14.313729, lng: 121.112292, name: 'Santa Rosa Bayan' },
-                to:   { lat: 14.312849, lng: 121.113039, name: 'Casa Gonzales', voiceasset: () => undefined,}
-            }
         ],
         pointOfInterests: [
             { lat: 14.313892, lng: 121.111595, name: 'Santa Rosa de Lima',  voiceasset: () => undefined,},
@@ -57,7 +59,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
 
     {
         name: 'Enchanted Kingdom',
-        description: 'Visit the theme park. Please consider first booking into their website https://www.enchantedkingdom.ph/',
+        description: 'Visit the theme park.',
         destinations: [
             {
                 from: 'user',
@@ -117,7 +119,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
     
     {
         name: 'To Bus Terminal',
-        description: 'For commuters',
+        description: 'Find busses for commuters',
         destinations: [
             {
                 from: 'user',

@@ -8,19 +8,24 @@ import { Responsive, useResponsive } from '../../../Utility/useResponsive';
 
 interface propsReceive {
     currenttour :string;
-    setcurrent  :(tour :string) => void;
     sound       :boolean;
+    info?       :boolean;
     setsound    :() => void;
     zoomin      :() => void;
     zoomout     :() => void;
+    onselecttour:() => void;
+    onnavigate  :() => void;
 }
+
+const ICONSIZE      = 24;
+const ICONSIZEBG    = ICONSIZE + 4;
 
 export default function TopContainer(props :propsReceive) {
     const responsive :Responsive = useResponsive();
     
     const styles = StyleSheet.create({
         container: {
-            zIndex: 10, width: responsive.width, height: 110,
+            zIndex: 10, width: responsive.width, height: 100,
             borderBottomColor: 'rgba(115, 170, 220, 1)', borderBottomWidth: 2,
             paddingHorizontal: 8, paddingVertical: 16,
             backgroundColor: 'rgba(230, 240, 250, 1)',
@@ -44,42 +49,55 @@ export default function TopContainer(props :propsReceive) {
             
         },
         iconsItem: {
-            marginTop: 16, height: 42, width: 42,
+            marginTop: 12, height: ICONSIZEBG + 4, width: 42,
+        },
+        messageContainer: {
+            marginTop: 12, padding: 4, borderWidth: 1, borderRadius: 4,
+            backgroundColor: 'white', borderColor: 'rgba(115, 170, 220, 1)',
+        },
+        messageText: {
+            textAlign: 'center', fontSize: 16, fontWeight: '500', color: 'red',
         },
     });
 
     return (
         <View style={styles.container}>
             <View style={styles.tourcontainer}>
-                <TouchableOpacity style={styles.listOfTours} activeOpacity={0.7}>
-                    <Text>{props.currenttour}</Text>
+                <TouchableOpacity style={styles.listOfTours} activeOpacity={0.7} onPress={props.onselecttour}>
+                    <Text style={{fontSize: 18}}>{props.currenttour}</Text>
                 </TouchableOpacity>
                 <View style={styles.button}>
-                    <Button title='Navigate' onPress={() => console.log('navigating')} />
+                    <Button title='Navigate' onPress={props.onnavigate} />
                 </View>
             </View>
 
             <View style={styles.iconsContainer}>
                 <TouchableOpacity onPress={props.zoomin}>
-                    <MaterialIcons name='zoom-in' size={36} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
+                    <MaterialIcons name='zoom-in' size={ICONSIZEBG} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={props.zoomout}>
-                    <MaterialIcons name='zoom-out' size={36} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
+                    <MaterialIcons name='zoom-out' size={ICONSIZEBG} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Ionicons name='notifications' size={32} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
+                    <Ionicons name='notifications' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <MaterialIcons name='place' size={32} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
+                    <MaterialIcons name='place' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={props.setsound}>
                     {
                         props.sound ?
-                        <Entypo name='sound' size={32} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/> :
-                        <Entypo name='sound-mute' size={32} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
+                        <Entypo name='sound' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/> :
+                        <Entypo name='sound-mute' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                     }
                 </TouchableOpacity>
             </View>
+            
+            { props.info &&
+                <View style={styles.messageContainer}>
+                    <Text style={styles.messageText}>.....Loading navigation path.....</Text>
+                </View>
+            }
         </View>
     )
 }

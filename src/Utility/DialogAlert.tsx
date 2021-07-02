@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Responsive, useResponsive } from './useResponsive';
 
-export interface ReceiveProps {
+export interface propsReceive {
     title    :string;
     text     :string;
     isshow   :boolean;
@@ -10,7 +10,7 @@ export interface ReceiveProps {
     cancel?  :() => void;
 }
 
-export default function VisitSiteDialog(props :ReceiveProps) {
+export default function VisitSiteDialog(props :propsReceive) {
     if(!props.isshow) return <View></View>;
     const responsive :Responsive = useResponsive();    
     const WIDTH = 300;
@@ -24,24 +24,22 @@ export default function VisitSiteDialog(props :ReceiveProps) {
             borderRadius: 8, padding: 8, zIndex: 100,
         },
         title: {
-            fontSize: 24, fontWeight: '500',
+            fontSize: 21, fontWeight: '500',
         },
         borderline :{
             borderWidth: 1, height: 1,
-            borderColor: 'lightblue', marginVertical: 8,
+            borderColor: 'rgba(115, 170, 220, 1)', marginVertical: 8,
         },
         borderHorizontal: {
-            borderColor: 'lightblue', borderRightWidth: 2,
+            borderColor: 'rgba(115, 170, 220, 1)', borderRightWidth: 2,
             marginTop: 6, height: 24,
         },
         text: {
             fontSize: 20, lineHeight: 30,
         },
         buttonsContainer: {
-            borderTopWidth: 2, borderColor: 'lightblue',
+            borderTopWidth: 2, borderColor: 'rgba(115, 170, 220, 1)',
             marginTop: 12, flexDirection: 'row',
-
-            
         },
         buttonCancel: {
             width: 280/2, 
