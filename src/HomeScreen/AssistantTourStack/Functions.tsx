@@ -30,37 +30,41 @@ interface Location {
 }
 
 export async function FindPath(from :Location, to :Location) {
-    const position1 = from;
-    const position2 = to;
+    try {
+        const position1 = from;
+        const position2 = to;
 
-    //First, obtain the node (street nodes in OSM) that connects two places
-    const osrm_response = await fetch(`http://router.project-osrm.org/route/v1/driving/${position1.lng},${position1.lat};${position2.lng},${position2.lat}?alternatives=false&annotations=nodes`);
-    const result        = await osrm_response.json();
-    const nodes         = result.routes[0].legs[0].annotation.nodes;
-    const stringnode    = nodes.map((node :any) => { return "" + node });
+        //First, obtain the node (street nodes in OSM) that connects two places
+        const osrm_response = await fetch(`http://router.project-osrm.org/route/v1/highway/${position1.lng},${position1.lat};${position2.lng},${position2.lat}?alternatives=false&annotations=nodes`);
+        const result        = await osrm_response.json();
+        const nodes         = result.routes[0].legs[0].annotation.nodes;
+        const stringnode    = nodes.map((node :any) => { return "" + node });
 
-    //Then, convert each nodes into actual latitude and logitude position thru overpass-api
-    const overpass_res  = await fetch(`https://www.overpass-api.de/api/interpreter?data=[out:json];node(id:${stringnode});out;`);
-    const opresult      = await overpass_res.json();
+        //Then, convert each nodes into actual latitude and logitude position thru overpass-api
+        const overpass_res  = await fetch(`https://www.overpass-api.de/api/interpreter?data=[out:json];node(id:${stringnode});out;`);
+        const opresult      = await overpass_res.json();
 
-    //However, the result position is returned in alphabetical order not in the path way order. The code fix it
-    const pathway :Array<Location> = nodes.map( (anode :number) => {
-        let temp :any;
-        for(let i = 0; i < opresult.elements.length; i++) {
-            if(opresult.elements[i].id === anode) {
-                temp = { lat: opresult.elements[i].lat, lng: opresult.elements[i].lon }
-                break;
+        //However, the result position is returned in alphabetical order not in the path way order. The code fix it
+        const pathway :Array<Location> = nodes.map( (anode :number) => {
+            let temp :any;
+            for(let i = 0; i < opresult.elements.length; i++) {
+                if(opresult.elements[i].id === anode) {
+                    temp = { lat: opresult.elements[i].lat, lng: opresult.elements[i].lon }
+                    break;
+                }
             }
-        }
-        return temp;
-    });
-    return pathway;
+            return temp;
+        });
+        return pathway;
+    } catch(err) {
+        throw new Error(err); 
+    }
 }
 
 export async function RequestPermission() {
     try {
         let { status } = await Location.requestPermissionsAsync();
-        if (status !== 'granted') return true;
+        if (status == 'granted') return true;
         return false;
     } catch(err) {
         return false;
@@ -68,11 +72,15 @@ export async function RequestPermission() {
 }
 
 export async function getLocation() {
-    const location = await Location.getCurrentPositionAsync({});
-    if( GPSRANGE.y < location.coords.latitude  || GPSRANGE.endy > location.coords.latitude ||
-        GPSRANGE.x < location.coords.longitude || GPSRANGE.endx > location.coords.longitude )
-        return 'out';
-    return {lat: location.coords.latitude, lng: location.coords.longitude};
+    try {
+        const location = await Location.getCurrentPositionAsync({});
+        //if( GPSRANGE.y < location.coords.latitude  || GPSRANGE.endy > location.coords.latitude ||
+        //    GPSRANGE.x < location.coords.longitude || GPSRANGE.endx > location.coords.longitude )
+        //    return 'out';
+        return {lat: location.coords.latitude, lng: location.coords.longitude};
+    } catch(err) {
+        throw err;
+    }
 }
 
 //The MapMarkers that will be draw in the ExpoLeaftlet component.
@@ -81,7 +89,9 @@ export function getMapDestinationMarkers(tours :GalaSelfGuidedTour, startingInde
         return {
           id: i + startingIndex + '' ,
           position: { lat: item.to.lat, lng: item.to.lng },
-          icon: '<div style="margin-top: -28px; margin-left: 32px">🏁</div>', size: [32, 32]
+          icon: '<div style="margin-top: -28px; margin-left: 32px">🏁</div>', size: [32, 32],
+          name:     item.to.name,
+          commute:  item.to.commute,
         };
     });
     if(tours.pointOfInterests) {
@@ -90,7 +100,8 @@ export function getMapDestinationMarkers(tours :GalaSelfGuidedTour, startingInde
             return {
               id: i + prevLastIndex + '' ,
               position: { lat: item.lat, lng: item.lng },
-              icon: '<div style="margin-top: -28px; margin-left: 26px">🚩</div>', size: [24, 24]
+              icon: '<div style="margin-top: -28px; margin-left: 26px">🚩</div>', size: [24, 24],
+              name: item.name,
             };
           });
         return [...destinations, ...poi];
@@ -107,7 +118,7 @@ export async function getPathWays(id :number, current :Location, destination :Lo
             shapeType: 'polyline', id: id + '', color: NAVCOLORS[id], positions: [...paths], 
         }
         return polyline;
-    } catch ( exception ) {
-        return { error: true, message: exception }
+    } catch(err) {
+        throw err;
     }
 }

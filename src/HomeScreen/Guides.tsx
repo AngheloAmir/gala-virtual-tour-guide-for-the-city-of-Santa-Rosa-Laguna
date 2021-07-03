@@ -44,7 +44,8 @@ function Guides( {navigation} :any) {
             padding: 4,
         },
         icon: {
-            width: 72, height: 72, marginTop: 8,
+            width: 64, height: 64,
+            marginTop: 8, marginLeft: 8,
         },
         iconContainer: {
             width: 80,

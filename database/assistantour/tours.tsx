@@ -22,7 +22,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
                 from: 'user',
                 to: {
                     lat: 14.294119, lng: 121.105482, name: 'Chair of St. Peter Church - Balibago',
-                    commute: 'Bus terminals will drop you to Balibago. If not, ride a jeep with a sign "Complex". The common fare rate is P10',
+                    commute: 'Busses will drop you to Balibago Complex. If not, ride a jeep with a sign "Complex". The common fare rate is P10',
                     voiceasset: () => undefined,
                 },
             },
@@ -80,7 +80,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
                 from: 'user',
                 to: {
                     lat: 14.240921, lng: 121.058971, name: 'Nuvalli Park Parking',
-                    commute: 'Take a ride to "Complex" or a bus, then find the tricle terminal (close to Target Mall) and ride a tricle. Ask the driver to Enchangted Kingdom. The fare rate may reach P100',
+                    commute: 'Take a ride to "Complex" or a bus, then find the tricle terminal (close to Target Mall) and ride a tricle. Ask the driver to Nuvalli. The fare rate may reach P150',
                     voiceasset: () => undefined,
                 },
             }
@@ -90,7 +90,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
             { lat: 14.240358, lng: 121.058706, name: 'Nuvali Park',         voiceasset: () => undefined },
             { lat: 14.237234, lng: 121.059677, name: 'Lake View',           voiceasset: () => undefined },
             { lat: 14.235051, lng: 121.058668, name: 'Evoliving Center',    voiceasset: () => undefined },
-            { lat: 4.2369391, lng: 121.057341, name: 'Ayala Malls Solenad', voiceasset: () => undefined },
+            { lat: 14.2369391,lng: 121.057341, name: 'Ayala Malls Solenad', voiceasset: () => undefined },
         ]
     },
 
@@ -107,13 +107,13 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
                 }
             },
             {
-                from: { lat: 14.314309, lng: 121.098955, name: 'SM Mall' },
+                from: { lat: 14.314309, lng: 121.09895, name: 'SM Mall' },
                 to: {
-                    lat: 14.314309, lng: 121.098955, name: 'Robinson Mall',
+                    lat: 14.319342, lng: 121.097561, name: 'Robinson Mall',
                     commute: 'Take jeep ride with a sign "SM". The common fare rate is P10',
                     voiceasset: () => undefined 
                 }
-            }
+            },
         ]
     },
     
@@ -130,9 +130,5 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
                 }
             }
         ],
-        pointOfInterests: [
-            { lat: 14.293236, lng: 121.104741, name: 'UV Express Terminal' },
-            { lat: 14.292423, lng: 121.103331, name: 'Complex Central Terminal' },
-        ]
     }
 ];

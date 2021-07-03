@@ -15,6 +15,7 @@ interface propsReceive {
     zoomout     :() => void;
     onselecttour:() => void;
     onnavigate  :() => void;
+    onnotifclick:() => void;
 }
 
 const ICONSIZE      = 24;
@@ -67,7 +68,7 @@ export default function TopContainer(props :propsReceive) {
                     <Text style={{fontSize: 18}}>{props.currenttour}</Text>
                 </TouchableOpacity>
                 <View style={styles.button}>
-                    <Button title='Navigate' onPress={props.onnavigate} />
+                    <Button title='Find Path' onPress={props.onnavigate} />
                 </View>
             </View>
 
@@ -78,7 +79,7 @@ export default function TopContainer(props :propsReceive) {
                 <TouchableOpacity onPress={props.zoomout}>
                     <MaterialIcons name='zoom-out' size={ICONSIZEBG} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={props.onnotifclick}>
                     <Ionicons name='notifications' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
                 <TouchableOpacity>

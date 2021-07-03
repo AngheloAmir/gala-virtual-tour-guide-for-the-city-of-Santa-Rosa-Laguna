@@ -90,7 +90,7 @@ function AssistantTourIndex( {navigation} :any) {
           </View>
 
           { showDisclaimer || showPolicy ?
-            <View style={{width: 1200, height: 1200, position: 'absolute', top: 0, backgroundColor: 'rgba(0,0,0,.5)'}}>
+            <View style={{width: 1200, height: 1200, position: 'absolute', top: 0, zIndex: 10, backgroundColor: 'rgba(0,0,0,.5)'}}>
             </View>
             :
             <View></View>

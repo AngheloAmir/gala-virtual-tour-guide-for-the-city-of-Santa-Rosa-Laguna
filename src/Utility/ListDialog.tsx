@@ -39,14 +39,11 @@ export default function ListDialog(props :propsReceive) {
             width: '95%', marginLeft: '2.5%'
         },
         item: {
-            borderColor: 'rgba(115, 170, 220, 1)', borderRadius: 12,
-            borderBottomWidth: 1, borderTopWidth: 1,
+            borderColor: 'rgba(115, 170, 220, 1)', borderBottomWidth: 1, 
             marginBottom: 8,  paddingLeft: 12,
         },
         itemLast: {
-            borderColor: 'rgba(115, 170, 220, 1)', borderRadius: 12,
-            borderTopWidth: 1, marginBottom: 8,
-            paddingLeft: 12,
+            marginBottom: 8, paddingLeft: 12,
         },
         text: {
             color: 'rgba(60, 80, 160, 1)',
