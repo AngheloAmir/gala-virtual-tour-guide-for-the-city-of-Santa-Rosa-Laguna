@@ -1,6 +1,5 @@
 import React from 'react';
 import { ActivityIndicator, Platform, View } from 'react-native';
-//import * as Location from 'expo-location';
 
 import { MapMarker, MapShape, ExpoLeaflet, LeafletWebViewEvent } from "expo-leaflet";
 import DialogAlert  from '../../Utility/DialogAlert';
@@ -19,13 +18,16 @@ export default function LeafletContainer({navigation} :any) {
   const [position, setposition]       = React.useState(IntroPosition);
   const [destMarkers, setdestMarkers] = React.useState([EmptyMarker(1)]);
   const [pathways, setpathways]       = React.useState([EmptyPolyline]);
-  //const [waytoEstab, setwaytoEstab]   = React.useState([EmptyPolyline]);
   const [isNavLoading, setNavLoading] = React.useState(false);
   const [zoomlvl, setzoomlvl]         = React.useState(12);
   const [dialogmsg, setdialogmsg]     = React.useState({title: '', msg: ''});
+  const [flashmessage, setflashmsg]   = React.useState('');
 
   const [currenttour, setcurrenttour] = React.useState({name: '-- select tour --', index: -1});
-  const [isGrantedLoc, setGranted]    = React.useState(true);
+
+  const [mapcenter, setmapcenter]     = React.useState(IntroPosition);
+  const [mapfollow, setmapfollow]     = React.useState(true);
+
   const [selectour, setselecttour]    = React.useState(false);
   const [issound, setsound]           = React.useState(true);
   const [notifmsg, setnotifmsg]       = React.useState('You are seing the notification message.');
@@ -37,34 +39,41 @@ export default function LeafletContainer({navigation} :any) {
   
   React.useEffect(() => {
     if(Platform.OS == 'web') { setzoomlvl(17); return; }
+    let idOfInterval :any;
     ( async () => {
       const isGranted = await RequestPermission();
       if( isGranted ) {
         await setCurrentLocation();
-        setTimeout(() => setzoomlvl(17), 5000);
-        setInterval(async () => {
+        setTimeout(() => setzoomlvl(17), 100);
+        idOfInterval = setInterval(async () => {
             await setCurrentLocation();
-        }, 3000);
+        }, 1000);
       }
       else {
-        setzoomlvl(17); setGranted(false);
+        setzoomlvl(17);
         setdialogmsg({title: 'Location denied', msg: 'Permission not granted or Location is off'});
       }
     })();
+    
+    return () => {
+      clearInterval(idOfInterval);
+    }
   }, []);
 
   async function setCurrentLocation() {
-    if(!isGrantedLoc) return;
     try {
       const currentpos :any = await getLocation();
       if(currentpos == 'out')
-        setdialogmsg({title: 'Out of coverage', msg: 'You are too far!'});
-      else setposition( currentpos );
+        setdialogmsg({title: 'Out of coverage', msg: 'You are too far from Santa Rosa!'});
+      else {
+        setposition(currentpos);
+        setmapcenter(currentpos);
+      }                        
     } catch(err) {
-      setdialogmsg({title: 'Error Location', msg: 'Error getting location.\n: ' + err});
+        setdialogmsg({title: 'Error Location', msg: 'Error getting location.\n: ' + err});
     }
   }
-
+  
 /*
   How the onNavigateClick() works?
   1) First, it check if something is actually press in current tour
@@ -76,7 +85,10 @@ export default function LeafletContainer({navigation} :any) {
     if(currenttour.index < 0 ) return;
     const destinationsAndPointOfInterestMarkers = getMapDestinationMarkers(GalaTours[currenttour.index], 1);
     setdestMarkers( destinationsAndPointOfInterestMarkers );
-    setNavLoading(true); setzoomlvl(12); setpathways([EmptyPolyline]);
+    setpathways([EmptyPolyline]);
+    setNavLoading(true);
+    setmapcenter(position);
+    setzoomlvl(12);
     ( async () => {
       try {
         let polylines :Array<MapShape> = [];
@@ -121,23 +133,40 @@ export default function LeafletContainer({navigation} :any) {
        <View style={{width: '100%', height: '100%'}}>
          <TopContainer
             currenttour={currenttour.name}
-            sound={issound} setsound={() => setsound(!issound)}
-            zoomin={()  => { if(zoomlvl < 17 && !isNavLoading) setzoomlvl(zoomlvl + 1); }}
-            zoomout={() => { if(zoomlvl > 12 && !isNavLoading) setzoomlvl(zoomlvl - 1); }}
-            onnotifclick={() => setdialogmsg({title: 'Notifications', msg: notifmsg})}
+            sound={issound}
             onselecttour={() => setselecttour(true)}
+            islock={mapfollow}
             info={isNavLoading}
-            onnavigate={onNavigateClick}   
+            onnavigate={onNavigateClick}
+            notifmsg={flashmessage}
+            oninfoclick={() => {
+              if(currenttour.index >= 0 )
+                setdialogmsg({title: 'Tour information', msg: GalaTours[currenttour.index].longdescription});
+              else
+              setdialogmsg({title: 'Notice', msg: 'Please select your tour first'});
+            }}
+            onlock={() => {
+              setmapfollow(!mapfollow);
+              mapfollow ?
+                setflashmsg('The map will not follow')  :
+                setflashmsg('The map will center on your position');
+            }}
+            setsound={() => {
+              setsound(!issound);
+              issound ?
+                setflashmsg('The sounds is OFF')  :
+                setflashmsg('The sounds is ON');
+            }}
          />
 
           <View style={{flex: 1}}>
             <ExpoLeaflet
                 loadingIndicator={ () => <ActivityIndicator/> }
-                mapCenterPosition={position}
+                mapCenterPosition={mapfollow ? position : mapcenter}
                 mapLayers={mapLayers}
                 mapOptions={mapOptions}
                 mapMarkers={mapMarkers}
-                maxZoom={17}
+                maxZoom={18}
                 mapShapes={pathways}
                 onMessage={onMapClicked}
                 zoom={zoomlvl}

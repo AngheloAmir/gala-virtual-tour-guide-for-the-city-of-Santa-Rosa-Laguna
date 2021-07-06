@@ -17,6 +17,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
     {
         name: 'Bisita Iglesia',
         description: 'Visit catholic churches',
+        longdescription: 'adasdasda',
         destinations: [
             {
                 from: 'user',
@@ -40,6 +41,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
     {
         name: 'Glimpse Of Santa Rosa',
         description: 'Take look into the city',
+        longdescription: 'adasdasda',
         destinations: [
             {
                 from: 'user',
@@ -60,6 +62,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
     {
         name: 'Enchanted Kingdom',
         description: 'Visit the theme park.',
+        longdescription: 'adasdasda',
         destinations: [
             {
                 from: 'user',
@@ -75,6 +78,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
     {
         name: 'Nuvali Park',
         description: 'The green and refreshing site',
+        longdescription: 'adasdasda',
         destinations: [
             {
                 from: 'user',
@@ -97,6 +101,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
     {
         name: 'SM and Robinson Malls',
         description: 'Visit the malls in Santa Rosa',
+        longdescription: 'adasdasda',
         destinations: [
             {
                 from: 'user',
@@ -120,6 +125,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
     {
         name: 'To Bus Terminal',
         description: 'Find busses for commuters',
+        longdescription: 'adasdasda',
         destinations: [
             {
                 from: 'user',

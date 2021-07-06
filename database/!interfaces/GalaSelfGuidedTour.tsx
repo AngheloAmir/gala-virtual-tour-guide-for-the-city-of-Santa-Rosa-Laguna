@@ -14,6 +14,7 @@ export interface FromToInterface {
 export interface GalaSelfGuidedTour {
     name                :string;
     description         :string;
+    longdescription     :string;
     pointOfInterests?   :Array<DestinationLocation>;
     destinations        :Array<FromToInterface>;
 }

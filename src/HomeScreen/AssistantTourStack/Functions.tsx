@@ -25,8 +25,8 @@ import { GPSRANGE } from '../../../database/assistantour/tours';
 import { NAVCOLORS } from './Options';
 
 interface Location {
-    lat :number;
-    lng :number;
+    lat     :number;
+    lng     :number;
 }
 
 export async function FindPath(from :Location, to :Location) {
@@ -74,9 +74,9 @@ export async function RequestPermission() {
 export async function getLocation() {
     try {
         const location = await Location.getCurrentPositionAsync({});
-        //if( GPSRANGE.y < location.coords.latitude  || GPSRANGE.endy > location.coords.latitude ||
-        //    GPSRANGE.x < location.coords.longitude || GPSRANGE.endx > location.coords.longitude )
-        //    return 'out';
+        if( location.coords.latitude  > GPSRANGE.y || location.coords.latitude < GPSRANGE.endy ||
+            location.coords.longitude < GPSRANGE.x || location.coords.longitude > GPSRANGE.endx )
+            return 'out';
         return {lat: location.coords.latitude, lng: location.coords.longitude};
     } catch(err) {
         throw err;

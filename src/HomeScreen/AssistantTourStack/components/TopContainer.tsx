@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import { Responsive, useResponsive } from '../../../Utility/useResponsive';
 
@@ -10,20 +9,36 @@ interface propsReceive {
     currenttour :string;
     sound       :boolean;
     info?       :boolean;
+    islock?     :boolean;
+    notifmsg   :string;
     setsound    :() => void;
-    zoomin      :() => void;
-    zoomout     :() => void;
     onselecttour:() => void;
     onnavigate  :() => void;
-    onnotifclick:() => void;
+    oninfoclick:() => void;
+    onlock      :() => void;
 }
 
 const ICONSIZE      = 24;
 const ICONSIZEBG    = ICONSIZE + 4;
 
 export default function TopContainer(props :propsReceive) {
+    const [shownotif, setshow]      = React.useState(false);
+    const [timeoutid, settimeoutid] = React.useState();
     const responsive :Responsive = useResponsive();
     
+    React.useEffect(() => {
+        clearTimeout(timeoutid) ;
+        if(props.notifmsg && props.notifmsg.length > 1) {
+            setshow(true);
+            let i = setTimeout(() => {
+                setshow(false);
+            }, 2000);
+            // @ts-ignore
+            settimeoutid(i);
+        }
+        return () => clearTimeout(timeoutid); 
+    }, [props.notifmsg]);
+
     const styles = StyleSheet.create({
         container: {
             zIndex: 10, width: responsive.width, height: 100,
@@ -73,18 +88,22 @@ export default function TopContainer(props :propsReceive) {
             </View>
 
             <View style={styles.iconsContainer}>
-                <TouchableOpacity onPress={props.zoomin}>
-                    <MaterialIcons name='zoom-in' size={ICONSIZEBG} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
+                <TouchableOpacity onPress={props.oninfoclick}>
+                    <FontAwesome5 name='search-location' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={props.zoomout}>
-                    <MaterialIcons name='zoom-out' size={ICONSIZEBG} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
+                <TouchableOpacity onPress={props.oninfoclick}>
+                    <FontAwesome5 name='info-circle' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={props.onnotifclick}>
-                    <Ionicons name='notifications' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
+
+                <TouchableOpacity onPress={props.onlock}>
+                   {
+                       props.islock ?
+                       <Entypo name='lock' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/> :
+                       <Entypo name='lock-open' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
+                   }
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <MaterialIcons name='place' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
-                </TouchableOpacity>
+
+
                 <TouchableOpacity onPress={props.setsound}>
                     {
                         props.sound ?
@@ -97,6 +116,12 @@ export default function TopContainer(props :propsReceive) {
             { props.info &&
                 <View style={styles.messageContainer}>
                     <Text style={styles.messageText}>.....Loading navigation path.....</Text>
+                </View>
+            }
+
+            { shownotif &&
+                <View style={styles.messageContainer}>
+                    <Text style={styles.messageText}>{props.notifmsg}</Text>
                 </View>
             }
         </View>
