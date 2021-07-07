@@ -13,6 +13,8 @@ export const GPSRANGE = {
     endx:   121.135533,  y: 14.339070,   //339077
 };
 
+export const IntroPosition = {lat: 14.296238, lng: 121.105799};
+
 export const GalaTours :Array<GalaSelfGuidedTour> = [
     {
         name: 'Bisita Iglesia',

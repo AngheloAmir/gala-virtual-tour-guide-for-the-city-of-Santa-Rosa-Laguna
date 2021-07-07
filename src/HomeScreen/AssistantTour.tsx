@@ -4,14 +4,14 @@ import { useResponsive, Responsive } from '../Utility/useResponsive';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import DialogAlert  from '../Utility/DialogAlert';
-import LeafletContainer from './AssistantTourStack/LeaftlefContainer';
+import IndexContainer from './AssistantTourStack/IndexContainer';
 
 const Stack = createStackNavigator();
 export default function MyTourIndex() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="AssistantTourIndex" component={AssistantTourIndex} options={{headerShown: false}}/>
-            <Stack.Screen name="LeafletContainer" component={LeafletContainer} options={{headerShown: false}} />
+            <Stack.Screen name="IndexContainer" component={IndexContainer} options={{headerShown: false}} />
         </Stack.Navigator>
     );
 }
@@ -84,7 +84,7 @@ function AssistantTourIndex( {navigation} :any) {
               </View>
 
               <View style={styles.btnContainer}>
-                  <Button title='start navigating' onPress={ () => navigation.navigate('LeafletContainer')} />
+                  <Button title='start navigating' onPress={ () => navigation.navigate('IndexContainer')} />
                   <Text style={{marginTop: 8, fontSize: 10}}>*openstreetmap.org, router.project-osrm.org and www.overpass-api</Text>
               </View>
           </View>

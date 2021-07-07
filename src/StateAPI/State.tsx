@@ -1,5 +1,6 @@
 /*
     Define the contents and type of the APP STATE
+    It is also known as the global state
 */
 
 import React from 'react';

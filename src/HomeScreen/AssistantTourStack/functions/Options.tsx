@@ -3,6 +3,7 @@
 
     EMOJI: 👇 🧍 👣 🚶 💡 🏁 🏃 🚩 🏨
 */
+
 import { Platform } from 'react-native';
 import { MapLayer, MapMarker, MapShape } from "expo-leaflet";
 
@@ -28,32 +29,17 @@ export const mapLayers: Array<MapLayer> = [
     },
     /*
     {
-      attribution:
-        '&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      attribution: '&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       baseLayerIsChecked: true,
       baseLayerName: 'OpenStreetMap',
       layerType: 'TileLayer',
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    }
-    */
+   }
+   */
 ];
 
-export const IntroPosition = {lat: 14.296238, lng: 121.105799};
-
-export const EmptyPolyline :MapShape = {
-  // @ts-ignore
-  //color: 'blue' attribute is causing a TS Error although it is not. A problem with the ExpoLeaftlet package
-  shapeType: 'polyline', id: '0', positions: [{lat: 0, lng: 0}], color: NAVCOLORS[0], 
-}
-
-export function EmptyMarker(id :number) :MapMarker {
-  return {
-    id: id + '', position: {lat: 0, lng: 0}, icon: '<div style="margin-top: -16px">🏁</div>', size: [32, 32]
-  }
-}
-
-import { GalaTours } from '../../../database/assistantour/tours';
-import { GalaSelfGuidedTour } from '../../../database/!interfaces/GalaSelfGuidedTour';
+import { GalaTours } from '../../../../database/assistantour/tours';
+import { GalaSelfGuidedTour } from '../../../../database/!interfaces/GalaSelfGuidedTour';
 export function getTours() {
   let TOURS :any = [];
   GalaTours.map((item :GalaSelfGuidedTour) => {
