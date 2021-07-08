@@ -75,7 +75,10 @@ export default function Toolbar() {
     });
 
     async function handleOnNavigate() {
-        if(localState.currenttour.index < 0) return;
+        if(localState.currenttour.index < 0) {
+            setnotifmsg('Please select your tour first');
+            return;
+        };
         const destinationsAndPointOfInterestMarkers = getMapDestinationMarkers(GalaTours[localState.currenttour.index], 1);
         const userPosition = localState.mapmarkers[0].position;
         localDispatch( setMapMarkers(destinationsAndPointOfInterestMarkers) );
@@ -106,6 +109,18 @@ export default function Toolbar() {
           })();
     }
 
+    function handleInfoIconPress() {
+        if(localState.currenttour.index < 0) return;
+        let info = `${GalaTours[localState.currenttour.index].name} \n`;
+        info    += `${GalaTours[localState.currenttour.index].longdescription}\n\n`;
+        info    += GalaTours[localState.currenttour.index].destinations.map((dest) => {
+            if(dest.to.commute)
+                return `${dest.to.name}\n   ${dest.to.commute}\n\n`;
+            return `${dest.to.name}\n\n`;
+        });
+        localDispatch( setDialogMessage('Tour information', info) );
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.tourcontainer}>
@@ -123,7 +138,7 @@ export default function Toolbar() {
                 <TouchableOpacity >
                     <FontAwesome5 name='search-location' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
-                <TouchableOpacity >
+                <TouchableOpacity onPress={handleInfoIconPress}>
                     <FontAwesome5 name='info-circle' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
 

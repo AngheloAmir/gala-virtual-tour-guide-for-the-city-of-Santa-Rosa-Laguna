@@ -19,7 +19,7 @@ export default function SelectTourList() {
             zIndex: 25,
         },
         listdialog: {
-            top: (responsive.height - 400) / 8,
+            top: (responsive.height - 575) / 2,
         }
     });
 

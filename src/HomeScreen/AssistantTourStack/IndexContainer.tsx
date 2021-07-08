@@ -26,7 +26,7 @@ export default function IndexContainer() {
             await Init(localDispatch);
             i = setInterval(() => {
                 updateUserLocation(localDispatch);
-            }, 1000)
+            }, 2000);
         })();
         return clearInterval(i);
     }, []);

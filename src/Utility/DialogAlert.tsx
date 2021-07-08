@@ -17,8 +17,8 @@ export default function VisitSiteDialog(props :propsReceive) {
 
     const styles = StyleSheet.create({
         container: {
-            position: 'absolute', width: WIDTH, height: 300,
-            top:  ((responsive.height - 280) / 2) - 80,
+            position: 'absolute', width: WIDTH, height: 340,
+            top:  ((responsive.height - 220) / 2) - 80,
             left: ((responsive.width - WIDTH) /2),
             backgroundColor: 'white', borderWidth: 1,
             borderRadius: 8, padding: 8, zIndex: 100,
@@ -57,7 +57,7 @@ export default function VisitSiteDialog(props :propsReceive) {
 
     return (
         <View style={styles.container}>
-            <View style={{height: 240}}>
+            <View style={{height: 280}}>
                 <Text style={styles.title}>{props.title}</Text>
                 <View style={styles.borderline}></View>
                 <ScrollView >

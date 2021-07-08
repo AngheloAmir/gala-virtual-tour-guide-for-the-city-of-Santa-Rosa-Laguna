@@ -22,7 +22,7 @@ export default function DialogMessage() {
             top: 0,
         },
         dialog: {
-            top: (responsive.height - 400) / 8,
+            top: (responsive.height - 700) / 2,
         }
     });
 
