@@ -85,6 +85,12 @@ export function rootReducer(state :AssistantTourState, action :ActionInterface) 
             return {
                 ...state, isSelectTourOpen: action.payload
             }
+        
+        case actionType.setIsFindPlacesOpen:
+            return {
+                ...state, isFindPlacesOpen: action.payload
+            }
+
 
         default:
             console.log('ACTION TYPE NOT DEFINED!\n' + action.type);

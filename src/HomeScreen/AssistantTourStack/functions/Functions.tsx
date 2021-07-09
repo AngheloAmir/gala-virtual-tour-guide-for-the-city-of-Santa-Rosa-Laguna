@@ -38,8 +38,10 @@ export async function Init( localDispatch :any) {
 }
 
 export async function updateUserLocation( localDispatch: any) {
-    const userlocation = await getLocation();
-    localDispatch( setUserPosition(userlocation) );
+    try {
+        const userlocation = await getLocation();
+        localDispatch( setUserPosition(userlocation) );
+    } catch(err) {}
 }
 
 //The MapMarkers that will be draw in the ExpoLeaftlet component.

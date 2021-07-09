@@ -7,7 +7,7 @@ import { MapShape } from "expo-leaflet";
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI } from '../localstateAPI/interface';
 import { flipIsMapCenter, flipIsSoundPlay, setSelectTourOpen, setMapMarkers, setMapPolyLines,
-        setMapLock, setZoomlevel, setMapCenter, setMapPathIsLoading, setDialogMessage} from '../localstateAPI/actions';
+        setMapLock, setZoomlevel, setMapCenter, setMapPathIsLoading, setDialogMessage, setFindPlacesOpen} from '../localstateAPI/actions';
 import { Responsive, useResponsive } from '../../../Utility/useResponsive';
 
 import { FromToInterface } from '../../../../database/!interfaces/GalaSelfGuidedTour';
@@ -121,6 +121,10 @@ export default function Toolbar() {
         localDispatch( setDialogMessage('Tour information', info) );
     }
 
+    function handleFindPlacePress() {
+        localDispatch( setFindPlacesOpen(true) );
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.tourcontainer}>
@@ -135,7 +139,7 @@ export default function Toolbar() {
             </View>
 
             <View style={styles.iconsContainer}>
-                <TouchableOpacity >
+                <TouchableOpacity onPress={handleFindPlacePress}>
                     <FontAwesome5 name='search-location' size={ICONSIZE} color='rgba(95, 150, 200, 1)' style={styles.iconsItem}/>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handleInfoIconPress}>

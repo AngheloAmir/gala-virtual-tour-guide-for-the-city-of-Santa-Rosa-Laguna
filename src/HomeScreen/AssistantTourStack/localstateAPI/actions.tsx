@@ -87,3 +87,9 @@ export function setMapMarkers(markers :Array<MapMarker>) {
         type: actionType.setMapMarkers, payload: markers
     }
 }
+
+export function setFindPlacesOpen(isOpen :boolean) {
+    return {
+        type: actionType.setIsFindPlacesOpen, payload: isOpen
+    }
+}

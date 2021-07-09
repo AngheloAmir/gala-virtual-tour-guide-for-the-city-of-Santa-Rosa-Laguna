@@ -36,6 +36,7 @@ export enum actionType {
     setMapPathIsLoading,
     setSelectTourOpen,
     setMapPolylines,
+    setIsFindPlacesOpen,
 }
 
 export interface AssistantTourState {
@@ -60,4 +61,5 @@ export interface AssistantTourState {
     ismaplock   :boolean;   //tells if an invisible view appears on the screen to prevent user making actions (during animation)
     isnavpathloading :boolean;
     isSelectTourOpen :boolean;
+    isFindPlacesOpen :boolean;
 }

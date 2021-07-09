@@ -1,5 +1,5 @@
 /*
-    The index (container) when display the GPS Navigation system
+    The index (container) when displaying the GPS Navigation system
 */
 
 import React from 'react';
@@ -11,6 +11,7 @@ import { setMapCenter } from './localstateAPI/actions';
 
 import LeafletContainer from './components/LeafletContainer';
 import Toolbar          from './components/Toolbar';
+import FindPlaces       from './components/FindPlaces';
 import SelectTourList   from './components/SelectTourList';
 import DialogMessage    from './components/DialogMessage';
 import MapLockView      from './components/MapLockView';
@@ -25,7 +26,9 @@ export default function IndexContainer() {
         ( async () => {
             await Init(localDispatch);
             i = setInterval(() => {
-                updateUserLocation(localDispatch);
+                try {
+                    updateUserLocation(localDispatch);
+                } catch(err) {}
             }, 2000);
         })();
         return clearInterval(i);
@@ -42,6 +45,7 @@ export default function IndexContainer() {
             <View style={{width: '100%', height: '100%'}}>
                 <Toolbar />
                 <LeafletContainer />
+                <FindPlaces />
                 <SelectTourList />
                 <DialogMessage />
                 <MapLockView />

@@ -34,23 +34,5 @@ export const defaultLocalState :AssistantTourState = {
     ismaplock: true,
     isnavpathloading: false,
     isSelectTourOpen: false,
+    isFindPlacesOpen: false,
 }
-
-/*
-const [position, setposition]       = React.useState(IntroPosition);
-  const [destMarkers, setdestMarkers] = React.useState([EmptyMarker(1)]);
-  const [pathways, setpathways]       = React.useState([EmptyPolyline]);
-  const [isNavLoading, setNavLoading] = React.useState(false);
-  const [zoomlvl, setzoomlvl]         = React.useState(12);
-  const [dialogmsg, setdialogmsg]     = React.useState({title: '', msg: ''});
-  const [flashmessage, setflashmsg]   = React.useState('');
-
-  const [currenttour, setcurrenttour] = React.useState({name: '-- select tour --', index: -1});
-
-  const [mapcenter, setmapcenter]     = React.useState(IntroPosition);
-  const [mapfollow, setmapfollow]     = React.useState(true);
-
-  const [selectour, setselecttour]    = React.useState(false);
-  const [issound, setsound]           = React.useState(true);
-  const [notifmsg, setnotifmsg]       = React.useState('You are seing the notification message.');
-*/
