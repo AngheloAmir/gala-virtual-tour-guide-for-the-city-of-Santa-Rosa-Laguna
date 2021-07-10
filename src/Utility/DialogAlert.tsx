@@ -10,7 +10,7 @@ export interface propsReceive {
     cancel?  :() => void;
 }
 
-export default function VisitSiteDialog(props :propsReceive) {
+export default function DialogAlert(props :propsReceive) {
     if(!props.isshow) return <View></View>;
     const responsive :Responsive = useResponsive();    
     const WIDTH = 300;

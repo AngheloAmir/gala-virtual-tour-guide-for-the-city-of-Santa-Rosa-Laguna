@@ -48,16 +48,18 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
             {
                 from: 'user',
                 to: {
-                    lat: 14.313729, lng: 121.112292, name: 'Santa Rosa Bayan',
+                    lat: 14.313727, lng: 121.112185, name: 'Santa Rosa Bayan',
                     commute: 'Ride a jeep with a sign "Bayan" or "Tagapo". The common fare rate is P10',
                     voiceasset: () => undefined,
                 }
             },
         ],
         pointOfInterests: [
-            { lat: 14.313892, lng: 121.111595, name: 'Santa Rosa de Lima',  voiceasset: () => undefined,},
-            { lat: 14.315214, lng: 121.111438, name: 'Santa Rosa Arch',     voiceasset: () => undefined,},
-            { lat: 14.312849, lng: 121.113039, name: 'Casa Gonzales',       voiceasset: () => undefined,}
+            { lat: 14.313892, lng: 121.111595, name: 'Santa Rosa de Lima',  voiceasset: () => undefined },
+            { lat: 14.315214, lng: 121.111438, name: 'Santa Rosa Arch',     voiceasset: () => undefined },
+            { lat: 14.312721, lng: 121.112980, name: 'Casa Gonzales',       voiceasset: () => undefined },
+            { lat: 14.313601, lng: 121.111843, name: 'Museo ng Santa Rosa', voiceasset: () => undefined },
+            { lat: 14.313764, lng: 121.112556, name: 'Col. Basillo Boromeo Gonzales Statue', voiceasset: () => undefined}
         ]
     },
 

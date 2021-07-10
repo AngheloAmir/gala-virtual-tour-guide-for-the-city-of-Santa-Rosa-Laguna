@@ -26,6 +26,9 @@ export default function DialogMessage() {
         }
     });
 
+    if(!localState.dialogmsg.msg)
+        return <View style={styles.container}></View>;
+        
     return (
         <View style={styles.container}>
             {

@@ -16,7 +16,10 @@ export default function LeafletContainer() {
     function onMapClicked(event :LeafletWebViewEvent) {
         switch(event.tag) {
             case 'onMapClicked':
-                if(Platform.OS == 'web') localDispatch( setUserPosition(event.location) );
+                if(Platform.OS == 'web') {
+                    localDispatch( setUserPosition(event.location) );
+                    console.log(event.location);
+                }
                 break;
             case 'onMapMarkerClicked':
                 for(let i = 0; i < localState.mapmarkers.length; i++) {

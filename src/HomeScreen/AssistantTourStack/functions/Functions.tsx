@@ -24,7 +24,7 @@ export async function Init( localDispatch :any) {
     }
     catch(err) {
         if(err.message == 'PermissionException') 
-            localDispatch( setDialogMessage('Location permision', 'Location permision not granted') );
+            localDispatch( setDialogMessage('Location error', 'Location permision not granted or there is not data connection.') );
         else if(err.message == 'OutOfRangeException')
             localDispatch( setDialogMessage('Out of service range', 'Out of service range. Too far from the city') );
         else 
@@ -70,15 +70,19 @@ export function getMapDestinationMarkers(tours :GalaSelfGuidedTour, startingInde
     return destinations;
 }
 
-export async function getPathWays(id :number, current :Geolocation, destination :Geolocation) {
+export async function getPathWays(id :number, current :Geolocation, destination :Geolocation, isRed? :boolean) {
     try {
         const paths :any = await FindPath(current, destination);
-        const polyline :MapShape = {
+        if(isRed) return {
         // @ts-ignore
         //color attribute is causing a TS Error although it is not. A problem with the ExpoLeaftlet package
-            shapeType: 'polyline', id: id + '', color: NAVCOLORS[id], positions: [...paths], 
+            shapeType: 'polyline', id: id + '', color: 'red', positions: [...paths], 
         }
-        return polyline;
+        return {
+            // @ts-ignore
+            //color attribute is causing a TS Error although it is not. A problem with the ExpoLeaftlet package
+                shapeType: 'polyline', id: id + '', color: NAVCOLORS[id], positions: [...paths], 
+        }
     } catch(err) {
         throw err;
     }

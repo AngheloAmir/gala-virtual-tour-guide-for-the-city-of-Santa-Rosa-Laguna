@@ -3,7 +3,7 @@
 */
 
 import React from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 
 import { localContextProvider, defaultLocalState } from './localstateAPI/state';
 import { rootReducer } from './localstateAPI/reducer';
@@ -25,11 +25,8 @@ export default function IndexContainer() {
         let i :any;
         ( async () => {
             await Init(localDispatch);
-            i = setInterval(() => {
-                try {
-                    updateUserLocation(localDispatch);
-                } catch(err) {}
-            }, 2000);
+            if(Platform.OS !== 'web')
+                i = setInterval(() => updateUserLocation(localDispatch), 2000);
         })();
         return clearInterval(i);
     }, []);
