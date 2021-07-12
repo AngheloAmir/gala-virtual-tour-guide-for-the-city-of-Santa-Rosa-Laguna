@@ -7,16 +7,11 @@ import FindPlaceContent from './FindPlacesFragments/FindPlaceContent';
 
 export default function FindPlacesContainer() {
     const { localState } :LocalStateAPI = React.useContext(localContextProvider);
+
+    if(!localState.isFindPlacesOpen)
+        return <View style={{position: 'absolute'}}></View>
+    
     return (
-        <View style={{position: 'absolute', zIndex: 20}}>
-            {
-                localState.isFindPlacesOpen && <FindPlaceContent />
-            }
-            {
-                localState.isFindPlacesOpen &&
-                <View style={{width: 2000, height: 2000, position: 'absolute', top: 0, backgroundColor: 'rgba(0,0,0,.5)'}}>
-                </View>
-            }
-        </View>
+        <FindPlaceContent />
     )
 }

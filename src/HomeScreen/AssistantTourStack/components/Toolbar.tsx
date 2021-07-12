@@ -12,7 +12,7 @@ import { Responsive, useResponsive } from '../../../Utility/useResponsive';
 
 import { FromToInterface } from '../../../../database/!interfaces/GalaSelfGuidedTour';
 import { GalaTours } from '../../../../database/assistantour/tours';
-import { getMapDestinationMarkers, getPathWays } from '../functions/Functions';
+import { getMapDestinationMarkers, getPathWays } from '../functions';
 
 const ICONSIZE      = 24;
 const ICONSIZEBG    = ICONSIZE + 4;

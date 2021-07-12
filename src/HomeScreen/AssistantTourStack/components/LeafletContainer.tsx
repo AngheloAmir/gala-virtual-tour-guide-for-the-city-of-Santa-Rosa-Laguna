@@ -8,7 +8,7 @@ import { LocalStateAPI } from '../localstateAPI/interface';
 import { setUserPosition, setDialogMessage } from '../localstateAPI/actions';
 
 //Expo leaftlet options
-import { mapOptions, mapLayers } from '../functions/Options';
+import { mapOptions, mapLayers } from '../functions/options';
 
 export default function LeafletContainer() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);

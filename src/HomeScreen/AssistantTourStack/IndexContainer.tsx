@@ -15,7 +15,8 @@ import FindPlaces       from './components/FindPlaces';
 import SelectTourList   from './components/SelectTourList';
 import DialogMessage    from './components/DialogMessage';
 import MapLockView      from './components/MapLockView';
-import { Init, updateUserLocation } from './functions/Functions';
+import DarkBackground   from './components/Darkbackground';
+import { Init, updateUserLocation } from './functions';
 
 export default function IndexContainer() {
     const [localState, localDispatch] = React.useReducer(rootReducer, defaultLocalState );
@@ -46,6 +47,7 @@ export default function IndexContainer() {
                 <SelectTourList />
                 <DialogMessage />
                 <MapLockView />
+                <DarkBackground />
             </View>
         </localContextProvider.Provider>
     );

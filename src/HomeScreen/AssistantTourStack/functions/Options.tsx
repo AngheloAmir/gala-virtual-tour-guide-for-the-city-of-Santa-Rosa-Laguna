@@ -5,7 +5,7 @@
 */
 
 import { Platform } from 'react-native';
-import { MapLayer, MapMarker, MapShape } from "expo-leaflet";
+import { MapLayer } from "expo-leaflet";
 
 const ACESSTOKEN = 'pk.eyJ1IjoiYW5naGVsb2FtaXIiLCJhIjoiY2txZG0zZm5oMDI5NjJ1bXdqMXhocG95OSJ9.g6HfwWZcXrYKzntSrWiVzw';
 

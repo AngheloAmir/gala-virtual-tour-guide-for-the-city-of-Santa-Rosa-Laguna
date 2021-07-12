@@ -6,7 +6,7 @@ import { MapShape } from "expo-leaflet";
 import { localContextProvider } from '../../localstateAPI/state';
 import { LocalStateAPI } from '../../localstateAPI/interface';
 import { setFindPlacesOpen, setMapMarkers, setMapLock, setZoomlevel, setMapCenter, setMapPathIsLoading, setMapPolyLines, setDialogMessage } from '../../localstateAPI/actions';
-import { getPathWays } from '../../functions/Functions';
+import { getPathWays } from '../../functions';
 import { Responsive, useResponsive } from '../../../../Utility/useResponsive';
 
 import { establishments } from '../../../../../database/assistantour/establishments';
@@ -174,8 +174,7 @@ export default function FindPlaceContent() {
                 localDispatch( setMapLock(false) );
                 localDispatch( setZoomlevel(17) );
             }, 3000);
-          })();
-        
+          })();  
     }
 
     return (

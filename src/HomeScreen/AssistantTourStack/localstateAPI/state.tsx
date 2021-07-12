@@ -5,7 +5,7 @@
 import React from 'react';
 import { AssistantTourState } from './interface';
 import { IntroPosition } from '../../../../database/assistantour/tours';
-import { NAVCOLORS } from '../functions/Options';
+import { NAVCOLORS } from '../functions/options';
 
 export const localContextProvider :React.Context<any> = React.createContext(null);
 
