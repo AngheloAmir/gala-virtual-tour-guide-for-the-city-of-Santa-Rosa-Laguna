@@ -40,34 +40,35 @@ export default function HomeIndex(nav :any) {
                   return  <MaterialIcons name='assistant-navigation' size={size} color={color} />
               case 'Map':
                   return  <FontistoIcon name='map' size={size} color={color} />
-              case 'More':
-                return    <MaterialIcons name='more-horiz' size={42} color={color} />
+              case 'Forum':
+                return    <MaterialIcons name='forum' size={size} color={color} />
               default:
                 return    <FontAwesome5Icons name='question' size={size} color={color} />
             }
           },
         })}
         tabBarOptions={{ activeTintColor: 'tomato', inactiveTintColor: 'gray', style: { height: 54, paddingBottom: 8}}}>
-        <Tab.Screen name="Assistant Tour"  component={AssistantTourContainer} />
-        <Tab.Screen name="Map"              component={InteractiveMap} />
         <Tab.Screen name="Home"            component={HomeContainer} />
         <Tab.Screen name="Guides"          component={GuidesContainer} />
-        <Tab.Screen name="More"            component={MoreContainer} />
+        <Tab.Screen name="Assistant Tour"  component={AssistantTourContainer} />
+        <Tab.Screen name="Forum"           component={ForumContainer} />
       </Tab.Navigator>
     </View>
   );
 }
 
 /*
+<Tab.Screen name="Map"              component={InteractiveMap} />
+
   The FF component were created to have a FIXED navbar at the top of the screen
 */
 
 import TopBar           from '../Topbar'
 import Overview         from './HomeTab';
 import AssistantTour    from './AssistantTourTab';
-import Map              from './MapTab';
+//import Map              from './MapTab';
 import Guides           from './GuidesTab';
-import More             from './MoreTab';
+import More             from './ForumTab';
 
 function HomeContainer( props :any) {
   return (
@@ -87,6 +88,7 @@ function AssistantTourContainer( props :any) {
   );
 }
 
+/*
 function InteractiveMap( props :any) {
   return (
     <View style={{flex: 1}}>
@@ -95,6 +97,7 @@ function InteractiveMap( props :any) {
     </View>
   );
 }
+*/
 
 function GuidesContainer( props :any) {
   return (
@@ -105,7 +108,7 @@ function GuidesContainer( props :any) {
   );
 }
 
-function MoreContainer( props :any) {
+function ForumContainer( props :any) {
   return (
     <View style={{flex: 1}}>
       <TopBar navigation={props.navigation} title='More'/>

@@ -3,7 +3,6 @@
 */
 
 import { actionType } from './ActionType';
-import { Map } from '../../src-data/map/!MapInterface';
 
 export interface ActionInterface {
     type        :number;
@@ -23,29 +22,13 @@ export function updateInfo(name :string, about :string, avatar :number) {
     }
 }
 
-export function setMultiviewJson(mapinfo :Map) {
-    return {
-        type: actionType.setmultiview, payload: mapinfo,
-    }
-}
-
-export function setCameraIndex(index :number) {
-    return {
-        type: actionType.setcameraindex, payload: index
-    }
-}
-
+/*
 export function setVisiblePoint(newpoint :any) {
     return {
         type: actionType.setvisiblepoint, payload: newpoint
     }
 }
-
-export function setDontShowIntroGuideText() {
-    return {
-        type: actionType.setintroguidetext, payload: false
-    }
-}
+*/
 
 export function setstreetviewlink(link :string) {
     return {

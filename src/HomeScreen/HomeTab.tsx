@@ -11,14 +11,14 @@ import { Button, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } f
 import { Responsive, useResponsive } from '../Utility/useResponsive';
 
 import { contextProvider, StateAPI } from '../StateAPI/State';
-import { setMultiviewJson } from '../StateAPI/Actions';
+//import { setMultiviewJson } from '../StateAPI/Actions';
 
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
-import MapViewIndex   from './OverviewStack/MapViewIndex';
-import PerpectiveView from './OverviewStack/PerpectiveView';
-import overviewdata, { featuredMultiviewInterface, paragraphsInterface}  from '../../src-data/overview';
+//import MapViewIndex   from './OverviewStack/MapViewIndex';
+//import PerpectiveView from './OverviewStack/PerpectiveView';
+//import overviewdata, { featuredMultiviewInterface, paragraphsInterface}  from '../../src-data/overview';
 
 export default function HomeIndex() {
   return (

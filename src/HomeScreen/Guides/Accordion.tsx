@@ -44,7 +44,7 @@ export default function Accordion(props :propsReceive) {
         return (
         <View key={itemindex} style={styles.accordionItem}>
             <View style={{flexDirection: 'row', alignContent: 'space-between'}}>
-                <TouchableOpacity style={{flexDirection: 'row', alignContent: 'space-between'}}
+                <TouchableOpacity style={{flexDirection: 'row', alignContent: 'space-between', width: '100%'}}
                     onPress={() => {
                         if(itemindex === currentOpenList) setOpenedList(-1);
                         else setOpenedList(itemindex);

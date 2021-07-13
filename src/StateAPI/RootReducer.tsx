@@ -18,20 +18,6 @@ export function RootReducer(state :StateInterface, action :ActionInterface) :Sta
                 }
             }
 
-        case actionType.setmultiview: 
-            return {
-                ...state, features: {
-                    ...state.features, multiview: action.payload
-                }
-            }
-
-        case actionType.setcameraindex:
-            return {
-                ...state, features: {
-                    ...state.features, selectedCameraIndex: action.payload
-                }
-            }
-
         case actionType.setguideinfo:
             return {
                 ...state, features: {
@@ -43,13 +29,6 @@ export function RootReducer(state :StateInterface, action :ActionInterface) :Sta
             return {
                 ...state, map: {
                     ...state.map, visiblePoints: action.payload
-                }
-            }
-        
-        case actionType.setintroguidetext:
-            return {
-                ...state, map: {
-                    ...state.map, isShowIntro: action.payload,
                 }
             }
         

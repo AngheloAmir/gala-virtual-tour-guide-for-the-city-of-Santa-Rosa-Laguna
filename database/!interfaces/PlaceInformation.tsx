@@ -14,5 +14,5 @@ export interface PlaceInformation {
     //return an image. It it a function so, image is not loaded unless needed
     getImage       :() => ImageSourcePropType;  
     getIcon        :() => ImageSourcePropType;
-    getDescriptipn :() => Array<PlaceInfoContent>;
+    getDescriptipn?:() => Array<PlaceInfoContent>;
 }

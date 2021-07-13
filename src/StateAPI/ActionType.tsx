@@ -7,13 +7,10 @@ export enum actionType {
     setscreen,
     updateinfo,
 
-    setmultiview,
-    setcameraindex,
-
     setguideinfo,
 
     setmarkerdescription,
     setvisiblepoint,
-    setintroguidetext,
+
     setstreetviewlink,
 }

@@ -4,7 +4,6 @@
 */
 
 import React from 'react';
-import { Map } from '../../src-data/map/!MapInterface';
 import { GuideContent } from '../../database/!interfaces/GuideContent';
 import { PlaceInformation } from '../../database/!interfaces/PlaceInformation';
 
@@ -23,23 +22,10 @@ export interface StateInterface {
         signedin    :boolean;
         status      : 'Will visit' | 'visited' | 'Residence' | 'Guest';
     };
-    chat :{
-        messages :Array<{
-            from    :string;
-            avatar  :number;
-            text    :string;
-        }>;
-        personal :Array<{
-            isUser  :boolean;
-            text    :string;
-        }>;
-    };
     screen :{
         current: 'signin' | 'home';
     };
     features :{
-        multiview?           :Map;
-        selectedCameraIndex? :number;
         guideInfo?           :GuideContent;
     };
     map :{
@@ -56,7 +42,7 @@ export interface StateInterface {
         };
         isShowIntro        :boolean;
         streetviewlink     :string;
-        markerdescription :PlaceInformation;
+        markerdescription  :PlaceInformation;
     };
 }
 
@@ -71,28 +57,11 @@ export function createDefaultState() :StateInterface {
             signedin: false,
             status: 'Guest',
         },
-        chat: {
-            messages: [
-                {
-                    from: 'none',
-                    avatar: 0,
-                    text: 'You dont have any messages'
-                }
-            ],
-            personal: [
-                {
-                    isUser: false,
-                    text:   'You dont have any messages'
-                }
-            ]
-        },
         screen: {
             current: 'home',
         },
         
         features: {
-            multiview:  { mapimage: '', cameras: [] },
-            selectedCameraIndex: 0,
         },
 
         map: {
@@ -113,7 +82,6 @@ export function createDefaultState() :StateInterface {
                 name: '', description: '', address: '', type: 'spot', longitude: 1, latitude: 1,
                 getImage:   () => require('../../assets/app/favicon.png'),
                 getIcon:    () => require('../../assets/app/favicon.png'),
-                getDescriptipn:  () => undefined,
             }
         },
     };
