@@ -93,3 +93,11 @@ export function setFindPlacesOpen(isOpen :boolean) {
         type: actionType.setIsFindPlacesOpen, payload: isOpen
     }
 }
+
+/*
+export function setPendingLoc(isPending :boolean) {
+    return {
+        type: actionType.setPendingLoc, payload: isPending
+    }
+}
+*/

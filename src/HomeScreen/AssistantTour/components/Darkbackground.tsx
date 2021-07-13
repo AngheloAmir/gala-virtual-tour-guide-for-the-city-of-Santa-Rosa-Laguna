@@ -1,3 +1,8 @@
+/*
+    A opaque dark background that used to cast shadow in the background
+    when a dialog box is opened.
+*/
+
 import React from 'react';
 import { View } from 'react-native';
 
@@ -10,7 +15,7 @@ export default function DarkBackground() {
     if( localState.isFindPlacesOpen || localState.isSelectTourOpen ||
         localState.dialogmsg.msg.length >= 2 )
         return (
-            <View style={{width: 2000, height: 2000, position: 'absolute', top: 0, backgroundColor: 'rgba(0,0,0,.5)'}}></View>
+            <View style={{width: 2000, height: 2000, position: 'absolute', top: 0, zIndex: 18, backgroundColor: 'rgba(0,0,0,.5)'}}></View>
         );
     
     return (

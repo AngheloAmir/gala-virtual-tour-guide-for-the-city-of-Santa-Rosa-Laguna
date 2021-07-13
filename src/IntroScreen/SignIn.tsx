@@ -6,8 +6,8 @@ import { contextProvider, StateAPI } from '../StateAPI/State';
 import { setCurrentScreen } from '../StateAPI/Actions';
 import { Responsive, useResponsive } from '../Utility/useResponsive';
 
-const backgroundImage = require('../../assets/background.jpg');
-const galaicon        = require('../../assets/icon.png');
+const backgroundImage = require('../../assets/app/background.jpg');
+const galaicon        = require('../../assets/app/icon.png');
 
 export default function SignIn() {
     const { dispatch } :StateAPI = React.useContext(contextProvider);

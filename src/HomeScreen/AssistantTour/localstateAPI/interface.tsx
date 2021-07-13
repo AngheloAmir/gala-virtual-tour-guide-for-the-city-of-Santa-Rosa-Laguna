@@ -37,6 +37,8 @@ export enum actionType {
     setSelectTourOpen,
     setMapPolylines,
     setIsFindPlacesOpen,
+
+    //setPendingLoc,
 }
 
 export interface AssistantTourState {
@@ -53,6 +55,8 @@ export interface AssistantTourState {
         title :string;
         msg   :string;
     },
+
+    hasPendingGetLoc :boolean; //Tells that if location is not yet obtained because getUserLocations run a definite interval
 
     ismapcenter :boolean;
     isGranted   :boolean;

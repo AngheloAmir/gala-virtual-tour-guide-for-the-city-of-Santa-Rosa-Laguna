@@ -15,7 +15,7 @@ const guide :GuideContent = {
             data: [
                 {
                     headingText: 'Basic',
-                    paragraph: 'As per the minimum health standard presented by IATF, please wear a face mask and face shield all the time. The face shield must cover the whole face. Avoid crowded places as possible. However, it is likely unavoidable since many busy areas in Santa Rosa are crowded (ex. in the Balibago Complex, bus terminal). Ideally, you should get vaccinated first before visiting.',
+                    paragraph: 'As per the minimum health standard presented by IATF, please wear a face mask and face shield all the time. The face shield must cover the whole face. Avoid crowded places as possible. However, it is likely unavoidable since many busy areas in Santa Rosa are crowded (ex. in the Balibago Complex, bus terminal). Ideally, you should get vaccinated first before visiting, also bring you evidence of being vacinated.',
                 },
                 {
                     headingText: 'Ages restriction',

@@ -38,7 +38,7 @@ export default function HomeIndex(nav :any) {
                 return    <MaterialIcons name='place' size={size} color={color} />
               case 'Assistant Tour':
                   return  <MaterialIcons name='assistant-navigation' size={size} color={color} />
-              case 'Interactive Map':
+              case 'Map':
                   return  <FontistoIcon name='map' size={size} color={color} />
               case 'More':
                 return    <MaterialIcons name='more-horiz' size={42} color={color} />
@@ -49,7 +49,7 @@ export default function HomeIndex(nav :any) {
         })}
         tabBarOptions={{ activeTintColor: 'tomato', inactiveTintColor: 'gray', style: { height: 54, paddingBottom: 8}}}>
         <Tab.Screen name="Assistant Tour"  component={AssistantTourContainer} />
-        <Tab.Screen name="Interactive Map" component={InteractiveMap} />
+        <Tab.Screen name="Map"              component={InteractiveMap} />
         <Tab.Screen name="Home"            component={HomeContainer} />
         <Tab.Screen name="Guides"          component={GuidesContainer} />
         <Tab.Screen name="More"            component={MoreContainer} />
@@ -63,13 +63,11 @@ export default function HomeIndex(nav :any) {
 */
 
 import TopBar           from '../Topbar'
-import Overview         from './Overview';
-import AssistantTour    from './AssistantTour';
-import Map              from './InteractiveMap';
-import Guides           from './Guides';
-//import Places         from './Places';
-
-import More from './More';
+import Overview         from './HomeTab';
+import AssistantTour    from './AssistantTourTab';
+import Map              from './MapTab';
+import Guides           from './GuidesTab';
+import More             from './MoreTab';
 
 function HomeContainer( props :any) {
   return (
@@ -92,7 +90,7 @@ function AssistantTourContainer( props :any) {
 function InteractiveMap( props :any) {
   return (
     <View style={{flex: 1}}>
-      <TopBar navigation={props.navigation} title='Interactive Map'/>
+      <TopBar navigation={props.navigation} title='Offline Map'/>
       <Map />
     </View>
   );
@@ -115,15 +113,3 @@ function MoreContainer( props :any) {
     </View>
   );
 }
-
-/*
-<Tab.Screen name="Places"          component={PlaceContainer} />
-function PlaceContainer( props :any) {
-  return (
-    <View style={{flex: 1}}>
-      <TopBar navigation={props.navigation} title='Places'/>
-      <Places />
-    </View>
-  );
-}
-*/

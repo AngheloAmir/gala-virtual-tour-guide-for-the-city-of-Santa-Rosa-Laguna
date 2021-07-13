@@ -14,11 +14,12 @@ export default function DialogAlert(props :propsReceive) {
     if(!props.isshow) return <View></View>;
     const responsive :Responsive = useResponsive();    
     const WIDTH = 300;
+    const HEIGHT = 340;
 
     const styles = StyleSheet.create({
         container: {
-            position: 'absolute', width: WIDTH, height: 340,
-            top:  ((responsive.height - 220) / 2) - 80,
+            position: 'absolute', width: WIDTH, height: HEIGHT,
+            top:  ((responsive.height - HEIGHT) / 2) - 50,
             left: ((responsive.width - WIDTH) /2),
             backgroundColor: 'white', borderWidth: 1,
             borderRadius: 8, padding: 8, zIndex: 100,

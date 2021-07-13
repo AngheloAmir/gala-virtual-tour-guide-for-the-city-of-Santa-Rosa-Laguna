@@ -20,6 +20,15 @@ import MapViewIndex   from './OverviewStack/MapViewIndex';
 import PerpectiveView from './OverviewStack/PerpectiveView';
 import overviewdata, { featuredMultiviewInterface, paragraphsInterface}  from '../../src-data/overview';
 
+export default function HomeIndex() {
+  return (
+    <View>
+      <Text>You are at home</Text>
+    </View>
+  )
+}
+
+/*
 export default function OverviewIndex() {
     return (
         <Stack.Navigator>
@@ -122,3 +131,4 @@ function Overview({navigation} :any) {
     </ScrollView>
   );
 }
+*/

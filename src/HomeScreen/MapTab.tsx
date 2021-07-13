@@ -5,7 +5,7 @@ import { WebView } from 'react-native-webview';
 import { contextProvider, StateAPI } from '../StateAPI/State';
 import { Responsive, useResponsive } from '../Utility/useResponsive';
 
-import TheActualMap     from './InteractiveMapStack/TheActualMap';
+import TheActualMap     from './Map/TheActualMap';
 import PlaceInformation from './Common/DisplayPlaceInfo';
 
 import { createStackNavigator } from '@react-navigation/stack';
@@ -78,7 +78,7 @@ function MapIndex( {navigation} :any) {
             
             <View style={styles.container}> 
                 <Text style={styles.title}> Welcome user!</Text>
-                <Text style={styles.description}> The interactive map let's you view the map of Santa Rosa, learn the different tourist spot, and their location. Have fun viewing! </Text>
+                <Text style={styles.description}> The interactive map let's you view the map of the city, learn the different tourist spot, and their location. Have fun viewing! </Text>
 
                 <View style={styles.btnContainer}>
                     <Button title='Open the offline map' onPress={ () => navigation.navigate('TheActualMap')} />

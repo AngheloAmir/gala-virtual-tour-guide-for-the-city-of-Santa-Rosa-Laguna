@@ -111,8 +111,8 @@ export function createDefaultState() :StateInterface {
             streetviewlink: 'https://www.google.com/',
             markerdescription: {
                 name: '', description: '', address: '', type: 'spot', longitude: 1, latitude: 1,
-                getImage:   () => require('../../assets/favicon.png'),
-                getIcon:    () => require('../../assets/favicon.png'),
+                getImage:   () => require('../../assets/app/favicon.png'),
+                getIcon:    () => require('../../assets/app/favicon.png'),
                 getDescriptipn:  () => undefined,
             }
         },

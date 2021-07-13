@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 import { contextProvider, StateAPI } from '../StateAPI/State';
 import { setGuideInfo } from '../StateAPI/Actions';
 
-import GuideView from './GuidesStack/GuideView';
+import GuideView from './Guides/GuideView';
 
 export default function GuidesIndex() {
     return (

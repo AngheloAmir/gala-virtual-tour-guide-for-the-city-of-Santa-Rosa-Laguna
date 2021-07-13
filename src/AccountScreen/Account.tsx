@@ -82,7 +82,7 @@ function Account( {navigation} :any ) {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.contentContainer}>
-                <Image source={require('../../assets/profilebackground.jpg')} style={{width: '100%', height: 160}} />
+                <Image source={require('../../assets/app/profilebackground.jpg')} style={{width: '100%', height: 160}} />
                 <View style={styles.headingContainer}>
                     <AvatarIcon avatar={state.user.avatar} width={128} height={128} />
                 </View>

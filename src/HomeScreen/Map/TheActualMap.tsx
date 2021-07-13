@@ -4,6 +4,15 @@
 import React from 'react';
 import { Linking, ScrollView, Text, View } from 'react-native';
 
+
+export default function ii() {
+    return (
+        <View>
+            <Text>asdasda</Text>
+        </View>
+    )
+}
+/*
 import { contextProvider, StateAPI } from '../../StateAPI/State';
 import { setMarkerDescription, setstreetviewlink } from '../../StateAPI/Actions';
 import { Responsive, useResponsive } from '../../Utility/useResponsive';
@@ -130,3 +139,4 @@ export default function TheActualMap({navigation} :any) {
         </View>
     );
 };
+*/

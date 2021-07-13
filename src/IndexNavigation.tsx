@@ -10,11 +10,11 @@ import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer'
 import { NavigationContainer } from '@react-navigation/native';
 
 import { Responsive, useResponsive } from './Utility/useResponsive';
-import IndexTabNav from './HomeScreen/IndexTabNav';
+import HomeScreenIndex from './HomeScreen/Index';
 import TopBar from './Topbar';
 import Account from './AccountScreen/Account';
 
-const backgroundimg = require('../assets/profilebackground.jpg');
+const backgroundimg = require('../assets/app/profilebackground.jpg');
 
 export default function Index() {
   const responsive :Responsive = useResponsive();
@@ -65,7 +65,7 @@ export default function Index() {
               <DrawerItemList {...props} />
           </View>
           )}>
-        <Drawer.Screen name="Home" component={IndexTabNav} />
+        <Drawer.Screen name="Home" component={HomeScreenIndex} />
         <Drawer.Screen name="Your Account" component={AccountContainer} />
         <Drawer.Screen name="Help and Support" component={TEST} />
         <Drawer.Screen name="Settings" component={TEST} />

@@ -23,7 +23,7 @@ export default function ListDialog(props :propsReceive) {
     const styles = StyleSheet.create({
         container: {
             position: 'absolute', width: WIDTH, height: HEIGHT,
-            top:  ((responsive.height - HEIGHT ) / 2) - 80,
+            top:  ((responsive.height - HEIGHT ) / 2) - 50,
             left: ((responsive.width - WIDTH) /2),
             backgroundColor: 'white', borderWidth: 1,
             borderRadius: 8, padding: 8, zIndex: 100,
