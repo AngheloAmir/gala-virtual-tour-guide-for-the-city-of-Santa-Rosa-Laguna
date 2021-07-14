@@ -1,6 +1,8 @@
 import React, { useReducer } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
+//@ts-ignore
 import Entypo from 'react-native-vector-icons/Entypo';
+//@ts-ignore
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { MapShape } from "expo-leaflet";
 

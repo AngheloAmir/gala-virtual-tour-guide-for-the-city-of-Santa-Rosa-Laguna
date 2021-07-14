@@ -8,7 +8,7 @@
 
 import React from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { contextProvider, StateAPI } from '../../StateAPI/State';
+import { contextProvider, StateAPI } from '../../src/StateAPI/State';
 //import { Responsive, useResponsive } from '../../Utility/useResponsive';
 
 interface propsReceive {
@@ -87,6 +87,7 @@ export default function PlaceInformation(props :propsReceive) {
 
             <View style={styles.contentInfoContainer}>
                 {
+                    //@ts-ignore
                     state.map.markerdescription.getDescriptipn().map((item, index) => {
                         return (
                             <View key={index} style={styles.paragraphContainer}>

@@ -19,6 +19,16 @@ export function rootReducer(state :AssistantTourState, action :ActionInterface) 
                 })
             }
         
+        case actionType.clearShapeNMarkers: {
+            return {
+                ...state,
+                mapmarkers: state.mapmarkers.filter((marker, index) => index == 0),
+                polylines: [
+                    { shapeType: 'polyline', id: '0', positions: [ {lat: 0, lng: 0}] }
+                ],
+            }
+        }
+        
         case actionType.setMapMarkers:
             return {
                 ...state, mapmarkers: [ state.mapmarkers[0], ...action.payload ]

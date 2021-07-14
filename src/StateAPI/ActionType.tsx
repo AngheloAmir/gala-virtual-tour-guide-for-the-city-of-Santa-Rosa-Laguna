@@ -10,7 +10,6 @@ export enum actionType {
     setguideinfo,
 
     setmarkerdescription,
-    setvisiblepoint,
 
     setstreetviewlink,
 }

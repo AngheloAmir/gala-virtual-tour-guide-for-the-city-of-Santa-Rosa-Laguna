@@ -101,30 +101,6 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
             { lat: 14.2369391,lng: 121.057341, name: 'Ayala Malls Solenad', voiceasset: () => undefined },
         ]
     },
-
-    {
-        name: 'SM and Robinson Malls',
-        description: 'Visit the malls in Santa Rosa',
-        longdescription: 'adasdasda',
-        destinations: [
-            {
-                from: 'user',
-                to: {
-                    lat: 14.314309, lng: 121.098955, name: 'SM Mall',
-                    commute: 'Take jeep ride with a sign "SM". The common fare rate is P10',
-                    voiceasset: () => undefined 
-                }
-            },
-            {
-                from: { lat: 14.314309, lng: 121.09895, name: 'SM Mall' },
-                to: {
-                    lat: 14.319342, lng: 121.097561, name: 'Robinson Mall',
-                    commute: 'Take jeep ride with a sign "SM". The common fare rate is P10',
-                    voiceasset: () => undefined 
-                }
-            },
-        ]
-    },
     
     {
         name: 'To Bus Terminal',

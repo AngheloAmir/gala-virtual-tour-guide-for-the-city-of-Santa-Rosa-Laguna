@@ -29,18 +29,6 @@ export interface StateInterface {
         guideInfo?           :GuideContent;
     };
     map :{
-        visiblePoints   :{
-            mall     :boolean;
-            resto    :boolean;
-            gas      :boolean;
-            hotel    :boolean;
-            hospital :boolean;
-            police   :boolean;
-            bus      :boolean;
-            info     :boolean;
-            line     :boolean;
-        };
-        isShowIntro        :boolean;
         streetviewlink     :string;
         markerdescription  :PlaceInformation;
     };
@@ -65,18 +53,6 @@ export function createDefaultState() :StateInterface {
         },
 
         map: {
-            visiblePoints   :{
-                mall:    true,
-                resto:   true,
-                gas:     true,
-                hotel:   true,
-                hospital:true,
-                police:  true,
-                bus:     true,
-                info:    true,
-                line:    true, 
-            },
-            isShowIntro: false,
             streetviewlink: 'https://www.google.com/',
             markerdescription: {
                 name: '', description: '', address: '', type: 'spot', longitude: 1, latitude: 1,

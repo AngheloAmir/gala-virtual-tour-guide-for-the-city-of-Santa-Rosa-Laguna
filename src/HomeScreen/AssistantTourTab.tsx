@@ -3,7 +3,7 @@ import { Button, Image, StyleSheet, Text, TouchableOpacity, View, Platform } fro
 import { useResponsive, Responsive } from '../Utility/useResponsive';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import DialogAlert  from '../Utility/DialogAlert';
+import DialogAlert  from '../Utility/AlertBox';
 import IndexContainer from './AssistantTour/IndexContainer';
 
 const Stack = createStackNavigator();
@@ -19,14 +19,9 @@ export default function MyTourIndex() {
 function AssistantTourIndex( {navigation} :any) {
   const [showDisclaimer, setDisclaimer] = React.useState(false);
   const [showPolicy, setPolicy]         = React.useState(false);
-
   const resposive = useResponsive();
 
   const styles = StyleSheet.create({
-      backgroundImage: {
-          height: resposive.height,
-          width: resposive.width,
-      },
       container: {
           width: '90%',
           marginLeft: '5%'
@@ -88,13 +83,6 @@ function AssistantTourIndex( {navigation} :any) {
                   <Text style={{marginTop: 8, fontSize: 10}}>*openstreetmap.org, router.project-osrm.org and www.overpass-api</Text>
               </View>
           </View>
-
-          { showDisclaimer || showPolicy ?
-            <View style={{width: 1200, height: 1200, position: 'absolute', top: 0, zIndex: 10, backgroundColor: 'rgba(0,0,0,.5)'}}>
-            </View>
-            :
-            <View></View>
-          }
 
           <DialogAlert
                 title='Disclaimer'

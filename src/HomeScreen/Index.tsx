@@ -7,8 +7,11 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+//@ts-ignore
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+//@ts-ignore
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
+//@ts-ignore
 import FontistoIcon from 'react-native-vector-icons/Fontisto';
 
 import { Responsive, useResponsive } from '../Utility/useResponsive';

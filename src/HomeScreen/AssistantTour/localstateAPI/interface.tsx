@@ -38,7 +38,8 @@ export enum actionType {
     setMapPolylines,
     setIsFindPlacesOpen,
 
-    //setPendingLoc,
+    clearShapeNMarkers,
+    
 }
 
 export interface AssistantTourState {

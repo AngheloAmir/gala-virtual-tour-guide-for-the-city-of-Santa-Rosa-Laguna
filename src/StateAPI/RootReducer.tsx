@@ -25,13 +25,6 @@ export function RootReducer(state :StateInterface, action :ActionInterface) :Sta
                 }
             }
         
-        case actionType.setvisiblepoint:
-            return {
-                ...state, map: {
-                    ...state.map, visiblePoints: action.payload
-                }
-            }
-        
         case actionType.setstreetviewlink:
             return {
                 ...state, map: {

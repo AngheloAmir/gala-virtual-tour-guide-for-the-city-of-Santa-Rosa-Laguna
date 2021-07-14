@@ -94,10 +94,8 @@ export function setFindPlacesOpen(isOpen :boolean) {
     }
 }
 
-/*
-export function setPendingLoc(isPending :boolean) {
+export function clearPolyLineAndMarker() {
     return {
-        type: actionType.setPendingLoc, payload: isPending
+        type: actionType.clearShapeNMarkers
     }
 }
-*/

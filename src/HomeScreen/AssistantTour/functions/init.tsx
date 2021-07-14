@@ -23,7 +23,7 @@ export async function init( localDispatch :any) {
     }
     catch(err) {
         if(err.message == 'PermissionException') 
-            localDispatch( setDialogMessage('Location error', 'Location permision not granted or there is not data connection.') );
+            localDispatch( setDialogMessage('Location error', 'Location permision not granted or there is no data connection.') );
         else if(err.message == 'OutOfRangeException')
             localDispatch( setDialogMessage('Out of service range', 'Out of service range. Too far from the city') );
         else 
@@ -37,7 +37,7 @@ export async function init( localDispatch :any) {
 }
 
 async function RequestPermission() {
-    let { status } = await Location.requestPermissionsAsync();
+    const { status } = await Location.requestForegroundPermissionsAsync();
     if (status == 'granted') return true;
     throw new Error('PermissionException');
 }
