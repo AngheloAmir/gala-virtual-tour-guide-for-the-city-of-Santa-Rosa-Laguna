@@ -1,11 +1,15 @@
 /*
-    FindPlaces component. Show a dialog (window) in the middle of the screen when the user
+    * TYPE
+        Dialog Box - A Dialog Box is a component that over takes the current scene without replacing it.
+
+    * DESCRIPTION
+        FindPlaces component. Show a dialog (window) in the middle of the screen when the user
     press the icon 'find place' in the toolbar. The action that make this component appear in the
-    screen is found in Toolbar.js
+    screen is found in Toolbar.js. This component extent DialogBox from src/utility
 
-    This component extent DialogBox from src/utility
+    * VISIBLE WHEN
+        Will display if localState.isFindPlacesOpen becomes true (by clicking find place in the toolbar)
 */
-
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 // @ts-ignore
@@ -120,7 +124,7 @@ const styles = StyleSheet.create({
     },
     clearMarkerText :{
         fontSize: 18, color: 'darkblue',
-        paddingBottom: 4,
+        paddingBottom: 6,
     },
     itemText: {
         fontSize: 18,

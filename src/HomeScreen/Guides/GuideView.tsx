@@ -1,5 +1,12 @@
 /*
-    A component that display the content of a guide (Home Screen > Guides)
+    * TYPE
+        Scene - A screen is a component that occupies a large part of the screen
+
+    * DESCRIPTION
+        A component that display the content of a guide (Home Screen > Guides)
+
+    * VISIBLE WHEN
+        When the user choose to read a Guide in the Home > Guides Tab
 */
 import React from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';

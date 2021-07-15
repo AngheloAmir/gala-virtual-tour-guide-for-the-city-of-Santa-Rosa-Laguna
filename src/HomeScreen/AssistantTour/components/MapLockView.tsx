@@ -1,8 +1,11 @@
 /*
-    an empty view that more than the size of the screen to prevent user doing a action
+    * TYPE
+        Dialog Box - A Dialog Box is a component that over takes the current scene without replacing it.
+
+    * DESCRIPTION
+        An empty view that more than the size of the screen to prevent user doing a action
     during some process (like loading)
 */
-
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 

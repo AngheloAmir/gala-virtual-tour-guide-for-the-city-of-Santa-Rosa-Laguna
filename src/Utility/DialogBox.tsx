@@ -23,7 +23,8 @@ export default function DialogBox(props :propsReceive, children :any) {
 
     const styles = StyleSheet.create({
         container: {
-            position: 'absolute', width: WIDTH, height: HEIGHT,
+            width: WIDTH, height: HEIGHT,
+            position: 'absolute',
             top:  ((responsive.height - HEIGHT) / 2) - 60,
             left: ((responsive.width - WIDTH) /2),
             backgroundColor: 'white', borderWidth: 1,
@@ -93,7 +94,7 @@ export default function DialogBox(props :propsReceive, children :any) {
     return (
         <View style={{position: 'absolute', zIndex: 90}}>
             <View style={{
-                width: 2000, height: 2000, position: 'absolute',
+                width: 2000, height: 2000,
                 top: 0, backgroundColor: 'rgba(0,0,0,.5)'}}>
             </View>
             <View style={styles.container}>

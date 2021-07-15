@@ -39,6 +39,7 @@ export enum actionType {
     setIsFindPlacesOpen,
 
     clearShapeNMarkers,
+    setIsAttributionShow,
     
 }
 
@@ -67,4 +68,5 @@ export interface AssistantTourState {
     isnavpathloading :boolean;
     isSelectTourOpen :boolean;
     isFindPlacesOpen :boolean;
+    isAttributionOpen:boolean;
 }

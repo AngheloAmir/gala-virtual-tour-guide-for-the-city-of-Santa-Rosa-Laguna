@@ -51,6 +51,12 @@ async function FindPath(from :Geolocation, to :Geolocation) {
             }
             return temp;
         });
+
+        //replace the first node and the last node based on the location of the two
+        //this ensure that line do not overlap with markers
+        pathway[0] = position1;
+        pathway[pathway.length - 1] = position2;
+
         return pathway;
     } catch(err) {
         throw new Error(err); 

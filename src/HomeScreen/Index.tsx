@@ -1,9 +1,15 @@
 /*
-  The main container for the home screen.
-  It set the the "Tab navigation" so it set what are the available 
-  in the bottom tabs
-*/
+    * TYPE
+        Index - A component that does not display itself
 
+    * DESCRIPTION
+        The main container for the home screen.
+      It set the the "Tab navigation" so it set what are the available 
+      in the bottom tabs
+
+    * VISIBLE WHEN
+      When the user is in Home Screen (see the drawer navigation)
+*/
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -17,7 +23,7 @@ import FontistoIcon from 'react-native-vector-icons/Fontisto';
 import { Responsive, useResponsive } from '../Utility/useResponsive';
 const Tab = createBottomTabNavigator();
 
-export default function HomeIndex(nav :any) {
+export default function HomeIndex() {
   const responsive :Responsive = useResponsive();
 
   const styles = StyleSheet.create({
@@ -60,16 +66,10 @@ export default function HomeIndex(nav :any) {
   );
 }
 
-/*
-<Tab.Screen name="Map"              component={InteractiveMap} />
-
-  The FF component were created to have a FIXED navbar at the top of the screen
-*/
-
+//The FF component were created to have a FIXED navbar at the top of the screen
 import TopBar           from '../Topbar'
 import Overview         from './HomeTab';
 import AssistantTour    from './AssistantTourTab';
-//import Map              from './MapTab';
 import Guides           from './GuidesTab';
 import More             from './ForumTab';
 
@@ -90,17 +90,6 @@ function AssistantTourContainer( props :any) {
     </View>
   );
 }
-
-/*
-function InteractiveMap( props :any) {
-  return (
-    <View style={{flex: 1}}>
-      <TopBar navigation={props.navigation} title='Offline Map'/>
-      <Map />
-    </View>
-  );
-}
-*/
 
 function GuidesContainer( props :any) {
   return (

@@ -63,7 +63,7 @@ export const establishments :Array<EstablishmentCategory> = [
         ]
     },
     {
-        category: 'Malls',
+        category: 'Shopping Malls',
         items: [
             { name: 'Ayala Mall Solenad',   lat: 14.23658,  lng: 121.056691 },
             { name: 'Robinson Mall',        lat: 14.314309, lng: 121.098955 },

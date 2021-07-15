@@ -1,5 +1,14 @@
 /*
-    A component that display the content of a guide (Home Screen > Guides)
+    * TYPE
+        Fragment of src/HomeScreen/Guides/GuideView - A fragment is a piece of component that is
+            part of a scene
+
+    * DESCRIPTION
+        This component display a text w/o an image and/or heading text. 
+
+    * VISIBLE WHEN
+        This component is part of src/HomeScreen/Guides/GuideView and will display if the guide
+    has paragaraph. See database/guides if a guide will show a paragraph component
 */
 import React from 'react';
 import { Image, Linking,StyleSheet, Text, TouchableOpacity, View } from 'react-native';

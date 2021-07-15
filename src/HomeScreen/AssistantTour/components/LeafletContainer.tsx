@@ -1,3 +1,14 @@
+/*
+    * TYPE
+        Fragment of src/HomeScreen/AssitantTour/IndexContainer - A fragment is a piece of component that is
+            part of a scene
+
+    * DESCRIPTION
+        Show the Expo Leaflet Map in the current scene
+
+    * VISIBLE WHEN
+        It is always show when the GPS Navigation feature of the app is shown.
+*/
 import React from 'react';
 import { ActivityIndicator, Platform, View } from 'react-native';
 import { ExpoLeaflet, LeafletWebViewEvent } from "expo-leaflet";
@@ -6,13 +17,15 @@ import { ExpoLeaflet, LeafletWebViewEvent } from "expo-leaflet";
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI } from '../localstateAPI/interface';
 import { setUserPosition, setDialogMessage } from '../localstateAPI/actions';
+import { Responsive, useResponsive } from '../../../Utility/useResponsive';
 
 //Expo leaftlet options
 import { mapOptions, mapLayers } from '../functions/options';
 
 export default function LeafletContainer() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
-
+    const responsive :Responsive = useResponsive();
+    
     function onMapClicked(event :LeafletWebViewEvent) {
         switch(event.tag) {
             case 'onMapClicked':
@@ -41,8 +54,15 @@ export default function LeafletContainer() {
         }
     }
 
+    const styles = {
+        //the value 100 is the height of the toolbar
+        //the value 108 is the height of the topbar + bottom tab navigatior
+        height: responsive.height - 100 - 108,
+        width: responsive.width
+    }
+
     return (
-        <View style={{flex: 1}}>
+        <View style={styles}>
             <ExpoLeaflet
                 loadingIndicator={() => <ActivityIndicator/>}
                 mapCenterPosition={ localState.mapcenter }
@@ -55,5 +75,5 @@ export default function LeafletContainer() {
                 onMessage={onMapClicked}
             />
         </View>
-    );
+    );       
 }

@@ -1,14 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+//@ts-ignore
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-//import { Responsive, useResponsive } from '../Utility/useResponsive';
 
 interface propsReceive {
     navigation :any;
     title      :string
 }
-
-//<Icon name='three-bars' size={32} color='#000'/>
 
 export default function Topbar(props :propsReceive) {
   function handleMenuClick() :void {

@@ -1,9 +1,12 @@
 /*
-  Overview
-    Show the content of the:
-      Home > Overview tab
+    * TYPE
+        Scene - A screen is a component that occupies a large part of the screen
 
-    It also prepare a screen  of stack for in use in "Plaza" and "Arch" Multiview features
+    * DESCRIPTION
+        Show the content of the Home > Home tab
+
+    * VISIBLE WHEN
+      When the user is in Home Screen and in the Home Tab
 */
 
 import * as React from 'react';

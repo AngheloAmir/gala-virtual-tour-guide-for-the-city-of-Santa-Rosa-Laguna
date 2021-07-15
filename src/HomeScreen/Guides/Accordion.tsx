@@ -1,9 +1,20 @@
 /*
-    A component that display an accordion in a guide view
-*/
+    * TYPE
+        Fragment of src/HomeScreen/Guides/GuideView - A fragment is a piece of component that is
+            part of a scene
 
+    * DESCRIPTION
+        This component will display a list of item when that item is pressed, it additional content will
+    be shown (draw). This component is well known as an Accordion (see Google for)
+
+    * VISIBLE WHEN
+        This component is part of src/HomeScreen/Guides/GuideView and will display if the guide that user
+    is current being read has: "{ type: 'accordionList', data: [ ... ] }" attribure in it.
+    Take a look in the database/guides to see if a guide will show an accordion list
+*/
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+//@ts-ignore
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { GuideParagraphContent } from '../../../database/!interfaces/GuideContent';

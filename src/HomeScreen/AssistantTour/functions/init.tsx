@@ -19,7 +19,7 @@ export async function init( localDispatch :any) {
             localDispatch( setZoomlevel(17) );
             localDispatch( setMapWasLoaded() );
             localDispatch( setMapLock(false) );
-        }, 1000);
+        }, 3000);
     }
     catch(err) {
         if(err.message == 'PermissionException') 

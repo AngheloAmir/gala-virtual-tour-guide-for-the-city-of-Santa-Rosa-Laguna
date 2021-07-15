@@ -1,3 +1,15 @@
+/*
+    * TYPES
+        Scene - A screen is a component that occupies a large part of the screen
+        Index - A component that does not display itself
+
+    * DESCRIPTION
+        Show the content of the Home > Guide tab. It also create a stack navigator so when the user 
+    choose to read a guide, that guide will be show as a scene.
+
+    * VISIBLE WHEN
+      When the user is in Home Screen and in the Guide Tab
+*/
 import React from 'react';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 

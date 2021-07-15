@@ -4,7 +4,6 @@
     It also renders the Following:
         * The Expo-Leaflet map
         * The Toolbar that appears above the screen (below the TopBar)
-        * Dialog Message Box and Find Place Message Box (if shown)
         * An Invisible View that takes up the screen use to prevent user clicking when something happening
         * A opaque dark background
 */
@@ -16,12 +15,14 @@ import { localContextProvider, defaultLocalState } from './localstateAPI/state';
 import { rootReducer } from './localstateAPI/reducer';
 import { setMapCenter } from './localstateAPI/actions';
 
-import LeafletContainer from './components/LeafletContainer';
-import Toolbar          from './components/Toolbar';
-import FindPlaces       from './components/FindPlaces';
-import SelectTourList   from './components/SelectTourList';
-import DialogMessage    from './components/DialogMessage';
-import MapLockView      from './components/MapLockView';
+import LeafletContainer     from './components/LeafletContainer';
+import Toolbar              from './components/Toolbar';
+import FindPlaces           from './components/FindPlaces';
+import SelectTourList       from './components/SelectTourList';
+import DialogMessage        from './components/DialogMessage';
+import MapLockView          from './components/MapLockView';
+import Attribution          from './components/Attribution';
+import AttributionDialogBox from './components/AttributionDialogBox'
 import { Init, updateUserLocation } from './functions';
 
 export default function IndexContainer() {
@@ -46,14 +47,14 @@ export default function IndexContainer() {
 
     return (
         <localContextProvider.Provider value={{localState, localDispatch}}>
-            <View style={{width: '100%', height: '100%'}}>
-                <Toolbar />
-                <LeafletContainer />
-                <FindPlaces />
-                <SelectTourList />
-                <DialogMessage />
-                <MapLockView />
-            </View>
+            <Toolbar />
+            <LeafletContainer />
+            <Attribution />
+            <FindPlaces />
+            <SelectTourList />
+            <DialogMessage />
+            <AttributionDialogBox />
+            <MapLockView />
         </localContextProvider.Provider>
     );
 }

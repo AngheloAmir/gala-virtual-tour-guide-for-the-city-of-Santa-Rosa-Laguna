@@ -1,5 +1,12 @@
 /*
-    Show a dialog message if there is a message in the locaState
+    * TYPE
+        Dialog Box - A Dialog Box is a component that over takes the current scene without replacing it.
+
+    * DESCRIPTION
+        Show a dialog message box if there is a message in the locaState
+
+    * VISIBLE WHEN
+        If there is a message in the locaState
 */
 import React from 'react';
 import { View } from 'react-native';

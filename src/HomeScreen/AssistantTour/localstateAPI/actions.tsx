@@ -99,3 +99,9 @@ export function clearPolyLineAndMarker() {
         type: actionType.clearShapeNMarkers
     }
 }
+
+export function setAttributionshow(isOpen :boolean) {
+    return {
+        type: actionType.setIsAttributionShow, payload: isOpen
+    }
+}

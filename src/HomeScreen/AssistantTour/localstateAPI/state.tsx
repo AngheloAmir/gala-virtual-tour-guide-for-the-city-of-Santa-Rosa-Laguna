@@ -35,5 +35,5 @@ export const defaultLocalState :AssistantTourState = {
     isnavpathloading: false,
     isSelectTourOpen: false,
     isFindPlacesOpen: false,
-    //hasPendingGetLoc: false
+    isAttributionOpen: false,
 }

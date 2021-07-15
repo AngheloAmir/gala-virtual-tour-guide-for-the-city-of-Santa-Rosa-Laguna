@@ -20,8 +20,7 @@ export const mapOptions = {
 
 export const mapLayers: Array<MapLayer> = [
     {
-      attribution:
-        '&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      attribution: ' ',
       baseLayerIsChecked: true,
       baseLayerName: 'Mapbox',
       layerType: 'TileLayer',
