@@ -44,6 +44,7 @@ export default function DialogBox(props :propsReceive, children :any) {
         buttonsContainer: {
             borderTopWidth: 2, borderColor: 'rgba(115, 170, 220, 1)',
             marginTop: 12, flexDirection: 'row',
+            paddingTop: 5,
         },
         buttonCancel: {
             width: 280/2, 
@@ -98,7 +99,7 @@ export default function DialogBox(props :propsReceive, children :any) {
                 top: 0, backgroundColor: 'rgba(0,0,0,.5)'}}>
             </View>
             <View style={styles.container}>
-                <View style={{height: 320}}>
+                <View style={{height: 310}}>
                     <Text style={styles.title}>{props.title}</Text>
                     <View style={styles.borderline}></View>
                     <ScrollView >

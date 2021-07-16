@@ -2,6 +2,7 @@ export interface DestinationLocation {
     lat         :number;
     lng         :number;
     name        :string;
+    description :string;
     commute?    :string;
     voiceasset? :() => any;
 }

@@ -4,8 +4,7 @@
     HOW IT WORKS
     First, it look for the user position which is stored in the first element of the localState.mapmarkers.
     Then, it enumerate based on the selected category each and compare each whether there are closer to the
-    user position or not. closestGradeLat, closestGradeLng, estaGradeLat, estaGradeLng are variables used to
-    determine.
+    user position or not.
     After it found the nearby place it will add a new map marker in the localState and then
     it will make animation (effect) into the map  
 */
@@ -28,33 +27,28 @@ import { establishments } from  '../../../../../database/assistantour/establishm
 export default async function findNearbyFunction({localDispatch, localState} :LocalStateAPI, index :number) {
     localDispatch(setFindPlacesOpen(false));
 
-    //The user position is always stored at mapmarkers[0]
+ //Find the nearest establishment
     const userLocation :{lat: number, lng: number} = localState.mapmarkers[0].position;
     let   closestEst   :{lat: number, lng: number} = {lat: 0, lng: 0};
-    let   closestGradeLat = 999, closestGradeLng = 999, estaGradeLat = 0, estaGradeLng = 0;
     let   establishmentIndex: number = -1;
+    let closestDistance :number = 999999;
     for(let i = 0; i < establishments[index].items.length; i++ ) {
         const temp = {
             lat: establishments[index].items[i].lat,
             lng: establishments[index].items[i].lng,
         }
-        //get the establishment current grade
-        if(userLocation.lat > temp.lat)
-            estaGradeLat = userLocation.lat - temp.lat;
-        else  
-            estaGradeLat = temp.lat - userLocation.lat;
-        if(userLocation.lng > temp.lng)
-            estaGradeLng = userLocation.lng - temp.lng;
-        else
-            estaGradeLng = temp.lng - userLocation.lng;
-        //compare the grade
-        if(estaGradeLng < closestGradeLng || estaGradeLng < closestGradeLng) {
+        const distance = Math.sqrt(
+                Math.pow(userLocation.lat - temp.lat, 2) +
+                Math.pow((userLocation.lng - temp.lng), 2)
+        );
+        if(distance < closestDistance) {
+            closestDistance = distance;
+            closestEst      = {lng: temp.lng, lat: temp.lat}
             establishmentIndex = i;
-            closestGradeLat = estaGradeLat; closestGradeLng = estaGradeLng;
-            closestEst = {lng: temp.lng, lat: temp.lat}
         }
     }
-    const userPosition = localState.mapmarkers[0].position;
+
+//Add the establishment in the Markers of Expo-Leaflet
     const mapmarkers = localState.mapmarkers.filter((marker, index) => index !== 0);
     localDispatch( setMapMarkers([...mapmarkers, {
             id: localState.mapmarkers.length + '' ,
@@ -67,17 +61,19 @@ export default async function findNearbyFunction({localDispatch, localState} :Lo
     localDispatch( setDialogMessage('Found Establishment', 'Nearest ' + establishments[index].category + ' is ' + establishments[index].items[establishmentIndex].name) );           
     localDispatch( setMapLock(true) );
     localDispatch( setZoomlevel(12) );
-    localDispatch( setMapCenter(userPosition));
+    localDispatch( setMapCenter(userLocation));
     localDispatch( setMapPathIsLoading(true) );
 
+//Create a navigational path between the user and the establishment
     ( async () => {
         try {
             const id   :number = localState.mapmarkers.length;
-            const poly :MapShape | any = await getPathWays(id, userPosition, closestEst, true);
+            const poly :MapShape | any = await getPathWays(id, userLocation, closestEst, true);
             localDispatch( setMapPolyLines([...localState.polylines, poly]) );
         } catch(err) {
             localDispatch( setMapLock(false) );
-            localDispatch( setDialogMessage('Failed...', 'Failed to create navigational path. Please check your internet connection or try again (the server might be busy).\n' + err) );           
+            localDispatch( setDialogMessage('Failed...',
+                'Failed to create navigational path. Please check your internet connection or try again (the server might be busy).\n' + err) );           
         }
         localDispatch( setMapPathIsLoading(false) );
         setTimeout(() => {

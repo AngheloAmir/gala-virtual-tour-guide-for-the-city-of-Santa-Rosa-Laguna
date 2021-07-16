@@ -5,11 +5,10 @@
         * The Expo-Leaflet map
         * The Toolbar that appears above the screen (below the TopBar)
         * An Invisible View that takes up the screen use to prevent user clicking when something happening
-        * A opaque dark background
 */
 
 import React from 'react';
-import { View, Platform } from 'react-native';
+import { Platform } from 'react-native';
 
 import { localContextProvider, defaultLocalState } from './localstateAPI/state';
 import { rootReducer } from './localstateAPI/reducer';
@@ -23,6 +22,8 @@ import DialogMessage        from './components/DialogMessage';
 import MapLockView          from './components/MapLockView';
 import Attribution          from './components/Attribution';
 import AttributionDialogBox from './components/AttributionDialogBox'
+import NotifyWhenClose      from './components/NotifyWhenClose'
+import POIDialogBox         from './components/POIDialogBox';
 import { Init, updateUserLocation } from './functions';
 
 export default function IndexContainer() {
@@ -48,12 +49,16 @@ export default function IndexContainer() {
     return (
         <localContextProvider.Provider value={{localState, localDispatch}}>
             <Toolbar />
+            <NotifyWhenClose />
             <LeafletContainer />
             <Attribution />
+
             <FindPlaces />
             <SelectTourList />
             <DialogMessage />
             <AttributionDialogBox />
+            <POIDialogBox />
+
             <MapLockView />
         </localContextProvider.Provider>
     );

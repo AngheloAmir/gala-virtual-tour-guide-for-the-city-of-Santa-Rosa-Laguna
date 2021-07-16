@@ -40,7 +40,9 @@ export enum actionType {
 
     clearShapeNMarkers,
     setIsAttributionShow,
-    
+
+    setIsPOIBoxOpen,
+    setPoiIndex,
 }
 
 export interface AssistantTourState {
@@ -60,13 +62,16 @@ export interface AssistantTourState {
 
     hasPendingGetLoc :boolean; //Tells that if location is not yet obtained because getUserLocations run a definite interval
 
-    ismapcenter :boolean;
-    isGranted   :boolean;
-    hasLoaded   :boolean;   //tells if the map is loaded
-    playsound   :boolean;
-    ismaplock   :boolean;   //tells if an invisible view appears on the screen to prevent user making actions (during animation)
-    isnavpathloading :boolean;
-    isSelectTourOpen :boolean;
-    isFindPlacesOpen :boolean;
-    isAttributionOpen:boolean;
+    ismapcenter         :boolean;
+    isGranted           :boolean;
+    hasLoaded           :boolean;   //tells if the map is loaded
+    playsound           :boolean;
+    ismaplock           :boolean;   //tells if an invisible view appears on the screen to prevent user making actions (during animation)
+    isnavpathloading    :boolean;
+    isSelectTourOpen    :boolean;
+    isFindPlacesOpen    :boolean;
+    isAttributionOpen   :boolean;
+
+    isPOIBoxOpen        :boolean;
+    poiCloseIndex       :number;
 }

@@ -105,6 +105,16 @@ export function rootReducer(state :AssistantTourState, action :ActionInterface) 
             return {
                 ...state, isAttributionOpen: action.payload
             }
+        
+        case actionType.setIsPOIBoxOpen:
+            return {
+                ...state, isPOIBoxOpen: action.payload
+            }
+
+        case actionType.setPoiIndex:
+            return {
+                ...state, poiCloseIndex: action.payload
+            }
 
         default:
             console.log('ACTION TYPE NOT DEFINED!\n' + action.type);

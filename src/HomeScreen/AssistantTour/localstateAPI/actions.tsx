@@ -105,3 +105,15 @@ export function setAttributionshow(isOpen :boolean) {
         type: actionType.setIsAttributionShow, payload: isOpen
     }
 }
+
+export function setPOIBoxOpen(isOpen :boolean) {
+    return {
+        type: actionType.setIsPOIBoxOpen, payload: isOpen
+    }
+}
+
+export function setPoiIndex(index :number) {
+    return {
+        type: actionType.setPoiIndex, payload: index
+    }
+}
