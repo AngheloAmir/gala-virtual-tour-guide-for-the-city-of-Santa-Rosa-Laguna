@@ -28,7 +28,8 @@ import LeafletContainer     from './components/LeafletContainer';
 import Toolbar              from './components/Toolbar';
 import MapLockView          from './components/MapLockView';
 import Attribution          from './components/Attribution';
-import NotifyWhenClose      from './components/NotifyWhenClose'
+import NotifyWhenClose      from './components/NotifyWhenClose';
+import Magnenometer         from './components/Magnetometer';
 import SelectTourList       from './windowDialogs/SelectTourList';
 import FindPlaces           from './windowDialogs/FindPlaces';
 import DialogMessage        from './windowDialogs/DialogMessage';
@@ -48,7 +49,7 @@ export default function AssistanTourIndex() {
             if(Platform.OS !== 'web')
                 setIntervalID(
                     //@ts-ignore
-                    setInterval(() => updateUserLocation(localDispatch), 2000)
+                    setInterval(() => updateUserLocation(localDispatch), 1000)
                 );
         })();
         return clearInterval(intervalID);
@@ -64,6 +65,7 @@ export default function AssistanTourIndex() {
         <localContextProvider.Provider value={{localState, localDispatch}}>
             <Toolbar />
             <NotifyWhenClose />
+            <Magnenometer />
             <LeafletContainer />
             <Attribution />
 

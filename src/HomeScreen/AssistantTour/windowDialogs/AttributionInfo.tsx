@@ -33,23 +33,21 @@ export default function AttributionInfo() {
             ok={() => localDispatch( setAttributionshow(false)) }
             dialogContent={() => {
                 return (
-                    <View style={styles.container}>
-                        <TouchableOpacity style={styles.attributionItem} onPress={() => openlink('https://www.mapbox.com/about/maps/')}>
-                            <Text style={styles.name}>© Mapbox </Text>
-                            <Text style={styles.link}>https://www.mapbox.com/about/maps/</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.attributionItem} onPress={() => openlink('http://www.openstreetmap.org/copyright')}>
-                            <Text style={styles.name}>© OpenStreetMap  </Text>
-                            <Text style={styles.link}>http://www.openstreetmap.org/copyright</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.attributionItem} onPress={() => openlink('https://www.mapbox.com/map-feedback/')}>
-                            <Text style={styles.name}>Improve this map  </Text>
-                            <Text style={styles.link}>https://www.mapbox.com/map-feedback/</Text>
-                        </TouchableOpacity>
-                        
-                    </View>
-                )
-            }}
+                <View style={styles.container}>
+                    <TouchableOpacity style={styles.attributionItem} onPress={() => openlink('https://www.mapbox.com/about/maps/')}>
+                        <Text style={styles.name}>© Mapbox </Text>
+                        <Text style={styles.link}>https://www.mapbox.com/about/maps/</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.attributionItem} onPress={() => openlink('http://www.openstreetmap.org/copyright')}>
+                        <Text style={styles.name}>© OpenStreetMap  </Text>
+                        <Text style={styles.link}>http://www.openstreetmap.org/copyright</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.attributionItem} onPress={() => openlink('https://www.mapbox.com/map-feedback/')}>
+                        <Text style={styles.name}>Improve this map  </Text>
+                        <Text style={styles.link}>https://www.mapbox.com/map-feedback/</Text>
+                    </TouchableOpacity>
+                </View>
+            )}}
         />
     );
 }
@@ -70,11 +68,3 @@ const styles = StyleSheet.create({
     }
 
 });
-
-
-
-/*
-© Mapbox                https://www.mapbox.com/about/maps/
-© OpenStreetMap         http://www.openstreetmap.org/copyright
-Improve this map        https://www.mapbox.com/map-feedback/
-*/

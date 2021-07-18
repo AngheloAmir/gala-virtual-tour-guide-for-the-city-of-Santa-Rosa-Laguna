@@ -120,14 +120,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#ddd',
     },
     itemTextFind: {
-        fontSize: 18, color: 'darkblue', fontWeight: '600',
+        fontSize: 20, color: 'darkblue', fontWeight: '700',
     },
     clearMarkerText :{
-        fontSize: 18, color: 'darkblue',
+        fontSize: 20, color: 'darkblue', fontWeight: '700',
         paddingBottom: 6,
     },
     itemText: {
-        fontSize: 18,
+        fontSize: 20,
     },
     itemsList: {
         marginLeft: 16, borderLeftWidth: 1,

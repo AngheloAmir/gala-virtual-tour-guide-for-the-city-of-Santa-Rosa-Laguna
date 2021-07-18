@@ -44,3 +44,13 @@ a cleaner code and better structure.
 -Added the dialog box and the ability to play sound if possible
 -Improve the Find Nearest Establishment feature, now it should be more accurate
 -Added in !interface/GalaSelfGuidedTour is the description for a DestinationLocation object
+
+## Jul8 18, Version 0.3.4.4 - Assistant Tour improvements
+-Added new Point of Interest in the Tour such as in the enchanted kingdom
+-Fix NotifyWhenClose showing even the current tour has changed
+-Added folder windowDialogs (which move dialog components)
+
+## July 19, Version 12 (0.3.5) - Added Magnetometer
+-Added Magnetometer
+-Remove Privacy policy
+-Added Further reading in the AssistanTourTab which contains info about GPS

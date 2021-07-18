@@ -1,6 +1,6 @@
 /*
     * TYPE
-        Fragment of src/HomeScreen/AssitantTour/IndexContainer - A fragment is a piece of component that is
+        Fragment of src/HomeScreen/AssitantTour/AssitantTourIndex - A fragment is a piece of component that is
             part of a scene
 
     * DESCRIPTION
@@ -39,7 +39,7 @@ export default function NotifyWhenClose() {
             //@ts-ignore
             const POI = GalaTours[localState.currenttour.index].pointOfInterests[i];
             const poiPos = { lat: POI.lat, lng: POI.lng };
-            if( POI.voiceasset && isClose(userPosition, poiPos, 0.00015 ) ) {
+            if( POI.voiceasset && isClose(userPosition, poiPos, 0.0002 ) ) {
                 hasClosestPOI = true; poinIndex = i;
             }
         }

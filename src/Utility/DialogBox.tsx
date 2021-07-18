@@ -1,8 +1,16 @@
 /*
     The parent dialog box. This component must be extend by providing a component to
-    the props.dialogContent
-*/
+    the props.dialogContent.
 
+    Example usage:
+        <DialogBoxWindow
+            title='My Title'
+            isshow={true}
+            ok={() => console.log('You pressed OK')}
+            cancel={() => console.log('You pressed Cancel')}
+            dialogContent={() => return { (<Text>This the content of the dialog box</Text>) }}
+        />
+*/
 import React from 'react';
 import { StyleSheet, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { Responsive, useResponsive } from './useResponsive';
@@ -12,13 +20,13 @@ export interface propsReceive {
     isshow        :boolean;
     ok?           :() => void;
     cancel?       :() => void;
-    dialogContent?:any
+    dialogContent :any;
 }
 
 export default function DialogBox(props :propsReceive, children :any) {
     if(!props.isshow) return <View style={{position: 'absolute'}}></View>;
     const responsive :Responsive = useResponsive();    
-    const WIDTH     = 300;
+    const WIDTH     = 320;
     const HEIGHT    = 380;
 
     const styles = StyleSheet.create({

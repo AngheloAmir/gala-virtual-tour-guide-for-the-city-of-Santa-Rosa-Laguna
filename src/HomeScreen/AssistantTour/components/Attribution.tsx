@@ -1,6 +1,6 @@
 /*
     * TYPE
-        Fragment of src/HomeScreen/AssitantTour/IndexContainer - A fragment is a piece of component that is
+        Fragment of src/HomeScreen/AssitantTour/AssitantTourIndex - A fragment is a piece of component that is
             part of a scene
 
     * DESCRIPTION
