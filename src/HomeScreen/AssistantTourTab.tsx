@@ -17,7 +17,7 @@ import { useResponsive, Responsive } from '../Utility/useResponsive';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import DialogAlert  from '../Utility/AlertBox';
-import IndexContainer from './AssistantTour/IndexContainer';
+import IndexContainer from './AssistantTour/AssistanTourIndex';
 
 const Stack = createStackNavigator();
 export default function MyTourIndex() {

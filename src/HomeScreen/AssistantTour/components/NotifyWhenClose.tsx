@@ -5,7 +5,6 @@
 
     * DESCRIPTION
         Show an Info icon below the toolbar when the user get close to a point of interest
-    and will play the sound.
 
     * VISIBLE WHEN
         It should be visible only when the user is close to a point of interest
@@ -26,9 +25,11 @@ export default function NotifyWhenClose() {
     const [isVisible, setVisible]       = React.useState(false);
 
     React.useEffect(() => {
-        if( localState.currenttour.index < 0) return;
-        if( !GalaTours[localState.currenttour.index].pointOfInterests) return;
-
+        if( localState.currenttour.index < 0 ||
+            !GalaTours[localState.currenttour.index].pointOfInterests) {
+            setVisible(false);
+            return;
+        }
         const userPosition = localState.mapmarkers[0].position;
         let hasClosestPOI :boolean = false;
         let poinIndex     :number  = -1;

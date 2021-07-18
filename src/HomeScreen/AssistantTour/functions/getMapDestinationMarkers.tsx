@@ -9,7 +9,7 @@ export function GetMapDestinationMarkers(tours :GalaSelfGuidedTour, startingInde
         return {
           id: i + startingIndex + '' ,
           position: { lat: item.to.lat, lng: item.to.lng },
-          icon: '<div style="margin-top: -28px; margin-left: 32px">🏁</div>', size: [32, 32],
+          icon: '<div style="margin-top: -32px; margin-left: 30px">🏁</div>', size: [32, 32],
           name:     item.to.name,
           commute:  item.to.commute,
         };
@@ -20,7 +20,7 @@ export function GetMapDestinationMarkers(tours :GalaSelfGuidedTour, startingInde
             return {
               id: i + prevLastIndex + '' ,
               position: { lat: item.lat, lng: item.lng },
-              icon: '<div style="margin-top: -28px; margin-left: 26px">🚩</div>', size: [24, 24],
+              icon: '<div style="margin-top: -25px; margin-left: 25px">🚩</div>', size: [24, 24],
               name: item.name,
             };
           });

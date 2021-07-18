@@ -16,7 +16,7 @@ import { LocalStateAPI } from '../localstateAPI/interface';
 import { setAttributionshow } from '../localstateAPI/actions';
 import DialogBox from '../../../Utility/DialogBox';
 
-export default function AttributionDialogBox() {
+export default function AttributionInfo() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
 
     function openlink(link :string) {

@@ -3,18 +3,55 @@
     These tours are guided only by a GPS line mark.
 
     This is file is not optional
+
+BASIC TEMPLATE===================================================
+export const GPSRANGE = {
+    x:      12.345678,  endy: 12.345678,
+    endx:   12.345678,  y:    12.345678,
+};
+export const IntroPosition = { lat: 12.345678, lng: 12.345678 };
+
+export const GalaTours :Array<GalaSelfGuidedTour> = [
+    {
+        name:               'Place Name',
+        description:        'The short description (which appear in the select tour dialog)',
+        longdescription:    'adasdasda',
+        destinations: [
+            {
+                from: 'user',
+                to: {
+                    lat: 12.345678, lng: 12.345678,
+                    name:           'Destination name',
+                    commute:        'How to go to this area',
+                    description:    'Destination description',
+                },
+            },
+        ],
+        pointOfInterests: [
+            {
+                lat: 12.345678, lng: 12.345678,
+                name:           'Point of interest (a place where should ne notice by a tourist)',
+                description:    'Description of the place',
+                //Voice asset is often available for the tourist to hear the place description instead of reading it
+                voiceasset: () => { return TEMP_VOICE }
+            },
+        ],
+    },
+]
+=================================================================
 */
 
 import { GalaSelfGuidedTour } from '../!interfaces/GalaSelfGuidedTour';
 
-//Set the range of working GPS
 export const GPSRANGE = {
     x:      121.041694,  endy: 14.21141, //041406
     endx:   121.135533,  y: 14.339070,   //339077
 };
 
+//The initial (user position) before the user GPS location is found
 export const IntroPosition = {lat: 14.296238, lng: 121.105799};
 
+//Voice Assets
 const TEMP_VOICE = require('../../assets/speech/sample.mp3');
 
 export const GalaTours :Array<GalaSelfGuidedTour> = [
@@ -89,7 +126,45 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
                     description: 'no desc', 
                 }
             }
-        ]
+        ],
+        pointOfInterests: [
+            { lat: 14.282312, lng: 121.096497, name: 'Grand Carousel',
+                description: 'The Grand Carousel is the activy that first you can see in the theme park',
+                voiceasset: () => { return TEMP_VOICE }
+            },
+            { lat: 14.282474, lng: 121.095424, name: 'Brooklyn ',
+                description: 'The Gsss',
+                voiceasset: () => { return TEMP_VOICE }
+            },
+            { lat: 14.283177, lng: 121.096136, name: 'EKStreme Drop Tower ',
+                description: 'The Gsss',
+                voiceasset: () => { return TEMP_VOICE }
+            },
+            { lat: 14.281617, lng: 121.096367, name: 'Disk-O-Magic',
+                description: 'The Gsss',
+                voiceasset: () => { return TEMP_VOICE }
+            },
+            { lat: 14.281927, lng: 121.095970, name: 'River Rapids',
+                description: 'The Gsss',
+                voiceasset: () => { return TEMP_VOICE }
+            },
+            { lat: 14.282869, lng: 121.094872, name: 'Anchors Away',
+                description: 'The Gsss',
+                voiceasset: () => { return TEMP_VOICE }
+            },
+            { lat: 14.281820, lng: 121.094222, name: 'Space Shuttle',
+                description: 'The Gsss',
+                voiceasset: () => { return TEMP_VOICE }
+            },
+            { lat: 14.282642, lng: 121.093968, name: 'Jungle Rapids',
+                description: 'The Gsss',
+                voiceasset: () => { return TEMP_VOICE }
+            },
+            { lat: 14.282402, lng: 121.094941, name: 'Wheel of Faith (Ferris Wheel)',
+                description: 'The Gsss',
+                voiceasset: () => { return TEMP_VOICE }
+            },
+        ],
     },
 
     {
@@ -125,7 +200,6 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
                 to: {
                     lat: 14.293904, lng: 121.104525, name: 'Balibago Bus Termininal',
                     commute: 'Ride a jeep with a sign "Complex". The common fare rate is P10',
-                    voiceasset: () => undefined,
                     description: 'no desc', 
                 }
             }
@@ -145,6 +219,28 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
             },
             { lat: 14.294400, lng: 121.103461, name: 'Target Mall',
                 description: 'no desc',
+                voiceasset: () => { return TEMP_VOICE }
+            },
+        ]
+    },
+
+    {
+        name: 'Amir TEST Home',
+        description: 'Amir actual Test',
+        longdescription: 'an actual test',
+        destinations: [
+            {
+                from: 'user',
+                to: {
+                    lat: 14.304850, lng: 121.117827, name: 'Close to home',
+                    commute: 'Just walk',
+                    description: 'no desc', 
+                }
+            }
+        ],
+        pointOfInterests: [
+            { lat: 14.3046386, lng: 121.118446, name: 'Home Court',
+                description: 'Home Court',
                 voiceasset: () => { return TEMP_VOICE }
             },
         ]

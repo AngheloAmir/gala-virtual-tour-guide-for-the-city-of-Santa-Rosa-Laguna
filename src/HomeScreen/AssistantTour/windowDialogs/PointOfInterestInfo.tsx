@@ -20,7 +20,7 @@ import { setPOIBoxOpen }        from '../localstateAPI/actions';
 import DialogBox                from '../../../Utility/DialogBox';
 import { GalaTours }            from '../../../../database/assistantour/tours';
 
-export default function POIDialogBox() {
+export default function PointOfInterestInfo() {
     const { localState, localDispatch } :LocalStateAPI= React.useContext(localContextProvider);
 
     if(localState.currenttour.index < 0 || localState.poiCloseIndex < 0)
@@ -66,6 +66,7 @@ function DialogContent() {
     <View>
         { /* @ts-ignore */
             GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset &&
+            localState.playsound &&
             <Button title='Play Tour Voice' onPress={playSound} />
         }
         { /* @ts-ignore */
@@ -80,7 +81,7 @@ function DialogContent() {
             GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description &&
             <Text style={{fontSize: 18, marginTop: 8}}>
             { /* @ts-ignore */
-                GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description
+                '   ' + GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description
             }
             </Text>
         }

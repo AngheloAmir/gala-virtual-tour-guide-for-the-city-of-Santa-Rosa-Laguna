@@ -26,6 +26,7 @@ export function rootReducer(state :AssistantTourState, action :ActionInterface) 
                 polylines: [
                     { shapeType: 'polyline', id: '0', positions: [ {lat: 0, lng: 0}] }
                 ],
+                poiCloseIndex: -1,
             }
         }
         

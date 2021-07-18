@@ -1,10 +1,20 @@
 /*
-    The index (container) when displaying the GPS Navigation system (Assistan Tour).
+    * TYPE
+        Scene - A screen is a component that occupies a large part of the screen
+        Index - A component that does not display itself
+
+    * DESCRIPTION
+        The index (container) when displaying the GPS Navigation system (Assistan Tour).
     It set up the local context provider availble only in Assitant Tour Feature 
     It also renders the Following:
         * The Expo-Leaflet map
         * The Toolbar that appears above the screen (below the TopBar)
         * An Invisible View that takes up the screen use to prevent user clicking when something happening
+        * and many more...
+
+    * VISIBLE WHEN
+        The user press the Assitant Tour Tab (in the bottom of the home screen) and press 
+        "START NAVIGATING"
 */
 
 import React from 'react';
@@ -16,28 +26,32 @@ import { setMapCenter } from './localstateAPI/actions';
 
 import LeafletContainer     from './components/LeafletContainer';
 import Toolbar              from './components/Toolbar';
-import FindPlaces           from './components/FindPlaces';
-import SelectTourList       from './components/SelectTourList';
-import DialogMessage        from './components/DialogMessage';
 import MapLockView          from './components/MapLockView';
 import Attribution          from './components/Attribution';
-import AttributionDialogBox from './components/AttributionDialogBox'
 import NotifyWhenClose      from './components/NotifyWhenClose'
-import POIDialogBox         from './components/POIDialogBox';
+import SelectTourList       from './windowDialogs/SelectTourList';
+import FindPlaces           from './windowDialogs/FindPlaces';
+import DialogMessage        from './windowDialogs/DialogMessage';
+import AttributionInfo      from './windowDialogs/AttributionInfo';
+import PointOfInterestInfo  from './windowDialogs/PointOfInterestInfo';
+
 import { Init, updateUserLocation } from './functions';
 
-export default function IndexContainer() {
+export default function AssistanTourIndex() {
     const [localState, localDispatch] = React.useReducer(rootReducer, defaultLocalState );
+    const [intervalID, setIntervalID] = React.useState()
 
     //Set up the initial user position and map display (zoom level) after map load
     React.useEffect(() => {
-        let i :any;
         ( async () => {
-            await Init(localDispatch);
+            await Init( localDispatch);
             if(Platform.OS !== 'web')
-                i = setInterval(() => updateUserLocation(localDispatch), 2000);
+                setIntervalID(
+                    //@ts-ignore
+                    setInterval(() => updateUserLocation(localDispatch), 2000)
+                );
         })();
-        return clearInterval(i);
+        return clearInterval(intervalID);
     }, []);
 
     //will center the map to user current position?
@@ -56,8 +70,8 @@ export default function IndexContainer() {
             <FindPlaces />
             <SelectTourList />
             <DialogMessage />
-            <AttributionDialogBox />
-            <POIDialogBox />
+            <AttributionInfo />
+            <PointOfInterestInfo />
 
             <MapLockView />
         </localContextProvider.Provider>

@@ -3,11 +3,11 @@
 */
 import { NAVCOLORS } from './options';
 
-interface Geolocation {
+interface Position {
     lat :number; lng: number
 }
 
-export async function GetPathWays(id :number, current :Geolocation, destination :Geolocation, isRed? :boolean) {
+export async function GetPathWays(id :number, current :Position, destination :Position, isRed? :boolean) {
     try {
         const paths :any = await FindPath(current, destination);
         if(isRed) return {
@@ -16,16 +16,16 @@ export async function GetPathWays(id :number, current :Geolocation, destination 
             shapeType: 'polyline', id: id + '', color: 'red', positions: [...paths], 
         }
         return {
-            // @ts-ignore
-            //color attribute is causing a TS Error although it is not. A problem with the ExpoLeaftlet package
-                shapeType: 'polyline', id: id + '', color: NAVCOLORS[id], positions: [...paths], 
+        // @ts-ignore
+        //color attribute is causing a TS Error although it is not. A problem with the ExpoLeaftlet package
+            shapeType: 'polyline', id: id + '', color: NAVCOLORS[id], positions: [...paths], 
         }
     } catch(err) {
         throw err;
     }
 }
 
-async function FindPath(from :Geolocation, to :Geolocation) {
+async function FindPath(from :Position, to :Position) {
     try {
         const position1 = from;
         const position2 = to;
@@ -41,7 +41,7 @@ async function FindPath(from :Geolocation, to :Geolocation) {
         const opresult      = await overpass_res.json();
 
         //However, the result position is returned in alphabetical order not in the path way order. The code fix it
-        const pathway :Array<Geolocation> = nodes.map( (anode :number) => {
+        const pathway :Array<Position> = nodes.map( (anode :number) => {
             let temp :any;
             for(let i = 0; i < opresult.elements.length; i++) {
                 if(opresult.elements[i].id === anode) {

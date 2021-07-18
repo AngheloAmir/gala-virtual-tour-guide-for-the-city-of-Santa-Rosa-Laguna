@@ -21,7 +21,8 @@ import { setSelectTourOpen,
         setZoomlevel,
         setMapCenter,
         setMapPathIsLoading,
-        setDialogMessage
+        setDialogMessage,
+        setPoiIndex
 } from '../../localstateAPI/actions';
 import { getMapDestinationMarkers, getPathWays } from '../../functions';
 
@@ -47,6 +48,7 @@ export default function SelectTourAndNavigate( props :propsReceive) {
         localDispatch( setZoomlevel(12) );
         localDispatch( setMapCenter(userPosition));
         localDispatch( setMapPathIsLoading(true) );
+        localDispatch( setPoiIndex(-1)); //this fix a bug that make notifyWhenClose component still appear even when new tour is ask
         localDispatch( setMapPolyLines([
             // @ts-ignore
             { shapeType: 'polyline', id: '0', positions: [{lat: 0, lng: 0}], color: 'blue', }

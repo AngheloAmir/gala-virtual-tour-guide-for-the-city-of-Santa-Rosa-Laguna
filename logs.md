@@ -39,7 +39,7 @@ a cleaner code and better structure.
 -Added documentation for many of the components
 -Arrange the Find Places in Alphabetical order
 
-## July 16, VErsion 0.3.4.3 - GPS Feature 90% completion
+## July 17, VErsion 0.3.4.3 - GPS Feature 90% completion
 -Added NotifyWhenClose, a component that show below a toolbar when user is close to POI
 -Added the dialog box and the ability to play sound if possible
 -Improve the Find Nearest Establishment feature, now it should be more accurate
