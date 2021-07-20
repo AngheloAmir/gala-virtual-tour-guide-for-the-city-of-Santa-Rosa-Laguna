@@ -4,32 +4,24 @@
             part of a scene
 
     * DESCRIPTION
-        
+        Display a compass in the screen below the toolbar. This compass will have its image rotated
+        based on the magnetometer reading.
 
     * VISIBLE WHEN
         It is always show when the GPS Navigation feature of the app is shown.
 */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Image, View, Platform } from 'react-native';
 import { Magnetometer } from 'expo-sensors';
-
-import { localContextProvider } from '../localstateAPI/state';
-import { LocalStateAPI } from '../localstateAPI/interface';
 const compassIcon = require('./Magetometer/compass.png');
 
 export default function Compass() {
-    const { localState } :LocalStateAPI = React.useContext(localContextProvider);
+    if( Platform.OS == 'web' ) {
+        return <View style={{position: 'absolute'}}></View>
+    }
 
-    //Prevent the compass being updated when a dialog box is shown in the screen for optimation
-    if( Platform.OS == 'web'                ||
-        localState.isAttributionOpen        ||
-        localState.isFindPlacesOpen         ||
-        localState.isSelectTourOpen         ||
-        localState.dialogmsg.msg.length >= 1 )
-    return <View style={{position: 'absolute'}}></View>
-
-    const [magnet, setMagnet] = useState(0);
-    const [subscription, setSubscription] = useState(null);
+    const [magnet, setMagnet] = React.useState(0);
+    const [subscription, setSubscription] = React.useState(null);
 
     function subscribe() {
         const sub = Magnetometer.addListener(result => {
@@ -44,12 +36,16 @@ export default function Compass() {
         Magnetometer.setUpdateInterval(1500);
     };
 
-    useEffect(() => {
-        subscribe();
-        return () => {
-            //@ts-ignore
-            subscription && subscription.remove();
+    function unsubscribe() {
+        //@ts-ignore
+        subscription && subscription.remove();
             setSubscription(null);
+    }
+
+    React.useEffect(() => {
+        subscribe();
+        return () => {        
+            unsubscribe();
         };
     }, []);
 

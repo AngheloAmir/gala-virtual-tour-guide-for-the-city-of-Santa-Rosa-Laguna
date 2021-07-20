@@ -19,40 +19,54 @@
 
 import React from 'react';
 import { Platform } from 'react-native';
+import * as Location from 'expo-location';
 
 import { localContextProvider, defaultLocalState } from './localstateAPI/state';
 import { rootReducer } from './localstateAPI/reducer';
-import { setMapCenter } from './localstateAPI/actions';
+import { setMapCenter, setUserPosition } from './localstateAPI/actions';
 
 import LeafletContainer     from './components/LeafletContainer';
 import Toolbar              from './components/Toolbar';
 import MapLockView          from './components/MapLockView';
 import Attribution          from './components/Attribution';
 import NotifyWhenClose      from './components/NotifyWhenClose';
-import Magnenometer         from './components/Magnetometer';
+import Magnetometer         from './components/Magnetometer';
 import SelectTourList       from './windowDialogs/SelectTourList';
 import FindPlaces           from './windowDialogs/FindPlaces';
 import DialogMessage        from './windowDialogs/DialogMessage';
 import AttributionInfo      from './windowDialogs/AttributionInfo';
 import PointOfInterestInfo  from './windowDialogs/PointOfInterestInfo';
 
-import { Init, updateUserLocation } from './functions';
+import { Init } from './functions';
 
 export default function AssistanTourIndex() {
     const [localState, localDispatch] = React.useReducer(rootReducer, defaultLocalState );
     const [intervalID, setIntervalID] = React.useState()
 
-    //Set up the initial user position and map display (zoom level) after map load
+    //Set up the initial user position and subscribe to Location updates
     React.useEffect(() => {
         ( async () => {
             await Init( localDispatch);
-            if(Platform.OS !== 'web')
-                setIntervalID(
-                    //@ts-ignore
-                    setInterval(() => updateUserLocation(localDispatch), 1000)
-                );
+            if(Platform.OS !== 'web') {
+                const interval = await Location.watchPositionAsync({
+                    accuracy:                   Location.Accuracy.BestForNavigation,
+                    timeInterval:               1000,
+                    distanceInterval:           1,
+                    mayShowUserSettingsDialog:  true 
+                }, userLocation => {
+                    localDispatch(setUserPosition({
+                        lat: userLocation.coords.latitude,
+                        lng: userLocation.coords.longitude
+                    }));
+                });
+                //@ts-ignore
+                setIntervalID(interval);
+            }
         })();
-        return clearInterval(intervalID);
+        return () => {
+            //@ts-ignore
+            try { intervalID.remove() } catch(err) { }
+        }
     }, []);
 
     //will center the map to user current position?
@@ -65,7 +79,7 @@ export default function AssistanTourIndex() {
         <localContextProvider.Provider value={{localState, localDispatch}}>
             <Toolbar />
             <NotifyWhenClose />
-            <Magnenometer />
+            <Magnetometer />
             <LeafletContainer />
             <Attribution />
 

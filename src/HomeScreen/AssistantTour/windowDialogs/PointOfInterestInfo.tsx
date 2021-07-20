@@ -63,7 +63,7 @@ function DialogContent() {
     }, [sound]);
 
     return (
-    <View>
+    <View style={{paddingHorizontal: 4}}>
         { /* @ts-ignore */
             GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset &&
             localState.playsound &&
@@ -71,7 +71,7 @@ function DialogContent() {
         }
         { /* @ts-ignore */
             GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].name &&
-            <Text style={{fontSize: 18, marginTop: 8, fontWeight: '600'}}>
+            <Text style={{fontSize: 18, marginTop: 8, fontWeight: '600', lineHeight: 32}}>
             { /* @ts-ignore */
                 GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].name
             }
@@ -79,7 +79,7 @@ function DialogContent() {
         }
         { /* @ts-ignore */
             GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description &&
-            <Text style={{fontSize: 18, marginTop: 8}}>
+            <Text style={{fontSize: 18, marginTop: 8, lineHeight: 28}}>
             { /* @ts-ignore */
                 '   ' + GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description
             }

@@ -56,6 +56,7 @@ export const establishments :Array<EstablishmentCategory> = [
         items: [
             { name: 'Asiantel Econo',       lat: 14.26532,  lng: 121.076028 },
             { name: 'Candy Motel',          lat: 14.307279, lng: 121.101877 },
+            { name: 'Golden Gate Inn',      lat: 14.320308, lng: 121.097216 },
             { name: 'Lag Inn & Apartelle',  lat: 14.306675, lng: 121.102093 },
             { name: 'Mariposa Budget Hotel',lat: 14.3182,   lng: 121.097965 },
             { name: 'Seda Nuvali',          lat: 14.23901,  lng: 121.06037 },
@@ -70,7 +71,7 @@ export const establishments :Array<EstablishmentCategory> = [
             { name: 'SM Mall',              lat: 14.314309, lng: 121.098955 },
             { name: 'Target Mall',          lat: 14.293735, lng: 121.103894 },
             { name: 'Vista Mall',           lat: 14.243295, lng: 121.058006 },
-            { name: 'Walter Mark',          lat: 14.288732, lng: 121.094433 },   
+            { name: 'Walter Mart',          lat: 14.288732, lng: 121.094433 },   
         ]
     },
     {

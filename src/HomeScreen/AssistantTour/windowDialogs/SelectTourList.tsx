@@ -85,6 +85,6 @@ const styles = StyleSheet.create({
         fontSize: 20, fontWeight: '500', 
     },
     textDescription: {
-        fontSize: 18, lineHeight: 28, paddingLeft: 20, padding: 8
+        fontSize: 18, lineHeight: 28, paddingLeft: 8, padding: 8
     },
 });

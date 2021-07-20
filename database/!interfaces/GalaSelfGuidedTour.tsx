@@ -1,10 +1,22 @@
+/*
+*/
+export interface GalaSelfGuidedTour {
+    name                :string;
+    description         :string;
+    longdescription     :string;
+    destinations        :Array<FromToInterface>;
+    pointOfInterests?   :Array<DestinationLocation>;
+}
+
 export interface DestinationLocation {
-    lat         :number;
-    lng         :number;
-    name        :string;
-    description :string;
-    commute?    :string;
-    voiceasset? :() => any;
+    lat          :number;
+    lng          :number;
+    name         :string;
+    description? :string;
+    address?     :string;
+    commute?     :string;
+    sources?     :Array<string>;
+    voiceasset?  :() => any;
 }
 
 export interface FromToInterface {
@@ -12,10 +24,3 @@ export interface FromToInterface {
     to       :DestinationLocation,
 }
 
-export interface GalaSelfGuidedTour {
-    name                :string;
-    description         :string;
-    longdescription     :string;
-    pointOfInterests?   :Array<DestinationLocation>;
-    destinations        :Array<FromToInterface>;
-}

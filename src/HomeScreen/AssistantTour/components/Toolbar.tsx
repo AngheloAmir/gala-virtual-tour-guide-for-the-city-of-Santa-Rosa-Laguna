@@ -59,7 +59,7 @@ export default function Toolbar() {
                 {
                     !localState.hasLoaded &&
                     <View style={styles.messageBox}>
-                        <Text style={styles.messageText}>...Please Wait Loading...</Text>
+                        <Text style={styles.messageText}>...Loading your location... </Text>
                     </View>
                 }
             </View>

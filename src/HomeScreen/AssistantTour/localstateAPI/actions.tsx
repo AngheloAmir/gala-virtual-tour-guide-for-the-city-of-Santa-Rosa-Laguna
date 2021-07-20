@@ -1,16 +1,16 @@
 /*
 
 */
-import { actionType, Location } from './interface'; 
+import { actionType, Position } from './interface'; 
 import { MapShape, MapMarker } from "expo-leaflet";
 
-export function setUserPosition(geolocation :Location) {
+export function setUserPosition(geolocation :Position) {
     return {
         type: actionType.setUserPosition, payload: geolocation
     }
 }
 
-export function setMapCenter(geolocation :Location) {
+export function setMapCenter(geolocation :Position) {
     return {
         type: actionType.setMapCenter, payload: geolocation
     }

@@ -10,7 +10,7 @@ export interface LocalStateAPI {
     localDispatch  :React.Dispatch<any>;
 }
 
-export interface Location {
+export interface Position {
     lat :number;
     lng :number;
 }

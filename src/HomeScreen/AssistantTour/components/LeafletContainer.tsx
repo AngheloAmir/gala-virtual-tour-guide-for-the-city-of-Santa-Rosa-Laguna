@@ -34,8 +34,8 @@ export default function LeafletContainer() {
                     console.log(event.location);
                 }
                 break;
-            /* Uncomment this code for production
             case 'onMapMarkerClicked':
+                //if(Platform.OS == 'web') break;
                 for(let i = 0; i < localState.mapmarkers.length; i++) {
                     if(i == 0) continue;
                     if(localState.mapmarkers[i].id == event.mapMarkerId ) {
@@ -50,7 +50,6 @@ export default function LeafletContainer() {
                     }
                 }
                 break;
-            */
             default:
                 break;
         }
@@ -60,7 +59,7 @@ export default function LeafletContainer() {
         //the value 100 is the height of the toolbar
         //the value 108 is the height of the topbar + bottom tab navigatior
         height: responsive.height - 100 - 108,
-        width: responsive.width,
+        width:  responsive.width,
     }
 
     return (

@@ -50,7 +50,13 @@ a cleaner code and better structure.
 -Fix NotifyWhenClose showing even the current tour has changed
 -Added folder windowDialogs (which move dialog components)
 
-## July 19, Version 12 (0.3.5) - Added Magnetometer
+## July 19, Version 0.3.5 - Added Magnetometer
 -Added Magnetometer
 -Remove Privacy policy
 -Added Further reading in the AssistanTourTab which contains info about GPS
+
+## July 20, Version 0.3.6
+-Remove the use of setInterval to get the user position, instead it subscribe to get user position
+-Updated the magnetometer icon
+-Changes UI in the tapping the marker
+-Adding tour informatiomations
