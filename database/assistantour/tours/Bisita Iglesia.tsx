@@ -7,7 +7,7 @@ const TEMP_VOICE = require('../../../assets/speech/sample.mp3');
 const BisitaIglesia :GalaSelfGuidedTour = {
     name:               'Bisita Iglesia',
     description:        'Visit Catholic churches',
-    longdescription:    'Visiting Churches for Holy Week for religious reasons? Here are the churches that you may visit in Santa Rosa. However, due to the rising Covid-19 in Laguna, these churches are likely to be close.',
+    longdescription:    'Here are the churches that you for Holy Week for religious reasons? Here are the churches that you may visit in Santa Rosa. However, due to the rising Covid-19 in Laguna, these churches are likely to be close. These were opened back then in 2020 December at 30% capacity.',
     destinations: [
         {
             from: 'user',

@@ -27,7 +27,7 @@ const PaseoAndNuvali :GalaSelfGuidedTour = {
         {
             lat: 14.240475, lng: 121.058054,
             name: 'Nuvali Fish Feeding',
-            description: 'Feed a multitude of Koi Fish that looks like big goldfish. These fishes can be feed by Solenad designated feeding pack. Children and adults are having fun feeding them. Remember, avoid getting too close to the waters.',
+            description: 'Feed a multitude of Koi Fish that looks like yummy goldfish. These fishes can be feed only by Solenad designated feeding pack. Children and adults are having fun feeding them. Remember, avoid getting too close to the waters.',
             voiceasset: () => { return TEMP_VOICE }
         },
         { lat: 14.240358, lng: 121.058706,
@@ -50,7 +50,7 @@ const PaseoAndNuvali :GalaSelfGuidedTour = {
         {
             lat: 14.2369391,lng: 121.057341,
             name: 'Ayala Malls Solenad',
-            description: 'The mall in Nuvali',
+            description: 'The shopping mall in Nuvali',
             voiceasset: () => { return TEMP_VOICE }
         },
     ]

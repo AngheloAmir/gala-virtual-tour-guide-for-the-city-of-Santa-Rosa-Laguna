@@ -15,11 +15,12 @@ const TiongcoAncestralHouse             = require('../../places/Tiongco Ancestra
 const MuseoNgSantaRosa                  = require('../../places/Museo ng Santa Rosa.json');
 
 const TEMP_VOICE                        = require('../../../assets/speech/sample.mp3');
+const GonzalesStatueSpeech              = require('../../../assets/speech/Gonzalez Statue.mp3');
 
 export const GlimpseOfHistory :GalaSelfGuidedTour = {
     name:            'Glimpse of History',
     description:     'Take look to its history',
-    longdescription: 'See the glimpse of the past and historical places found that can be found in Santa Rosa City. Most of these historic buildings can be found in Santa Rosa Bayan except for Cuartel de Santo Domingo which resides near Nuvali and Tagaytay. All of the sites are outdoor tourist attractions, just be careful when on the road.',
+    longdescription: 'See a glimpse of the historical past and places of Santa Rosa city.  Most of them can are in Santa Rosa Bayan except for Cuartel de Santo Domingo (located near Nuvali and Tagaytay). Most of these sites are outdoor tourist attractions. Take precautions when on the road, like avoid looking on your phone while walking.',
     destinations: [
         {
             from: 'user',
@@ -41,7 +42,7 @@ export const GlimpseOfHistory :GalaSelfGuidedTour = {
     pointOfInterests: [
         { ...CityPlaza,                         voiceasset: () => { return TEMP_VOICE } },
         { ...SantaRosaDeLimaParishChurch,       voiceasset: () => { return TEMP_VOICE } },
-        { ...GonzalesStatue,                    voiceasset: () => { return TEMP_VOICE } },
+        { ...GonzalesStatue,                    voiceasset: () => { return GonzalesStatueSpeech } },
         { ...SantaRosaArch,                     voiceasset: () => { return TEMP_VOICE } },
         { ...CasaGonzalez,                      voiceasset: () => { return TEMP_VOICE } },
         { ...CasaZavalla,                       voiceasset: () => { return TEMP_VOICE } },
@@ -60,7 +61,7 @@ export const GlimpseOfHistory :GalaSelfGuidedTour = {
         },
         {
             name: 'Lijauco – Zavalla Ancestral House',
-            description: 'adssada',
+            description: 'Ancestral house of Lijauco – Zavalla',
             address: 'Rizal Blvd, Santa Rosa, Calabarzon',
             lat: 14.312555,
             lng: 121.112184

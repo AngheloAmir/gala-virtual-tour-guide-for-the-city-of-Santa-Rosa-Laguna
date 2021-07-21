@@ -60,3 +60,9 @@ a cleaner code and better structure.
 -Updated the magnetometer icon
 -Changes UI in the tapping the marker
 -Adding tour informatiomations
+
+## July 21, Version 0.3.7
+-Improve the text of tours
+-Added mp3 speech to Col. Basillo B. Gonzalez statue
+-Adjust header text bottom margin in the Assitant Tour Tab in "Futher Reading" window
+

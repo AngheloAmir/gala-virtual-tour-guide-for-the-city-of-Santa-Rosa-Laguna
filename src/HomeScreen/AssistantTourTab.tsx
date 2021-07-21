@@ -116,8 +116,8 @@ const DisclaimerText :string = '' +
 
 function furtherReadingDialogContent() {
   const styles = StyleSheet.create({
-    bold:   { fontSize: 20, fontWeight: '700', marginTop: 24 },
-    boldNom:{ fontSize: 20, fontWeight: '700'},
+    bold:   { fontSize: 20, fontWeight: '700',  marginBottom: 8, marginTop: 24 },
+    boldNom:{ fontSize: 20, fontWeight: '700', marginBottom: 8, },
     text:   { fontSize: 20, lineHeight: 30 }
   });
   
