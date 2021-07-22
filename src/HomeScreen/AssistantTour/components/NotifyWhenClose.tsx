@@ -8,8 +8,6 @@
 
     * VISIBLE WHEN
         It should be visible only when the user is close to a point of interest
-
-    The the value in the line 44 to set the aquitance range
 */
 import React from 'react';
 import { Animated, TouchableOpacity, StyleSheet, View } from 'react-native';
@@ -21,6 +19,8 @@ import { LocalStateAPI }        from '../localstateAPI/interface';
 import { setPOIBoxOpen, setPoiIndex }        from '../localstateAPI/actions';
 import { GalaTours }            from '../../../../database/assistantour/tours';
 import { isClose }              from '../functions';
+
+const AQUITANCERANGE = 0.0002;
 
 export default function NotifyWhenClose() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
@@ -41,7 +41,7 @@ export default function NotifyWhenClose() {
             //@ts-ignore
             const POI = GalaTours[localState.currenttour.index].pointOfInterests[i];
             const poiPos = { lat: POI.lat, lng: POI.lng };
-            if( POI.voiceasset && isClose(userPosition, poiPos, 0.0005 ) ) {
+            if( POI.voiceasset && isClose(userPosition, poiPos, AQUITANCERANGE ) ) {
                 hasClosestPOI = true; poinIndex = i;
             }
         }

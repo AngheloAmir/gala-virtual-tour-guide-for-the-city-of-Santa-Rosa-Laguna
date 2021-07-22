@@ -1,6 +1,6 @@
 /*
     Define what will happen after the map is loaded and draw
-    -- used in IndexContainer.tsx
+    -- used in AssistanTourIndex.tsx
 */
 
 import * as Location from 'expo-location';

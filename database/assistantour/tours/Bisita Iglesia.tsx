@@ -2,7 +2,7 @@ import { GalaSelfGuidedTour } from '../../!interfaces/GalaSelfGuidedTour';
 
 const ChairofStPeterParishChurch        = require('../../places/Chair of St. Peter Parish Church.json');
 const SantaRosaDeLimaParishChurch       = require('../../places/Santa Rosa De Lima Parish Church.json');
-const TEMP_VOICE = require('../../../assets/speech/sample.mp3');
+const TEMP_VOICE = require('../../../assets/santarosa/speech/sample.mp3');
 
 const BisitaIglesia :GalaSelfGuidedTour = {
     name:               'Bisita Iglesia',

@@ -4,7 +4,6 @@
 
 import { MapShape } from "expo-leaflet";
 import {
-    setFindPlacesOpen,
     setMapMarkers,
     setMapLock,
     setZoomlevel,
@@ -16,9 +15,7 @@ import {
 import { getPathWays } from     '../../functions';
 import { LocalStateAPI } from   '../../localstateAPI/interface';
 import { establishments } from  '../../../../../database/assistantour/establishments';
-
 export default async function findPlaceFunction({localDispatch, localState} :LocalStateAPI, index :number, estaIndex :number) {
-    localDispatch(setFindPlacesOpen(false));
 
     const userPosition = localState.mapmarkers[0].position;
     const establishmentPos = {
@@ -56,5 +53,5 @@ export default async function findPlaceFunction({localDispatch, localState} :Loc
             localDispatch( setMapLock(false) );
             localDispatch( setZoomlevel(17) );
         }, 3000);
-        })();  
+    })();  
 }

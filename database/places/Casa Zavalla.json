@@ -7,5 +7,6 @@
     "commute": "",
     "address": "F. Gomez corner Anonuevo Streets, 708, Santa Rosa",
     "lat": 14.313503,
-    "lng": 121.110361
+    "lng": 121.110361,
+    "streetviewlink" : "google"
 }

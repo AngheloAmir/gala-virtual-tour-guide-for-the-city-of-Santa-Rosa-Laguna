@@ -1,4 +1,4 @@
-###Tutorial usage:
+### Tutorial usage:
     A component must be first an direct/indirectly child of App.tsx
 
     The component will something look like this:

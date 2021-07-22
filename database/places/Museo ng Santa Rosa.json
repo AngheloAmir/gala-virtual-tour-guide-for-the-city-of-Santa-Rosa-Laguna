@@ -9,5 +9,6 @@
     "commute": "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10",
     "address": "F. Gomez St, Kanluran, Santa Rosa, 4026 Laguna",
     "lat": 14.313601,
-    "lng": 121.111843
+    "lng": 121.111843,
+    "streetviewlink" : "google"
 }

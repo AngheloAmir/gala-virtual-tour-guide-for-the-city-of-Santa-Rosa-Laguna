@@ -16,7 +16,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI } from '../localstateAPI/interface';
 import { setAttributionshow } from '../localstateAPI/actions';
-const mapboxicon = require('./Attribution/mapbox-logo-black.png');
+
+const mapboxicon = require('../../../../assets/icons/mapbox-logo-black.png');
 
 export default function Attribution() {
     const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);

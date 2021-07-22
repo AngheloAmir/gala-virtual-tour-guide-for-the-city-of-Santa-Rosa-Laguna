@@ -2,7 +2,8 @@
     The list of Self Guided tours that are available
     These tours are guided only by a GPS line mark.
 
-    This is file is not optional
+    This is file is not optional - which means that it should appear when remaking the 
+    app for a different cities.
 
 BASIC TEMPLATE===================================================
 export const GPSRANGE = {
@@ -15,25 +16,27 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
     {
         name:               'Place Name',
         description:        'The short description (which appear in the select tour dialog)',
-        longdescription:    'adasdasda', <-- this data will appear in the "Tour information" dialog box
+        longdescription:    'this data will appear in the "Tour information" dialog box',
         destinations: [
             {
-                from: 'user',
+                from: 'user', //or an object with value: {lat :number lng: number, name: string}
                 to: {
-                    lat: 12.345678, lng: 12.345678,
+                    lat: 12.345678,
+                    lng: 12.345678,
                     name:           'Destination name',
                     commute:        'How to go to this area',
                     description:    'Destination description',
+                    address:        'Place address',
                 },
             },
         ],
         pointOfInterests: [
             {
-                lat: 12.345678, lng: 12.345678,
+                lat: 12.345678,
+                lng: 12.345678,
                 name:           'Point of interest (a place where should ne notice by a tourist)',
                 description:    'Description of the place',
-                //Voice asset is often available for the tourist to hear the place description instead of reading it
-                voiceasset: () => { return TEMP_VOICE }
+                voiceasset: () => { return TEMP_VOICE }  //Voice asset is often available for the tourist to hear the place description instead of reading it
             },
         ],
     },
@@ -81,7 +84,7 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
         pointOfInterests: [
             { lat: 14.3046386, lng: 121.118446, name: 'Home Court',
                 description: 'Home Court',
-                voiceasset: () => { return require('../../assets/speech/sample.mp3') }
+                voiceasset: () => { return require('../../assets/santarosa/speech/sample.mp3') }
             },
         ]
     }

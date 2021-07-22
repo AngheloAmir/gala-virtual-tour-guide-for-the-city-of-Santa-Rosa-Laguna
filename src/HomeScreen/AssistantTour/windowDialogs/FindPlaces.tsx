@@ -18,7 +18,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { localContextProvider }         from '../localstateAPI/state';
 import { LocalStateAPI }                from '../localstateAPI/interface';
 import { setFindPlacesOpen,
-        clearPolyLineAndMarker }        from '../localstateAPI/actions';
+        clearPolyLineAndMarker,
+        setDialogMessage }              from '../localstateAPI/actions';
 import { establishments }               from '../../../../database/assistantour/establishments';
 import findPlaceFunction                from './FindPlaces/findPlaceFunction';
 import findNearbyFunction               from './FindPlaces/findNearbyFunction';
@@ -41,12 +42,27 @@ export function dialogContent() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
     const [openedItem, setOpenedItem] = React.useState('');
 
-    function handleFindNearby(index :number) {
-        findNearbyFunction({localDispatch, localState}, index);
+    function notGranted() {
+        localDispatch( setDialogMessage(
+            'Feature not available',
+            'This feature is available when location permission is granted, your phone has Google, and your are not far from the city.')
+        );
+    }
+
+    async function handleFindNearby(index :number) {
+        localDispatch(setFindPlacesOpen(false));
+        if(!localState.isGranted)
+            notGranted();
+        else
+            findNearbyFunction({localDispatch, localState}, index);
     }
 
     async function handleFind(index :number, estaIndex :number) {
-        findPlaceFunction({localDispatch, localState}, index, estaIndex);
+        localDispatch(setFindPlacesOpen(false));
+        if(!localState.isGranted)
+            notGranted();
+        else
+            findPlaceFunction({localDispatch, localState}, index, estaIndex);
     }
 
     return (

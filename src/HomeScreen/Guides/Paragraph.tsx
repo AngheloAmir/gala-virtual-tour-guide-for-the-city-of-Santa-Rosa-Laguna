@@ -13,6 +13,7 @@
 import React from 'react';
 import { Image, Linking,StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import { Responsive, useResponsive } from '../../Utility/useResponsive';
 import { GuideParagraphContent } from '../../../database/!interfaces/GuideContent';
 
 interface propsReceive {
@@ -21,6 +22,8 @@ interface propsReceive {
 }
 
 export default function Paragraph( props :propsReceive) {
+    const responsize :Responsive = useResponsive();
+
     const styles = StyleSheet.create({
         paragraphContainer: {
             textAlign: 'justify',
@@ -30,22 +33,16 @@ export default function Paragraph( props :propsReceive) {
             fontSize: 21,
             textAlign: 'left',
         },
-        datePublish: {
-            fontSize: 18,
-            fontWeight: '300',
-            color: 'gray',
-        },
-        headingImage: {
-            height: 240,
-            width:  '100%',
-        },
         paragraph: {
             fontSize: 18, lineHeight: 28, marginBottom: 0, marginTop: 4,
         },
         contentImage: {
-            height: 180,
-            width:  '95%',
-            marginLeft: '2.5%',
+            width:      responsize.width * 0.85,
+            height:     (responsize.width * 0.85) * 0.7,
+            alignSelf: 'center',
+        },
+        attributionContainer: {
+
         },
         link: {
             color: 'blue',
@@ -61,7 +58,9 @@ export default function Paragraph( props :propsReceive) {
     return (
         <View style={styles.paragraphContainer}>
             { props.value.headingText && !props.isNotRenderTitle && <Text style={styles.heading}> {props.value.headingText} </Text> }
-            { props.value.image       && <Image source={ props.value.image } style={styles.contentImage} /> }
+            { props.value.image       && <ParagraphImage value={props.value} />
+                
+            }
 
             {
                 props.value.paragraph &&
@@ -73,6 +72,47 @@ export default function Paragraph( props :propsReceive) {
                     }
                 </Text>
             }
+        </View>
+    );
+}
+
+function ParagraphImage(props :propsReceive) {
+    const responsize :Responsive = useResponsive();
+
+    const styles = StyleSheet.create({
+        contentImage: {
+            width:      responsize.width * 0.85,
+            height:     (responsize.width * 0.85) * 0.7,
+            alignSelf: 'center',
+        },
+        attributionContainer: {
+            position: 'absolute', bottom: 1, left: 8,
+            width: '100%',
+            
+        },
+        link: {
+            color: 'blue', fontSize: 12,
+            textDecorationLine: 'underline',
+        },
+    });
+
+    function handleLinkView() {
+        //@ts-ignore
+        Linking.openURL(props.value.links?.link).catch(err => console.error("Couldn't load page", err));
+    }
+
+    return (
+        <View>
+            { /* @ts-ignore */ }
+            <Image source={ props.value.image } style={styles.contentImage} resizeMode='cover' />
+                <View style={styles.attributionContainer}>
+                {
+                    props.value.links &&
+                    <TouchableOpacity style={styles.attributionContainer} onPress={handleLinkView}>
+                        <Text style={styles.link}>{props.value.links.text}</Text>
+                    </TouchableOpacity>
+                }
+            </View>
         </View>
     );
 }

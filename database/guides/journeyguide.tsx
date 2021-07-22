@@ -3,7 +3,7 @@ import { GuideContent } from '../!interfaces/GuideContent';
 const guide :GuideContent = {
     title: 'Journey Guide in Santa Rosa',
     date:   'June 2021',
-    headerImage:    require('./assets/journey.jpg'),
+    headerImage:    require('../../assets/santarosa/guides/journey.jpg'),
     contents:       [
         {
             paragraph: 'Visiting Santa Rosa City can be fun. You may go to the Enchanted Kingdom*, the most visited tourist spot in Laguna. You may take a walk in the Nuvalli or have a glimpse of the past in the Santa Rosa city proper (Santa Rosa Bayan). However, the presence of a global scale pandemic caused by a coronavirus has made traveling restricted, but still, traveling is possible. Luckily, our program will provide you a assitant tour that MAY HELP your journey that accessible in Assistant Tour. Let us start!',
@@ -14,12 +14,14 @@ const guide :GuideContent = {
                 {
                     headingText: 'Starting from SLEX',
                     paragraph: 'If you have your car, you would normally enter Santa Rosa City thru SLEX. The image above shows the map of the SLEX entrance and exit in Santa Rosa. Exiting SLEX and you will reach Felix Road. With that, you will be faced with two paths, going north and you will close to Enchanted Kindom while the other path (going south of Felix Road) will lead to Nuvalli Park and Tagaytay. Please use Assitant Tour to find out your path to the place you want to visit. However, the traffic on this road can be heavy especially during rush hour.',
-                    image: require('./assets/slexmap.jpg'),
+                    image: require('../../assets/santarosa/guides/slexmap.jpg'),
+                    links: { link: 'https://www.openstreetmap.org/copyright', text: '© OpenStreetMap' },
                 },
                 {
                     headingText: 'Starting from Balibago',
                     paragraph: 'If you commute (thru riding a bus), you would normally drop off at the Barangay Balibago Complex Santa Rosa. The image above shows the map. Balibago Complex is one of the busiest and crowded places in Santa Rosa, because of Bus Terminals, Malls (such as Target Mall), Grocery Stores, Tiangge, Restaurant, Fast Food Chain and more. Going to Enchanted Kindom will take only a single ride of tricycle (see Assistant Tour) and going to Santa Rosa City Proper (Santa Rosa Bayan) takes a single ride of a Jeep (as of now, the fare cost is P10).',
-                    image: require('./assets/balibagomap.jpg')
+                    image: require('../../assets/santarosa/guides/balibagomap.jpg'),
+                    links: { link: 'https://www.openstreetmap.org/copyright', text: '© OpenStreetMap' },
                 },
                 {
                     headingText: 'To Enchanted Kingdom',

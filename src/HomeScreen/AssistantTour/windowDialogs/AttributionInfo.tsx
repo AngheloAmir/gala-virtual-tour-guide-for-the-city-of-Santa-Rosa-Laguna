@@ -34,6 +34,8 @@ export default function AttributionInfo() {
             dialogContent={() => {
                 return (
                 <View style={styles.container}>
+                    <Text style={styles.normal}>The map tile provider is Mapbox and OpenStreetMap (Open source tile map). Tap the link to visit.</Text>
+
                     <TouchableOpacity style={styles.attributionItem} onPress={() => openlink('https://www.mapbox.com/about/maps/')}>
                         <Text style={styles.name}>© Mapbox </Text>
                         <Text style={styles.link}>https://www.mapbox.com/about/maps/</Text>
@@ -58,6 +60,9 @@ const styles = StyleSheet.create({
     },
     attributionItem: {
         paddingBottom: 12,
+    },
+    normal: {
+        fontSize: 18, marginBottom: 12,
     },
     name: {
         color: 'darkblue', fontSize: 18, 

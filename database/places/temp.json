@@ -7,5 +7,6 @@
     "commute": "",
     "address": "",
     "lat": 14,
-    "lng": 121
+    "lng": 121,
+    "streetviewlink" : "google"
 }

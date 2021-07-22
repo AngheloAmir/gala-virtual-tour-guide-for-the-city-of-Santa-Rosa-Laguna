@@ -12,13 +12,14 @@ import React from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { contextProvider, StateAPI } from '../../StateAPI/State';
+import { Responsive, useResponsive } from '../../Utility/useResponsive';
 import { GuideContent, GuideParagraphContent } from '../../../database/!interfaces/GuideContent';
-
 import Accordion from './Accordion';
 import Paragraph from './Paragraph';
 
 export default function GuideView() {
     const { state }  :StateAPI              = React.useContext(contextProvider);
+    const responsize :Responsive            = useResponsive();
     const theguide   :GuideContent | any    = state.features.guideInfo;
 
     const styles = StyleSheet.create({
@@ -47,36 +48,23 @@ export default function GuideView() {
             color: 'gray',
         },
         headingImage: {
-            height: 240,
-            width:  '100%',
+            width: responsize.width,
+            height: responsize.width * 0.7,
         },
-        paragraph: {
-            fontSize: 20, lineHeight: 28, marginBottom: 0, marginTop: 4,
-        },
-        contentImage: {
-            height: 180,
-            width:  '95%',
-            marginLeft: '2.5%',
-        },
-        link: {
-            color: 'blue',
-            fontStyle: 'italic',
-            textDecorationLine: 'underline'
-        },
-        listContainer: {
-
-        }
     });
 
     function paragraph(value :GuideParagraphContent, index :number) {
         if(value.type === 'accordionList')
             return <Accordion key={index} value={value} />
-        return <Paragraph key={index} value={value} />
+        else 
+            return <Paragraph key={index} value={value} />
     }
 
     return (
         <ScrollView style={styles.guideContainer}>
-            { theguide.headerImage && <Image source={ theguide.headerImage } style={styles.headingImage} /> }
+            { theguide.headerImage &&
+                <Image source={ theguide.headerImage } style={styles.headingImage} resizeMode='cover' />
+            }
             <View style={styles.textContainer}>
                 <Text style={styles.title}>{theguide.title} </Text>
                 <Text style={styles.datePublish}>{theguide.date} </Text>

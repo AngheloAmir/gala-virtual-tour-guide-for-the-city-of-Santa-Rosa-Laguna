@@ -1,5 +1,8 @@
 /*
     List of establishments in Santa Rosa
+
+    This is file is not optional - which means that it should appear when remaking the 
+    app for a different cities.
 */
 import { Establishment } from '../!interfaces/Establishment';
 

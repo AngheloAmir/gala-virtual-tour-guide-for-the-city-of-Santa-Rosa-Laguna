@@ -7,5 +7,6 @@
     "commute": "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10",
     "address": "F. Gomez St, Santa Rosa, Calabarzon",
     "lat": 14.313601,
-    "lng": 121.112278
+    "lng": 121.112278,
+    "streetviewlink" : "google"
 }

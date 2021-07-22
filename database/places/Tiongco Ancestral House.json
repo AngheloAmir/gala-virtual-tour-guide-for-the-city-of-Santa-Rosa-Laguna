@@ -8,5 +8,6 @@
     ],
     "commute": "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10",
     "lat": 14.312974,
-    "lng": 121.11124
+    "lng": 121.11124,
+    "streetviewlink" : "google"
 }

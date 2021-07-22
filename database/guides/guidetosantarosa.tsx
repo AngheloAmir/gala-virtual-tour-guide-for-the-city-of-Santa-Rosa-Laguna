@@ -3,7 +3,7 @@ import { GuideContent } from '../!interfaces/GuideContent';
 const guide :GuideContent = {
     title:  'Public transport to the Santa Rosa City',
     date:   'June 2021',
-    headerImage: require('./assets/balibago terminal.jpg'),
+    headerImage: require('../../assets/santarosa/guides/balibago terminal.jpg'),
     contents:       [
         {
             paragraph:

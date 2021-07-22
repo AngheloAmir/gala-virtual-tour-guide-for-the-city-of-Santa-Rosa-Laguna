@@ -3,7 +3,7 @@ import { GuideContent } from '../!interfaces/GuideContent';
 const guide :GuideContent = {
     title:  'Visiting Guide in Santa Rosa City',
     date:   'June 2021',
-    headerImage:    require('./assets/travelling to.jpg'),
+    headerImage:    require('../../assets/santarosa/guides/travelling to.jpg'),
     contents:       [
         {
             paragraph: 'As of this writing, Santa Rosa City is under General Community Quaritine with enhanced restriction. You may visit www.philippines.travel/safetrip to learn more about the current restriction.',
@@ -42,7 +42,8 @@ const guide :GuideContent = {
                 {
                     headingText: 'One Way Roads',
                     paragraph: 'There are some one-way roads in Santa Rosa to be watched out for. One of the possible confusing one-way roads in Santa Rosa is in Barangay Balibago Complex (Bus terminals). The image above shows the road map. The Assistant Tour may help you in your journey.',
-                    image: require('./assets/balibagoroadmap.jpg'),
+                    image: require('../../assets/santarosa/guides/balibagoroadmap.jpg'),
+                    links: { link: 'https://www.openstreetmap.org/copyright', text: '© OpenStreetMap' },
                 },
                 {
                     headingText: 'Recomendation',

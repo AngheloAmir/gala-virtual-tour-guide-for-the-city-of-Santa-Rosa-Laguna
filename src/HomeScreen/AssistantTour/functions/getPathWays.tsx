@@ -26,21 +26,40 @@ export async function GetPathWays(id :number, current :Position, destination :Po
 }
 
 async function FindPath(from :Position, to :Position) {
+    const position1 = from;
+    const position2 = to;
+
+    let osrm_response :any;
+    let result        :any;
+    let stringnode    :string;
+    let nodes         :any;
+    let overpass_res  :any;
+    let opresult      :any;
+   
+    //First, obtain the node (street nodes in OSM) that connects two places
     try {
-        const position1 = from;
-        const position2 = to;
+        osrm_response = await fetch(`http://router.project-osrm.org/route/v1/highway/${position1.lng},${position1.lat};${position2.lng},${position2.lat}?alternatives=false&annotations=nodes`);
+        result        = await osrm_response.json();
+        nodes         = result.routes[0].legs[0].annotation.nodes;
+        stringnode    = nodes.map((node :any) => { return "" + node });
+    }
+    catch(err) {
+        console.error('router.project-osrm.org. Result was: ' + JSON.stringify(result) );
+        throw new Error('Cant make an API request to router.project-osrm.org. ' + err);
+    }
 
-        //First, obtain the node (street nodes in OSM) that connects two places
-        const osrm_response = await fetch(`http://router.project-osrm.org/route/v1/highway/${position1.lng},${position1.lat};${position2.lng},${position2.lat}?alternatives=false&annotations=nodes`);
-        const result        = await osrm_response.json();
-        const nodes         = result.routes[0].legs[0].annotation.nodes;
-        const stringnode    = nodes.map((node :any) => { return "" + node });
+    //Then, convert each nodes into actual latitude and logitude position thru overpass-api
+    try {
+        overpass_res  = await fetch(`https://www.overpass-api.de/api/interpreter?data=[out:json];node(id:${stringnode});out;`);
+        opresult      = await overpass_res.json();
+    }
+    catch(err) {
+        console.error('www.overpass-api.de. Result was: ' + JSON.stringify(opresult) );
+        throw new Error('Cant make an API request to www.overpass-api.de. ' + err);
+    }
 
-        //Then, convert each nodes into actual latitude and logitude position thru overpass-api
-        const overpass_res  = await fetch(`https://www.overpass-api.de/api/interpreter?data=[out:json];node(id:${stringnode});out;`);
-        const opresult      = await overpass_res.json();
-
-        //However, the result position is returned in alphabetical order not in the path way order. The code fix it
+    //However, the result position is returned in alphabetical order not in the path way order. The code fix it
+    try {
         const pathway :Array<Position> = nodes.map( (anode :number) => {
             let temp :any;
             for(let i = 0; i < opresult.elements.length; i++) {
@@ -56,9 +75,10 @@ async function FindPath(from :Position, to :Position) {
         //this ensure that line do not overlap with markers
         pathway[0] = position1;
         pathway[pathway.length - 1] = position2;
-
         return pathway;
-    } catch(err) {
-        throw new Error(err); 
+    }
+    catch(err) {
+        console.error('Error after processing API request');
+        throw new Error('Error occured after processing API results. ' + err);
     }
 }

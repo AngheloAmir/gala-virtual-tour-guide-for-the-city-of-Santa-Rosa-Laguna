@@ -13,7 +13,8 @@
 import React from 'react';
 import { Image, View, Platform } from 'react-native';
 import { Magnetometer } from 'expo-sensors';
-const compassIcon = require('./Magetometer/compass.png');
+
+const compassIcon = require('../../../../assets/icons/compass.png');
 
 export default function Compass() {
     if( Platform.OS == 'web' ) {

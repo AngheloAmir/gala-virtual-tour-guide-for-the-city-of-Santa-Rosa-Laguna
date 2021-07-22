@@ -1,16 +1,10 @@
-import { StateInterface }   from './State';
-import { ActionInterface }  from './Actions';
-import { actionType }       from './ActionType';
+/*
+    The root reducer. A pure function that change the current state
+*/
+import { StateInterface, ActionInterface, actionType }  from './Interfaces';
 
 export function RootReducer(state :StateInterface, action :ActionInterface) :StateInterface {
     switch( action.type ) {
-        case actionType.setscreen:
-            return {
-                ...state, screen: {
-                    ...state.screen, current: action.payload
-                }
-            }
-
         case actionType.updateinfo:
             return {
                 ...state, user: {
@@ -22,20 +16,6 @@ export function RootReducer(state :StateInterface, action :ActionInterface) :Sta
             return {
                 ...state, features: {
                     ...state.features, guideInfo: action.payload
-                }
-            }
-        
-        case actionType.setstreetviewlink:
-            return {
-                ...state, map: {
-                    ...state.map, streetviewlink: action.payload
-                }
-            }
-        
-        case actionType.setmarkerdescription:
-            return {
-                ...state, map: {
-                    ...state.map, markerdescription: action.payload
                 }
             }
 

@@ -8,5 +8,6 @@
     "commute": "Busses will drop you to Balibago Complex. If not, ride a jeep with a sign \"Complex\". The common fare rate is P10",
     "address": "Brgy. Balibago, Santa Rosa City, Laguna",
     "lat": 14.294484,
-    "lng": 121.105569
+    "lng": 121.105569,
+    "streetviewlink" : "google"
 }

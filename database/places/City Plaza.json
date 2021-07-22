@@ -7,5 +7,6 @@
     "commute": "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10",
     "address": " Rizal Blvd, 4026, Brgy. Kanluran, Santa Rosa",
     "lat": 14.314116,
-    "lng": 121.112082
+    "lng": 121.112082,
+    "streetviewlink" : "google"
 }

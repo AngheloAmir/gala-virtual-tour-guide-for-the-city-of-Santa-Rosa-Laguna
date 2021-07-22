@@ -7,6 +7,7 @@
     "commute": "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10",
     "address": "836 Rizal Blvd, Santa Rosa, 4026 Laguna",
     "lat": 14.313764,
-    "lng": 121.112556
+    "lng": 121.112556,
+    "streetviewlink" : "google"
 }
 

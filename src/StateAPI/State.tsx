@@ -4,8 +4,7 @@
 */
 
 import React from 'react';
-import { GuideContent } from '../../database/!interfaces/GuideContent';
-import { PlaceInformation } from '../../database/!interfaces/PlaceInformation';
+import { StateInterface } from './Interfaces';
 
 export const contextProvider :React.Context<any> = React.createContext(null);
 
@@ -14,28 +13,6 @@ export interface StateAPI {
     dispatch  :React.Dispatch<any>;
 }
 
-export interface StateInterface {
-    user :{
-        name        :string;
-        about       :string;
-        avatar      :number;
-        signedin    :boolean;
-        status      : 'Will visit' | 'visited' | 'Residence' | 'Guest';
-    };
-    screen :{
-        current: 'signin' | 'home';
-    };
-    features :{
-        guideInfo?           :GuideContent;
-    };
-    map :{
-        streetviewlink     :string;
-        markerdescription  :PlaceInformation;
-    };
-}
-
-/*=============================================================*/
-/*=============================================================*/
 export function createDefaultState() :StateInterface {
     return {
         user: {
@@ -45,20 +22,8 @@ export function createDefaultState() :StateInterface {
             signedin: false,
             status: 'Guest',
         },
-        screen: {
-            current: 'home',
-        },
         
         features: {
-        },
-
-        map: {
-            streetviewlink: 'https://www.google.com/',
-            markerdescription: {
-                name: '', description: '', address: '', type: 'spot', longitude: 1, latitude: 1,
-                getImage:   () => require('../../assets/app/favicon.png'),
-                getIcon:    () => require('../../assets/app/favicon.png'),
-            }
         },
     };
 }

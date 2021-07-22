@@ -41,7 +41,20 @@ export default function SelectTourAndNavigate( props :propsReceive) {
             props.setnotifmsg('Please select your tour first');
             return;
         };
-        const destinationsAndPointOfInterestMarkers = getMapDestinationMarkers(GalaTours[localState.currenttour.index], 1);
+
+        const destinationsAndPointOfInterestMarkers =
+            getMapDestinationMarkers(GalaTours[localState.currenttour.index], 1);
+
+        if(!localState.isGranted) {
+            localDispatch( setDialogMessage(
+                'Cant create path',
+                'Cant create navigational path because location permission is not granted or you are too far from the city.')
+            );
+            localDispatch( setMapMarkers(destinationsAndPointOfInterestMarkers) );
+            localDispatch( setPoiIndex(-1));
+            return;
+        }
+
         const userPosition = localState.mapmarkers[0].position;
         localDispatch( setMapMarkers(destinationsAndPointOfInterestMarkers) );
         localDispatch( setMapLock(true) );
@@ -66,7 +79,10 @@ export default function SelectTourAndNavigate( props :propsReceive) {
               localDispatch( setMapPolyLines(polylines) );
             } catch(err) {
                 localDispatch( setMapLock(false) );
-                localDispatch( setDialogMessage('Failed...', 'Failed to create navigational path. Please check your internet connection or try again (the server might be busy).\n' + err) );           
+                localDispatch( setDialogMessage(
+                    'Failed to create path',
+                    'Failed to create navigational path. Please check your internet connection or try again (the server might be busy).\n\nError details: ' + err)
+                );           
             }
             localDispatch( setMapPathIsLoading(false) );
             setTimeout(() => {

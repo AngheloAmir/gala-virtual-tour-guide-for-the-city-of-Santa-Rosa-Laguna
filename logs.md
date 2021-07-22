@@ -61,8 +61,18 @@ a cleaner code and better structure.
 -Changes UI in the tapping the marker
 -Adding tour informatiomations
 
-## July 21, Version 0.3.7
+## July 22, Version 0.3.7 Improve Tour text
 -Improve the text of tours
 -Added mp3 speech to Col. Basillo B. Gonzalez statue
 -Adjust header text bottom margin in the Assitant Tour Tab in "Futher Reading" window
 
+## July 23, Version 0.3.8 Documentation and Improvements
+-Added comments for documentation purposes in most of components of AssistantTour
+-Added streetviewlink in the json file of places
+-Added text in the attribution window (Assitant Tour)
+-Added more speech for Glimpse of History
+-Move assets that exist in database folder into assets folder
+-StateAPI changes which remove non used code.
+-Code improvement in Assistant Tours
+-Images in Guides are now displayed properly and also optimize them
+-Added the in image attribution for guides

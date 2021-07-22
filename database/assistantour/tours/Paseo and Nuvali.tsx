@@ -1,7 +1,5 @@
 import { GalaSelfGuidedTour } from '../../!interfaces/GalaSelfGuidedTour';
 
-const TEMP_VOICE = require('../../../assets/speech/sample.mp3');
-
 const PaseoAndNuvali :GalaSelfGuidedTour = {
     name: 'Paseo and Nuvali',
     description: 'The green and refreshing site',
@@ -28,30 +26,25 @@ const PaseoAndNuvali :GalaSelfGuidedTour = {
             lat: 14.240475, lng: 121.058054,
             name: 'Nuvali Fish Feeding',
             description: 'Feed a multitude of Koi Fish that looks like yummy goldfish. These fishes can be feed only by Solenad designated feeding pack. Children and adults are having fun feeding them. Remember, avoid getting too close to the waters.',
-            voiceasset: () => { return TEMP_VOICE }
         },
         { lat: 14.240358, lng: 121.058706,
             name: 'Nuvali Park',
             description: 'Take a picnic or take a nap in the grassy park of Nuvali.',
-            voiceasset: () => { return TEMP_VOICE }
         },
         {
             lat: 14.237234, lng: 121.059677,
             name: 'Lake View',
             description: 'Take a look at Nuvali Lake and it\'s a multi-functional lake.',
-            voiceasset: () => { return TEMP_VOICE }
         },
         {
             lat: 14.235051, lng: 121.058668,
             name: 'Evoliving Center',
             description: 'The lifestyle, business focus center, and other eco-green environment venues. It has about 51 thousand trees and most of them are native species in the country.',
-            voiceasset: () => { return TEMP_VOICE }
         },
         {
             lat: 14.2369391,lng: 121.057341,
             name: 'Ayala Malls Solenad',
             description: 'The shopping mall in Nuvali',
-            voiceasset: () => { return TEMP_VOICE }
         },
     ]
 }

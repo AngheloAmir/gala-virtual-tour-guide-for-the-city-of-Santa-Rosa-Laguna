@@ -71,7 +71,7 @@ import TopBar           from '../Topbar'
 import Overview         from './HomeTab';
 import AssistantTour    from './AssistantTourTab';
 import Guides           from './GuidesTab';
-import More             from './ForumTab';
+import ForumTab         from './ForumTab';
 
 function HomeContainer( props :any) {
   return (
@@ -103,8 +103,8 @@ function GuidesContainer( props :any) {
 function ForumContainer( props :any) {
   return (
     <View style={{flex: 1}}>
-      <TopBar navigation={props.navigation} title='More'/>
-      <More />
+      <TopBar navigation={props.navigation} title='Forum'/>
+      <ForumTab />
     </View>
   );
 }

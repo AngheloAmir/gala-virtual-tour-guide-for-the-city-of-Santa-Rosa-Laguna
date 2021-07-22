@@ -11,7 +11,6 @@
 
 import { MapShape } from "expo-leaflet";
 import {
-    setFindPlacesOpen,
     setMapMarkers,
     setMapLock,
     setZoomlevel,
@@ -25,8 +24,6 @@ import { LocalStateAPI } from   '../../localstateAPI/interface';
 import { establishments } from  '../../../../../database/assistantour/establishments';
 
 export default async function findNearbyFunction({localDispatch, localState} :LocalStateAPI, index :number) {
-    localDispatch(setFindPlacesOpen(false));
-
  //Find the nearest establishment
     const userLocation :{lat: number, lng: number} = localState.mapmarkers[0].position;
     let   closestEst   :{lat: number, lng: number} = {lat: 0, lng: 0};

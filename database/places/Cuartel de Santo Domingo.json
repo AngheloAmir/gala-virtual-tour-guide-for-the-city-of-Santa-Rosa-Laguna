@@ -8,5 +8,6 @@
     "commute": "Getting into this area is takes some rides. First, go to Balibago Complex (bus terminal) and find a tricycle terminal near Target Mall or at Victory Mall and ask the driver to drop you at Santa Rosa Nuvalli. Then, take a walk or ride another tricycle to reach the site.",
     "address": " Brgy. Sto Domingo, Santa Rosa, Laguna",
     "lat": 14.230868,
-    "lng": 121.049732
+    "lng": 121.049732,
+    "streetviewlink" : "google"
 }

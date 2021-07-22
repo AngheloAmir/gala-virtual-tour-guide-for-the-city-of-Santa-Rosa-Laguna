@@ -15,8 +15,12 @@ export interface GuideParagraphContent {
     headingText?    :string;
     image?          :ImageSourcePropType;
     paragraph?      :string;
+    type?           : 'accordionList' | 'attribution';
     link?           :string;
-    linkText?       :string; //the text of the link
-    type?           : 'accordionList';
+    linkText?       :string;
+    links?          :{ //which appear only in an image
+        link :string;
+        text :string; 
+    };
     data?           :GuideParagraphContent | any; //the content of data is based on the type
 }

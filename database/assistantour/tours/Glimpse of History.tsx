@@ -14,8 +14,12 @@ const FormerGomezResidence              = require('../../places/Former Gomez Res
 const TiongcoAncestralHouse             = require('../../places/Tiongco Ancestral House.json');
 const MuseoNgSantaRosa                  = require('../../places/Museo ng Santa Rosa.json');
 
-const TEMP_VOICE                        = require('../../../assets/speech/sample.mp3');
-const GonzalesStatueSpeech              = require('../../../assets/speech/Gonzalez Statue.mp3');
+const TEMP_VOICE                        = require('../../../assets/santarosa/speech/sample.mp3');
+const GonzalesStatueSpeech              = require('../../../assets/santarosa/speech/Gonzalez Statue.mp3');
+const ArchSpeech                        = require('../../../assets/santarosa/speech/Arch.mp3');
+const DelimaParishSpeech                = require('../../../assets/santarosa/speech/Delima Parish Church.mp3');
+const MuseoNgSantaRosaSpeech            = require('../../../assets/santarosa/speech/Museo ng Santa Rosa.mp3');
+const PlazaSpeech                       = require('../../../assets/santarosa/speech/Plaza.mp3');
 
 export const GlimpseOfHistory :GalaSelfGuidedTour = {
     name:            'Glimpse of History',
@@ -40,17 +44,17 @@ export const GlimpseOfHistory :GalaSelfGuidedTour = {
         },
     ],
     pointOfInterests: [
-        { ...CityPlaza,                         voiceasset: () => { return TEMP_VOICE } },
-        { ...SantaRosaDeLimaParishChurch,       voiceasset: () => { return TEMP_VOICE } },
+        { ...CityPlaza,                         voiceasset: () => { return PlazaSpeech } },
+        { ...SantaRosaDeLimaParishChurch,       voiceasset: () => { return DelimaParishSpeech } },
         { ...GonzalesStatue,                    voiceasset: () => { return GonzalesStatueSpeech } },
-        { ...SantaRosaArch,                     voiceasset: () => { return TEMP_VOICE } },
+        { ...SantaRosaArch,                     voiceasset: () => { return ArchSpeech } },
         { ...CasaGonzalez,                      voiceasset: () => { return TEMP_VOICE } },
         { ...CasaZavalla,                       voiceasset: () => { return TEMP_VOICE } },
         { ...ZavallaHouse,                      voiceasset: () => { return TEMP_VOICE } },
         { ...ArambuloHouse,                     voiceasset: () => { return TEMP_VOICE } },
         { ...FormerGomezResidence,              voiceasset: () => { return TEMP_VOICE } },
         { ...TiongcoAncestralHouse,             voiceasset: () => { return TEMP_VOICE } },
-        { ...MuseoNgSantaRosa,                  voiceasset: () => { return TEMP_VOICE } },
+        { ...MuseoNgSantaRosa,                  voiceasset: () => { return MuseoNgSantaRosaSpeech } },
         { ...CuarteldeSantoDomingo,             voiceasset: () => { return TEMP_VOICE } },
         {
             name: 'Lacerna Ancestral House',
