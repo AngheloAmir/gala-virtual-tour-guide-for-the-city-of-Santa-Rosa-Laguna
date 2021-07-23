@@ -2,7 +2,8 @@ import { GalaSelfGuidedTour } from '../../!interfaces/GalaSelfGuidedTour';
 
 const ChairofStPeterParishChurch        = require('../../places/Chair of St. Peter Parish Church.json');
 const SantaRosaDeLimaParishChurch       = require('../../places/Santa Rosa De Lima Parish Church.json');
-const TEMP_VOICE = require('../../../assets/santarosa/speech/sample.mp3');
+const ChairOfStPeterSpeech              = require('../../../assets/santarosa/speech/Chair of St. Peter Parish Church.mp3');
+const DelimaParishSpeech                = require('../../../assets/santarosa/speech/Delima Parish Church.mp3');
 
 const BisitaIglesia :GalaSelfGuidedTour = {
     name:               'Bisita Iglesia',
@@ -33,7 +34,7 @@ const BisitaIglesia :GalaSelfGuidedTour = {
             description:    SantaRosaDeLimaParishChurch.description,
             lat:            SantaRosaDeLimaParishChurch.lat,
             lng:            SantaRosaDeLimaParishChurch.lng,
-            voiceasset: () => { return TEMP_VOICE }
+            voiceasset: () => { return DelimaParishSpeech }
         },
         {
             name:           'Chair of St. Peter Church Parish Church',
@@ -41,7 +42,7 @@ const BisitaIglesia :GalaSelfGuidedTour = {
             description:    ChairofStPeterParishChurch.description,
             lat:            ChairofStPeterParishChurch.lat,
             lng:            ChairofStPeterParishChurch.lng,
-            voiceasset: () => { return TEMP_VOICE }
+            voiceasset: () => { return ChairOfStPeterSpeech }
         },
     ]
 }

@@ -12,6 +12,9 @@
 import React from 'react';
 import { Dimensions, Platform } from 'react-native';
 
+const { height, width } = Dimensions.get('screen');
+export const WindowDimension = { height, width };
+
 export interface Responsive {
     height              :number;
     width               :number;

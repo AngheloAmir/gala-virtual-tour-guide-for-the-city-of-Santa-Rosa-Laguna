@@ -20,6 +20,9 @@ const ArchSpeech                        = require('../../../assets/santarosa/spe
 const DelimaParishSpeech                = require('../../../assets/santarosa/speech/Delima Parish Church.mp3');
 const MuseoNgSantaRosaSpeech            = require('../../../assets/santarosa/speech/Museo ng Santa Rosa.mp3');
 const PlazaSpeech                       = require('../../../assets/santarosa/speech/Plaza.mp3');
+const CuarteldeSantoDomingoSpeech       = require('../../../assets/santarosa/speech/Cuartel de Santo Domingo.mp3');
+const TiongcoAncestralHouseSpeech       = require('../../../assets/santarosa/speech/Tiongco.mp3');
+const CasaGonzalezSpeech                = require('../../../assets/santarosa/speech/Case Gonzalez.mp3');
 
 export const GlimpseOfHistory :GalaSelfGuidedTour = {
     name:            'Glimpse of History',
@@ -48,14 +51,14 @@ export const GlimpseOfHistory :GalaSelfGuidedTour = {
         { ...SantaRosaDeLimaParishChurch,       voiceasset: () => { return DelimaParishSpeech } },
         { ...GonzalesStatue,                    voiceasset: () => { return GonzalesStatueSpeech } },
         { ...SantaRosaArch,                     voiceasset: () => { return ArchSpeech } },
-        { ...CasaGonzalez,                      voiceasset: () => { return TEMP_VOICE } },
+        { ...CasaGonzalez,                      voiceasset: () => { return CasaGonzalezSpeech } },
         { ...CasaZavalla,                       voiceasset: () => { return TEMP_VOICE } },
         { ...ZavallaHouse,                      voiceasset: () => { return TEMP_VOICE } },
         { ...ArambuloHouse,                     voiceasset: () => { return TEMP_VOICE } },
         { ...FormerGomezResidence,              voiceasset: () => { return TEMP_VOICE } },
-        { ...TiongcoAncestralHouse,             voiceasset: () => { return TEMP_VOICE } },
+        { ...TiongcoAncestralHouse,             voiceasset: () => { return TiongcoAncestralHouseSpeech } },
         { ...MuseoNgSantaRosa,                  voiceasset: () => { return MuseoNgSantaRosaSpeech } },
-        { ...CuarteldeSantoDomingo,             voiceasset: () => { return TEMP_VOICE } },
+        { ...CuarteldeSantoDomingo,             voiceasset: () => { return CuarteldeSantoDomingoSpeech } },
         {
             name: 'Lacerna Ancestral House',
             description: 'Now the Union bank',

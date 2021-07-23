@@ -91,7 +91,7 @@ function ParagraphImage(props :propsReceive) {
             
         },
         link: {
-            color: 'blue', fontSize: 12,
+            color: 'blue', fontSize: 14,
             textDecorationLine: 'underline',
         },
     });

@@ -43,8 +43,8 @@ function Guides( {navigation} :any) {
 
     const styles = StyleSheet.create({
         container: {
-            marginLeft: '2.5%',
-            width: '95%',
+            marginLeft: '5%',
+            width: '90%',
             marginTop: 8,
         },
         guideContainer: {
@@ -52,7 +52,7 @@ function Guides( {navigation} :any) {
             marginBottom: 12,
             borderWidth: 1,
             borderRadius: 12,
-            borderColor: '#ccc',
+            borderColor: 'rgba(115, 170, 220, 1)',
             padding: 4,
         },
         icon: {
@@ -66,14 +66,13 @@ function Guides( {navigation} :any) {
             flex: 1,
         },
         guideTitle: {
-            color: 'blue',
-            fontSize: 18,
-            fontWeight: '600',
+            color: 'darkblue',
+            fontSize: 20,
             paddingLeft: 0,
         },
         guideDescription: {
             alignSelf: 'stretch',
-            fontSize: 16,
+            fontSize: 18,
             paddingLeft: 12,
         }
 
