@@ -3,29 +3,26 @@
 
     EMOJI: 👇 🧍 👣 🚶 💡 🏁 🏃 🚩 🏨
 */
-
-import { Platform } from 'react-native';
 import { MapLayer } from "expo-leaflet";
-
-const ACESSTOKEN = 'pk.eyJ1IjoiYW5naGVsb2FtaXIiLCJhIjoiY2txZG0zZm5oMDI5NjJ1bXdqMXhocG95OSJ9.g6HfwWZcXrYKzntSrWiVzw';
+const map = require('../../../../database/map.json');
 
 export const NAVCOLORS :Array<any> = [
   'blue', 'darkgreen', 'darkorange', 'darkyellow'
 ];
 
 export const mapOptions = {
-    attributionControl: false,
-    zoomControl: Platform.OS === 'web',
+    attributionControl: map.mapOptions.attributionControl,
+    zoomControl:        map.mapOptions.zoomControl
 }
 
 export const mapLayers: Array<MapLayer> = [
     {
-      attribution: ' ',
-      baseLayerIsChecked: true,
-      baseLayerName: 'Mapbox',
-      layerType: 'TileLayer',
-      url: `https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${ACESSTOKEN}`
-    },
+      attribution:         map.maplayer.attribution,
+      baseLayerIsChecked:  map.maplayer.baseLayerIsChecked,
+      baseLayerName:       map.maplayer.baseLayerName,
+      layerType:           map.maplayer.layerType,
+      url:                 map.maplayer.url,
+    }
     /*
     {
       attribution: '&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',

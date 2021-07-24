@@ -45,14 +45,19 @@ export const GalaTours :Array<GalaSelfGuidedTour> = [
 */
 
 import { GalaSelfGuidedTour } from '../!interfaces/GalaSelfGuidedTour';
+const map = require('../map.json');
 
 export const GPSRANGE = {
-    x:      121.041694,  endy: 14.21141, //041406
-    endx:   121.135533,  y: 14.339070,   //339077
+    x:      map.mapbounds.x,
+    y:      map.mapbounds.y,
+    endx:   map.mapbounds.endx,
+    endy:   map.mapbounds.endy,
 };
 
-//The initial (user position) before the user GPS location is found
-export const IntroPosition = {lat: 14.296238, lng: 121.105799};
+export const IntroPosition = {
+    lat: map.introposition.lat,
+    lng: map.introposition.lng
+};
 
 import BisitaIglesia    from './tours/Bisita Iglesia';
 import GlimpseOfHistory from './tours/Glimpse of History';

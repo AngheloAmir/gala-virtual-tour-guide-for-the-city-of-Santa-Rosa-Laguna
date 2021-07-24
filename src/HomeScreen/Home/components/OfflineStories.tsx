@@ -12,7 +12,7 @@
 import * as React from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import { HomeTabData } from '../../../../database/home';
-import { Stories } from '../../../../database/!interfaces/HomeTab';
+import { Stories } from '../../../../database/!interfaces/HomeInterface';
 
 export default function OfflineStories( {navigation} :any ) {
 
@@ -44,7 +44,7 @@ export default function OfflineStories( {navigation} :any ) {
             </View>
 
             <TouchableOpacity style={styles.readMoreContainer} onPress={() => navigation.navigate('MoreArticles')}>
-                <Text style={styles.readMoreTextArticle}> Look for more articles </Text>
+                <Text style={styles.readMoreTextArticle}> Look for more articles online </Text>
             </TouchableOpacity>
         </View>
     )

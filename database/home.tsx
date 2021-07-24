@@ -4,7 +4,7 @@
     This is file is not optional - which means that it should appear when remaking the 
     app for a different cities.
 */
-import { HomeTabInterface } from './!interfaces/HomeTab';
+import { HomeTabInterface } from './!interfaces/HomeInterface';
 
 export const HomeTabData :HomeTabInterface = {
     externalLinkText: 'Visits the official FB and website of Santa Rosa, E.K and more!',
@@ -52,5 +52,14 @@ export const HomeTabData :HomeTabInterface = {
         date: 'July 2021',
         text: 'Read the latest news about the Enchanted Kingdom (EK) - the most visited tourist spot in Laguna.'
       },
-    ]
+    ],
+
+    websites        :{
+      morearticles: 'https://galavtg.github.io/articles',
+      covidcase:    'https://galavtg.github.io/covidcase',
+      officialsite: 'https://galavtg.github.io/',
+      githubsite:   'https://github.com/galavtg',
+    },
+
+
 }

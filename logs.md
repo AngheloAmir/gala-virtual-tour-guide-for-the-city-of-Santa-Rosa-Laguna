@@ -1,3 +1,8 @@
+## July 25, Version 0.4.1 Home Tab City Map
+-Create a new google account and github account (galavtg@gmail.com)
+-Links added in the Home Tab
+-Added City Map
+
 ## July 24, Version 0.4.0 Home Tab Initial Design
 -Constructed the Home Tab design
 -Added "export const WindowDimension = { height, width };" code in useResponsive.tsx

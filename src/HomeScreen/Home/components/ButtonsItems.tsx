@@ -22,51 +22,51 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { WindowDimension } from '../../../Utility/useResponsive';
 import { HomeTabData }      from '../../../../database/home';
 
+const iconColor = 'rgba(40, 100, 160, 1)';
+const iconSize  = 36;
+
 export default function ButtonsItems( {navigation} :any ) {
-    const iconColor = 'rgba(40, 100, 160, 1)';
-    const iconSize  = 36;
-    
     return (
         <View style={styles.container}>
 
-            <TouchableOpacity style={styles.menuItemContainer} onPress={() => navigation.navigate('ExternalLinks')}>
-            <View style={styles.icon}>
-                <FontAwesome5 name='external-link-alt'size={iconSize} color={iconColor} />
-            </View>
-            <View style={styles.textContainer}>
-                <Text style={styles.headingtext}>External Links</Text>
-                <Text style={styles.text}>   {HomeTabData.externalLinkText}</Text>
-            </View>
-            </TouchableOpacity>
-    
             <TouchableOpacity style={styles.menuItemContainer} onPress={() => navigation.navigate('ViewCityMap')}>
-            <View style={styles.icon}>
-                <FoundationIcon name='map'size={iconSize} color={iconColor} />
-            </View>
-            <View style={styles.textContainer}>
-                <Text style={styles.headingtext}>View the city map</Text>
-                <Text style={styles.text}>    {HomeTabData.cityMapText}</Text>
-            </View>
+                <View style={styles.icon}>
+                    <FoundationIcon name='map'size={iconSize} color={iconColor} />
+                </View>
+                <View style={styles.textContainer}>
+                    <Text style={styles.headingtext}>Online city map with street view</Text>
+                    <Text style={styles.text}>    {HomeTabData.cityMapText}</Text>
+                </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.menuItemContainer} onPress={() => navigation.navigate('LearnMore')}>
+                <View style={styles.icon}>
+                    <MaterialIcons name='history-edu'size={iconSize} color={iconColor} />
+                </View>
+                <View style={styles.textContainer}>
+                    <Text style={styles.headingtext}>Learn more about the city</Text>
+                    <Text style={styles.text}>   {HomeTabData.aboutcity}</Text>
+                </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.menuItemContainer} onPress={() => navigation.navigate('ExternalLinks')}>
+                <View style={styles.icon}>
+                    <FontAwesome5 name='external-link-alt'size={iconSize} color={iconColor} />
+                </View>
+                <View style={styles.textContainer}>
+                    <Text style={styles.headingtext}>External links</Text>
+                    <Text style={styles.text}>   {HomeTabData.externalLinkText}</Text>
+                </View>
             </TouchableOpacity>
     
-            <TouchableOpacity style={styles.menuItemContainer} onPress={() => navigation.navigate('LearnMore')}>
-            <View style={styles.icon}>
-                <MaterialIcons name='history-edu'size={iconSize} color={iconColor} />
-            </View>
-            <View style={styles.textContainer}>
-                <Text style={styles.headingtext}>Learn more about the city</Text>
-                <Text style={styles.text}>   {HomeTabData.aboutcity}</Text>
-            </View>
-            </TouchableOpacity>
-            
             <TouchableOpacity style={styles.menuItemContainer} onPress={() => navigation.navigate('CovidNews')}>
-            <View style={styles.icon}>
-                <FontAwesome5 name='exclamation-triangle'size={iconSize} color={iconColor} />
-            </View>
-            <View style={styles.textContainer}>
-                <Text style={styles.headingtext}>Latest news about Covid-19</Text>
-                <Text style={styles.text}>   {HomeTabData.cityCovidNews}</Text>
-            </View>
+                <View style={styles.icon}>
+                    <FontAwesome5 name='exclamation-triangle'size={iconSize} color={iconColor} />
+                </View>
+                <View style={styles.textContainer}>
+                    <Text style={styles.headingtext}>Latest news about Covid-19</Text>
+                    <Text style={styles.text}>   {HomeTabData.cityCovidNews}</Text>
+                </View>
             </TouchableOpacity>
 
         </View>

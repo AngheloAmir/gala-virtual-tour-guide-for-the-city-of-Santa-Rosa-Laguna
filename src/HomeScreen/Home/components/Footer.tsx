@@ -10,29 +10,34 @@
         When the user is in Home Screen and in the Home Tab
 */
 import * as React from 'react';
-import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, View, StyleSheet, Linking } from 'react-native';
 
 //@ts-ignore
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 //@ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { HomeTabData } from '../../../../database/home';
 
 export default function Footer( {navigation} :any) {
     const iconColor = 'rgba(40, 100, 160, 1)';
     const iconSize  = 32;
     
+    function openLink(link :string) {
+        Linking.canOpenURL(link).then(supported => {
+            if (supported) {
+                Linking.openURL(link);
+        }});
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.headingText}>OUR OFFICIAL LINKS</Text>
             <View style={styles.siteContainer}>
-                <TouchableOpacity>
-                    <MaterialIcons name='facebook'size={iconSize} color={iconColor} />
-                </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => openLink(HomeTabData.websites.officialsite)}>
                     <MaterialCommunityIcons name='web'size={iconSize} color={iconColor} />
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => openLink(HomeTabData.websites.githubsite)}>
                     <MaterialCommunityIcons name='github'size={iconSize} color={iconColor} />
                 </TouchableOpacity>
             </View>

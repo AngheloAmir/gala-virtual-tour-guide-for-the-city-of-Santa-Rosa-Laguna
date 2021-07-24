@@ -9,6 +9,14 @@ export interface HomeTabInterface {
     cityCovidNews   :string;
     headingSlides   :Array<Slides>;
     offlineStories  :Array<Stories>;
+
+    websites        :{
+        morearticles :string;
+        covidcase    :string;
+        
+        officialsite :string;
+        githubsite   :string;
+    }
 }
 
 export interface Slides {
