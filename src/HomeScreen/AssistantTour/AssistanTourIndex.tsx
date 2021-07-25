@@ -100,21 +100,19 @@ export default function AssistanTourIndex() {
     React.useEffect(() => {
         ( async () => {
             await Init( localDispatch);
-            if(Platform.OS !== 'web') {
-                const interval = await Location.watchPositionAsync({
-                    accuracy:                   Location.Accuracy.BestForNavigation,
-                    timeInterval:               1000,
-                    distanceInterval:           1,
-                    mayShowUserSettingsDialog:  true 
-                }, userLocation => {
-                    localDispatch(setUserPosition({
-                        lat: userLocation.coords.latitude,
-                        lng: userLocation.coords.longitude
-                    }));
-                });
-                //@ts-ignore
-                setIntervalID(interval);
-            }
+            const interval = await Location.watchPositionAsync({
+                accuracy:                   Location.Accuracy.BestForNavigation,
+                timeInterval:               1000,
+                distanceInterval:           1,
+                mayShowUserSettingsDialog:  true 
+            }, userLocation => {
+                localDispatch(setUserPosition({
+                    lat: userLocation.coords.latitude,
+                    lng: userLocation.coords.longitude
+                }));
+            });
+            //@ts-ignore
+            setIntervalID(interval);
         })();
         return () => {
             //@ts-ignore

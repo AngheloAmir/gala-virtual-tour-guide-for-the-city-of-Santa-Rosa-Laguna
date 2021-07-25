@@ -23,8 +23,8 @@ export default function HomeHeading() {
             <AutoImageSlider
                 slides={HomeTabData.headingSlides}
                 height={(WindowDimension.width) * 0.7}
-                interval={6500}
-                opacitySpeed={1000}
+                interval={8500}
+                opacitySpeed={1500}
             />
         </View>
     );

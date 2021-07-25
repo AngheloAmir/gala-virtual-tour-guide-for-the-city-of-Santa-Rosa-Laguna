@@ -67,11 +67,13 @@ function DialogContent() {
         { /* @ts-ignore */
             GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset &&
             localState.playsound &&
-            <Button title='Play Tour Voice' onPress={playSound} />
+            <View style={{marginBottom: 8}}>
+                <Button title='Play Tour Voice' onPress={playSound} />
+            </View>
         }
         { /* @ts-ignore */
             GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].name &&
-            <Text style={{fontSize: 18, marginTop: 8, fontWeight: '600', lineHeight: 32}}>
+            <Text style={{fontSize: 20, fontWeight: '600', lineHeight: 24}}>
             { /* @ts-ignore */
                 GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].name
             }
@@ -79,7 +81,7 @@ function DialogContent() {
         }
         { /* @ts-ignore */
             GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description &&
-            <Text style={{fontSize: 18, marginTop: 8, lineHeight: 28}}>
+            <Text style={{fontSize: 19, marginTop: 8, lineHeight: 28}}>
             { /* @ts-ignore */
                 '   ' + GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description
             }

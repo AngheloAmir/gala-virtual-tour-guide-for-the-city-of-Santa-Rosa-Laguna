@@ -20,7 +20,8 @@ import { setPOIBoxOpen, setPoiIndex }        from '../localstateAPI/actions';
 import { GalaTours }            from '../../../../database/assistantour/tours';
 import { isClose }              from '../functions';
 
-const AQUITANCERANGE = 0.0002;
+const mapsetting = require('../.././../../database/map.json');
+const AQUITANCERANGE = mapsetting.pointOfInterestAcquisitionRange;
 
 export default function NotifyWhenClose() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
@@ -41,7 +42,7 @@ export default function NotifyWhenClose() {
             //@ts-ignore
             const POI = GalaTours[localState.currenttour.index].pointOfInterests[i];
             const poiPos = { lat: POI.lat, lng: POI.lng };
-            if( POI.voiceasset && isClose(userPosition, poiPos, AQUITANCERANGE ) ) {
+            if( isClose(userPosition, poiPos, AQUITANCERANGE ) ) {
                 hasClosestPOI = true; poinIndex = i;
             }
         }
@@ -66,7 +67,7 @@ export default function NotifyWhenClose() {
             }).start(() => setGoin(false));
         else 
             Animated.timing(animvalue, {
-                toValue: 0.6,
+                toValue: 0.8,
                 duration: 500,
                 useNativeDriver: true,
             }).start(() => setGoin(true));
@@ -80,7 +81,7 @@ export default function NotifyWhenClose() {
         return (
             <Animated.View style={[styles.container,  {transform: [{scale: animvalue}]} ]}>
             <TouchableOpacity onPress={handleBookOnPress}>
-                <MaterialCommunityIcons name='book-information-variant' size={52} color='rgba(95, 150, 200, 1)' />
+                <MaterialCommunityIcons name='book-information-variant' size={64} color='rgba(95, 150, 200, 1)' />
             </TouchableOpacity>
             </Animated.View>
         );

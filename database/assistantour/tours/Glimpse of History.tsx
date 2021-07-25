@@ -21,13 +21,12 @@ const DelimaParishSpeech                = require('../../../assets/santarosa/spe
 const MuseoNgSantaRosaSpeech            = require('../../../assets/santarosa/speech/Museo ng Santa Rosa.mp3');
 const PlazaSpeech                       = require('../../../assets/santarosa/speech/Plaza.mp3');
 const CuarteldeSantoDomingoSpeech       = require('../../../assets/santarosa/speech/Cuartel de Santo Domingo.mp3');
-const TiongcoAncestralHouseSpeech       = require('../../../assets/santarosa/speech/Tiongco.mp3');
 const CasaGonzalezSpeech                = require('../../../assets/santarosa/speech/Case Gonzalez.mp3');
 
 export const GlimpseOfHistory :GalaSelfGuidedTour = {
     name:            'Glimpse of History',
     description:     'Take look to its history',
-    longdescription: 'See a glimpse of the historical past and places of Santa Rosa city.  Most of them can are in Santa Rosa Bayan except for Cuartel de Santo Domingo (located near Nuvali and Tagaytay). Most of these sites are outdoor tourist attractions. Take precautions when on the road, like avoid looking on your phone while walking.',
+    longdescription: 'See a glimpse of the historical past and places of Santa Rosa city. Most of these sites are outdoor tourist attractions. However, Cuartel de Santo Domingo is used by the Philipine National Police and may not be visited. Take precautions when on the road, like avoid looking on your phone while walking.',
     destinations: [
         {
             from: 'user',
@@ -37,14 +36,6 @@ export const GlimpseOfHistory :GalaSelfGuidedTour = {
                 commute: 'Ride a jeep with a sign "Bayan" or "Tagapo". The common fare rate is P10',
             }
         },
-        {
-            from: 'user',
-            to: {
-                lat: 14.231030, lng: 121.049858, 
-                name: 'Cuartel de Santo Domingo',
-                commute: CuarteldeSantoDomingo.commute,
-            } 
-        },
     ],
     pointOfInterests: [
         { ...CityPlaza,                         voiceasset: () => { return PlazaSpeech } },
@@ -52,11 +43,11 @@ export const GlimpseOfHistory :GalaSelfGuidedTour = {
         { ...GonzalesStatue,                    voiceasset: () => { return GonzalesStatueSpeech } },
         { ...SantaRosaArch,                     voiceasset: () => { return ArchSpeech } },
         { ...CasaGonzalez,                      voiceasset: () => { return CasaGonzalezSpeech } },
-        { ...CasaZavalla,                       voiceasset: () => { return TEMP_VOICE } },
-        { ...ZavallaHouse,                      voiceasset: () => { return TEMP_VOICE } },
-        { ...ArambuloHouse,                     voiceasset: () => { return TEMP_VOICE } },
-        { ...FormerGomezResidence,              voiceasset: () => { return TEMP_VOICE } },
-        { ...TiongcoAncestralHouse,             voiceasset: () => { return TiongcoAncestralHouseSpeech } },
+        { ...CasaZavalla,                       },
+        { ...ZavallaHouse,                      },
+        { ...ArambuloHouse,                     },
+        { ...FormerGomezResidence,              },
+        { ...TiongcoAncestralHouse,             },
         { ...MuseoNgSantaRosa,                  voiceasset: () => { return MuseoNgSantaRosaSpeech } },
         { ...CuarteldeSantoDomingo,             voiceasset: () => { return CuarteldeSantoDomingoSpeech } },
         {

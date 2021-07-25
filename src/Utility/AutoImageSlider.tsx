@@ -17,51 +17,44 @@ interface propsReceive {
     height       :number;
     width?       :number;
     interval     :number;
-    opacitySpeed :number;
+    opacitySpeed :number; //define the transition (blur) speed
 }
 
 export default function AutoImageSlider(props :propsReceive) {
-    const [slides, setSlides] = React.useState({
-        current: 0, old: 0,
-    });
-    const [isTransition, setTranst]   = React.useState(false);
-    const animvalue                   = new Animated.Value(0);
     const [intervalId, setIntervalId] = React.useState({});
-    const [isChange, setChange]       = React.useState(0);
+    const animvalue = new Animated.Value(0);
     const imageWidth = props.width ? props.width : WindowDimension.width;
 
-    //the purpose of this useEffect is to update the slide. However, function inside the setInterval
-    //will receive only the old values. Somehow, the slide changing must be triggered, this function do it.
+    //A reducer is required since setInterval will always receive initial values
+    const [slidestate, setstate] = React.useReducer( (state :any, action :any) => {
+        if((state.current + 1) >= props.slides.length) {
+            startAnimate();
+            return { current: 0, old: state.current };
+        }
+        startAnimate();
+        return { current: state.current + 1, old: state.current };
+    }, {current: 0, old: 0} );
+
     React.useEffect(() => {
+        //@ts-ignore
+        clearInterval(intervalId);
         setIntervalId(
-            setInterval(() => { setChange( Math.random() % 2 ); }, props.interval + props.opacitySpeed)
+            setInterval(() => {
+                setstate({});
+            }, props.interval + props.opacitySpeed)
         );
         //@ts-ignore
-        return () => intervalId.clear();
+        return () => clearInterval(intervalId);
     }, []);
 
-    React.useEffect(() => {
-        if((slides.current + 1) >= props.slides.length)
-            setSlides({
-                current: 0, old: slides.current
-            });
-        else
-            setSlides({
-                current: slides.current + 1, old: slides.current
-            });
+    function startAnimate() {
         animvalue.setValue(0);
-        setTranst(true);
-    }, [isChange]);
-
-    React.useEffect(() => {
-        if(isTransition) {
-            Animated.timing(animvalue, {
-                toValue: 1,
-                duration: props.opacitySpeed,
-                useNativeDriver: true,
-            }).start(() => setTranst(false));
-        }
-    }, [isTransition]);
+        Animated.timing(animvalue, {
+            toValue: 1,
+            duration: props.opacitySpeed,
+            useNativeDriver: true,
+        }).start();
+    }
 
     const styles = StyleSheet.create({
         image: {
@@ -71,10 +64,10 @@ export default function AutoImageSlider(props :propsReceive) {
         placeContainer: {
             position: 'absolute',
             bottom: 5, left: 5,
-            flexDirection: 'row'
+            flexDirection: 'row',
         },
         placeText: {
-            fontSize: 18
+            fontSize: 18, color: 'black',
         },
         placeTextWhite: {
             fontSize: 18, color: 'white',
@@ -83,30 +76,29 @@ export default function AutoImageSlider(props :propsReceive) {
 
     return (
         <View>
-            <Image source={props.slides[slides.old].image}
+            <Image source={props.slides[slidestate.old].image}
                 resizeMode='cover' style={styles.image}
             />
             <View style={styles.placeContainer}>
-                <MaterialIcons name='place' size={24} color={ props.slides[slides.old].isWhite ? 'white' : 'black' }  />
-                <Text style={props.slides[slides.old].isWhite ?
+                <MaterialIcons name='place' size={24} color={ props.slides[slidestate.old].isWhite ? 'white' : 'black' }  />
+                <Text style={props.slides[slidestate.old].isWhite ?
                     styles.placeTextWhite : styles.placeText}>
-                        {props.slides[slides.old].place}
+                        {props.slides[slidestate.old].place}
                 </Text>
             </View>
 
             <Animated.View style={{position: 'absolute', top: 0, opacity: animvalue}}>
-                <Image source={props.slides[slides.current].image}
+                <Image source={props.slides[slidestate.current].image}
                     style={styles.image} resizeMode='cover'
                 />
                 <View style={styles.placeContainer}>
-                    <MaterialIcons name='place' size={24} color={ props.slides[slides.current].isWhite ? 'white' : 'black' } />
-                    <Text style={props.slides[slides.current].isWhite ?
+                    <MaterialIcons name='place' size={24} color={ props.slides[slidestate.current].isWhite ? 'white' : 'black' } />
+                    <Text style={props.slides[slidestate.current].isWhite ?
                          styles.placeTextWhite : styles.placeText}>
-                             {props.slides[slides.current].place}
+                             {props.slides[slidestate.current].place}
                     </Text>
                 </View>
             </Animated.View>
         </View>
     )
 }
-

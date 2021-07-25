@@ -1,3 +1,10 @@
+## July 26, Version 0.4.2 General Fixes
+-Fix AutoImageSlider (improperly displaying in mobile phones)
+-Remove spacing in the names of the assets
+-Adjusted init() function of Assistant Tour feature
+-Adjusted info visiting Cuartel de Santo Domingo
+-Remove Tiongco tour voice and adjusted the text
+
 ## July 25, Version 0.4.1 Home Tab City Map
 -Create a new google account and github account (galavtg@gmail.com)
 -Links added in the Home Tab

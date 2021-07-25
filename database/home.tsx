@@ -16,6 +16,7 @@ export const HomeTabData :HomeTabInterface = {
         {
             image: require('../assets/santarosa/places/balibago.jpg'),
             place: 'Brgy. Balibago Complex',
+            isWhite: false,
           },
           {
             image:  require('../assets/santarosa/places/arch.jpg'),
@@ -23,17 +24,19 @@ export const HomeTabData :HomeTabInterface = {
             isWhite: true,
           },
           {
-            image:  require('../assets/santarosa/places/Chair of St. Peter Parish.jpg'),
+            image:  require('../assets/santarosa/places/saint_peter_church.jpg'),
             place: 'Chair of St. Peter Parish church, Balibago',
             isWhite: true,
           },
           {
             image:  require('../assets/santarosa/places/plaza.jpg'),
             place: 'Sta. Rosa Plaza, Bayan',
+            isWhite: false,
           },
           {
-            image:  require('../assets/santarosa/places/Santa Rosa de Lima.jpg'),
+            image:  require('../assets/santarosa/places/delima_church.jpg'),
             place: 'Sta. Rosa de Lima Parish church',
+            isWhite: false,
           },
     ],
     offlineStories: [

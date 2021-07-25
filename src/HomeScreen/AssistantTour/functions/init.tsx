@@ -8,23 +8,30 @@ import { setDialogMessage, permissionLocationNotGranted, setMapWasLoaded,
 import { IntroPosition } from '../../../../database/assistantour/tours';
 import { GPSRANGE } from '../../../../database/assistantour/tours';
 
+interface UserPosition {
+    lat:        number;
+    lng:        number;
+    accurancy:  number;
+}
+
 export async function init( localDispatch :any) {
     try {
         await RequestPermission();
-        const userlocation = await getLocation();
+        const userlocation :UserPosition = await getLocation();
         localDispatch( setUserPosition(userlocation) );
         localDispatch( setMapCenter(userlocation) );
         setTimeout( () => {
             localDispatch( setZoomlevel(17) );
             localDispatch( setMapWasLoaded() );
             localDispatch( setMapLock(false) );
-            //@ts-ignore
-            if(userlocation.accurancy >= 100)
+            if(userlocation.accurancy >= 600)
+                localDispatch( setDialogMessage('Low GPS Acccurancy',
+                'Caution! Your device current GPS accuracy is TOO LOW! You are withing ' + userlocation.accurancy + ' meters.') );
+            else if(userlocation.accurancy >= 120)
                 localDispatch( setDialogMessage('GPS Acccurancy',
-                'Caution! Your GPS accrancy is too low! You are withing ' + userlocation.accurancy + 'meter. ' +
-                'To improve your GPS accurancy, enable location in your device and connect it to a pocket wifi. ' +
-                'The accurancy is affected by weather condition and obsructions such as trees. ' +
-                'Visit https://www.gps.gov/systems/gps/performance/accuracy/ to learn more.') );
+                'You are withing ' + userlocation.accurancy + ' meters. ' +
+                'To improve your GPS accuracy, make sure you are under unobstructed clear sky and/or connect it to pocket wifi. ' +
+                'The accuracy is affected by weather conditions and obstructions.') ); 
         }, 3000);
     }
     catch(err) {
@@ -48,14 +55,14 @@ async function RequestPermission() {
     throw new Error('PermissionException');
 }
 
-async function getLocation() {
-    const location = await Location.getCurrentPositionAsync({});
+async function getLocation() :Promise<UserPosition> {
+    const location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.BestForNavigation});
     if( location.coords.latitude  > GPSRANGE.y || location.coords.latitude < GPSRANGE.endy ||
         location.coords.longitude < GPSRANGE.x || location.coords.longitude > GPSRANGE.endx )
         throw new Error('OutOfRangeException');
     return {
         lat: location.coords.latitude,
         lng: location.coords.longitude,
-        accurancy: location.coords.accuracy,
+        accurancy: location.coords.accuracy ? location.coords.accuracy : 0,
     };
 }
