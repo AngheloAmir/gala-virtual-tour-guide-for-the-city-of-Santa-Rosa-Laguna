@@ -1,5 +1,6 @@
 {
     "name": "Casa Zavalla",
+    "image": "casazalla.jpg",
     "description": "Casa Zavalla is one of the heritage houses in Santa Rosa. It was original used to store unmilled rice (palay). In 1989, Arch. Mario Zavalla restored the house, and then it becomes the repository of Santa Rosa artifacts. The Casa also serves as the venue of Kapihan to discuss things like preserving the historical heritage.",
     "sources": [
         "http://wikimapia.org/15888371/Casa-Zavalla-Heritage-House"
@@ -8,5 +9,5 @@
     "address": "F. Gomez corner Anonuevo Streets, 708, Santa Rosa",
     "lat": 14.313503,
     "lng": 121.110361,
-    "streetviewlink" : "google"
+    "streetviewlink" : "https://www.instantstreetview.com/@14.296999,121.10642,213.27h,-2.27p,0z,dkDlNDPVCmJAfH-mjvfgog"
 }

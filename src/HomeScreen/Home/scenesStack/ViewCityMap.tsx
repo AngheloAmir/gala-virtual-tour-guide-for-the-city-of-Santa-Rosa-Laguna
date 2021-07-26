@@ -25,21 +25,24 @@ import Attribution              from './ViewCityMap/Attribution';
 import AttributionInfo          from './ViewCityMap/AttributionInfo';
 import PlaceInfo                from './ViewCityMap/PlaceInfo';
 
-const mapmakers :Array<MapMarker> = loadAllMapMarkers();
+const mapmakers     :Array<MapMarker> = loadAllMapMarkers();
+const emptymarker   :Array<MapMarker> = [{ id: '0', position: {lat: 0, lng: 0}, icon: '', size: [0, 0] }];
 const styles = {
     height: WindowDimension.height - 100 ,
     width:  WindowDimension.width,
 }
 
-export default function MapIndex() {
+export default function MapIndex({navigation} :any) {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
 
     function onMapClicked(event :LeafletWebViewEvent) {
-        //event.mapMarkerId 
         switch(event.tag) {
             case 'onMapMarkerClicked':
-                localDispatch(setMapMarkerId( parseInt(event.mapMarkerId) ));
-                localDispatch( setPlaceInfoShow(true) );
+                localDispatch( setPlaceInfoShow(false) );
+                setTimeout(() => {
+                    localDispatch(setMapMarkerId( parseInt(event.mapMarkerId) ));
+                    localDispatch( setPlaceInfoShow(true) );
+                }, 10);
                 break;
             case 'onMapClicked':
                 localDispatch( setPlaceInfoShow(false) );
@@ -55,7 +58,7 @@ export default function MapIndex() {
                     loadingIndicator={() => <ActivityIndicator/>}
                     mapCenterPosition={ {lat: 14.296238, lng: 121.105799} }
                     zoom={12}
-                    mapMarkers={mapmakers}
+                    mapMarkers={ localState.isMarkerShow ? mapmakers : emptymarker}
                     mapLayers={mapLayers}
                     mapOptions={mapOptions}
                     maxZoom={18}
@@ -64,8 +67,7 @@ export default function MapIndex() {
             </View>
             <Attribution />
             { localState.attributionDialogShow &&   <AttributionInfo /> }
-            { localState.placeInfoShow &&           <PlaceInfo /> }
+            { localState.placeInfoShow &&           <PlaceInfo navigation={navigation} /> }
         </View>
     );       
 }
-

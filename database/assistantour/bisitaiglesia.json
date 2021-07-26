@@ -1,0 +1,30 @@
+{
+    "name":               "Bisita Iglesia",
+    "description":        "Visit Catholic churches",
+    "longdescription":    "Here are the churches that you for Holy Week for religious reasons? Here are the churches that you may visit in Santa Rosa. However, due to the rising Covid-19 in Laguna, these churches are likely to be close. These were opened back then in 2020 December at 30% capacity.",
+    "destinations": [
+        {
+            "from": "user",
+            "to": {
+                "lat":      14.294119,
+                "lng":      121.105482,
+                "name":     "Balibago Complex",
+                "commute":  "Busses will drop you to Balibago Complex. If not, ride a jeep with a sign \"Complex\". The common fare rate is P10"
+            }
+        },
+        {
+            "from": "user",
+            "to":  {
+                "lat":      14.313694,
+                "lng":      121.111536,
+                "name":     "Santa Rosa Bayan",
+                "commute":  "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10"
+            }
+        }
+    ],
+    
+    "pointOfInterests": [
+        "stpeterchruch.json",
+        "delimachurch.json"
+    ]
+}

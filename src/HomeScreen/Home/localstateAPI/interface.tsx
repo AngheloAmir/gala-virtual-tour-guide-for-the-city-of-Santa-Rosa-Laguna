@@ -10,6 +10,8 @@ export interface HomeStateInterface {
     attributionDialogShow       :boolean;
     mapMarkerId                 :number; //an index equal to database/places/allplaces array
     placeInfoShow               :boolean;
+    isMarkerShow                :boolean;
+    streetviewlink              :string;
 }
 
 export interface ActionInterface {
@@ -22,5 +24,5 @@ export enum actionType {
     setIsDialogAttributionShow,
     setMapMarkerId,
     setPlaceInfoShow,
-
+    setStreetViewLink,
 }

@@ -1,0 +1,26 @@
+{
+    "name":             "Amir TEST Home",
+    "description":      "Amir actual Test",
+    "longdescription":  "an actual test",
+    "destinations": [
+        {
+            "from": "user",
+            "to": {
+                "lat":      14.304850,
+                "lng":      121.117827,
+                "name":     "Close to home",
+                "commute":  "Just walk",
+                "description": "no desc"
+            }
+        }
+    ],
+    "pointOfInterests": [
+        {
+            "lat": 14.3046386,
+            "lng": 121.118446,
+            "name": "Home Court",
+            "description": "Home Court",
+            "voiceasset": "sample.mp3"
+        }
+    ]
+}

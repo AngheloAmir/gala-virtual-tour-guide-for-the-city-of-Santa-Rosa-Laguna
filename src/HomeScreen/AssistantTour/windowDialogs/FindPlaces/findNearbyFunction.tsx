@@ -17,11 +17,13 @@ import {
     setMapCenter,
     setMapPathIsLoading,
     setMapPolyLines,
-    setDialogMessage }
-    from '../../localstateAPI/actions';
-import { getPathWays } from     '../../functions';
-import { LocalStateAPI } from   '../../localstateAPI/interface';
-import { establishments } from  '../../../../../database/assistantour/establishments';
+    setDialogMessage }      from '../../localstateAPI/actions';
+import { getPathWays }      from '../../functions';
+import { LocalStateAPI }    from '../../localstateAPI/interface';
+
+import { EstablishmentCategory }    from '../../../../../database/!interfaces/Establishment';
+const tourjson                      = require ('../../../../../database/assistantour.json');
+const establishments :Array<EstablishmentCategory> = tourjson.establishments;
 
 export default async function findNearbyFunction({localDispatch, localState} :LocalStateAPI, index :number) {
  //Find the nearest establishment

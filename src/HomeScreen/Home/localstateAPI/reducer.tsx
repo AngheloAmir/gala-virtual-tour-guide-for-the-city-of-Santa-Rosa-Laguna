@@ -19,6 +19,11 @@ export function rootreducer(state :HomeStateInterface, action :ActionInterface )
                 ...state, placeInfoShow: action.payload
             }
         
+        case actionType.setStreetViewLink:
+            return {
+                ...state, streetviewlink: action.payload
+            }
+        
         default:
             console.error('Action not defined in the reducer!');
             return state;

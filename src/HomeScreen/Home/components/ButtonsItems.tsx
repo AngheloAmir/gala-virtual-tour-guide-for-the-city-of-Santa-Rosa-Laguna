@@ -18,9 +18,8 @@ import FoundationIcon from 'react-native-vector-icons/Foundation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 //@ts-ignore
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
 import { WindowDimension } from '../../../Utility/useResponsive';
-import { HomeTabData }      from '../../../../database/home';
+import { buttonstext } from '../functions/homejson';
 
 const iconColor = 'rgba(40, 100, 160, 1)';
 const iconSize  = 36;
@@ -35,7 +34,7 @@ export default function ButtonsItems( {navigation} :any ) {
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.headingtext}>Online city map with street view</Text>
-                    <Text style={styles.text}>    {HomeTabData.cityMapText}</Text>
+                    <Text style={styles.text}>    {buttonstext.cityMapText}</Text>
                 </View>
             </TouchableOpacity>
 
@@ -45,7 +44,7 @@ export default function ButtonsItems( {navigation} :any ) {
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.headingtext}>Learn more about the city</Text>
-                    <Text style={styles.text}>   {HomeTabData.aboutcity}</Text>
+                    <Text style={styles.text}>   {buttonstext.aboutcity}</Text>
                 </View>
             </TouchableOpacity>
 
@@ -55,7 +54,7 @@ export default function ButtonsItems( {navigation} :any ) {
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.headingtext}>External links</Text>
-                    <Text style={styles.text}>   {HomeTabData.externalLinkText}</Text>
+                    <Text style={styles.text}>   {buttonstext.externalLinkText}</Text>
                 </View>
             </TouchableOpacity>
     
@@ -65,7 +64,7 @@ export default function ButtonsItems( {navigation} :any ) {
                 </View>
                 <View style={styles.textContainer}>
                     <Text style={styles.headingtext}>Latest news about Covid-19</Text>
-                    <Text style={styles.text}>   {HomeTabData.cityCovidNews}</Text>
+                    <Text style={styles.text}>   {buttonstext.cityCovidNews}</Text>
                 </View>
             </TouchableOpacity>
 

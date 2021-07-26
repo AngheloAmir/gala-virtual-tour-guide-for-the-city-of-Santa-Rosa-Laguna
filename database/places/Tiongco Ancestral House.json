@@ -1,5 +1,6 @@
 {
     "name": "Tiongco Ancestral House",
+    "image": "tionco.jpg",
     "description": "Tiongco Ancestral House is the home of a prominent clan in Santa Rosa Laguna. ",
     "address": "Zavalla St, Santa Rosa, Calabarzon",
     "sources": [
@@ -9,5 +10,5 @@
     "commute": "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10",
     "lat": 14.312974,
     "lng": 121.11124,
-    "streetviewlink" : "google"
+    "streetviewlink" : "https://www.instantstreetview.com/@14.296999,121.10642,213.27h,-2.27p,0z,dkDlNDPVCmJAfH-mjvfgog"
 }

@@ -1,0 +1,13 @@
+{
+    "name": "Enchanted Kingdom",
+    "image": "enchanted.jpg",
+    "description": "The Enchanted Kingdom opened in 1995 and is also the most visited tourist spot in Laguna. It is a fun-filled experience theme park that you should visit at least once. There tag line \"The magic stays with you\" as the rides were magical and fun. However, due to the Covid-19 restriction, the park may be closed. Visit https://www.enchantedkingdom.ph/ to see if the park is open or not.",
+    "sources": [
+        "???"
+    ],
+    "commute": "Take a ride to \"Complex\" or a bus, then find the tricle terminal (close to Target Mall) and ride a tricle. Ask the driver to Enchangted Kingdom. The fare rate may reach P100",
+    "address": "EK ???????",
+    "lat": 14.282313,
+    "lng": 121.096490,
+    "streetviewlink" : "google"
+}

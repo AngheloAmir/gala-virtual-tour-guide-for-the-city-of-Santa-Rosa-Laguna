@@ -10,5 +10,5 @@ export interface GuideItem {
     title       :string;
     description :string;
     icon        :ImageSourcePropType;
-    guidedata   :() => GuideContent;
+    guidedata   :string;
 }

@@ -1,0 +1,30 @@
+{
+    "name":            "Glimpse of History",
+    "description":     "Take look to its history",
+    "longdescription": "See a glimpse of the historical past and places of Santa Rosa city. Most of these sites are outdoor tourist attractions. However, Cuartel de Santo Domingo is used by the Philipine National Police and may not be visited. Take precautions when on the road, like avoid looking on your phone while walking.",
+    "destinations": [
+        {
+            "from": "user",
+            "to": {
+                "lat": 14.313727,
+                "lng": 121.112185,
+                "name": "Santa Rosa Bayan",
+                "commute": "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10"
+            }
+        }
+    ],
+    "pointOfInterests": [
+        "delimachurch.json",
+        "cuartel.json",
+        "gonzalezstatue.json",
+        "plaza.json",
+        "arch.json",
+        "casagonzalez.json",
+        "casazavalla.json",
+        "zavallahouse.json",
+        "arambulohouse.json",
+        "gomezhouse.json",
+        "tiongcohouse.json",
+        "museo.json"
+    ]
+}

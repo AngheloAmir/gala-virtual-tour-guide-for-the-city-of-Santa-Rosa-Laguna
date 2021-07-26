@@ -1,5 +1,6 @@
 {
     "name": "Chair of St. Peter Parish Church",
+    "image": "stpeterchruch.jpg",
     "description": "The Chair of St. Peter Parish Church was built in 1969 and is under the Roman Catholic Diocese of San Pablo and the Vicariate of Saint Polycarp. The church feast day is on February 22 with the Luklukan (means throne) festival of Barangay Balibago. The church has experienced three times of relocation. The first church was near the Balibago Elementary school. Then, it was relocated across the street and was relocated again in the year 2000 to its present location. A chapel of Our Lady of the Rosary of Manaoag can also be seen.",
     "sources": [
         "http://philippinecatholicchurches.blogspot.com/2015/02/chair-of-saint-peter-parish-church.html",
@@ -10,5 +11,6 @@
     "address": "Brgy. Balibago, Santa Rosa City, Laguna",
     "lat": 14.294484,
     "lng": 121.105569,
-    "streetviewlink" : "google"
+    "streetviewlink" : "https://www.instantstreetview.com/@14.296999,121.10642,213.27h,-2.27p,0z,dkDlNDPVCmJAfH-mjvfgog",
+    "voiceasset": "stpeterchruch.mp3"
 }

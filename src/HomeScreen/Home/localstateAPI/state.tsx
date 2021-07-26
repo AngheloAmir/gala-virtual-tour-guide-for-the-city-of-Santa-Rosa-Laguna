@@ -17,5 +17,7 @@ export function createDefaultState() :HomeStateInterface {
         attributionDialogShow:  false,
         mapMarkerId: 0,
         placeInfoShow: false,
+        isMarkerShow: true,
+        streetviewlink: 'https://www.instantstreetview.com/@14.296999,121.10642,213.27h,-2.27p,0z,dkDlNDPVCmJAfH-mjvfgog'
     };
 }

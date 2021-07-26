@@ -3,10 +3,10 @@
         Return all of the map markers which is places. Will used by expo-leaflet directly
 */
 import { MapMarker } from "expo-leaflet";
-import { ALLPLACES } from '../../../../../database/places/allplaces';
+import { allplaces } from "../../functions/homejson";
 
 export function loadAllMapMarkers() :Array<MapMarker>{
-    const mapmakers :Array<MapMarker> = ALLPLACES.map((item :any, i :number) => {
+    const mapmakers :Array<MapMarker> = allplaces.map((item :any, i :number) => {
         if(item.type && item.type == 'info')
             return {
                 id: i + '',

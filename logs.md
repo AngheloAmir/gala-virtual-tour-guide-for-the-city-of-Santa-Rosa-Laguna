@@ -1,3 +1,8 @@
+## July 27, Version 0.5 Revamp database to JSON
+-Revamp the code structure, now the database contains "JSON" files instead of tsx for
+easier editting of the contents
+-improve online map
+
 ## July 26, Version 0.4.2 General Fixes
 -Fix AutoImageSlider (improperly displaying in mobile phones)
 -Remove spacing in the names of the assets

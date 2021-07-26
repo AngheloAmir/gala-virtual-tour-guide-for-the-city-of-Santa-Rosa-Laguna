@@ -8,39 +8,73 @@
     * VISIBLE WHEN
 */
 import React from 'react';
-import { Animated, View, Text, StyleSheet, Button, ScrollView, Image } from 'react-native';
+import { Animated, View, Text, StyleSheet, Button, Image, Linking, Platform } from 'react-native';
 import { WindowDimension } from '../../../../Utility/useResponsive';
 
 import { localContextProvider } from '../../localstateAPI/state';
 import { LocalStateAPI }        from '../../localstateAPI/interface';
-import { ALLPLACES } from '../../../../../database/places/allplaces';
+import { setStreetViewLink,
+    setPlaceInfoShow }          from '../../localstateAPI/actions';
+import { allplaces }            from "../../functions/homejson";
+import ASSETS                   from '../../../../../database/assets';
 
-export default function PlaceInfo() {
-    const { localState } :LocalStateAPI = React.useContext(localContextProvider);
+export default function PlaceInfo({navigation} :any) {
+    const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
+    const [isClickable, setClikable] = React.useState(false);
 
-    const animvalue = React.useRef(new Animated.Value(-400)).current;
+    const animvalue = React.useRef(new Animated.Value(0)).current;
     React.useEffect(() => {
         Animated.timing(animvalue, {
-            toValue: 0,
+            toValue: 1,
             duration: 500,
             useNativeDriver: true,
-        }).start();
+        }).start(() => setClikable(true));
     }, []);
 
+    const link :string | undefined = allplaces[localState.mapMarkerId].streetviewlink;
+    const des  :string | undefined = allplaces[localState.mapMarkerId].description;
+    //@ts-ignore
+    const image = ASSETS[ allplaces[localState.mapMarkerId].image ];
+
+    function handleOpenStreetViewLink() {
+        if(!link || !isClickable) return;
+
+        localDispatch(setPlaceInfoShow(false));
+        if( Platform.OS == 'web') {
+            link && Linking.canOpenURL(link).then(supported => {
+                if (supported) {
+                Linking.openURL(link);
+                }
+            });
+        }
+        else {
+            localDispatch(setStreetViewLink(link));
+            navigation.navigate('StreetView');
+        }
+    }
+
+    function handleLearnMore() {
+        if(!des || !isClickable) return;
+        localDispatch(setPlaceInfoShow(false));
+        navigation.navigate('ReadPlaceInfo');
+    }
+
+    //{transform: [{translateY: animvalue}]}
     return (
-        <Animated.View style={[styles.container, {transform: [{translateY: animvalue}]} ]}>
-        <Image style={styles.headingImage}
-            source={require('../../../../../assets/santarosa/places/arch.jpg')} resizeMode='cover' /> 
-        <View style={styles.heading}>
+        <Animated.View style={[styles.container, {opacity: animvalue}]}>
+        {
+            image && <Image style={styles.headingImage} source={image} resizeMode='cover' /> 
+        }
+            <View style={styles.heading}>
                 <View style={styles.headingTextContainer}>
-                    <Text style={styles.pointOfInterestName}>{ALLPLACES[localState.mapMarkerId].name}</Text>
-                    <Text style={styles.pointOfInteresAddress}>{ALLPLACES[localState.mapMarkerId].address}</Text>
+                    <Text style={styles.pointOfInterestName}>{allplaces[localState.mapMarkerId].name}</Text>
+                    <Text style={styles.pointOfInteresAddress}>{allplaces[localState.mapMarkerId].address}</Text>
                 </View>
             </View>
             
             <View style={styles.buttonsContainer}>
-            <Button title="Learn more" onPress={() => console.log('pressed')} />
-                    <Button title="Street View" onPress={() => console.log('pressed')} />
+                { des  && <Button title="       Learn more       " onPress={handleLearnMore} /> }
+                { link && <Button title="      Street View       " onPress={handleOpenStreetViewLink} /> }
             </View>
          </Animated.View>
     );
@@ -60,11 +94,12 @@ const styles = StyleSheet.create({
     },
     headingImage: {
         width: WindowDimension.width ,
-        height: (WindowDimension.width) * 0.5,
+        height: (WindowDimension.width) * 0.72,
     },
     headingTextContainer: {
         flexDirection: 'column',
-        width: WindowDimension.width,
+        width: '90%',
+        marginLeft: '5%',
     },
     pointOfInterestName: {
         fontSize: 18,
@@ -76,13 +111,9 @@ const styles = StyleSheet.create({
     },
     buttonsContainer: {
        width: '90%',
+       flexDirection: 'row',
+       justifyContent: 'space-evenly',
        alignSelf: 'center',
-       marginTop: 8,
+       marginTop: 16,
     },
 });
-
-/*
-<ScrollView style={{height: 180}}>
-                        <Text style={styles.pointOfInterestDesc}>{ALLPLACES[localState.mapMarkerId].description}</Text>
-                    </ScrollView>
-*/

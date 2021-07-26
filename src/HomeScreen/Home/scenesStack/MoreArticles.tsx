@@ -13,10 +13,11 @@ import React from 'react';
 import { View, Platform, Linking } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { WindowDimension } from '../../../Utility/useResponsive';
-import { HomeTabData } from '../../../../database/home';
+const homejson = require('../../../../database/home.json');
+const websites = homejson.websites;
 
 export default function MoreArticles( {navigation} :any) {
-    const link = HomeTabData.websites.morearticles;
+    const link = websites.morearticles;
 
     if(Platform.OS == 'web') {
         Linking.canOpenURL(link).then((supported :any) => {
@@ -28,7 +29,7 @@ export default function MoreArticles( {navigation} :any) {
 
     return (
         <View style={{flex: 1, flexDirection:'column'}}>
-            <WebView source={{uri: HomeTabData.websites.covidcase}}
+            <WebView source={{uri: websites.covidcase}}
                 style={{flex: 1, width: WindowDimension.width, height: '100%'}} />
         </View>
     );

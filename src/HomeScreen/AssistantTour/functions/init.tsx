@@ -5,8 +5,9 @@
 import * as Location from 'expo-location';
 import { setDialogMessage, permissionLocationNotGranted, setMapWasLoaded,
          setUserPosition, setMapCenter, setZoomlevel, setMapLock } from '../localstateAPI/actions';
-import { IntroPosition } from '../../../../database/assistantour/tours';
-import { GPSRANGE } from '../../../../database/assistantour/tours';
+const mapjson       = require('../../../../database/map.json');
+const IntroPosition = mapjson.introposition;
+const mapbounds     = mapjson.mapbounds;
 
 interface UserPosition {
     lat:        number;
@@ -57,8 +58,8 @@ async function RequestPermission() {
 
 async function getLocation() :Promise<UserPosition> {
     const location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.BestForNavigation});
-    if( location.coords.latitude  > GPSRANGE.y || location.coords.latitude < GPSRANGE.endy ||
-        location.coords.longitude < GPSRANGE.x || location.coords.longitude > GPSRANGE.endx )
+    if( location.coords.latitude  > mapbounds.y || location.coords.latitude < mapbounds.endy ||
+        location.coords.longitude < mapbounds.x || location.coords.longitude > mapbounds.endx )
         throw new Error('OutOfRangeException');
     return {
         lat: location.coords.latitude,

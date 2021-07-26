@@ -4,8 +4,9 @@
 */
 import React from 'react';
 import { AssistantTourState } from './interface';
-import { IntroPosition } from '../../../../database/assistantour/tours';
 import { NAVCOLORS } from '../functions/options';
+const mapjson       = require('../../../../database/map.json');
+const IntroPosition = mapjson.introposition;
 
 export const localContextProvider :React.Context<any> = React.createContext(null);
 

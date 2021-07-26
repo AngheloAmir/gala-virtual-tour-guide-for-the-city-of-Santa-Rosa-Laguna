@@ -24,9 +24,12 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import { localContextProvider } from '../../localstateAPI/state';
-import { LocalStateAPI } from '../../localstateAPI/interface';
-import { flipIsMapCenter, flipIsSoundPlay, setDialogMessage, setFindPlacesOpen} from '../../localstateAPI/actions';
-import { GalaTours }            from '../../../../../database/assistantour/tours';
+import { LocalStateAPI }        from '../../localstateAPI/interface';
+import { flipIsMapCenter,
+        flipIsSoundPlay,
+        setDialogMessage,
+        setFindPlacesOpen}     from '../../localstateAPI/actions';
+import { GalaTours }            from '../../functions/options';
 const ICONSIZE      = 24;
 const ICONSIZEBG    = ICONSIZE + 4;
 

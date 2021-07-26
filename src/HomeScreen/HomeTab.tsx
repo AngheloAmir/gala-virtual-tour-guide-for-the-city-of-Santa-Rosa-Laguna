@@ -9,9 +9,7 @@
     * VISIBLE WHEN
         When the user is in Home Screen and in the Home Tab
 */
-
 import * as React from 'react';
-import { View, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
@@ -19,12 +17,14 @@ import { localContextProvider, createDefaultState } from './Home/localstateAPI/s
 import { rootreducer } from './Home/localstateAPI/reducer';
 
 import HomeInitialScreen  from './Home/HomeIndex';
+import ReadStory          from './Home/scenesStack/ReadStory';
 import ExternalLinks      from './Home/scenesStack/ExternalLinks';
 import ViewCityMap        from './Home/scenesStack/ViewCityMap';
 import LearnMore          from './Home/scenesStack/LearnMore';
 import CovidNews          from './Home/scenesStack/CovidNews';
-import ReadStory          from './Home/scenesStack/ReadStory';
 import MoreArticles       from './Home/scenesStack/MoreArticles';
+import StreetView         from './Home/scenesStack/StreetView';
+import ReadPlaceInfo      from './Home/scenesStack/ReadPlaceInfo';
 
 export default function HomeIndex() {
   const [localState, localDispatch] = React.useReducer(rootreducer, createDefaultState());
@@ -39,6 +39,8 @@ export default function HomeIndex() {
         <Stack.Screen name="ViewCityMap"    component={ViewCityMap} options={{headerShown: false}}/>
         <Stack.Screen name="LearnMore"      component={LearnMore} options={{headerShown: false}}/>
         <Stack.Screen name="CovidNews"      component={CovidNews} options={{headerShown: false}}/>
+        <Stack.Screen name="StreetView"     component={StreetView} options={{headerShown: false}}/>
+        <Stack.Screen name="ReadPlaceInfo"  component={ReadPlaceInfo} options={{headerShown: false}}/>
       </Stack.Navigator>
     </localContextProvider.Provider>
   );

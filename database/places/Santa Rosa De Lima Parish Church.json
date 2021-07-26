@@ -1,5 +1,6 @@
 {
     "name": "Santa Rosa De Lima Parish Church",
+    "image": "delimachurch.jpg",
     "description": "The Santa Rosa de Lima Parish Church was built by the Spanish Dominican Order in 1792, along with Spanish Catholic priest Francisco Favie (en.wikipedia.org). The construction lasted for 12 years, and it was made to honor the town Patron Saint. In the year 1812, the church was blessed and held its first Mass. However, in the 1970s, the former covenant building of the church is now the main building of the Canossa School. The church has 8 bells which have Saint for each named: Santa Rosa de Lima, Santa Barbara, Santissimo Sacramento, San Juan Bautista, San Jose, Santa Cecilia, Santo Domingo de Guzman, and Nino Jesus.",
     "sources": [
         "https://en.wikipedia.org/wiki/Santa_Rosa_de_Lima_Parish_Church_(Santa_Rosa,_Laguna)"
@@ -8,5 +9,6 @@
     "address": "60 F. Gomez St, Kanluran, Santa Rosa, 4026 Laguna",
     "lat": 14.313931,
     "lng": 121.111579,
-    "streetviewlink" : "google"
+    "streetviewlink" : "https://www.instantstreetview.com/@14.296999,121.10642,213.27h,-2.27p,0z,dkDlNDPVCmJAfH-mjvfgog",
+    "voiceasset": "delimachurch.mp3"
 }

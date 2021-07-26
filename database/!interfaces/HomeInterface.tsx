@@ -1,4 +1,5 @@
 /*
+    Defines that structure of the data that will appear in the Home screen > home tab
 */
 import { ImageSourcePropType } from 'react-native';
 
@@ -9,14 +10,23 @@ export interface HomeTabInterface {
     cityCovidNews   :string;
     headingSlides   :Array<Slides>;
     offlineStories  :Array<Stories>;
+    allplaces       :Array<string>;
+
+    aboutthecityjson:string;
+    externalinksjson:string;
 
     websites        :{
         morearticles :string;
         covidcase    :string;
-        
         officialsite :string;
         githubsite   :string;
-    }
+    };
+
+    slidesAnimation :{
+        interval    :number; //the time each frame last
+        transistion :number; //fade transition speed
+    };
+
 }
 
 export interface Slides {

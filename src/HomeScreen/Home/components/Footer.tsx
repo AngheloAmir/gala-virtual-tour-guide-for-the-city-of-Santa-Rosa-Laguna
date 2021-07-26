@@ -16,8 +16,7 @@ import { Text, TouchableOpacity, View, StyleSheet, Linking } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 //@ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
-import { HomeTabData } from '../../../../database/home';
+import { website } from '../functions/homejson';
 
 export default function Footer( {navigation} :any) {
     const iconColor = 'rgba(40, 100, 160, 1)';
@@ -34,10 +33,10 @@ export default function Footer( {navigation} :any) {
         <View style={styles.container}>
             <Text style={styles.headingText}>OUR OFFICIAL LINKS</Text>
             <View style={styles.siteContainer}>
-                <TouchableOpacity onPress={() => openLink(HomeTabData.websites.officialsite)}>
+                <TouchableOpacity onPress={() => openLink(website.officialsite)}>
                     <MaterialCommunityIcons name='web'size={iconSize} color={iconColor} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => openLink(HomeTabData.websites.githubsite)}>
+                <TouchableOpacity onPress={() => openLink(website.githubsite)}>
                     <MaterialCommunityIcons name='github'size={iconSize} color={iconColor} />
                 </TouchableOpacity>
             </View>

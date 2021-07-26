@@ -10,13 +10,15 @@ import {
     setMapCenter,
     setMapPathIsLoading,
     setMapPolyLines,
-    setDialogMessage }
-    from '../../localstateAPI/actions';
-import { getPathWays } from     '../../functions';
-import { LocalStateAPI } from   '../../localstateAPI/interface';
-import { establishments } from  '../../../../../database/assistantour/establishments';
-export default async function findPlaceFunction({localDispatch, localState} :LocalStateAPI, index :number, estaIndex :number) {
+    setDialogMessage }      from '../../localstateAPI/actions';
+import { getPathWays }      from '../../functions';
+import { LocalStateAPI }    from '../../localstateAPI/interface';
 
+import { EstablishmentCategory }    from '../../../../../database/!interfaces/Establishment';
+const tourjson                      = require ('../../../../../database/assistantour.json');
+const establishments :Array<EstablishmentCategory> = tourjson.establishments;
+
+export default async function findPlaceFunction({localDispatch, localState} :LocalStateAPI, index :number, estaIndex :number) {
     const userPosition = localState.mapmarkers[0].position;
     const establishmentPos = {
         lat: establishments[index].items[estaIndex].lat,

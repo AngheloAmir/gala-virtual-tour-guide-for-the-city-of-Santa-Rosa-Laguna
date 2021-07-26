@@ -19,3 +19,9 @@ export function setPlaceInfoShow(isShow :boolean) :ActionInterface {
         type: actionType.setPlaceInfoShow, payload: isShow
     }
 }
+
+export function setStreetViewLink(link :string) :ActionInterface {
+    return {
+        type: actionType.setStreetViewLink, payload: link
+    }
+}

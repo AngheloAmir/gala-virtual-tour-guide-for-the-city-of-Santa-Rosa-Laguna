@@ -1,4 +1,6 @@
 {
+    "notice": "",
+    
     "maplayer": {
         "attribution": " ",
         "baseLayerIsChecked": true,
@@ -20,5 +22,4 @@
         "endx":   121.135533,  "y":    14.339070
     },
     "pointOfInterestAcquisitionRange": 0.0002
-
 }

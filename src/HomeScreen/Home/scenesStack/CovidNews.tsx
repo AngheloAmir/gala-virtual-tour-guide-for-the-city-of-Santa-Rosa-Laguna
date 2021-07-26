@@ -13,10 +13,10 @@ import React from 'react';
 import { View, Platform, Linking } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { WindowDimension } from '../../../Utility/useResponsive';
-import { HomeTabData } from '../../../../database/home';
+import { website } from '../functions/homejson';
 
 export default function CovidNews( {navigation} :any) {
-    const link = HomeTabData.websites.covidcase;
+    const link = website.covidcase;
 
     if(Platform.OS == 'web') {
         Linking.canOpenURL(link).then((supported :any) => {
@@ -28,7 +28,7 @@ export default function CovidNews( {navigation} :any) {
 
     return (
         <View style={{flex: 1, flexDirection:'column'}}>
-            <WebView source={{uri: HomeTabData.websites.covidcase}}
+            <WebView source={{uri: website.covidcase}}
                 style={{flex: 1, width: WindowDimension.width, height: '100%'}} />
         </View>
     );

@@ -1,0 +1,29 @@
+{
+    "title": "temp story",
+    "date": "2021",
+    "headerImage": "balibago.jpg",
+    "contents": [
+        {
+            "headingText":  "an heading text",
+            "image":        "balibago.jpg",
+            "paragraph":    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, unde! Assumenda quas distinctio, error ad at non labore odio aliquam.",
+            "link":         "https://google.com",
+            "linkText":     "Google",
+            "links":        {
+                "link": "https://google.com",
+                "text": "(c) Google"
+            }
+        },
+        {
+            "headingText":  "Second Paragraph",
+            "image":        "balibago.jpg",
+            "paragraph":    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, unde! Assumenda quas distinctio, error ad at non labore odio aliquam.",
+            "link":         "https://google.com",
+            "linkText":     "Google",
+            "links":        {
+                "link": "https://google.com",
+                "text": "(c) Google"
+            }
+        }
+    ]
+}

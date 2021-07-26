@@ -15,16 +15,18 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 // @ts-ignore
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+import DialogBox                        from '../../../Utility/DialogBox';
 import { localContextProvider }         from '../localstateAPI/state';
 import { LocalStateAPI }                from '../localstateAPI/interface';
 import { setFindPlacesOpen,
         clearPolyLineAndMarker,
         setDialogMessage }              from '../localstateAPI/actions';
-import { establishments }               from '../../../../database/assistantour/establishments';
 import findPlaceFunction                from './FindPlaces/findPlaceFunction';
 import findNearbyFunction               from './FindPlaces/findNearbyFunction';
+import { EstablishmentCategory }        from '../../../../database/!interfaces/Establishment';
+const tourjson                          = require ('../../../../database/assistantour.json');
+const establishments :Array<EstablishmentCategory> = tourjson.establishments;
 
-import DialogBox from '../../../Utility/DialogBox';
 export default function findPlaces() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
 
@@ -78,7 +80,7 @@ export function dialogContent() {
         </View>
 
     {
-        establishments.map((item, index) => {
+        establishments.map((item :EstablishmentCategory, index :number) => {
             return (
                 <View style={styles.item} key={index}>
                     <TouchableOpacity style={openedItem == item.category ? styles.itemSelected : styles.itemHeading}

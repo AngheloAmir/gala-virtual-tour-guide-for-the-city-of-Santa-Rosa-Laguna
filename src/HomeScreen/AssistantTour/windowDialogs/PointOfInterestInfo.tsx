@@ -17,8 +17,9 @@ import { Audio } from 'expo-av';
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI }        from '../localstateAPI/interface';
 import { setPOIBoxOpen }        from '../localstateAPI/actions';
+import { GalaTours }            from '../functions/options';
+import ASSETS                   from '../../../../database/assets';
 import DialogBox                from '../../../Utility/DialogBox';
-import { GalaTours }            from '../../../../database/assistantour/tours';
 
 export default function PointOfInterestInfo() {
     const { localState, localDispatch } :LocalStateAPI= React.useContext(localContextProvider);
@@ -45,8 +46,10 @@ function DialogContent() {
       //check if the mp3 is available to close POI found (see NotifyWhenClose component on it find out the nearest POI)
       if( GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset) {
         const { sound } = await Audio.Sound.createAsync(
-            //@ts-ignore
-            GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset()
+            ASSETS[
+                //@ts-ignore
+                GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset
+            ]
         );
         //@ts-ignore
         setSound(sound);

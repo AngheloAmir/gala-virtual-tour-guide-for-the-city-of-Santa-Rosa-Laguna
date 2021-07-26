@@ -1,0 +1,89 @@
+{
+    "comment": "This file defines the content in the home tab. See database/!interface/HomeInterface.tsx",
+    
+    "externalLinkText": "Visits the official FB and website of Santa Rosa, E.K and more!",
+    "cityMapText":      "View an online map and explore virtually with google street view.",
+    "aboutcity":        "Learn more about Santa Rosa's history, heritage sites, and more.",
+    "cityCovidNews":    "Latest news about Covid-19 cases in Santa Rosa.",
+    
+    "headingSlides": [
+        {
+            "image": "balibago.jpg",
+            "place": "Brgy. Balibago Complex",
+            "isWhite": false
+        },
+        {
+            "image": "arch.jpg",
+            "place": "Santa Rosa Arch, Market Area",
+            "isWhite": true
+        },
+        {
+            "image": "stpeterchruch.jpg",
+            "place": "Chair of St. Peter Parish church, Balibago",
+            "isWhite": true
+        },
+        {
+            "image": "plaza.jpg",
+            "place": "Sta. Rosa Plaza, Bayan",
+            "isWhite": false
+        },
+        {
+            "image": "delimachurch.jpg",
+            "place": "Sta. Rosa de Lima Parish church",
+            "isWhite": false
+        }
+    ],
+    "slidesAnimation": {
+        "interval":    8500,
+        "transistion": 1500
+    },
+
+    "offlineStories": [
+        {
+            "title": "The 17th City Hood Anniversary",
+            "date": "July 2021",
+            "text": "The Lion City of the South celebrates its 17th anniversary of the declaration of cityhood on July 10.",
+            "storyjson": "tempstroy.json"
+        },
+        {
+            "title": "The Tiongco Brothers",
+            "date": "July 2021",
+            "text": "The Tiongco Brothers (Fernando, Emilio, and Arthuro) are well-known pop artists in the \"50s to \"70s.",
+            "storyjson": "tempstroy.json"
+        },
+        {
+            "title": "Enchanted Kingdom",
+            "date": "July 2021",
+            "text": "Read the latest news about the Enchanted Kingdom (EK) - the most visited tourist spot in Laguna.",
+            "storyjson": "tempstroy.json"
+        }
+    ],
+    
+    "websites" :{
+      "morearticles": "https://galavtg.github.io/articles",
+      "covidcase":    "https://galavtg.github.io/covidcase",
+      "officialsite": "https://galavtg.github.io/",
+      "githubsite":   "https://github.com/galavtg"
+    },
+
+    "aboutthecityjson": "....",
+    "externalinksjson": ".....",
+
+    "allplaces": [
+        "delimachurch.json",
+        "cuartel.json",
+        "gonzalezstatue.json",
+        "plaza.json",
+        "arch.json",
+        "casagonzalez.json",
+        "casazavalla.json",
+        "zavallahouse.json",
+        "arambulohouse.json",
+        "gomezhouse.json",
+        "tiongcohouse.json",
+        "museo.json",
+        "stpeterchruch.json",
+        "placeEK.json",
+        "placeNuvali.json"
+    ]
+}

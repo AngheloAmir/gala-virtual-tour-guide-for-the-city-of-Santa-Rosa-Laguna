@@ -25,9 +25,8 @@ import { setSelectTourOpen,
         setPoiIndex
 } from '../../localstateAPI/actions';
 import { getMapDestinationMarkers, getPathWays } from '../../functions';
-
-import { GalaTours }            from '../../../../../database/assistantour/tours';
-import { FromToInterface }      from '../../../../../database/!interfaces/GalaSelfGuidedTour';
+import { FromToInterface }    from '../../../../../database/!interfaces/GalaSelfGuidedTour';
+import { GalaTours }          from '../../functions/options';
 
 interface propsReceive {
     setnotifmsg :(text :string) => void;

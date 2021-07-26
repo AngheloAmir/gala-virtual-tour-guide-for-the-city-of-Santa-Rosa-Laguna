@@ -11,11 +11,10 @@
 */
 import * as React from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
-import { HomeTabData } from '../../../../database/home';
 import { Stories } from '../../../../database/!interfaces/HomeInterface';
+import { offlinestories } from '../functions/homejson';
 
 export default function OfflineStories( {navigation} :any ) {
-
     function handleReadStory(story :Stories) {
         navigation.navigate('ReadStory');
     }
@@ -26,7 +25,7 @@ export default function OfflineStories( {navigation} :any ) {
 
             <View style={styles.news}>
                 {
-                    HomeTabData.offlineStories.map((story :Stories, index :number) => {
+                    offlinestories.map((story :Stories, index :number) => {
                         return (
                             <View style={styles.newsContainer} key={index}>
                                 <View style={styles.descriptionContainer}>

@@ -1,0 +1,29 @@
+{
+    "title": "Guides that help your adventure",
+    "guidelist": [
+        {
+            "title":        "Visiting Guide",
+            "description":  "Regulations and safety you should know when before visiting.",
+            "icon":         "listicon.png" ,
+            "guidedata":    "visitingguide.json"
+        },
+        {
+            "title":        "Public transport",
+            "description":  "Public transport route that you may take to get into Santa Rosa.",
+            "icon":         "busicon.png",
+            "guidedata":    "publictransport.json"
+        },
+        {
+            "title":        "Journey Guide",
+            "description":  "Your journey guide to the tourist places in Santa Rosa.",
+            "icon":         "globeicon.png",
+            "guidedata":    "journeyguide.json"
+        },
+        {
+            "title":        "Jeepney routes",
+            "description":  "Jeepney routes and path.",
+            "icon":         "buildingicon.png",
+            "guidedata":    "jeepneyroutes.json"
+        }
+    ]
+}

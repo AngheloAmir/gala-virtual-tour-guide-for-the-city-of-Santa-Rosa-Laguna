@@ -16,8 +16,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI }        from '../localstateAPI/interface';
-import { setPOIBoxOpen, setPoiIndex }        from '../localstateAPI/actions';
-import { GalaTours }            from '../../../../database/assistantour/tours';
+import { setPOIBoxOpen,
+         setPoiIndex }          from '../localstateAPI/actions';
+import { GalaTours }            from '../functions/options';
 import { isClose }              from '../functions';
 
 const mapsetting = require('../.././../../database/map.json');
