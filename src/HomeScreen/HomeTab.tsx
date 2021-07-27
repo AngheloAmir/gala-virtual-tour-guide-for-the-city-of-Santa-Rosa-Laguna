@@ -20,7 +20,6 @@ import HomeInitialScreen  from './Home/HomeIndex';
 import ReadStory          from './Home/scenesStack/ReadStory';
 import ExternalLinks      from './Home/scenesStack/ExternalLinks';
 import ViewCityMap        from './Home/scenesStack/ViewCityMap';
-import LearnMore          from './Home/scenesStack/LearnMore';
 import CovidNews          from './Home/scenesStack/CovidNews';
 import MoreArticles       from './Home/scenesStack/MoreArticles';
 import StreetView         from './Home/scenesStack/StreetView';
@@ -37,7 +36,6 @@ export default function HomeIndex() {
         <Stack.Screen name="MoreArticles"   component={MoreArticles} options={{headerShown: false}}/>
         <Stack.Screen name="ExternalLinks"  component={ExternalLinks} options={{headerShown: false}}/>
         <Stack.Screen name="ViewCityMap"    component={ViewCityMap} options={{headerShown: false}}/>
-        <Stack.Screen name="LearnMore"      component={LearnMore} options={{headerShown: false}}/>
         <Stack.Screen name="CovidNews"      component={CovidNews} options={{headerShown: false}}/>
         <Stack.Screen name="StreetView"     component={StreetView} options={{headerShown: false}}/>
         <Stack.Screen name="ReadPlaceInfo"  component={ReadPlaceInfo} options={{headerShown: false}}/>

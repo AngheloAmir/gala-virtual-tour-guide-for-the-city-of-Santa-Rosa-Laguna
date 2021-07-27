@@ -21,10 +21,22 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { WindowDimension } from '../../../Utility/useResponsive';
 import { buttonstext } from '../functions/homejson';
 
+import { localContextProvider } from '../localstateAPI/state';
+import { LocalStateAPI }        from '../localstateAPI/interface';
+import { setStoryToRead }       from '../localstateAPI/actions';
+import { aboutTheCity }         from '../functions/homejson';
+
 const iconColor = 'rgba(40, 100, 160, 1)';
 const iconSize  = 36;
 
 export default function ButtonsItems( {navigation} :any ) {
+    const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
+
+    function handleReadMoreAboutTheCity() {
+        localDispatch( setStoryToRead(aboutTheCity) );
+        navigation.navigate('ReadStory');
+    }
+
     return (
         <View style={styles.container}>
 
@@ -38,7 +50,7 @@ export default function ButtonsItems( {navigation} :any ) {
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.menuItemContainer} onPress={() => navigation.navigate('LearnMore')}>
+            <TouchableOpacity style={styles.menuItemContainer} onPress={handleReadMoreAboutTheCity}>
                 <View style={styles.icon}>
                     <MaterialIcons name='history-edu'size={iconSize} color={iconColor} />
                 </View>

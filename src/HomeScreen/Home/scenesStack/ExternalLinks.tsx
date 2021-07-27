@@ -10,16 +10,40 @@
         "External List" button.
 */
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 
-export default function ExternalLinks( {navigation} :any) {
+import ASSETS from '../../../../database/assets';
+import { homejson } from '../functions/homejson';
+import { ExternalLinks,
+         ExternalLinksContents
+        } from '../../../../database/!interfaces/ExternalLinks';
+
+export default function ExternalLinksView( {navigation} :any) {
+    //@ts-ignore
+    const externallinksjson :ExternalLinks = ASSETS[ homejson.externalinksjson ];
+
     return (
-        <View>
-            <Text style={{fontSize: 18}}>
-                You are in the EXTERNAL LINKS
-            </Text>
-
-            <Button title='BACK' onPress={() => navigation.navigate('Home')} />
+        <View style={styles.container}>
+            <Text>{externallinksjson.title}</Text>            
+            {
+                externallinksjson.contents.map( (item :ExternalLinksContents, index :number) => {
+                return (
+                    <View key={index}>
+                        <Text>{item.linkname}</Text>
+                        <Text>{item.description}</Text>
+                        <TouchableOpacity>
+                            <Text>{item.link}</Text>
+                        </TouchableOpacity>
+                    </View>
+                )})
+            }
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        width: '100%',
+    },
+
+})

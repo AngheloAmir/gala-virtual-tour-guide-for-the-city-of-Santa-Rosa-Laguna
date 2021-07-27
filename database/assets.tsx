@@ -29,7 +29,7 @@ const ASSETS = {
     "plaza.jpg":            require('../assets/santarosa/places/plaza.jpg'),
     "delimachurch.jpg":     require('../assets/santarosa/places/delima_church.jpg'),
 
-    "basilo.jpg":          require('../assets/santarosa/places/basilo.jpg'),
+    "basilo.jpg":           require('../assets/santarosa/places/basilo.jpg'),
     "casagonzalez.jpg":     require('../assets/santarosa/places/casagonzalez.jpg'),
     "casazalla.jpg":        require('../assets/santarosa/places/casazavalla.jpg'),
     "delimastatue.jpg":     require('../assets/santarosa/places/delima statue.jpg'),
@@ -38,6 +38,7 @@ const ASSETS = {
     "santarosa.jpg":        require('../assets/santarosa/places/santarosa.jpg'),
     "tionco.jpg":           require('../assets/santarosa/places/tiongco.jpg'),
     "zavallahouse.jpg":     require('../assets/santarosa/places/zavallahouse.jpg'),
+    "casaarambulo.jpg":     require('../assets/santarosa/places/casaarambulo.jpg'),
 
 //JSON===============================================================================
     "publictransport.json": require('./guides/publictransport.json'),
@@ -47,6 +48,8 @@ const ASSETS = {
 
 //STORIES===========================================================================
     "tempstroy.json":       require('./home/tempstory.json'),
+    "aboutthecity.json":    require('./home/aboutthecity.json'),
+    "externallinks.json":   require('./home/externallinks.json'),
 
 //TOURS=============================================================================
     "bisitaiglesia.json":   require('./assistantour/bisitaiglesia.json'),
@@ -73,6 +76,20 @@ const ASSETS = {
     "museo.json":           require('./places/Museo ng Santa Rosa.json'),
     "placeEK.json":         require('./places/Enchanted Kingdom.json'),
     "placeNuvali.json":     require('./places/Nuvali.json'),
+
+    "starosabinan.json":    require('./places/infomarker/starosabinan.json'),
+    "sm.json":              require('./places/infomarker/sm.json'),
+    "complexentrance.json": require('./places/infomarker/complexentrance.json'),
+    "slexsouth.json":       require('./places/infomarker/slexsouth.json'),
+    "slexnorth.json":       require('./places/infomarker/slexnorth.json'),
+    "ekstreetview.json":    require('./places/infomarker/ekstreetview.json'),
+    "paseooutlets.json":    require('./places/infomarker/paseooutlets.json'),
+    "nuvalifish.json":      require('./places/infomarker/nuvalifish.json'),
+    "nuvalilake.json":      require('./places/infomarker/nuvalilake.json'),
+    "nuvaligarden.json":    require('./places/infomarker/nuvaligarden.json'),
+    "complex.json":         require('./places/infomarker/complex.json'),
+    "starosacabuyao.json":  require('./places/infomarker/starosacabuyao.json'),
+    "belair.json":          require('./places/infomarker/belair.json'),
 
 //MP3================================================================================
     "sample.mp3":           require('../assets/santarosa/speech/sample.mp3'),

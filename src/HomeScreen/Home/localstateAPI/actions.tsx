@@ -1,5 +1,6 @@
 /*
 */
+import { StoryContent } from "../../../../database/!interfaces/StoryContent";
 import { ActionInterface, actionType} from './interface';
 
 export function setAttributionshow(isShow :boolean) :ActionInterface {
@@ -23,5 +24,17 @@ export function setPlaceInfoShow(isShow :boolean) :ActionInterface {
 export function setStreetViewLink(link :string) :ActionInterface {
     return {
         type: actionType.setStreetViewLink, payload: link
+    }
+}
+
+export function setInstantSVCreadit() :ActionInterface {
+    return {
+        type: actionType.setDialogOpenStreetMapProviderCreadit,
+    }
+}
+
+export function setStoryToRead(story :StoryContent) :ActionInterface {
+    return {
+        type: actionType.setStory, payload: story
     }
 }

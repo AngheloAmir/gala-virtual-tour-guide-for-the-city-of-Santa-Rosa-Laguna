@@ -53,12 +53,7 @@ export default function GuideView() {
         },
     });
 
-    function paragraph(value :GuideParagraphContent, index :number) {
-        if(value.type === 'accordionList')
-            return <Accordion key={index} value={value} />
-        else 
-            return <Paragraph key={index} value={value} />
-    }
+    console.log(theguide.accordion);
 
     return (
         <ScrollView style={styles.guideContainer}>
@@ -70,9 +65,10 @@ export default function GuideView() {
                 <Text style={styles.datePublish}>{theguide.date} </Text>
                 {
                     theguide.contents.map((value :GuideParagraphContent, index :number ) => {
-                        return paragraph(value, index);
+                        return <Paragraph key={index} value={value} />
                     })
                 }
+                { theguide.accordion && <Accordion value={theguide.accordion} /> }
             </View>
         </ScrollView>
     );

@@ -1,10 +1,12 @@
 /*
     Load the assets and text from the json file "home.json" in the database folder
 */
-import ASSETS from '../../../../database/assets';
+//@ts-nocheck
+import ASSETS                       from '../../../../database/assets';
 import { HomeTabInterface, Slides } from '../../../../database/!interfaces/HomeInterface';
-import { Stories } from '../../../../database/!interfaces/HomeInterface';
-import { DestinationLocation } from '../../../../database/!interfaces/GalaSelfGuidedTour';
+import { Stories }                  from '../../../../database/!interfaces/HomeInterface';
+import { StoryContent }             from '../../../../database/!interfaces/StoryContent';
+import { DestinationLocation }      from '../../../../database/!interfaces/GalaSelfGuidedTour';
 
 interface ButtonsText {
     externalLinkText    :string;
@@ -39,12 +41,35 @@ export const buttonstext        :ButtonsText = {
 
 export const headingslides :Array<Slides> = homejson.headingSlides.map((item :Slides) => {
     return {
-        //@ts-ignore
         image: ASSETS[item.image], place: item.place, isWhite: item.isWhite
     }
 });
 
+//Defines all places that are found in home.json
 export const allplaces :Array<DestinationLocation> = homejson.allplaces.map((item :string) => {
-    //@ts-ignore
     return ASSETS[item];
 }) 
+
+//Translate the json only string content to an object to get about the city 
+export const aboutTheCity :StoryContent = {
+    ...ASSETS[homejson.aboutthecityjson],
+    headerImage: ASSETS[ ASSETS[homejson.aboutthecityjson].headerImage ],
+    contents: ASSETS[homejson.aboutthecityjson].contents.map((item) => {
+        return {
+            ...item,
+            image: ASSETS[ item.image ],
+    }})
+}
+
+export const allstories :Array<StoryContent> = homejson.offlineStories.map((item) => {
+    const storyjson = ASSETS[ item.storyjson ];
+    return {
+        ...storyjson,
+        headerImage: ASSETS[ storyjson.headerImage ],
+        contents: storyjson.contents.map((contentitem) => {
+            return {
+                ...item,
+                image: ASSETS[ contentitem.image ],
+        }})
+    }
+});

@@ -10,7 +10,7 @@
         "view the city map" button.
 */
 import React from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, View, Text, Platform, Linking } from 'react-native';
 import { ExpoLeaflet, LeafletWebViewEvent, MapMarker } from "expo-leaflet";
 import { WindowDimension } from '../../../Utility/useResponsive';
 import { mapOptions, mapLayers} from './ViewCityMap/options';
@@ -18,17 +18,18 @@ import { mapOptions, mapLayers} from './ViewCityMap/options';
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI }        from '../localstateAPI/interface';
 import { setMapMarkerId,
-        setPlaceInfoShow }      from '../localstateAPI/actions';
-
+        setPlaceInfoShow,
+        setInstantSVCreadit }   from '../localstateAPI/actions';
 import { loadAllMapMarkers }    from './ViewCityMap/functions';
 import Attribution              from './ViewCityMap/Attribution';
 import AttributionInfo          from './ViewCityMap/AttributionInfo';
 import PlaceInfo                from './ViewCityMap/PlaceInfo';
+import AlertBox                from '../../../Utility/AlertBox';
 
 const mapmakers     :Array<MapMarker> = loadAllMapMarkers();
 const emptymarker   :Array<MapMarker> = [{ id: '0', position: {lat: 0, lng: 0}, icon: '', size: [0, 0] }];
 const styles = {
-    height: WindowDimension.height - 100 ,
+    height: WindowDimension.height - 125 ,
     width:  WindowDimension.width,
 }
 
@@ -51,13 +52,27 @@ export default function MapIndex({navigation} :any) {
         }
     }
 
+    function openStreetViewLink() {
+        localDispatch(setPlaceInfoShow(false));
+        if( Platform.OS == 'web') {
+            localState.streetviewlink && Linking.canOpenURL(localState.streetviewlink).then(supported => {
+                if (supported) {
+                Linking.openURL(localState.streetviewlink);
+                }
+            });
+        }
+        else {
+            navigation.navigate('StreetView');
+        }
+    }
+
     return (
         <View>
             <View style={styles}>
                 <ExpoLeaflet
                     loadingIndicator={() => <ActivityIndicator/>}
                     mapCenterPosition={ {lat: 14.296238, lng: 121.105799} }
-                    zoom={12}
+                    zoom={14}
                     mapMarkers={ localState.isMarkerShow ? mapmakers : emptymarker}
                     mapLayers={mapLayers}
                     mapOptions={mapOptions}
@@ -68,6 +83,13 @@ export default function MapIndex({navigation} :any) {
             <Attribution />
             { localState.attributionDialogShow &&   <AttributionInfo /> }
             { localState.placeInfoShow &&           <PlaceInfo navigation={navigation} /> }
+
+            <AlertBox
+                title='Notice'
+                isshow={localState.isInstantSVCreadit == 1}
+                ok={() => { localDispatch(setInstantSVCreadit()); openStreetViewLink(); }}
+                text='The street view is provided by www.instantstreetview.com thru a webview. Visit their website to see more.'
+            />
         </View>
     );       
 }

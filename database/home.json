@@ -66,8 +66,8 @@
       "githubsite":   "https://github.com/galavtg"
     },
 
-    "aboutthecityjson": "....",
-    "externalinksjson": ".....",
+    "aboutthecityjson": "aboutthecity.json",
+    "externalinksjson": "externallinks.json",
 
     "allplaces": [
         "delimachurch.json",
@@ -84,6 +84,20 @@
         "museo.json",
         "stpeterchruch.json",
         "placeEK.json",
-        "placeNuvali.json"
+        "placeNuvali.json",
+
+        "starosabinan.json",
+        "sm.json",
+        "complexentrance.json",
+        "slexsouth.json",
+        "slexnorth.json",
+        "ekstreetview.json",
+        "paseooutlets.json",
+        "nuvalifish.json",
+        "nuvalilake.json",
+        "nuvaligarden.json",
+        "complex.json",
+        "starosacabuyao.json",
+        "belair.json"
     ]
 }

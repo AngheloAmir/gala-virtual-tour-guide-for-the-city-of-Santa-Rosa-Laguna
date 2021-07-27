@@ -8,13 +8,14 @@
     * VISIBLE WHEN
 */
 import React from 'react';
-import { Animated, View, Text, StyleSheet, Button, Image, Linking, Platform } from 'react-native';
+import { Animated, View, Text, StyleSheet, Button, Image, Linking, Platform, TouchableOpacity } from 'react-native';
 import { WindowDimension } from '../../../../Utility/useResponsive';
 
 import { localContextProvider } from '../../localstateAPI/state';
 import { LocalStateAPI }        from '../../localstateAPI/interface';
 import { setStreetViewLink,
-    setPlaceInfoShow }          from '../../localstateAPI/actions';
+         setInstantSVCreadit,
+         setPlaceInfoShow }     from '../../localstateAPI/actions';
 import { allplaces }            from "../../functions/homejson";
 import ASSETS                   from '../../../../../database/assets';
 
@@ -22,11 +23,11 @@ export default function PlaceInfo({navigation} :any) {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
     const [isClickable, setClikable] = React.useState(false);
 
-    const animvalue = React.useRef(new Animated.Value(0)).current;
+    const animvalue = React.useRef(new Animated.ValueXY({x: 0, y: .9})).current;
     React.useEffect(() => {
         Animated.timing(animvalue, {
-            toValue: 1,
-            duration: 500,
+            toValue: {x: 1, y: 1},
+            duration: 300,
             useNativeDriver: true,
         }).start(() => setClikable(true));
     }, []);
@@ -36,7 +37,16 @@ export default function PlaceInfo({navigation} :any) {
     //@ts-ignore
     const image = ASSETS[ allplaces[localState.mapMarkerId].image ];
 
-    function handleOpenStreetViewLink() {
+    //this function ensure that, instant street view credit dialog is showed only once
+    function streetview() {
+        if(localState.isInstantSVCreadit == 0 ) {
+            localDispatch(setInstantSVCreadit());
+            link && localDispatch(setStreetViewLink(link));
+        }
+        else openStreetViewLink();
+    }
+
+    function openStreetViewLink() {
         if(!link || !isClickable) return;
 
         localDispatch(setPlaceInfoShow(false));
@@ -59,11 +69,18 @@ export default function PlaceInfo({navigation} :any) {
         navigation.navigate('ReadPlaceInfo');
     }
 
-    //{transform: [{translateY: animvalue}]}
+    function handleImageTap() {
+        if(!isClickable) return;
+        localDispatch(setPlaceInfoShow(false));
+    }
+
     return (
-        <Animated.View style={[styles.container, {opacity: animvalue}]}>
+        <Animated.View style={[styles.container, {opacity: animvalue.x, transform: [{scale: animvalue.y }]}]}>
         {
-            image && <Image style={styles.headingImage} source={image} resizeMode='cover' /> 
+            image &&
+            <TouchableOpacity onPress={handleImageTap} activeOpacity={0.8}>
+                <Image style={styles.headingImage} source={image} resizeMode='cover' />
+            </TouchableOpacity>  
         }
             <View style={styles.heading}>
                 <View style={styles.headingTextContainer}>
@@ -74,7 +91,7 @@ export default function PlaceInfo({navigation} :any) {
             
             <View style={styles.buttonsContainer}>
                 { des  && <Button title="       Learn more       " onPress={handleLearnMore} /> }
-                { link && <Button title="      Street View       " onPress={handleOpenStreetViewLink} /> }
+                { link && <Button title="      Street View       " onPress={streetview} /> }
             </View>
          </Animated.View>
     );

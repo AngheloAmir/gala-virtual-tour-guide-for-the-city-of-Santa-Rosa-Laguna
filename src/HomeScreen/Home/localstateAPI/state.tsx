@@ -18,6 +18,12 @@ export function createDefaultState() :HomeStateInterface {
         mapMarkerId: 0,
         placeInfoShow: false,
         isMarkerShow: true,
-        streetviewlink: 'https://www.instantstreetview.com/@14.296999,121.10642,213.27h,-2.27p,0z,dkDlNDPVCmJAfH-mjvfgog'
+
+        //Show instant street view creadit dialog. This value is quite confusing, but to make sure it is displayed once
+        //0 means never showed
+        //1 means it is show but first time
+        //2 means that it was previous show so no need to show it again
+        isInstantSVCreadit: 0,
+        streetviewlink: '',
     };
 }

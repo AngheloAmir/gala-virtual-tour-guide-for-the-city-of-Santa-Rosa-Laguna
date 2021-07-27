@@ -1,5 +1,6 @@
 /*
 */
+import { StoryContent } from "../../../../database/!interfaces/StoryContent";
 
 export interface LocalStateAPI {
     localState     :HomeStateInterface;
@@ -12,6 +13,8 @@ export interface HomeStateInterface {
     placeInfoShow               :boolean;
     isMarkerShow                :boolean;
     streetviewlink              :string;
+    isInstantSVCreadit          :number;
+    storyToRead?                :StoryContent;
 }
 
 export interface ActionInterface {
@@ -25,4 +28,6 @@ export enum actionType {
     setMapMarkerId,
     setPlaceInfoShow,
     setStreetViewLink,
+    setDialogOpenStreetMapProviderCreadit,
+    setStory,
 }

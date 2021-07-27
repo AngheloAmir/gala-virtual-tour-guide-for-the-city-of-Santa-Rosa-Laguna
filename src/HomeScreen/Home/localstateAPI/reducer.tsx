@@ -24,6 +24,16 @@ export function rootreducer(state :HomeStateInterface, action :ActionInterface )
                 ...state, streetviewlink: action.payload
             }
         
+        case actionType.setDialogOpenStreetMapProviderCreadit:
+            return {
+                ...state, isInstantSVCreadit: state.isInstantSVCreadit + 1
+            }
+
+        case actionType.setStory:
+            return {
+                ...state, storyToRead: action.payload
+            }
+
         default:
             console.error('Action not defined in the reducer!');
             return state;

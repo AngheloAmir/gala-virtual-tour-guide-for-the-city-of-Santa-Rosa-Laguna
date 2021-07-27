@@ -1,0 +1,15 @@
+{
+    "title": "list of external links",
+    "contents": [
+        {
+            "linkname": "Google",
+            "description": "google search engine",
+            "link": "https://goole.com"
+        },
+        {
+            "linkname": "Google",
+            "description": "google search engine",
+            "link": "https://goole.com"
+        }
+    ]
+}

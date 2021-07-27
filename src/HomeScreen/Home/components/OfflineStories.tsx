@@ -11,11 +11,18 @@
 */
 import * as React from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
-import { Stories } from '../../../../database/!interfaces/HomeInterface';
-import { offlinestories } from '../functions/homejson';
+import { localContextProvider } from '../localstateAPI/state';
+import { LocalStateAPI }        from '../localstateAPI/interface';
+import { setStoryToRead }       from '../localstateAPI/actions';
+
+import { Stories }              from '../../../../database/!interfaces/HomeInterface';
+import { offlinestories, allstories } from '../functions/homejson';
 
 export default function OfflineStories( {navigation} :any ) {
-    function handleReadStory(story :Stories) {
+    const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
+
+    function handleReadStory(index :number) {
+        localDispatch( setStoryToRead(allstories[index]) );
         navigation.navigate('ReadStory');
     }
 
@@ -32,7 +39,7 @@ export default function OfflineStories( {navigation} :any ) {
                                     <Text style={styles.newsTitle}>{story.title}</Text>
                                     <Text style={styles.datePublish}>{story.date}</Text>
                                     <Text style={styles.newsDescription}>{story.text}</Text>
-                                    <TouchableOpacity style={styles.readMoreContainer} onPress={() => handleReadStory(story)}>
+                                    <TouchableOpacity style={styles.readMoreContainer} onPress={() => handleReadStory(index)}>
                                         <Text style={styles.readMoreText}>Read more...</Text>
                                     </TouchableOpacity>
                                 </View>

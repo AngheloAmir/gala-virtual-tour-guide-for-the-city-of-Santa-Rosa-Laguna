@@ -21,7 +21,7 @@ import { GuideParagraphContent } from '../../../database/!interfaces/GuideConten
 import Paragraph from './Paragraph';
 
 interface propsReceive {
-    value   :GuideParagraphContent;
+    value   :Array<GuideParagraphContent>;
 }
 
 export default function Accordion(props :propsReceive) {
@@ -49,34 +49,33 @@ export default function Accordion(props :propsReceive) {
     });
 
     return(
-        <View>
-        {
-        props.value.data.map((item :any, itemindex :number) => {
+    <View>
+    {
+        props.value.map((item :GuideParagraphContent, itemindex :number) => {
         return (
-        <View key={itemindex} style={styles.accordionItem}>
-            <View style={{flexDirection: 'row', alignContent: 'space-between'}}>
-                <TouchableOpacity style={{flexDirection: 'row', alignContent: 'space-between', width: '100%'}}
-                    onPress={() => {
-                        if(itemindex === currentOpenList) setOpenedList(-1);
-                        else setOpenedList(itemindex);
-                }}>
-                    <View style={{width: '90%'}}>
-                        <Text style={currentOpenList === itemindex ? styles.headingSelected : styles.heading}>{item.headingText}</Text>
-                    </View>
-                    <View>
-                    { currentOpenList === itemindex ?
-                        <MaterialIcons name='arrow-drop-up' size={32} color={'black'} /> :
-                        <MaterialIcons name='arrow-drop-down' size={32} color={'black'} />
-                    }
-                    </View>
-                </TouchableOpacity>
+            <View key={itemindex} style={styles.accordionItem}>
+                <View style={{flexDirection: 'row', alignContent: 'space-between'}}>
+                    <TouchableOpacity style={{flexDirection: 'row', alignContent: 'space-between', width: '100%'}}
+                        onPress={() => {
+                            if(itemindex === currentOpenList) setOpenedList(-1);
+                            else setOpenedList(itemindex);
+                    }}>
+                        <View style={{width: '90%'}}>
+                            <Text style={currentOpenList === itemindex ? styles.headingSelected : styles.heading}>{item.headingText}</Text>
+                        </View>
+                        <View>
+                        { currentOpenList === itemindex ?
+                            <MaterialIcons name='arrow-drop-up' size={32} color={'black'} /> :
+                            <MaterialIcons name='arrow-drop-down' size={32} color={'black'} />
+                        }
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                { currentOpenList === itemindex && <Paragraph value={props.value[itemindex]} isNotRenderTitle={true} /> }
             </View>
-            {
-                currentOpenList === itemindex && <Paragraph value={props.value.data[itemindex]} isNotRenderTitle={true} />
-            }
-        </View>
         )})
     }
     </View>
-    )
+    );
 }
+

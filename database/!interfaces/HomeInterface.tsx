@@ -39,4 +39,5 @@ export interface Stories {
     title   :string;
     date    :string;
     text    :string;
+    storyjson :string;
 }
