@@ -1,6 +1,6 @@
 
 ## July 28, Version 0.5.1 Completing Home Tab
--completed the feature of map in the home tab
+-completing the feature of map in the home tab
 -Added loading of articles like about the city
 -Added images to places
 -Database improvements
