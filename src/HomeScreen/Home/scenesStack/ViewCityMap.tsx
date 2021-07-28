@@ -10,7 +10,7 @@
         "view the city map" button.
 */
 import React from 'react';
-import { ActivityIndicator, View, Text, Platform, Linking } from 'react-native';
+import { ActivityIndicator, View, Platform, Linking } from 'react-native';
 import { ExpoLeaflet, LeafletWebViewEvent, MapMarker } from "expo-leaflet";
 import { WindowDimension } from '../../../Utility/useResponsive';
 import { mapOptions, mapLayers} from './ViewCityMap/options';
@@ -54,16 +54,16 @@ export default function MapIndex({navigation} :any) {
 
     function openStreetViewLink() {
         localDispatch(setPlaceInfoShow(false));
-        if( Platform.OS == 'web') {
-            localState.streetviewlink && Linking.canOpenURL(localState.streetviewlink).then(supported => {
+        //if( Platform.OS == 'web') {
+            localState.webviewlink && Linking.canOpenURL(localState.webviewlink).then(supported => {
                 if (supported) {
-                Linking.openURL(localState.streetviewlink);
+                Linking.openURL(localState.webviewlink);
                 }
             });
-        }
-        else {
-            navigation.navigate('StreetView');
-        }
+        //}
+        //else {
+           //navigation.navigate('WebView');
+        //}
     }
 
     return (
@@ -88,7 +88,7 @@ export default function MapIndex({navigation} :any) {
                 title='Notice'
                 isshow={localState.isInstantSVCreadit == 1}
                 ok={() => { localDispatch(setInstantSVCreadit()); openStreetViewLink(); }}
-                text='The street view is provided by www.instantstreetview.com thru a webview. Visit their website to see more.'
+                text='The Google street view is provided by © www.instantstreetview.com thru a webview.'
             />
         </View>
     );       

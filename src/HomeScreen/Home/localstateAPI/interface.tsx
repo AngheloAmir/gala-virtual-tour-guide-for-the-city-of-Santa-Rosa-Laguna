@@ -12,7 +12,7 @@ export interface HomeStateInterface {
     mapMarkerId                 :number; //an index equal to database/places/allplaces array
     placeInfoShow               :boolean;
     isMarkerShow                :boolean;
-    streetviewlink              :string;
+    webviewlink                 :string;
     isInstantSVCreadit          :number;
     storyToRead?                :StoryContent;
 }
@@ -27,7 +27,7 @@ export enum actionType {
     setIsDialogAttributionShow,
     setMapMarkerId,
     setPlaceInfoShow,
-    setStreetViewLink,
+    setWebviewLink,
     setDialogOpenStreetMapProviderCreadit,
     setStory,
 }

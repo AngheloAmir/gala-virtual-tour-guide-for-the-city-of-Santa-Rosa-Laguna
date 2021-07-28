@@ -1,3 +1,15 @@
+## July 29, Version 0.5.2 Completing Home Tab 2
+-Added StoryViewer
+-The Guide Tab and reading an article in Home tab now uses same component named StoryViewer
+-Remove Accordion.tsx, Paragraph.tsx in Guide folder
+-Remove GuideItem in the database/!interface
+-Remove CovidNews.tsx and MoreArticles.tsx. Now street view, covid news and more articles features (button)
+will now refer to a single Webview.tsx.
+    -- The result is that, the number of screen stack is reduce
+-Adjusted components in the Home folder
+-Added newline at the end of some json file
+-Now the street view will be refer to user web browser instead of putting inside of webview
+-Home Tab > External links is complete
 
 ## July 28, Version 0.5.1 Completing Home Tab
 -completing the feature of map in the home tab
@@ -8,6 +20,7 @@
 ## July 27, Version 0.5 Revamp database to JSON
 -Revamp the code structure, now the database contains "JSON" files instead of tsx for
 easier editting of the contents
+-refraction was made
 -improve online map
 -additional assets are added
 
@@ -61,13 +74,13 @@ easier editting of the contents
 -Fix NotifyWhenClose showing even the current tour has changed
 -Added folder windowDialogs (which move dialog components)
 
-## July 17, VErsion 0.3.4.3 - GPS Feature 90% completion
+## July 17, Version 0.3.4.3 - GPS Feature 90% completion
 -Added NotifyWhenClose, a component that show below a toolbar when user is close to POI
 -Added the dialog box and the ability to play sound if possible
 -Improve the Find Nearest Establishment feature, now it should be more accurate
 -Added in !interface/GalaSelfGuidedTour is the description for a DestinationLocation object
 
-## July 16, VErsion 0.3.4.2 - GPS Improvements and code documentation
+## July 16, Version 0.3.4.2 - GPS Improvements and code documentation
 -Improve the Assistant Tour Code base
 -Added Attribution in the map (as per requirement of Mapbox lincess)
 -Added documentation for many of the components

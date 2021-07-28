@@ -1,14 +1,15 @@
 /*
-    Defines the stucture of how the story content. The data used this interface will appear when
-    the user tap a story (read more) while in the home tab
+    Defines the stucture of how the story content. The structure is same to
+    utilities/StoryViewer.tsx
 */
 import { ImageSourcePropType } from 'react-native';
 
 export interface  StoryContent {
-    title           :string;
-    date            :string;
-    headerImage     :ImageSourcePropType | any;
-    contents        :Array<StoryParagraph>;
+    title?          :string;
+    date?           :string;
+    headerImage?    :ImageSourcePropType | any;
+    contents?       :Array<StoryParagraph>;
+    accordion?      :Array<StoryParagraph>;
 }
 
 export interface StoryParagraph {

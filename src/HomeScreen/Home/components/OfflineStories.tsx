@@ -13,10 +13,10 @@ import * as React from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI }        from '../localstateAPI/interface';
-import { setStoryToRead }       from '../localstateAPI/actions';
+import { setStoryToRead, setWebviewLink } from '../localstateAPI/actions';
 
 import { Stories }              from '../../../../database/!interfaces/HomeInterface';
-import { offlinestories, allstories } from '../functions/homejson';
+import { offlinestories, allstories, website } from '../functions/homejson';
 
 export default function OfflineStories( {navigation} :any ) {
     const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
@@ -24,6 +24,11 @@ export default function OfflineStories( {navigation} :any ) {
     function handleReadStory(index :number) {
         localDispatch( setStoryToRead(allstories[index]) );
         navigation.navigate('ReadStory');
+    }
+
+    function handleReadMore() {
+        localDispatch(setWebviewLink(website.morearticles));
+        navigation.navigate('WebView');
     }
 
     return (
@@ -39,7 +44,8 @@ export default function OfflineStories( {navigation} :any ) {
                                     <Text style={styles.newsTitle}>{story.title}</Text>
                                     <Text style={styles.datePublish}>{story.date}</Text>
                                     <Text style={styles.newsDescription}>{story.text}</Text>
-                                    <TouchableOpacity style={styles.readMoreContainer} onPress={() => handleReadStory(index)}>
+                                    <TouchableOpacity style={styles.readMoreContainer}
+                                        onPress={() => handleReadStory(index)}>
                                         <Text style={styles.readMoreText}>Read more...</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -49,7 +55,7 @@ export default function OfflineStories( {navigation} :any ) {
                 }
             </View>
 
-            <TouchableOpacity style={styles.readMoreContainer} onPress={() => navigation.navigate('MoreArticles')}>
+            <TouchableOpacity style={styles.readMoreContainer} onPress={handleReadMore}>
                 <Text style={styles.readMoreTextArticle}> Look for more articles online </Text>
             </TouchableOpacity>
         </View>

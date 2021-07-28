@@ -24,6 +24,6 @@ export function createDefaultState() :HomeStateInterface {
         //1 means it is show but first time
         //2 means that it was previous show so no need to show it again
         isInstantSVCreadit: 0,
-        streetviewlink: '',
+        webviewlink: '',
     };
 }

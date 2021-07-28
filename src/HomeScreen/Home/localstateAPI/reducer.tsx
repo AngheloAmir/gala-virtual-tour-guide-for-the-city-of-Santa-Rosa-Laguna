@@ -19,9 +19,9 @@ export function rootreducer(state :HomeStateInterface, action :ActionInterface )
                 ...state, placeInfoShow: action.payload
             }
         
-        case actionType.setStreetViewLink:
+        case actionType.setWebviewLink:
             return {
-                ...state, streetviewlink: action.payload
+                ...state, webviewlink: action.payload
             }
         
         case actionType.setDialogOpenStreetMapProviderCreadit:

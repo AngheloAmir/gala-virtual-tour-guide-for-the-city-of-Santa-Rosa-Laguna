@@ -20,9 +20,7 @@ import HomeInitialScreen  from './Home/HomeIndex';
 import ReadStory          from './Home/scenesStack/ReadStory';
 import ExternalLinks      from './Home/scenesStack/ExternalLinks';
 import ViewCityMap        from './Home/scenesStack/ViewCityMap';
-import CovidNews          from './Home/scenesStack/CovidNews';
-import MoreArticles       from './Home/scenesStack/MoreArticles';
-import StreetView         from './Home/scenesStack/StreetView';
+import WebView            from './Home/scenesStack/Webview';
 import ReadPlaceInfo      from './Home/scenesStack/ReadPlaceInfo';
 
 export default function HomeIndex() {
@@ -33,11 +31,9 @@ export default function HomeIndex() {
       <Stack.Navigator>
         <Stack.Screen name="Home"           component={HomeInitialScreen} options={{headerShown: false}}/>
         <Stack.Screen name="ReadStory"      component={ReadStory} options={{headerShown: false}}/>
-        <Stack.Screen name="MoreArticles"   component={MoreArticles} options={{headerShown: false}}/>
         <Stack.Screen name="ExternalLinks"  component={ExternalLinks} options={{headerShown: false}}/>
         <Stack.Screen name="ViewCityMap"    component={ViewCityMap} options={{headerShown: false}}/>
-        <Stack.Screen name="CovidNews"      component={CovidNews} options={{headerShown: false}}/>
-        <Stack.Screen name="StreetView"     component={StreetView} options={{headerShown: false}}/>
+        <Stack.Screen name="WebView"        component={WebView} options={{headerShown: false}}/>
         <Stack.Screen name="ReadPlaceInfo"  component={ReadPlaceInfo} options={{headerShown: false}}/>
       </Stack.Navigator>
     </localContextProvider.Provider>

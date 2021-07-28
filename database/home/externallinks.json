@@ -1,15 +1,48 @@
 {
-    "title": "list of external links",
+    "title": "List of websites that you should visit. They will open in your default web browser.",
+    "notice": "* these websites are not affiliated or endorsed by the developer. These are only recommendation.",
     "contents": [
         {
-            "linkname": "Google",
-            "description": "google search engine",
-            "link": "https://goole.com"
+            "linkname": "Santa Rosa city website",
+            "description": "Visit the official website of Santa Rosa City Laguna for the latest news and additional information.",
+            "link": "https://santarosacity.gov.ph/home/",
+            "linkShort": "santarosacity.gov.ph"
         },
         {
-            "linkname": "Google",
-            "description": "google search engine",
-            "link": "https://goole.com"
+            "linkname": "Santa Rosa official Facebook page",
+            "description": "Visit the official Santa Rosa FB page for the latest news, updates, and regulation.",
+            "link": "https://web.facebook.com/citygovernmentofsantarosa/?_rdc=1&_rdr",
+            "linkShort": "FB: citygovernmentofsantarosa"
+        },
+        {
+            "linkname": "Latest restriction about Covid-19",
+            "description": "Read the lastest information about the current restriction from philippines.travel websites.",
+            "link": "https://www.philippines.travel/safetrip",
+            "linkShort": "www.philippines.travel"
+        },
+        {
+            "linkname": "Enchanted Kingdom",
+            "description": "EK official websites that should visit for booking and checking if the park is open or not.",
+            "link": "https://www.enchantedkingdom.ph/",
+            "linkShort": "www.enchantedkingdom.ph"
+        },
+        {
+            "linkname": "Nuvali 360 View",
+            "description": "Mesmerize with the Nuvali 360 view feature provided by www.nuvali.ph and by the AyalaLand Inc.",
+            "link": "https://www.nuvali.ph/discover/",
+            "linkShort": "www.nuvali.ph/discover"
+        },
+        {
+            "linkname": "Instant Street View",
+            "description": "Travel the streets virtually with Instant Google Street View.",
+            "link": "https://www.instantstreetview.com/",
+            "linkShort": "www.instantstreetview.com"
+        },
+        {
+            "linkname": "Blog by the themermaidtravels.com",
+            "description": "The themermaidtravels.com has made a blog about the city.",
+            "link": "https://www.themermaidtravels.com/the-magnanimous-santa-rosa-laguna/",
+            "linkShort": "www.themermaidtravels.com"
         }
     ]
 }

@@ -71,7 +71,6 @@
 */
 
 import React from 'react';
-import { Platform } from 'react-native';
 import * as Location from 'expo-location';
 
 import { localContextProvider, defaultLocalState } from './localstateAPI/state';

@@ -13,7 +13,7 @@ import { WindowDimension } from '../../../../Utility/useResponsive';
 
 import { localContextProvider } from '../../localstateAPI/state';
 import { LocalStateAPI }        from '../../localstateAPI/interface';
-import { setStreetViewLink,
+import { setWebviewLink,
          setInstantSVCreadit,
          setPlaceInfoShow }     from '../../localstateAPI/actions';
 import { allplaces }            from "../../functions/homejson";
@@ -41,7 +41,7 @@ export default function PlaceInfo({navigation} :any) {
     function streetview() {
         if(localState.isInstantSVCreadit == 0 ) {
             localDispatch(setInstantSVCreadit());
-            link && localDispatch(setStreetViewLink(link));
+            link && localDispatch(setWebviewLink(link));
         }
         else openStreetViewLink();
     }
@@ -58,8 +58,8 @@ export default function PlaceInfo({navigation} :any) {
             });
         }
         else {
-            localDispatch(setStreetViewLink(link));
-            navigation.navigate('StreetView');
+            localDispatch(setWebviewLink(link));
+            navigation.navigate('WebView');
         }
     }
 

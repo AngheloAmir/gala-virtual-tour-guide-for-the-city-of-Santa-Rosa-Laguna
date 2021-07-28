@@ -28,10 +28,7 @@ export default function GuidesIndex() {
 import { contextProvider, StateAPI } from '../StateAPI/State';
 import { setGuideInfo } from '../StateAPI/Actions';
 
-import { GuideItem }    from '../../database/!interfaces/GuideItem';
-import { GuideData }    from '../../database/!interfaces/GuideData';
-import { GuideParagraphContent,
-         GuideContent } from '../../database/!interfaces/GuideContent';
+import { GuideItem, GuideData }    from '../../database/!interfaces/GuideItem';
 import ASSETS from '../../database/assets';
 import GuideView from './Guides/GuideView';
 const guidejson :GuideData = require('../../database/guides.json'); 

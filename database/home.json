@@ -2,7 +2,7 @@
     "comment": "This file defines the content in the home tab. See database/!interface/HomeInterface.tsx",
     
     "externalLinkText": "Visits the official FB and website of Santa Rosa, E.K and more!",
-    "cityMapText":      "View an online map and explore virtually with google street view.",
+    "cityMapText":      "View an online map of Santa Rosa city and explore!",
     "aboutcity":        "Learn more about Santa Rosa's history, heritage sites, and more.",
     "cityCovidNews":    "Latest news about Covid-19 cases in Santa Rosa.",
     

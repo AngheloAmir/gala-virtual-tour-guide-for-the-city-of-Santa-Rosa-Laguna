@@ -1,7 +1,7 @@
 /*
     Define all of the interface used in the global State API
 */
-import { GuideContent } from '../../database/!interfaces/GuideContent';
+import { StoryContent } from '../../database/!interfaces/StoryContent';
 
 export interface ActionInterface {
     type        :number;
@@ -23,6 +23,6 @@ export interface StateInterface {
         status      : 'Will visit' | 'visited' | 'Residence' | 'Guest';
     };
     features :{
-        guideInfo? :GuideContent;
+        guideInfo? :StoryContent;
     };
 }

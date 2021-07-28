@@ -21,9 +21,9 @@ export function setPlaceInfoShow(isShow :boolean) :ActionInterface {
     }
 }
 
-export function setStreetViewLink(link :string) :ActionInterface {
+export function setWebviewLink(link :string) :ActionInterface {
     return {
-        type: actionType.setStreetViewLink, payload: link
+        type: actionType.setWebviewLink, payload: link
     }
 }
 

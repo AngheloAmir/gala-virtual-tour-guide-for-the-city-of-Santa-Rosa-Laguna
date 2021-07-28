@@ -23,8 +23,8 @@ import { buttonstext } from '../functions/homejson';
 
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI }        from '../localstateAPI/interface';
-import { setStoryToRead }       from '../localstateAPI/actions';
-import { aboutTheCity }         from '../functions/homejson';
+import { setStoryToRead, setWebviewLink } from '../localstateAPI/actions';
+import { aboutTheCity, website } from '../functions/homejson';
 
 const iconColor = 'rgba(40, 100, 160, 1)';
 const iconSize  = 36;
@@ -37,6 +37,12 @@ export default function ButtonsItems( {navigation} :any ) {
         navigation.navigate('ReadStory');
     }
 
+    //when the covid news is pressed, it just show a webview loading a web content
+    function handleCovidNews() {
+        localDispatch(setWebviewLink(website.morearticles));
+        navigation.navigate('WebView');
+    }
+
     return (
         <View style={styles.container}>
 
@@ -45,7 +51,7 @@ export default function ButtonsItems( {navigation} :any ) {
                     <FoundationIcon name='map'size={iconSize} color={iconColor} />
                 </View>
                 <View style={styles.textContainer}>
-                    <Text style={styles.headingtext}>Online city map with street view</Text>
+                    <Text style={styles.headingtext}>Online city map</Text>
                     <Text style={styles.text}>    {buttonstext.cityMapText}</Text>
                 </View>
             </TouchableOpacity>
@@ -70,7 +76,7 @@ export default function ButtonsItems( {navigation} :any ) {
                 </View>
             </TouchableOpacity>
     
-            <TouchableOpacity style={styles.menuItemContainer} onPress={() => navigation.navigate('CovidNews')}>
+            <TouchableOpacity style={styles.menuItemContainer} onPress={handleCovidNews}>
                 <View style={styles.icon}>
                     <FontAwesome5 name='exclamation-triangle'size={iconSize} color={iconColor} />
                 </View>

@@ -3,11 +3,10 @@
         Scene - A screen is a component that occupies a large part of the screen
 
     * DESCRIPTION
-        
+        Show the place description and image
 
     * VISIBLE WHEN
-        When the user is in Home Screen and in the Home Tab, then pressed
-        "" button.
+        When the user is in Home Screen / Online Map view and pressed "more info" after tapping a marker
 */
 import React from 'react';
 import { View, Text, Button, StyleSheet, Image, Animated, ScrollView } from 'react-native';
