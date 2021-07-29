@@ -41,9 +41,14 @@ interface propsReceive {
 export interface Story {
     title?        :string;
     date?         :string;
-    headerImage?  :ImageSourcePropType | any;
+    headerImage?  :ImageSourcePropType;
+    imagecredits? :string;
     contents?     :Array<StoryContent>;
     accordion?    :Array<StoryContent>;
+    references    :Array<{
+        linkname    :string;
+        link        :string;
+    }>;
 }
 
 export interface StoryContent {
@@ -94,21 +99,33 @@ export default function StoryViewer(props :propsReceive) {
             width: WindowDimension.width,
             height: WindowDimension.width * 0.7,
         },
+        headingCredits: {
+            position: 'absolute', bottom: 2, left: 2,
+            backgroundColor: 'gray', color: 'white',
+            padding: 4, fontSize: 12, zIndex: 5,
+            borderRadius: 16, opacity: 0.7,
+        }
     });
 
     const story = props.story;
 
     return (
     <ScrollView style={styles.guideContainer}>
-        { story.headerImage && <Image source={ story.headerImage } style={styles.headingImage} resizeMode='cover' /> }
+        { story.headerImage &&
+            <View>
+                <Image source={ story.headerImage } style={styles.headingImage} resizeMode='cover' />
+                { story.imagecredits && <Text style={styles.headingCredits}>Credits: {story.imagecredits}</Text>}
+            </View>
+        }
         <View style={styles.textContainer}>
             { story.title && <Text style={styles.title}>{story.title}</Text> }
             { story.date  && <Text style={styles.datePublish}>{story.date} </Text> }
-            { story.contents && story.contents.map((value :StoryContent, index :number ) => {
-                    return <Paragraph key={index} value={value} />
+            { story.contents && story.contents.map((item :StoryContent, index :number ) => {
+                    return <Paragraph key={index} value={item} />
                 })
             }
-            { story.accordion && story.accordion && <Accordion value={story.accordion} /> }
+            { story.accordion  && story.accordion && <Accordion value={story.accordion} /> }
+            { story.references && <References value={story.references} />}
         </View>
     </ScrollView>
     )
@@ -129,6 +146,7 @@ function Paragraph( props :ParagraphProps) {
         heading: {
             fontSize: 21,
             textAlign: 'left',
+            marginBottom: 8,
         },
         paragraph: {
             fontSize: 18, lineHeight: 28, marginBottom: 0, marginTop: 4,
@@ -151,7 +169,7 @@ function Paragraph( props :ParagraphProps) {
     function handleVisitLink(link :string | any) {
         Linking.openURL(link).catch(err => console.error("Couldn't load page", err));
     }
-
+    
     return (
         <View style={styles.paragraphContainer}>
             { props.value.headingText && !props.isNotRenderTitle && <Text style={styles.heading}>{props.value.headingText} </Text> }
@@ -171,6 +189,9 @@ function Paragraph( props :ParagraphProps) {
 
 function ParagraphImage(props :ParagraphProps) {
     const styles = StyleSheet.create({
+        container: {
+            marginBottom: 8, 
+        },
         contentImage: {
             width:      WindowDimension.width * 0.85,
             height:     (WindowDimension.width * 0.85) * 0.7,
@@ -194,7 +215,7 @@ function ParagraphImage(props :ParagraphProps) {
     }
 
     return (
-        <View>
+        <View style={styles.container}>
             { props.value.image && <Image source={ props.value.image } style={styles.contentImage} resizeMode='cover' /> }
             <View style={styles.attributionContainer}>
             {
@@ -266,4 +287,63 @@ function Accordion(props :AccordionProps ) {
     }
     </View>
     );
+}
+
+/*==========================================================================*/
+interface ReferencesProps {
+    value :Array<{
+        linkname :string,
+        link :string
+    }>;
+}
+
+function handleLinkView(link :string) {
+    Linking.openURL(link).catch(err => console.error("Couldn't load page", err));
+}
+
+
+function References(props :ReferencesProps) {
+    const styles = StyleSheet.create({
+        container: {
+            marginTop: 32,
+        },
+        text: {
+            fontSize: 18, fontStyle: 'italic',
+            marginBottom: 12,
+        },
+        linkContainer: {
+            width: '90%',
+            alignSelf: 'center',
+            marginBottom: 8,
+        },
+        link: {
+            fontSize: 16, fontStyle: 'italic', color: 'blue',
+            textDecorationLine: 'underline',
+        },
+        nolink: {
+            fontSize: 16, fontStyle: 'italic',
+        }
+    })
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text}>References: </Text>
+            {
+                props.value.map((item :any, index :number) => {
+                    return (
+                    <View key={index} style={styles.linkContainer}>
+                        { item.linkname && item.link ?
+                            <TouchableOpacity onPress={() => handleLinkView(item.link)}>
+                                <Text style={styles.link}>{item.linkname}</Text>
+                            </TouchableOpacity>
+                            :
+                            <View>
+                                { item.linkname && <Text style={styles.nolink}>{item.linkname}</Text> }
+                            </View>
+                        }
+                    </View>
+                )})
+            }
+        </View>
+    ) 
 }

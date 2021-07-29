@@ -7,7 +7,6 @@ export interface HomeTabInterface {
     externalLinkText:string;
     cityMapText     :string;
     aboutcity       :string;
-    cityCovidNews   :string;
     headingSlides   :Array<Slides>;
     offlineStories  :Array<Stories>;
     allplaces       :Array<string>;
@@ -17,7 +16,6 @@ export interface HomeTabInterface {
 
     websites        :{
         morearticles :string;
-        covidcase    :string;
         officialsite :string;
         githubsite   :string;
     };

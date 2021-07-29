@@ -1,3 +1,15 @@
+##
+
+## July 30, Version 0.5.3 Completing Home Tab 3
+-Added article about Santa Rosa city hood
+-Added article about Tiongco Brothers
+-Added artice about EK
+-Adjusted places description
+-Remove the footer in the home tab
+-Remove Covid case button in the home tab
+-Arrange assets.tsx in alphabetical order
+-Places text adjustements
+
 ## July 29, Version 0.5.2 Completing Home Tab 2
 -Added StoryViewer
 -The Guide Tab and reading an article in Home tab now uses same component named StoryViewer

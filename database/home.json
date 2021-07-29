@@ -4,14 +4,8 @@
     "externalLinkText": "Visits the official FB and website of Santa Rosa, E.K and more!",
     "cityMapText":      "View an online map of Santa Rosa city and explore!",
     "aboutcity":        "Learn more about Santa Rosa's history, heritage sites, and more.",
-    "cityCovidNews":    "Latest news about Covid-19 cases in Santa Rosa.",
     
     "headingSlides": [
-        {
-            "image": "balibago.jpg",
-            "place": "Brgy. Balibago Complex",
-            "isWhite": false
-        },
         {
             "image": "arch.jpg",
             "place": "Santa Rosa Arch, Market Area",
@@ -43,25 +37,24 @@
             "title": "The 17th City Hood Anniversary",
             "date": "July 2021",
             "text": "The Lion City of the South celebrates its 17th anniversary of the declaration of cityhood on July 10.",
-            "storyjson": "tempstroy.json"
+            "storyjson": "cityhood.json"
         },
         {
             "title": "The Tiongco Brothers",
             "date": "July 2021",
             "text": "The Tiongco Brothers (Fernando, Emilio, and Arthuro) are well-known pop artists in the \"50s to \"70s.",
-            "storyjson": "tempstroy.json"
+            "storyjson": "tioncobrothers.json"
         },
         {
             "title": "Enchanted Kingdom",
             "date": "July 2021",
-            "text": "Read the latest news about the Enchanted Kingdom (EK) - the most visited tourist spot in Laguna.",
-            "storyjson": "tempstroy.json"
+            "text": "Read the current info about the Enchanted Kingdom (EK) - the most visited tourist spot in Laguna.",
+            "storyjson": "ekstory.json"
         }
     ],
     
     "websites" :{
       "morearticles": "https://galavtg.github.io/articles",
-      "covidcase":    "https://galavtg.github.io/covidcase",
       "officialsite": "https://galavtg.github.io/",
       "githubsite":   "https://github.com/galavtg"
     },

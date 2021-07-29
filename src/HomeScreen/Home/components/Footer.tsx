@@ -19,6 +19,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { website } from '../functions/homejson';
 
 export default function Footer( {navigation} :any) {
+
+    return (
+        <View></View>
+    )
+}
+    /*
     const iconColor = 'rgba(40, 100, 160, 1)';
     const iconSize  = 32;
     
@@ -31,7 +37,7 @@ export default function Footer( {navigation} :any) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.headingText}>OUR OFFICIAL LINKS</Text>
+            <Text style={styles.headingText}>Our Official Sites</Text>
             <View style={styles.siteContainer}>
                 <TouchableOpacity onPress={() => openLink(website.officialsite)}>
                     <MaterialCommunityIcons name='web'size={iconSize} color={iconColor} />
@@ -63,4 +69,4 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
 })
-
+*/

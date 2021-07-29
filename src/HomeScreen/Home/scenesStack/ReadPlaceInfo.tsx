@@ -9,7 +9,7 @@
         When the user is in Home Screen / Online Map view and pressed "more info" after tapping a marker
 */
 import React from 'react';
-import { View, Text, Button, StyleSheet, Image, Animated, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, Animated, ScrollView } from 'react-native';
 
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI }        from '../localstateAPI/interface';
@@ -17,7 +17,7 @@ import { WindowDimension }      from '../../../Utility/useResponsive';
 import { allplaces }            from '../functions/homejson';
 import ASSETS                   from '../../../../database/assets';
 
-export default function ReadPlaceInfo( {navigation} :any) {
+export default function ReadPlaceInfo() {
     const { localState } :LocalStateAPI = React.useContext(localContextProvider);
 
     //@ts-ignore
@@ -33,7 +33,7 @@ export default function ReadPlaceInfo( {navigation} :any) {
     }, []);
 
     return (
-        <ScrollView>
+        <ScrollView style={{marginBottom: 24}}>
         <Animated.View style={[styles.container, {opacity: animvalue.x, transform: [{scale: animvalue.y }]}]}>
             { allplaces[localState.mapMarkerId].image &&
                 <Image style={styles.image} source={image} resizeMode='cover' />
@@ -42,10 +42,6 @@ export default function ReadPlaceInfo( {navigation} :any) {
                 <Text style={styles.placename}>{allplaces[localState.mapMarkerId].name }</Text>
                 <Text style={styles.address}>{ allplaces[localState.mapMarkerId].address }</Text>
                 <Text style={styles.description}>{ allplaces[localState.mapMarkerId].description }</Text>
-                
-                <View style={{marginTop: 24, marginBottom: 16}}>
-                    <Button title='BACK' onPress={() => navigation.navigate('ViewCityMap')} />
-                </View>
             </View>
         </Animated.View >
         </ScrollView>

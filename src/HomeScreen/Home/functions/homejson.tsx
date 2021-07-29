@@ -68,7 +68,7 @@ export const allstories :Array<StoryContent> = homejson.offlineStories.map((item
         headerImage: ASSETS[ storyjson.headerImage ],
         contents: storyjson.contents.map((contentitem) => {
             return {
-                ...item,
+                ...contentitem,
                 image: ASSETS[ contentitem.image ],
         }})
     }

@@ -23,8 +23,8 @@ import { buttonstext } from '../functions/homejson';
 
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI }        from '../localstateAPI/interface';
-import { setStoryToRead, setWebviewLink } from '../localstateAPI/actions';
-import { aboutTheCity, website } from '../functions/homejson';
+import { setStoryToRead } from '../localstateAPI/actions';
+import { aboutTheCity } from '../functions/homejson';
 
 const iconColor = 'rgba(40, 100, 160, 1)';
 const iconSize  = 36;
@@ -35,12 +35,6 @@ export default function ButtonsItems( {navigation} :any ) {
     function handleReadMoreAboutTheCity() {
         localDispatch( setStoryToRead(aboutTheCity) );
         navigation.navigate('ReadStory');
-    }
-
-    //when the covid news is pressed, it just show a webview loading a web content
-    function handleCovidNews() {
-        localDispatch(setWebviewLink(website.morearticles));
-        navigation.navigate('WebView');
     }
 
     return (
@@ -75,17 +69,6 @@ export default function ButtonsItems( {navigation} :any ) {
                     <Text style={styles.text}>   {buttonstext.externalLinkText}</Text>
                 </View>
             </TouchableOpacity>
-    
-            <TouchableOpacity style={styles.menuItemContainer} onPress={handleCovidNews}>
-                <View style={styles.icon}>
-                    <FontAwesome5 name='exclamation-triangle'size={iconSize} color={iconColor} />
-                </View>
-                <View style={styles.textContainer}>
-                    <Text style={styles.headingtext}>Latest news about Covid-19</Text>
-                    <Text style={styles.text}>   {buttonstext.cityCovidNews}</Text>
-                </View>
-            </TouchableOpacity>
-
         </View>
     );
 }

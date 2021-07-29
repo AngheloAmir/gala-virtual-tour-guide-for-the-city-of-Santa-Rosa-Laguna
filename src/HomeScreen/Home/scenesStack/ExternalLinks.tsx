@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 4,
         marginTop: 16,
-        borderColor:  'rgba(115, 170, 220, 0.4)',
+        borderColor:  'rgba(115, 170, 220, 1)',
         borderWidth: 1,
         borderRadius: 8,
         textAlign: 'justify',

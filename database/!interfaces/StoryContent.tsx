@@ -8,15 +8,20 @@ export interface  StoryContent {
     title?          :string;
     date?           :string;
     headerImage?    :ImageSourcePropType | any;
+    imagecredits?   :string;
     contents?       :Array<StoryParagraph>;
     accordion?      :Array<StoryParagraph>;
+    references      :Array<{
+        linkname    :string;
+        link        :string;
+    }>;
 }
 
 export interface StoryParagraph {
     headingText?    :string;
     image?          :ImageSourcePropType;
     paragraph?      :string;
-    link?           :string;
+    link?           :string; //which appear in the end of the paragraph
     linkText?       :string;
     links?          :{ //which appear only in an image
         link :string;

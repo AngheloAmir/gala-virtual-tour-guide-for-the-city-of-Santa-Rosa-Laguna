@@ -88,7 +88,7 @@ export default function MapIndex({navigation} :any) {
                 title='Notice'
                 isshow={localState.isInstantSVCreadit == 1}
                 ok={() => { localDispatch(setInstantSVCreadit()); openStreetViewLink(); }}
-                text='The Google street view is provided by © www.instantstreetview.com thru a webview.'
+                text='You are visiting www.instantstreetview.com to look the street view. '
             />
         </View>
     );       
