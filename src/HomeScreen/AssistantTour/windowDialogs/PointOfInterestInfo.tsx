@@ -22,14 +22,11 @@ import ASSETS                   from '../../../../database/assets';
 import DialogBox                from '../../../Utility/DialogBox';
 
 export default function PointOfInterestInfo() {
-    const { localState, localDispatch } :LocalStateAPI= React.useContext(localContextProvider);
-
-    if(localState.currenttour.index < 0 || localState.poiCloseIndex < 0)
-        return <View style={{position: 'absolute'}}></View>
+    const { localDispatch } :LocalStateAPI= React.useContext(localContextProvider);
 
     return (
         <DialogBox
-            title='Point of Interest' isshow={localState.isPOIBoxOpen}
+            title='Point of Interest' isshow={true}
             dialogContent={DialogContent}
             cancel={ () => localDispatch(setPOIBoxOpen(false)) }
         />

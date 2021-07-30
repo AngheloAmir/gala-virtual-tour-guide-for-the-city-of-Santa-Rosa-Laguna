@@ -16,46 +16,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI }        from '../localstateAPI/interface';
-import { setPOIBoxOpen,
-         setPoiIndex }          from '../localstateAPI/actions';
-import { GalaTours }            from '../functions/options';
-import { isClose }              from '../functions';
-
-const mapsetting = require('../.././../../database/map.json');
-const AQUITANCERANGE = mapsetting.pointOfInterestAcquisitionRange;
+import { setPOIBoxOpen } from '../localstateAPI/actions';
 
 export default function NotifyWhenClose() {
-    const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
-    const [isVisible, setVisible]       = React.useState(false);
-
-    React.useEffect(() => {
-        if( localState.currenttour.index < 0 ||
-            !GalaTours[localState.currenttour.index].pointOfInterests) {
-            setVisible(false);
-            return;
-        }
-        const userPosition = localState.mapmarkers[0].position;
-        let hasClosestPOI :boolean = false;
-        let poinIndex     :number  = -1;
-
-        //@ts-ignore
-        for(let i=0; i < GalaTours[localState.currenttour.index].pointOfInterests.length; i++) {
-            //@ts-ignore
-            const POI = GalaTours[localState.currenttour.index].pointOfInterests[i];
-            const poiPos = { lat: POI.lat, lng: POI.lng };
-            if( isClose(userPosition, poiPos, AQUITANCERANGE ) ) {
-                hasClosestPOI = true; poinIndex = i;
-            }
-        }
-        if(hasClosestPOI && poinIndex > -1) {
-            setVisible(true);
-            localDispatch( setPoiIndex(poinIndex));
-        }
-        else {
-            setVisible(false);
-            localDispatch( setPoiIndex(-1));
-        }
-    },[localState.mapmarkers[0].position]);
+    const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
 
     const [isGoingUp, setGoin] = React.useState(true);
     const animvalue = React.useRef(new Animated.Value(0.7)).current;
@@ -78,16 +42,13 @@ export default function NotifyWhenClose() {
         localDispatch( setPOIBoxOpen(true) );
     }
 
-    if(isVisible)
-        return (
-            <Animated.View style={[styles.container,  {transform: [{scale: animvalue}]} ]}>
-            <TouchableOpacity onPress={handleBookOnPress}>
-                <MaterialCommunityIcons name='book-information-variant' size={64} color='rgba(95, 150, 200, 1)' />
-            </TouchableOpacity>
-            </Animated.View>
-        );
-    else
-        return <View style={{position: 'absolute'}}></View>
+    return (
+        <Animated.View style={[styles.container,  {transform: [{scale: animvalue}]} ]}>
+        <TouchableOpacity onPress={handleBookOnPress}>
+            <MaterialCommunityIcons name='book-information-variant' size={64} color='rgba(95, 150, 200, 1)' />
+        </TouchableOpacity>
+        </Animated.View>
+    );
 }
 
 const styles = StyleSheet.create({

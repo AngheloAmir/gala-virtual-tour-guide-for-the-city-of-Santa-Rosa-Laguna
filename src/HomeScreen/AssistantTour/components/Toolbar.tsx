@@ -24,25 +24,23 @@ export default function Toolbar() {
     const [shownotif, setshow]      = React.useState(false);
     const [timeoutid, settimeoutid] = React.useState();
 
-    React.useEffect(() => {
+    function handleShowNotifMessage(msg :string) {
         clearTimeout(timeoutid);
-        if(notifmsg.length > 1) {
-            setshow(true);
-            let i = setTimeout(() => {
-                setshow(false);
-                setnotifmsg('');
-            }, 3000);
-            // @ts-ignore
-            settimeoutid(i);
-        }
-        return () => clearTimeout(timeoutid); 
-    },[notifmsg]);
+        setnotifmsg(msg);
+        setshow(true);
+        let i = setTimeout(() => {
+            setshow(false);
+            setnotifmsg('');
+        }, 3000);
+        // @ts-ignore
+        settimeoutid(i);
+    }
 
     return (
         <View style={{width: '100%', height: 100}}>
             <View style={styles.container}>
-                <SelectTourAndNavigate  setnotifmsg={(msg) => setnotifmsg(msg)}/>
-                <IconButtons            setnotifmsg={(msg) => setnotifmsg(msg)}/>
+                <SelectTourAndNavigate  setnotifmsg={(msg) => handleShowNotifMessage(msg)}/>
+                <IconButtons            setnotifmsg={(msg) => handleShowNotifMessage(msg)}/>
             </View>
 
             <View style={styles.notifMessageContainer}>

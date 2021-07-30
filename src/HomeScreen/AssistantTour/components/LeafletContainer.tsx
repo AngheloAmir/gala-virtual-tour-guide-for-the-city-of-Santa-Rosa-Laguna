@@ -19,8 +19,8 @@ import { LocalStateAPI } from '../localstateAPI/interface';
 import { setUserPosition, setDialogMessage } from '../localstateAPI/actions';
 import { Responsive, useResponsive } from '../../../Utility/useResponsive';
 
-//Expo leaftlet options
 import { mapOptions, mapLayers } from '../functions/options';
+import { checkIfGalaBookShow }   from '../functions';
 
 export default function LeafletContainer() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
@@ -31,6 +31,7 @@ export default function LeafletContainer() {
             case 'onMapClicked':
                 if(Platform.OS == 'web') {
                     localDispatch( setUserPosition(event.location) );
+                    checkIfGalaBookShow({localState, localDispatch}, event.location);
                     console.log(event.location);
                 }
                 break;

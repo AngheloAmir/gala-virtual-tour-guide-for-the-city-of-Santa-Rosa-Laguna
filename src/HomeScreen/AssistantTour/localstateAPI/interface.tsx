@@ -86,6 +86,9 @@ export interface AssistantTourState {
     //the index of the nearest point of interest item in the current tour
     //setPoiIndex(index :number)
     poiCloseIndex       :number;
+
+    //true when beeping icon show
+    isCloseToMarker     :boolean;
 }
 
 export interface Position {
@@ -119,6 +122,7 @@ export enum actionType {
     clearShapeNMarkers,
     setIsAttributionShow,
 
+    setIsCloseToMarker,
     setIsPOIBoxOpen,
     setPoiIndex,
 }

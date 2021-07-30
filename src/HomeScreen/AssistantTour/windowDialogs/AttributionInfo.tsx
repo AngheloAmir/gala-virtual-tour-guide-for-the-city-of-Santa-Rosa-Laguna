@@ -17,7 +17,7 @@ import { setAttributionshow } from '../localstateAPI/actions';
 import DialogBox from '../../../Utility/DialogBox';
 
 export default function AttributionInfo() {
-    const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
+    const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
 
     function openlink(link :string) {
         Linking.canOpenURL(link).then(supported => {
@@ -29,7 +29,7 @@ export default function AttributionInfo() {
     return (
         <DialogBox
             title='Attribution'
-            isshow={localState.isAttributionOpen}
+            isshow={true}
             ok={() => localDispatch( setAttributionshow(false)) }
             dialogContent={() => {
                 return (

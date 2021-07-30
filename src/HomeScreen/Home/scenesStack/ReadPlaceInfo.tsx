@@ -23,7 +23,7 @@ export default function ReadPlaceInfo() {
     //@ts-ignore
     const image = ASSETS[ allplaces[localState.mapMarkerId].image ];
 
-    const animvalue = React.useRef(new Animated.ValueXY({x: .5, y: .9})).current;
+    const animvalue = React.useRef(new Animated.ValueXY({x: 1, y: .9})).current;
     React.useEffect(() => {
         Animated.timing(animvalue, {
             toValue: {x: 1, y: 1},

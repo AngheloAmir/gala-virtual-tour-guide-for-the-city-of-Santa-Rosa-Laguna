@@ -117,3 +117,11 @@ export function setPoiIndex(index :number) {
         type: actionType.setPoiIndex, payload: index
     }
 }
+
+export function setIsCloseToMarker(isClose :boolean) {
+    return {
+        type: actionType.setIsCloseToMarker, payload: isClose
+    }
+}
+
+

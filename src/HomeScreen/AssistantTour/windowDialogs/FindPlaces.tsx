@@ -28,12 +28,12 @@ const tourjson                          = require ('../../../../database/assista
 const establishments :Array<EstablishmentCategory> = tourjson.establishments;
 
 export default function findPlaces() {
-    const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
+    const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
 
     return (
         <DialogBox
             title='Find Places'
-            isshow={localState.isFindPlacesOpen}
+            isshow={true}
             dialogContent={dialogContent}
             cancel={() => localDispatch(setFindPlacesOpen(false))}
         />

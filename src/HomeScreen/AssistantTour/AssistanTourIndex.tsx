@@ -89,57 +89,60 @@ import DialogMessage        from './windowDialogs/DialogMessage';
 import AttributionInfo      from './windowDialogs/AttributionInfo';
 import PointOfInterestInfo  from './windowDialogs/PointOfInterestInfo';
 
-import { Init } from './functions';
+import { Init, checkIfGalaBookShow } from './functions';
+const mapjson = require('../../../database/map.json');
 
 export default function AssistanTourIndex() {
-    const [localState, localDispatch] = React.useReducer(rootReducer, defaultLocalState );
-    const [intervalID, setIntervalID] = React.useState()
+    const intervalid :{ remove?: () => void } = {};
+    const [localState, localDispatch] = React.useReducer(rootReducer, defaultLocalState);
+    const [intervalID, setIntervalID] = React.useState(intervalid);
 
     //Set up the initial user position and subscribe to Location updates
     React.useEffect(() => {
         ( async () => {
-            await Init( localDispatch);
+            await Init(localDispatch);
             const interval = await Location.watchPositionAsync({
                 accuracy:                   Location.Accuracy.BestForNavigation,
-                timeInterval:               1000,
-                distanceInterval:           1,
-                mayShowUserSettingsDialog:  true 
+                timeInterval:               mapjson.gpsUpdateSpeed.timeInterval,
+                distanceInterval:           mapjson.gpsUpdateSpeed.distance,
+                mayShowUserSettingsDialog:  mapjson.gpsUpdateSpeed.mayShowUserSettingsDialog
             }, userLocation => {
-                localDispatch(setUserPosition({
-                    lat: userLocation.coords.latitude,
-                    lng: userLocation.coords.longitude
-                }));
+                const position = { lat: userLocation.coords.latitude, lng: userLocation.coords.longitude };
+                localDispatch(setUserPosition(position));
             });
-            //@ts-ignore
             setIntervalID(interval);
         })();
         return () => {
-            //@ts-ignore
-            try { intervalID.remove() } catch(err) { }
+            try {
+                intervalID.remove && intervalID.remove();
+            } catch(err) { }
         }
     }, []);
 
-    //will center the map to user current position?
     React.useEffect(() => {
-        if( localState.hasLoaded && localState.ismapcenter )
-            localDispatch( setMapCenter(localState.mapmarkers[0].position))
-    }, [localState.mapmarkers[0].position]);
+        //update map center if enable by the user
+        if(localState.hasLoaded && localState.ismapcenter )
+            localDispatch( setMapCenter(localState.mapmarkers[0].position));
+
+        //will show gala book if the user is really close to a point of interest marker
+        checkIfGalaBookShow({localState, localDispatch}, localState.mapmarkers[0].position);
+    }, [localState.mapmarkers[0].position])
 
     return (
         <localContextProvider.Provider value={{localState, localDispatch}}>
             <Toolbar />
-            <NotifyWhenClose />
             <Magnetometer />
             <LeafletContainer />
             <Attribution />
 
-            <FindPlaces />
-            <SelectTourList />
-            <DialogMessage />
-            <AttributionInfo />
-            <PointOfInterestInfo />
-
-            <MapLockView />
+            { localState.isCloseToMarker            && <NotifyWhenClose /> }
+            { localState.isFindPlacesOpen           && <FindPlaces /> }
+            { localState.isSelectTourOpen           && <SelectTourList /> }
+            { localState.isAttributionOpen          && <AttributionInfo /> }
+            { localState.isPOIBoxOpen               && <PointOfInterestInfo /> }
+            { localState.ismaplock                  && <MapLockView /> }
+            { localState.dialogmsg.msg.length >= 1  && <DialogMessage />}
+           
         </localContextProvider.Provider>
     );
 }

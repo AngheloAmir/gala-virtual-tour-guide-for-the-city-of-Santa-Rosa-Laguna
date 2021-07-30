@@ -37,6 +37,8 @@ export const defaultLocalState :AssistantTourState = {
     isSelectTourOpen: false,
     isFindPlacesOpen: false,
     isAttributionOpen: false,
+    
+    isCloseToMarker: false,
     isPOIBoxOpen: false,
     poiCloseIndex: -1,
 }

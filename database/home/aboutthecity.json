@@ -1,28 +1,36 @@
 {
-    "title": "This is about Santa Rosa",
-    "headerImage": "balibago.jpg",
+    "title": "City of Santa Rosa, Laguna",
+    "headerImage": "santarosa.jpg",
     "contents": [
         {
-            "headingText":  "an heading text",
-            "image":        "balibago.jpg",
-            "paragraph":    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, unde! Assumenda quas distinctio, error ad at non labore odio aliquam.",
-            "link":         "https://google.com",
-            "linkText":     "Google",
-            "links":        {
-                "link": "https://google.com",
-                "text": "(c) Google"
-            }
+            "paragraph": "Santa Rosa, which has the official name City of Santa Rosa, is a 1st class component city of Laguna. According to Wikipedia, Santa Rosa is the second-largest local government unit in Laguna after Calamba. Santa Rosa is also called the Lion City of the South and Next Wave City due to its fast economic growth, factories like Coca-Cola and Toyota, theme parks, ICT companies, and real estate developments. In 2004, it became a city under Republic Act No. 9264, and since then, it is celebrated annually. The most notable historical site that the government of Santa Rosa is proud of is the Santa Rosa Arch, as shown in the photo above."
         },
         {
-            "headingText":  "Second Paragraph",
-            "image":        "balibago.jpg",
-            "paragraph":    "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, unde! Assumenda quas distinctio, error ad at non labore odio aliquam.",
-            "link":         "https://google.com",
-            "linkText":     "Google",
-            "links":        {
-                "link": "https://google.com",
-                "text": "(c) Google"
-            }
+            "headingText": "History",
+            "paragraph": "In the early Spanish era, Santa Rosa was called Barrio Bukol and part of Hacienda Biñan - owned by the Dominicans. In 1571, conquistador Juan de Salcedo founded Binan while exploring the wilderness of Laguna de Bay. In his exploration, he found natives were living nearby coastal areas. Cuartel de Santo Domingo was built to protect the barrio against bandits coming from Cavite. In 1688 Barrio Bukol was separated from Binan and Cabuyao, and the town had experienced several renaming separations of barrios. In 1792, the town has officially named the municipality of Santa Rosa, which was named after the Saint Rosa of Lima. During the revolutionary period in 1898, the town was liberated by Col. Basilo Gonzales with the Katipuneros. However, the control of the Katipuneros ended with the arrival of the Americans in the 1900s. In the Japanese era, the town was under the control of the Japanese. During that time, Cuartel de Santo Domingo was a refugee camp of men and women. The Santa Rosa de Lima Parish church was once had a clock tower but destroyed during the war. Then, the town was liberated in 1945. After the war, the locals rely on agricultural products. The livelihood of the locals was changed in the 1970s with rapid industrialization and economic growth."
+        },
+        {
+            "headingText": "Saint Rosa of Lima",
+            "image": "delimastatue.jpg",
+            "paragraph": "Isabel Flores de Oliva - Saint Rosa Lima - was born in 1586 in Lima Peru and a member of the Third Order of Saint Dominic. She was known for her beauty and care to the people thru his private efforts. In the Philippines, Saint Rose of Lima is been designated as a co-patroness of the country (Wikipedia)."
+        },
+        {
+            "headingText": "Ancestral Houses",
+            "paragraph": "Ancestral houses in Santa Rosa are the former gobernadillos like Sebastian Arambulo, Mariano Gonzales, Angel Zavalla, and Francisco Arambulo (santarosacity.gov.ph). These are still preserved in the city. You can learn more about these houses on the online map or in the Assistant Tour tab."
+        }
+    ],
+    "references": [
+        {
+            "linkname": "https://santarosacity.gov.ph/about-sta-rosa/history/",
+            "link": "https://santarosacity.gov.ph/about-sta-rosa/history/"
+        },
+        {
+            "linkname": "https://en.wikipedia.org/wiki/Santa_Rosa,_Laguna",
+            "link": "https://en.wikipedia.org/wiki/Santa_Rosa,_Laguna"
+        },
+        {
+            "linkname": "https://en.wikipedia.org/wiki/Rose_of_Lima",
+            "link": "https://en.wikipedia.org/wiki/Rose_of_Lima"
         }
     ]
 }

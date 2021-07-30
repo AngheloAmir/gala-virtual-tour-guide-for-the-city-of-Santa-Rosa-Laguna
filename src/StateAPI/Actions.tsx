@@ -10,8 +10,8 @@ export function updateInfo(name :string, about :string, avatar :number) :ActionI
     }
 }
 
-import { GuideContent } from '../../database/!interfaces/GuideContent';
-export function setGuideInfo(guidedata :GuideContent) :ActionInterface {
+import { StoryContent } from '../../database/!interfaces/StoryContent';
+export function setGuideInfo(guidedata :StoryContent) :ActionInterface {
     return {
         type: actionType.setguideinfo, payload: guidedata
     }

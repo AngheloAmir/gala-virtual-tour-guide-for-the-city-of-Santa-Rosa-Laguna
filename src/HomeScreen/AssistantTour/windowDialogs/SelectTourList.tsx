@@ -18,12 +18,12 @@ import { getTours } from '../functions/options';
 import DialogBox from '../../../Utility/DialogBox';
 
 export default function SelectTourList() {
-    const { localState, localDispatch} :LocalStateAPI = React.useContext(localContextProvider);
+    const { localDispatch} :LocalStateAPI = React.useContext(localContextProvider);
     const TOURS = getTours();
 
     return (
         <SelectTourDialogBox title='Select Self Guided Tours'
-            isshow={localState.isSelectTourOpen} items={TOURS}
+            isshow={true} items={TOURS}
             onSelect={(item, index) => {
                 localDispatch( setCurrentTour(item, index) );
                 localDispatch( setSelectTourOpen(false) );

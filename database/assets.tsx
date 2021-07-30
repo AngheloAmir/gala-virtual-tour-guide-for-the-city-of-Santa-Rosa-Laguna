@@ -15,11 +15,9 @@ const IMAGES = {
     "casazalla.jpg":        require('../assets/santarosa/places/casazavalla.jpg'),
     "cuartel.jpg":          require('../assets/santarosa/places/cuartel.jpg'),
     "delimachurch.jpg":     require('../assets/santarosa/places/delima_church.jpg'),
-    "delimastatue.jpg":     require('../assets/santarosa/places/delima statue.jpg'),
     "enchanted.jpg":        require('../assets/santarosa/places/ek.jpg'),
     "museo.jpg":            require('../assets/santarosa/places/museo.jpg'),
     "plaza.jpg":            require('../assets/santarosa/places/plaza.jpg'),
-    "santarosa.jpg":        require('../assets/santarosa/places/santarosa.jpg'),
     "stpeterchruch.jpg":    require('../assets/santarosa/places/saint_peter_church.jpg'),
     "tionco.jpg":           require('../assets/santarosa/places/tiongco.jpg'),
     "zavallahouse.jpg":     require('../assets/santarosa/places/zavallahouse.jpg'),
@@ -67,6 +65,8 @@ const STORIESASSETS = {
     "cityhood.jpg":         require('../assets/santarosa/story/cityhood.jpg'),
     "tiongcobrothers.jpg":  require('../assets/santarosa/story/tiongcobrothers.jpg'),
     "studentcanteen.jpg":   require('../assets/santarosa/story/studentcanteen.jpg'),
+    "santarosa.jpg":        require('../assets/santarosa/story/santarosa.jpg'),
+    "delimastatue.jpg":     require('../assets/santarosa/story/delimastatue.jpg'),
 };
 
 const PLACESJSON = {

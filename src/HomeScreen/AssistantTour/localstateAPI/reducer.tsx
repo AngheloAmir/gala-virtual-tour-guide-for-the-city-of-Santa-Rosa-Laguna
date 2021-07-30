@@ -116,6 +116,11 @@ export function rootReducer(state :AssistantTourState, action :ActionInterface) 
             return {
                 ...state, poiCloseIndex: action.payload
             }
+        
+        case actionType.setIsCloseToMarker:
+            return {
+                ...state, isCloseToMarker: action.payload
+            }
 
         default:
             console.log('ACTION TYPE NOT DEFINED!\n' + action.type);

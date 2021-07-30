@@ -1,4 +1,10 @@
 ##
+-
+
+## July 31, Version 0.5.4 Completed Home Tab
+-Improve Assistant Tour Tab, now the error: 'Cant update on umounted component is less likey to happen'
+    -It is done by removing many React.useEffect()
+-Added City information
 
 ## July 30, Version 0.5.3 Completing Home Tab 3
 -Added article about Santa Rosa city hood
@@ -8,7 +14,6 @@
 -Remove the footer in the home tab
 -Remove Covid case button in the home tab
 -Arrange assets.tsx in alphabetical order
--Places text adjustements
 
 ## July 29, Version 0.5.2 Completing Home Tab 2
 -Added StoryViewer

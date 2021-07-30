@@ -8,18 +8,27 @@
         "layerType": "TileLayer",
         "url": "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW5naGVsb2FtaXIiLCJhIjoiY2txZG0zZm5oMDI5NjJ1bXdqMXhocG95OSJ9.g6HfwWZcXrYKzntSrWiVzw"
     },
+
     "mapOptions": {
         "attributionControl": false,
         "zoomControl": false
     },
+
     "defaultzoom": 12,
     "introposition": {
         "lat": 14.296238,
         "lng": 121.105799
     },
+    
     "mapbounds": {
         "x":      121.041694,  "endy": 14.21141,
         "endx":   121.135533,  "y":    14.339070
     },
-    "pointOfInterestAcquisitionRange": 0.0002
+    "pointOfInterestAcquisitionRange": 0.0002,
+
+    "gpsUpdateSpeed": {
+        "timeInterval": 1500,
+        "distance": 3,
+        "mayShowUserSettingsDialog": true
+    }
 }

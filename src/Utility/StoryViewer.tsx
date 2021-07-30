@@ -7,6 +7,7 @@ export default App() {
         title:          "temp story",
         date:           "2021",
         headerImage:    require('./assets/mypic.png'),
+        imagecredits:   'myself',
         contents: [
             {
                 headingText:  "The title of a paragraph (heading text)",
@@ -19,7 +20,11 @@ export default App() {
                     text: "the link appear in the image (attribution)"
                 }
             },
-        ]
+        ],
+        references: {
+            linkname: "tap to visit google",
+            link: "https://google.com"
+        },
     };
 
     return (
@@ -102,7 +107,7 @@ export default function StoryViewer(props :propsReceive) {
         headingCredits: {
             position: 'absolute', bottom: 2, left: 2,
             backgroundColor: 'gray', color: 'white',
-            padding: 4, fontSize: 12, zIndex: 5,
+            fontSize: 12, zIndex: 5,
             borderRadius: 16, opacity: 0.7,
         }
     });
