@@ -97,9 +97,8 @@ export default function AssistanTourIndex() {
     const [localState, localDispatch] = React.useReducer(rootReducer, defaultLocalState);
     const [intervalID, setIntervalID] = React.useState(intervalid);
 
-    //Set up the initial user position and subscribe to Location updates
     React.useEffect(() => {
-        ( async () => {
+        async function SetUpTheInitialEffectAndWatcher() {
             await Init(localDispatch);
             const interval = await Location.watchPositionAsync({
                 accuracy:                   Location.Accuracy.BestForNavigation,
@@ -111,7 +110,8 @@ export default function AssistanTourIndex() {
                 localDispatch(setUserPosition(position));
             });
             setIntervalID(interval);
-        })();
+        }
+        SetUpTheInitialEffectAndWatcher();
         return () => {
             try {
                 intervalID.remove && intervalID.remove();

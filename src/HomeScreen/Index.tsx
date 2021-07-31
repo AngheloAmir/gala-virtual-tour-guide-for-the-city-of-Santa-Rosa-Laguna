@@ -57,10 +57,13 @@ export default function HomeIndex() {
           },
         })}
         tabBarOptions={{ activeTintColor: 'tomato', inactiveTintColor: 'gray', style: { height: 54, paddingBottom: 8}}}>
+           <Tab.Screen name="Forum"           component={ForumContainer} />
+
+
         <Tab.Screen name="Home"            component={HomeContainer} />
         <Tab.Screen name="Guides"          component={GuidesContainer} />
         <Tab.Screen name="Assistant Tour"  component={AssistantTourContainer} />
-        <Tab.Screen name="Forum"           component={ForumContainer} />
+       
       </Tab.Navigator>
     </View>
   );

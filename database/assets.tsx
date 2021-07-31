@@ -5,6 +5,19 @@
 
     This file should be the only tsx file in database folder
 */
+export const AVATARICONS_MALE = [
+    require('../assets/icons/male1.png'),
+    require('../assets/icons/male2.png'),
+    require('../assets/icons/male3.png'),
+    require('../assets/icons/male4.png'),
+];
+
+export const AVATARICONS_FEMALE = [
+    require('../assets/icons/female1.png'),
+    require('../assets/icons/female2.png'),
+    require('../assets/icons/female3.png'),
+    require('../assets/icons/female4.png'),
+];
 
 const IMAGES = {
     "arch.jpg":             require('../assets/santarosa/places/arch.jpg'),
@@ -29,7 +42,6 @@ const GALATOURS = {
     "enchantedkingdom.json":require('./assistantour/enchantedkingdom.json'),
     "paseonuvali.json":     require('./assistantour/paseonuvali.json'),
     "busterminal.json":     require('./assistantour/busterminal.json'),
-    "testtour.json":        require('./assistantour/testtour.json'),
 };
 
 const GUIDESASSETS = {

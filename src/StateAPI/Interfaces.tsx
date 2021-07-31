@@ -10,18 +10,20 @@ export interface ActionInterface {
 }
 
 export enum actionType {
-    updateinfo,
+    setUserInfo,
     setguideinfo,
 }
 
+export interface UserInfo {
+    name        :string;
+    description :string;
+    avatar      :number;
+    registered  :string | 'unregistered';
+}
+
 export interface StateInterface {
-    user :{
-        name        :string;
-        about       :string;
-        avatar      :number;
-        signedin    :boolean;
-        status      : 'Will visit' | 'visited' | 'Residence' | 'Guest';
-    };
+    user            :UserInfo,
+
     features :{
         guideInfo? :StoryContent;
     };

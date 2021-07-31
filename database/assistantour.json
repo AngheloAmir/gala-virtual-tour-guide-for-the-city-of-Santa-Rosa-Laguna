@@ -4,9 +4,27 @@
         "glimpseofhistory.json",
         "enchantedkingdom.json",
         "paseonuvali.json",
-        "busterminal.json",
-        
-        "testtour.json"
+        "busterminal.json"
+    ],
+
+    "disclaimerText": "The GPS Navigation system used in the program may not be reliable in some cases. We do still recommend that you should use a third-party navigation system such as Google Maps and Waze. The software is provided without any warranty. Use the software in moderation and at your own risk",
+    "furtherReading": [
+        {
+            "title": "What is GPS?",
+            "text": "     Global Position System (GPS) is a US-owned system that provides a free navigation system for everyone. It was first used by the US Military and was later allowed to be used by the public. GPS uses satellites, cell towers, and other devices to determine the user's current position."
+        },
+        {
+            "title": "Accuracy",
+            "text": "     Most mobile devices have 5-meter range accuracy under an open sky. However, the accuracy degrades when the device is near trees, buildings, bridges, and other factors including internet, radio interference, and storm."
+        },
+        {
+            "title": "Preparing your GPS",
+            "text": "     It has to be noted, Huawei phones may have a problem using a GPS since this feature needs to use Google, which currently Huawei phones do not have. In our test, using a pocket Wi-fi for your data connection can improve the accuracy. First, enable location on your phone. Go to Settings / Location and tap it to turn it on. Also, go to Settings / Apps and then look for our app (Gala: Virtual Tour Guide), then tap setting and enable the location permission."
+        },
+        {
+            "title": "Location Mode",
+            "text": "     Your Location settings have a setting called \"Location Mode.\" In our test, this setting has three choices: High Accuracy, Battery Saving, and GPS Only. If you are having trouble getting an accurate GPS location, please choose GPS only."
+        }
     ],
 
     "establishments": [

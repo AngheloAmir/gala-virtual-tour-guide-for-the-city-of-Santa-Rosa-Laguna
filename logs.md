@@ -1,5 +1,10 @@
-##
--
+## August 1, Version 0.6.0 Forum - User Register
+-Added Forum Register screen
+-AssistantTour main tab is now use JSON to store "further reading" and "disclaimer text"
+-Adjusted place info text
+-Adjusted aquitance range from 0.00002 to 0.000025
+-Changed Support screen to Feedback screen
+-Remove Testtour
 
 ## July 31, Version 0.5.4 Completed Home Tab
 -Improve Assistant Tour Tab, now the error: 'Cant update on umounted component is less likey to happen'

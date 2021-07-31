@@ -2,11 +2,11 @@
     Contains function that that change the app state
 */
 
-import { actionType, ActionInterface } from './Interfaces';
+import { UserInfo, actionType, ActionInterface } from './Interfaces';
 
-export function updateInfo(name :string, about :string, avatar :number) :ActionInterface {
+export function updateInfo(info :UserInfo) :ActionInterface {
     return {
-        type: actionType.updateinfo, payload: { name, about, avatar }
+        type: actionType.setUserInfo, payload: info
     }
 }
 

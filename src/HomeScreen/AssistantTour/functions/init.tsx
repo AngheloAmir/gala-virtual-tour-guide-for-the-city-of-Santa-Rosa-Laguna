@@ -57,7 +57,8 @@ async function RequestPermission() {
 }
 
 async function getLocation() :Promise<UserPosition> {
-    const location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.BestForNavigation});
+    const location = await Location.getCurrentPositionAsync(
+        { accuracy: Location.Accuracy.BestForNavigation, mayShowUserSettingsDialog: true });
     if( location.coords.latitude  > mapbounds.y || location.coords.latitude < mapbounds.endy ||
         location.coords.longitude < mapbounds.x || location.coords.longitude > mapbounds.endx )
         throw new Error('OutOfRangeException');

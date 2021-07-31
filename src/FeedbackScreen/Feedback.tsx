@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 import TopBar from '../Topbar';
 
-export default function IndexSupport( {navigation} :any) {
+export default function FeedbackIndex( {navigation} :any) {
     return (
         <View>
             <TopBar navigation={navigation} title='About' />

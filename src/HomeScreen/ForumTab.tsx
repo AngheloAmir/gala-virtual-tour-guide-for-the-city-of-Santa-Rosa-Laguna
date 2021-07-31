@@ -8,14 +8,59 @@
 
     * VISIBLE WHEN
       When the user is in Home Screen and in the Forum Tab
+
+    * HOW IT WORKS
+      Checking whether the was registered or not is by checking the async storage
+      instead of looking in the server for its registration. This reduce the call to the server since
+      user information is not critical information.
 */
 import React from 'react';
 import { Text, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { contextProvider } from '../StateAPI/State';
+import { StateAPI } from '../StateAPI/State';
+import { updateInfo } from '../StateAPI/Actions';
+
+import RegisterScreen from './Forum/RegisterScreen';
+import ForumIndex from './Forum/ForumIndex';
 
 export default function Forum() {
+  const { state, dispatch } :StateAPI = React.useContext(contextProvider);
+  const [isInfoLoaded, setLoaded]     = React.useState(false);
+
+  React.useEffect( () => {
+    async function loadUserInformation() {
+      try {
+        const userinfo = await AsyncStorage.getItem('userinfo');
+        if(userinfo == null) 
+            await AsyncStorage.setItem('userinfo', JSON.stringify(state.user) )
+        else 
+            dispatch(updateInfo( JSON.parse(userinfo) ));
+        setLoaded(true);
+      }
+      catch(err) {
+        console.error('Failed to load user information. ' + err);
+      }
+    }
+    loadUserInformation();
+  }, []);
+
+  if(!isInfoLoaded) 
+    return (
+      <View>
+        <Text>...Loading your information...</Text>
+      </View>
+  );
+
   return (
     <View>
-      <Text> You are at the FORUM TAB </Text>
+      {
+        state.user.registered === 'unregistered' ?
+          <RegisterScreen />
+          :
+          <ForumIndex />
+      }
     </View>
   );
 }

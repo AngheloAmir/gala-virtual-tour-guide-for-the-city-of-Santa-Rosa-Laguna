@@ -11,7 +11,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Responsive, useResponsive } from './Utility/useResponsive';
 import HomeScreenIndex from './HomeScreen/Index';
 import AboutSceenIndex from './AboutScreen/About';
-import SupportScreenIndex from './SupportScreen/Support';
+import FeedbackScreenIndex from './FeedbackScreen/Feedback';
 
 export default function Index() {
   const responsive :Responsive = useResponsive();
@@ -50,7 +50,7 @@ export default function Index() {
           </View>
           )}>
         <Drawer.Screen name="Home" component={HomeScreenIndex} />
-        <Drawer.Screen name="Help and Support" component={SupportScreenIndex} />
+        <Drawer.Screen name="Send us a message" component={FeedbackScreenIndex} />
         <Drawer.Screen name="About" component={AboutSceenIndex} />
       </Drawer.Navigator>
     </NavigationContainer>

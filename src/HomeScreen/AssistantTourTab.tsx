@@ -111,30 +111,26 @@ function AssistantTourIndex( {navigation} :any) {
   );
 }
 
-const DisclaimerText :string = '' +
-'The GPS Navigation system used in the program may not be reliable in some cases. We do still recommend that you should use a third-party navigation system such as Google Maps and Waze. The software is provided without any warranty. Use the software in moderation and at your own risk';
+//===================
+const assistanttourjson = require('../../database/assistantour.json');
+const DisclaimerText :string = assistanttourjson.disclaimerText;
 
 function furtherReadingDialogContent() {
   const styles = StyleSheet.create({
-    bold:   { fontSize: 20, fontWeight: '700',  marginBottom: 8, marginTop: 24 },
-    boldNom:{ fontSize: 20, fontWeight: '700', marginBottom: 8, },
-    text:   { fontSize: 20, lineHeight: 30 }
+    bold: { fontSize: 20, fontWeight: '700', marginBottom: 8 },
+    text: { fontSize: 20, lineHeight: 30, marginBottom: 24 }
   });
   
   return (
     <View style={{paddingHorizontal: 8}}>
-      <Text style={styles.boldNom}>What is GPS?</Text>
-      <Text style={styles.text}>     Global Position System (GPS) is a US-owned system that provides a free navigation system for everyone. It was first used by the US Military and was later allowed to be used by the public. GPS uses satellites, cell towers, and other devices to determine the user's current position.</Text>
-
-      <Text style={styles.bold}>Accuracy</Text>
-      <Text style={styles.text}>     Most mobile devices have 5-meter range accuracy under an open sky. However, the accuracy degrades when the device is near trees, buildings, bridges, and other factors including internet, radio interference, and storm.</Text>
-
-      <Text style={styles.bold}>Preparing your GPS</Text>
-      <Text style={styles.text}>     It has to be noted, Huawei phones may have a problem using a GPS since this feature needs to use Google, which currently Huawei phones do not have. In our test, using a pocket Wi-fi for your data connection can improve the accuracy. First, enable location on your phone. Go to Settings / Location and tap it to turn it on. Also, go to Settings / Apps and then look for our app (Gala: Virtual Tour Guide), then tap setting and enable the location permission.</Text>
-
-      <Text style={styles.bold}>Location Mode</Text>
-      <Text style={styles.text}>     Your Location settings have a setting called " Location Mode." In our test, this setting has three choices: High Accuracy, Battery Saving, and GPS Only. If you are having trouble getting an accurate GPS location, please choose GPS only.</Text>
+      { assistanttourjson.furtherReading.map((item :any, index :number) => {
+        return (
+          <View key={index}>
+            <Text style={styles.bold}>{item.title}</Text>
+            <Text style={styles.text}>{item.text}</Text>
+          </View>
+        )
+      })}
     </View>
-  )
+  );
 }
-

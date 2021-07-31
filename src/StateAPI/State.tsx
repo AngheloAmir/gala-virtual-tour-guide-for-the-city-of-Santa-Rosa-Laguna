@@ -16,11 +16,10 @@ export interface StateAPI {
 export function createDefaultState() :StateInterface {
     return {
         user: {
-            name:  'Anonymous Account',
-            about: 'Provide a short description of yourself for the community',
+            name:        'user',
+            description: 'your desc',
             avatar: 0,
-            signedin: false,
-            status: 'Guest',
+            registered:  'unregistered',
         },
         
         features: {
