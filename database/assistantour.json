@@ -1,11 +1,8 @@
 {
-    "tours": [
-        "bisitaiglesia.json",
-        "glimpseofhistory.json",
-        "enchantedkingdom.json",
-        "paseonuvali.json",
-        "busterminal.json"
-    ],
+    "headingText": "Welcome To Assistant Tour!",
+    "introductoryText": " Hi! My name is Gala, your virtual tour guide (assistant tour). I'll help you the best I can amid your travel. This feature requires LOCATION (GPS) enable and MOBILE DATA (internet) connection. Have a great day!",
+    "galaIcon": "tourguide.png", 
+    "introAttribution": "© router.project-osrm.org, © www.overpass-api",
 
     "disclaimerText": "The GPS Navigation system used in the program may not be reliable in some cases. We do still recommend that you should use a third-party navigation system such as Google Maps and Waze. The software is provided without any warranty. Use the software in moderation and at your own risk",
     "furtherReading": [
@@ -25,6 +22,14 @@
             "title": "Location Mode",
             "text": "     Your Location settings have a setting called \"Location Mode.\" In our test, this setting has three choices: High Accuracy, Battery Saving, and GPS Only. If you are having trouble getting an accurate GPS location, please choose GPS only."
         }
+    ],
+
+    "tours": [
+        "bisitaiglesia.json",
+        "glimpseofhistory.json",
+        "enchantedkingdom.json",
+        "paseonuvali.json",
+        "busterminal.json"
     ],
 
     "establishments": [

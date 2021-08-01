@@ -19,7 +19,8 @@ export function createDefaultState() :StateInterface {
             name:        'user',
             description: 'your desc',
             avatar: 0,
-            registered:  'unregistered',
+            uid: '???',
+            registered:  false,
         },
         
         features: {

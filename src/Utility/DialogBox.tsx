@@ -103,7 +103,7 @@ export default function DialogBox(props :propsReceive, children :any) {
     return (
         <View style={{position: 'absolute', zIndex: 90}}>
             <View style={{
-                width: 2000, height: 2000,
+                width: responsive.width, height: responsive.height,
                 top: 0, backgroundColor: 'rgba(0,0,0,.5)'}}>
             </View>
             <View style={styles.container}>

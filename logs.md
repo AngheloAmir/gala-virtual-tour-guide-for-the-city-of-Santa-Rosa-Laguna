@@ -1,3 +1,9 @@
+## August 2, Version 0.6.1 Forum - Completing User Register
+-Added Term and Condition Scene before the register in the forum  
+-Added (move) tour intro text into assistanttour.json  
+-Move magentoMeterUpdateInterval to map.json  
+-Move map markers icon to map.json  
+
 ## August 1, Version 0.6.0 Forum - User Register
 -Added Forum Register screen  
 -AssistantTour main tab is now use JSON to store "further reading" and "disclaimer text"  

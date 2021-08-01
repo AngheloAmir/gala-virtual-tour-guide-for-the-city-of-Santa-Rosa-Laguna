@@ -18,7 +18,8 @@ export interface UserInfo {
     name        :string;
     description :string;
     avatar      :number;
-    registered  :string | 'unregistered';
+    uid         :string;
+    registered  :boolean;
 }
 
 export interface StateInterface {

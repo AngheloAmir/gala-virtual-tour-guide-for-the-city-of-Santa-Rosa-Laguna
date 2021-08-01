@@ -15,6 +15,7 @@ import { Image, View, Platform } from 'react-native';
 import { Magnetometer } from 'expo-sensors';
 
 const compassIcon = require('../../../../assets/icons/compass.png');
+const mapjson = require('../../../../database/map.json');
 
 export default function Compass() {
     if( Platform.OS == 'web' ) {
@@ -34,7 +35,7 @@ export default function Compass() {
         });
         //@ts-ignore
         setSubscription( sub );
-        Magnetometer.setUpdateInterval(1500);
+        Magnetometer.setUpdateInterval( mapjson.magentoMeterUpdateInterval );
     };
 
     function unsubscribe() {

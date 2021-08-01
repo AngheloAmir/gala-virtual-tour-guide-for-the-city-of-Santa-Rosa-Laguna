@@ -20,6 +20,9 @@ import DialogAlert  from '../Utility/AlertBox';
 import DialogBox from '../Utility/DialogBox';
 import IndexContainer from './AssistantTour/AssistanTourIndex';
 
+import ASSETS from '../../database/assets';
+const assistanttourjson = require('../../database/assistantour.json');
+
 const Stack = createStackNavigator();
 export default function MyTourIndex() {
     return (
@@ -76,10 +79,12 @@ function AssistantTourIndex( {navigation} :any) {
       <View>
           <View style={styles.container}> 
             <View style={styles.headingContainer}>
-              <Image source={require('../../assets/icons/gala.png')}  resizeMode='contain' style={{width: 100, height: 100}}/>
-              <Text style={styles.title}> Welcome To Assistant Tour!</Text>
+              {/*@ts-ignore */}
+              <Image source={ ASSETS[assistanttourjson.galaIcon] } 
+                resizeMode='contain' style={{width: 100, height: 100}}/>
+              <Text style={styles.title}>{assistanttourjson.headingText}</Text>
             </View>
-            <Text style={styles.description}> Hi! My name is Gala, your virtual tour guide (assistant tour). I'll help you the best I can amid your travel. This feature requires LOCATION (GPS) enable and MOBILE DATA (internet) connection. Have a great day! </Text>
+            <Text style={styles.description}>{assistanttourjson.introductoryText}</Text>
               
               <View style={styles.noticeContainer}>
                <TouchableOpacity onPress={() => setFurther(true)}>
@@ -92,7 +97,7 @@ function AssistantTourIndex( {navigation} :any) {
 
               <View style={styles.btnContainer}>
                   <Button title='start navigating' onPress={ () => navigation.navigate('IndexContainer')} />
-                  <Text style={{marginTop: 8, fontSize: 10}}>© router.project-osrm.org, © www.overpass-api</Text>
+                  <Text style={{marginTop: 8, fontSize: 10}}>{assistanttourjson.introAttribution}</Text>
               </View>
           </View>
 
@@ -111,8 +116,6 @@ function AssistantTourIndex( {navigation} :any) {
   );
 }
 
-//===================
-const assistanttourjson = require('../../database/assistantour.json');
 const DisclaimerText :string = assistanttourjson.disclaimerText;
 
 function furtherReadingDialogContent() {

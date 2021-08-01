@@ -1,20 +1,39 @@
 {
-    "notice": "",
-    
-    "maplayer": {
-        "attribution": " ",
-        "baseLayerIsChecked": true,
-        "baseLayerName": "Mapbox",
-        "layerType": "TileLayer",
-        "url": "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW5naGVsb2FtaXIiLCJhIjoiY2txZG0zZm5oMDI5NjJ1bXdqMXhocG95OSJ9.g6HfwWZcXrYKzntSrWiVzw"
-    },
+    "whichLayerToUse": "0",
+    "layers": [
+        {
+            "attribution": " ",
+            "baseLayerIsChecked": true,
+            "baseLayerName": "Mapbox",
+            "layerType": "TileLayer",
+            "url": "https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW5naGVsb2FtaXIiLCJhIjoiY2txZG0zZm5oMDI5NjJ1bXdqMXhocG95OSJ9.g6HfwWZcXrYKzntSrWiVzw"
+        },
+        {
+            "attribution":  "&amp;copy <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors",
+            "baseLayerIsChecked": false,
+            "baseLayerName": "OpenStreetMap",
+            "layerType": "TileLayer",
+            "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+         }
+    ],
 
+    "mapdestinationicon":         "<div style=\"margin-top: -32px; margin-left: 30px\">🏁</div>",
+    "mapdestinationiconSize":     [32, 32],
+
+    "mappointofinteresticon":     "<div style=\"margin-top: -25px; margin-left: 25px\">🚩</div>",
+    "mappointofinteresticonSize": [24, 24],
+
+    "mapinfoicon":                "<div>❓</div>",
+    "mapinfoiconSize":            [24, 24],
+    
     "mapOptions": {
         "attributionControl": false,
         "zoomControl": false
     },
 
-    "defaultzoom": 12,
+    "defaultzoom":  12,
+    "focusezoom":   17,
+    "maxzoom":      18,
     "introposition": {
         "lat": 14.296238,
         "lng": 121.105799
@@ -30,5 +49,7 @@
         "timeInterval": 1500,
         "distance": 3,
         "mayShowUserSettingsDialog": true
-    }
+    },
+
+    "magentoMeterUpdateInterval": 1000
 }

@@ -7,16 +7,25 @@
 
 
     * VISIBLE WHEN
-        When the user goes into the Forum tab but the user account (device account) is not receive an
-        registration id from the server
+        
 */
 import React from 'react';
-import { View, Text } from 'react-native';
+import Threads from './Threads';
+
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
+
+import { localContextProvider, createDefaultState } from './localStateAPI/state';
+import { rootReducer } from './localstateAPI/reducer';
 
 export default function ForumIndex() {
+    const [localState, localDispatch] = React.useReducer(rootReducer, createDefaultState());
+
     return (
-        <View>
-            <Text>Welcome user</Text>    
-        </View>
+        <localContextProvider.Provider value={{localState, localDispatch}} >
+            <Stack.Navigator>
+                <Stack.Screen name="Threads" component={Threads} options={{headerShown: false}}/>
+            </Stack.Navigator>
+        </localContextProvider.Provider>
     );
 }

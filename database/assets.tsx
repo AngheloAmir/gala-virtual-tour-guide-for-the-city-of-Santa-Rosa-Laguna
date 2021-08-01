@@ -56,6 +56,7 @@ const GUIDESASSETS = {
     "journey.jpg":          require('../assets/santarosa/guides/journey.jpg'),
     "slexmap.jpg":          require('../assets/santarosa/guides/slexmap.jpg'),
     "travellingto.jpg":     require('../assets/santarosa/guides/travellingto.jpg'),
+    "tourguide.png":        require('../assets/icons/gala.png'),
 };
 
 const GUIDESJSON = {

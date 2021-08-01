@@ -1,6 +1,7 @@
 /*
     * TYPE
-        Index - A component that does not display itself
+        Index - A component that does not display itself but display a component depending on the
+        current state.
 
     * DESCRIPTION
         Show the content of the Home > Forum tab. It show the initial scene in the forum tab which depend if
@@ -22,7 +23,7 @@ import { contextProvider } from '../StateAPI/State';
 import { StateAPI } from '../StateAPI/State';
 import { updateInfo } from '../StateAPI/Actions';
 
-import RegisterScreen from './Forum/RegisterScreen';
+import RegisterScreenIndex from './Forum/RegisterScene/RegisterScreen';
 import ForumIndex from './Forum/ForumIndex';
 
 export default function Forum() {
@@ -49,17 +50,15 @@ export default function Forum() {
   if(!isInfoLoaded) 
     return (
       <View>
-        <Text>...Loading your information...</Text>
+        <Text style={{fontSize: 21}}>...Loading your information...</Text>
       </View>
   );
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       {
-        state.user.registered === 'unregistered' ?
-          <RegisterScreen />
-          :
-          <ForumIndex />
+        !state.user.registered ?
+          <RegisterScreenIndex /> : <ForumIndex />
       }
     </View>
   );

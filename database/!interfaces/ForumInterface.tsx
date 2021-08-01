@@ -2,6 +2,11 @@
     Defines the structure of the Forum.json
 */
 export interface ForumInterface {
-    forumRules      :string;
-    policyRules     :string;
+    termsAndCondTitle   :string;
+    termsAndCondition   :Array<TermsAndCondText>;
+}
+
+export interface TermsAndCondText {
+    heading :string;
+    text    :string;
 }

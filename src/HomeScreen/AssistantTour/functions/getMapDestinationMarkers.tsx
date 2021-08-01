@@ -3,13 +3,15 @@
 */
 import { MapMarker } from "expo-leaflet";
 import { GalaSelfGuidedTour, FromToInterface } from '../../../../database/!interfaces/GalaSelfGuidedTour';
+const mapjson = require('../../../../database/map.json');
 
 export function GetMapDestinationMarkers(tours :GalaSelfGuidedTour, startingIndex :number) :Array<MapMarker> {
     const destinations :Array<MapMarker> = tours.destinations.map((item :FromToInterface, i :number) => {
         return {
           id: i + startingIndex + '' ,
           position: { lat: item.to.lat, lng: item.to.lng },
-          icon: '<div style="margin-top: -32px; margin-left: 30px">🏁</div>', size: [32, 32],
+          icon:     mapjson.mapdestinationicon,
+          size:     mapjson.mapdestinationiconSize,
           name:     item.to.name,
           commute:  item.to.commute,
         };
@@ -18,10 +20,11 @@ export function GetMapDestinationMarkers(tours :GalaSelfGuidedTour, startingInde
         const prevLastIndex = destinations.length + startingIndex;
         const poi :Array<MapMarker> = tours.pointOfInterests?.map((item, i) => {
             return {
-              id: i + prevLastIndex + '' ,
+              id:       i + prevLastIndex + '' ,
               position: { lat: item.lat, lng: item.lng },
-              icon: '<div style="margin-top: -25px; margin-left: 25px">🚩</div>', size: [24, 24],
-              name: item.name,
+              icon:     mapjson.mappointofinteresticon,
+              size:     mapjson.mappointofinteresticonSize,
+              name:     item.name,
             };
           });
         return [...destinations, ...poi];
