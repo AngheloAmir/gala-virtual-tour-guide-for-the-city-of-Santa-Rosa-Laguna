@@ -1,4 +1,4 @@
-## August 2, Version 0.6.1 Forum - Completing User Register
+## August 2, Version 0.6.1 Forum - User Registration
 -Added Term and Condition Scene before the register in the forum  
 -Added (move) tour intro text into assistanttour.json  
 -Move magentoMeterUpdateInterval to map.json  
