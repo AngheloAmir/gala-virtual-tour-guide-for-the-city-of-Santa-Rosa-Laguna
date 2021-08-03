@@ -1,0 +1,9 @@
+{
+    "comment":          "This file is not need to be modified, unless theming is required",
+    "bordercolor":      "rgba(115, 170, 220, 1)",
+    "backgroundcolor":  "rgba(230, 240, 250, 1)",
+    "borderradius":      8,
+
+    "defaultfontsize":  18,
+    "lineHeight":       28    
+}

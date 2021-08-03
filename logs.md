@@ -1,3 +1,6 @@
+## August 3, Version 0.6.2 Forum - Forum initial design
+-Added Forum initial design
+
 ## August 2, Version 0.6.1 Forum - User Registration
 -Added Term and Condition Scene before the register in the forum  
 -Added (move) tour intro text into assistanttour.json  

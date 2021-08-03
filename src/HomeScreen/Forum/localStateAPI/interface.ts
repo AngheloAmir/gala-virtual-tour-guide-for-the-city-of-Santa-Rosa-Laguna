@@ -27,7 +27,7 @@ export interface Thread {
     threadtitle :string;
     threadtext  :string;
     threadid    :number;
-    threaddate  :string;
+    threaddate  :number;    //from milisecond of epoch time
 };
 
 export interface ReadThread {
@@ -37,7 +37,7 @@ export interface ReadThread {
     threadtitle :string;
     threadtext  :string;
     threadid    :number;
-    threaddate  :string;
+    threaddate  :number;    //from milisecond of epoch time
     replies     :Array<ThreadReply>;
 }
 
@@ -46,6 +46,6 @@ export interface ThreadReply {
     username    :string;
     avatar      :number;
     uid         :string;
-    time        :string;
+    time        :number;    //from milisecond of epoch time
     text        :string;
 }

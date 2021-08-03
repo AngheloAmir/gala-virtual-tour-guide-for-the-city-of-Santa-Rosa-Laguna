@@ -4,6 +4,8 @@
 export interface ForumInterface {
     termsAndCondTitle   :string;
     termsAndCondition   :Array<TermsAndCondText>;
+
+    siteAddress         :string;
 }
 
 export interface TermsAndCondText {

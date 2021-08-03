@@ -56,10 +56,14 @@ export default function Forum() {
 
   return (
     <View style={{flex: 1}}>
-      {
-        !state.user.registered ?
-          <RegisterScreenIndex /> : <ForumIndex />
-      }
+       <ForumIndex />
     </View>
   );
 }
+
+/*
+{
+  !state.user.registered ?
+    <RegisterScreenIndex /> : <ForumIndex />
+}
+*/

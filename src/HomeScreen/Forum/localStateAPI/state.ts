@@ -10,22 +10,22 @@ export function createDefaultState() :ForumDataInterface {
     return {
         forum: [
             {
-                username: 'temp1',
+                username: '123456789012',
                 avatar: 5,
                 uid: '123456789',
-                threadtitle: 'temp thread title',
+                threadtitle: 'temp thread title asdasdas dsad sad',
                 threadtext: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur repudiandae modi deserunt totam quibusdam voluptate optio alias voluptates, aliquam dolorum',
                 threadid: 123456789,
-                threaddate: 'August 1, 9:00am'
+                threaddate: 1627853279508,
             },
             {
                 username: 'temp2',
                 avatar: 2,
                 uid: '111111111',
-                threadtitle: 'what the heck',
+                threadtitle: 'what the heck adas das das dasdasdas ',
                 threadtext: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur repudiandae modi deserunt totam quibusdam voluptate optio alias voluptates, aliquam dolorum',
                 threadid: 123456789,
-                threaddate: 'August 1, 12:00pm'
+                threaddate: 1627843179508,
             },
         ],
         currentThread:  {
@@ -35,14 +35,14 @@ export function createDefaultState() :ForumDataInterface {
             threadtitle: 'temp thread title',
             threadtext: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur repudiandae modi deserunt totam quibusdam voluptate optio alias voluptates, aliquam dolorum',
             threadid: 123456789,
-            threaddate: 'August 1, 9:00am',
+            threaddate: 1627853279508,
             replies: [
                 {
                     replyid: '12313',
                     username: 'hehehehe',
                     avatar: 2,
                     uid: '1234644',
-                    time: 'August 1, 10:00am',
+                    time: 1627853279508,
                     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, culpa.'
                 },
                 {
@@ -50,7 +50,7 @@ export function createDefaultState() :ForumDataInterface {
                     username: 'what the',
                     avatar: 7,
                     uid: '1234644',
-                    time: 'August 1, 11:00am',
+                    time: 1627853279508,
                     text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, culpa.'
                 },
             ]

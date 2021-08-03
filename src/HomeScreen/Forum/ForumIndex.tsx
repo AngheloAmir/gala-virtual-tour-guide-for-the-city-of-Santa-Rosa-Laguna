@@ -15,7 +15,7 @@ import Threads from './Threads';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
-import { localContextProvider, createDefaultState } from './localStateAPI/state';
+import { localContextProvider, createDefaultState } from './localstateAPI/state';
 import { rootReducer } from './localstateAPI/reducer';
 
 export default function ForumIndex() {
