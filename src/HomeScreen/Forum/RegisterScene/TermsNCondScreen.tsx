@@ -14,6 +14,8 @@ import { View, Text, ScrollView, StyleSheet, Button } from 'react-native';
 import { contextProvider } from '../../../StateAPI/State';
 import { StateAPI } from '../../../StateAPI/State';
 import { updateInfo } from '../../../StateAPI/Actions';
+import { WindowDimension } from '../../../Utility/useResponsive';
+import AlertBox from '../../../Utility/AlertBox';
 
 //SECRET API
 import registerAUser from '../../../../secret/addUser';
@@ -21,21 +23,29 @@ import registerAUser from '../../../../secret/addUser';
 import { ForumInterface, TermsAndCondText } from '../../../../database/!interfaces/ForumInterface';
 const forumjson :ForumInterface = require('../../../../database/forum.json');
 
-export default function TermsNCondScreen() {
+export default function TermsNCondScreen({navigation} :any) {
     const { state, dispatch } :StateAPI = React.useContext(contextProvider);
+    const [isRegistering, setRegistering] = React.useState(false);
+    const [error, seterr] = React.useState({text: '?', ishow: false});
 
     async function handleRegister() {
         try {
+            if(isRegistering) return;
+            setRegistering(true);
             const result = await registerAUser(state.user.name, state.user.avatar, state.user.description );
+            if(result.err) 
+                seterr({text: 'Registration failed. Try again. \nError: ' + result.err, ishow: true});
+
             dispatch(updateInfo( {...state.user, uid: result._id, token: result._token, registered: true } ))
         }
         catch(err) {
-            console.log(err);
+            seterr({text: err, ishow: true});
         }
     }
 
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView>
+        <View style={styles.container}>
             <Text style={styles.headingText}>{forumjson.termsAndCondTitle}</Text>
             {
                 forumjson.termsAndCondition.map((item :TermsAndCondText, index :number) => {
@@ -51,6 +61,22 @@ export default function TermsNCondScreen() {
             <View style={styles.aceptBtn}>
                 <Button title='i accept and register' onPress={handleRegister} />
             </View>
+        </View>
+
+        { isRegistering &&
+        <View style={styles.registering}>
+            <Text style={styles.registeringText}>REGISTERING</Text>
+        </View>
+        }
+
+        <AlertBox title='Error on registering'
+            text={error.text}
+            isshow={error.ishow}
+            ok={() => {
+                seterr({text: '?', ishow: false});
+                navigation.navigate('RegisterScreen');
+            }}
+        />
         </ScrollView>
     );
 }
@@ -74,5 +100,22 @@ const styles = StyleSheet.create({
     },
     aceptBtn: {
         marginTop: 16, marginBottom: 42,
+    },
+    registering: {
+        position: 'absolute',
+        top: 0, left: 0,
+        width: WindowDimension.width,
+        height: WindowDimension.height,
+        zIndex: 20,
+        backgroundColor: 'rgba(0,0,0, 0.5)'
+    },
+    registeringText: {
+        marginTop: (WindowDimension.height / 2) - 100,
+        color: 'white',
+        backgroundColor: 'orange',
+        padding: 12,
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
 })

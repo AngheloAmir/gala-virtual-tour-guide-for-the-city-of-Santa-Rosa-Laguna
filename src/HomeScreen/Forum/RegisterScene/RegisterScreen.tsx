@@ -2,7 +2,6 @@
     * TYPES
         Scene - A screen is a component that occupies a large part of the screen
 
-
     * DESCRIPTION
         Display the initial register screen
 

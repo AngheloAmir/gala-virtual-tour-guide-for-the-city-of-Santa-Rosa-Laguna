@@ -1,3 +1,7 @@
+## August 16, Version 0.6.4 User Registration update
+-Update the user registration since the server is also updated to prevent spams  
+-Improve threads
+
 ## August 15, Version 0.6.3 User Registration
 -Added the ability to be registered online  
 -Added the backend server

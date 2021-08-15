@@ -64,8 +64,7 @@ export default function Forum() {
 
   return (
     <View style={{flex: 1}}>
-      {
-      !state.user.registered ?
+      { !state.user.registered ?
         <RegisterScreenIndex /> : <ForumIndex />
       }
     </View>

@@ -4,6 +4,6 @@
     "backgroundcolor":  "rgba(230, 240, 250, 1)",
     "borderradius":      8,
 
-    "defaultfontsize":  18,
-    "lineHeight":       28    
+    "defaultfontsize":  16,
+    "lineHeight":       26    
 }

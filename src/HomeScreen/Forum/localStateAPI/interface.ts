@@ -13,39 +13,52 @@ export interface ActionInterface {
 
 export enum actionType {
     test,
+    setThreads,
 }
 
 export interface ForumDataInterface {
     forum           :Array<Thread>;
-    currentThread?  :ReadThread;
+    currentThread?  :Thread;
 }
+
 
 export interface Thread {
-    username    :string;
-    avatar      :number;
-    uid         :string;
-    threadtitle :string;
-    threadtext  :string;
-    threadid    :number;
-    threaddate  :number;    //from milisecond of epoch time
-};
-
-export interface ReadThread {
-    username    :string;
-    avatar      :number;
-    uid         :string;
-    threadtitle :string;
-    threadtext  :string;
-    threadid    :number;
-    threaddate  :number;    //from milisecond of epoch time
-    replies     :Array<ThreadReply>;
+    creator     :Creator;
+    thread      :TDescription;
+    replies?    :Array<TReplies>;
+    _id         :string;
+    _token      :string;
 }
 
-export interface ThreadReply {
-    replyid     :string;
+export interface Creator {
     username    :string;
     avatar      :number;
     uid         :string;
-    time        :number;    //from milisecond of epoch time
+}
+
+export interface TDescription {
+    title       :string;
     text        :string;
+    date        :number;
+}
+
+export interface TReplies {
+    username    :string;
+    avatar      :number;
+    time        :number;
+    text        :string;
+    userid      :string;
+    _token      :string;
+    _id?        :string;
+    isAdmin     :boolean;
+}
+
+export interface User {
+    username    :string;
+    avatar      :number;
+    description :string;
+    isAdmin     :boolean;
+    lastreply   :number;
+    _id?        :string;
+    _token?     :string;
 }
