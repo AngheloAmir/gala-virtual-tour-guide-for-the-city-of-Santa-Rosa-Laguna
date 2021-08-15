@@ -9,6 +9,10 @@ npm-debug.*
 *.orig.*
 web-build/
 
+/rest
+/secret/addUser.ts
+/secret/key.ts
+
 # macOS
 .DS_Store
 .HISTORY/

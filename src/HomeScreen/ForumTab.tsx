@@ -47,6 +47,14 @@ export default function Forum() {
     loadUserInformation();
   }, []);
 
+  //This effect is called after the user was registered
+  React.useEffect(() => {
+    async function saveuserinfo() {
+        await AsyncStorage.setItem('userinfo', JSON.stringify(state.user) );
+    }
+    saveuserinfo();
+  }, [state.user.registered]);
+
   if(!isInfoLoaded) 
     return (
       <View>
@@ -56,14 +64,10 @@ export default function Forum() {
 
   return (
     <View style={{flex: 1}}>
-       <ForumIndex />
+      {
+      !state.user.registered ?
+        <RegisterScreenIndex /> : <ForumIndex />
+      }
     </View>
   );
 }
-
-/*
-{
-  !state.user.registered ?
-    <RegisterScreenIndex /> : <ForumIndex />
-}
-*/

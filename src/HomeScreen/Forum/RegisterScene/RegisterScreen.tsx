@@ -36,7 +36,7 @@ export default function RegisterScreenIndex() {
 function RegisterScreen({navigation} :any) {
     const { dispatch } :StateAPI = React.useContext(contextProvider);
 
-    const [userName, setName]   = React.useState('aa');
+    const [userName, setName]   = React.useState('');
     const [descrp, setDesc]     = React.useState('');
     const [avid, setav]         = React.useState(0);
     const [isError, setError]   = React.useState(false);
@@ -54,10 +54,11 @@ function RegisterScreen({navigation} :any) {
         }
         dispatch(updateInfo({
             name:           userName,
-            description:    descrp,
+            description:    descrp.length == 0 ? 'happy' : descrp,
             avatar:         avid,
-            uid:            'will get from the server after reading terms and condition',
-            registered:     false, //the user is still not registered in the server
+            uid:            'secret token',
+            token:          'secret token',
+            registered:     false,
         }));
         navigation.navigate('TermsNCondScreen');
     }

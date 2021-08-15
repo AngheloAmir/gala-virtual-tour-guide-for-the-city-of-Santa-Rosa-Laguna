@@ -20,6 +20,7 @@ export interface UserInfo {
     avatar      :number;
     uid         :string;
     registered  :boolean;
+    token       :string;
 }
 
 export interface StateInterface {

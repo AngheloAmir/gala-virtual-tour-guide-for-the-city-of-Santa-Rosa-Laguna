@@ -16,13 +16,13 @@ export interface StateAPI {
 export function createDefaultState() :StateInterface {
     return {
         user: {
-            name:        'user',
-            description: 'your desc',
-            avatar: 0,
-            uid: '???',
-            registered:  false,
+            name:        'passkey',
+            description: 'token',
+            avatar:      0,
+            uid:         'secret token = asdacso85asdq;Ad21',
+            token:       'secret token = utbcosab976faa',
+            registered:  false
         },
-        
         features: {
         },
     };

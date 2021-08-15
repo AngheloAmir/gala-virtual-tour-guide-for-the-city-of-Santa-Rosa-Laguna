@@ -1,3 +1,7 @@
+## August 15, Version 0.6.3 User Registration
+-Added the ability to be registered online  
+-Added the backend server
+
 ## August 3, Version 0.6.2 Forum initial design
 -Added Forum initial design
 

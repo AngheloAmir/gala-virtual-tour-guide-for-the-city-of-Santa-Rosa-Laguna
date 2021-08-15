@@ -11,10 +11,12 @@
 */
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, Button } from 'react-native';
-
 import { contextProvider } from '../../../StateAPI/State';
 import { StateAPI } from '../../../StateAPI/State';
 import { updateInfo } from '../../../StateAPI/Actions';
+
+//SECRET API
+import registerAUser from '../../../../secret/addUser';
 
 import { ForumInterface, TermsAndCondText } from '../../../../database/!interfaces/ForumInterface';
 const forumjson :ForumInterface = require('../../../../database/forum.json');
@@ -22,23 +24,14 @@ const forumjson :ForumInterface = require('../../../../database/forum.json');
 export default function TermsNCondScreen() {
     const { state, dispatch } :StateAPI = React.useContext(contextProvider);
 
-    function handleRegister() {
-
-        //GET THE SERVER UID
-
-        dispatch(updateInfo( {...state.user, uid: '??', registered: true } ))
-
-        /*
-        async function saveUserInfo() {
-            try {
-                await AsyncStorage.setItem('userinfo', JSON.stringify(state.user) )
-            }
-            catch(err) {
-                console.error('Failed to load user information. ' + err);
-            }
+    async function handleRegister() {
+        try {
+            const result = await registerAUser(state.user.name, state.user.avatar, state.user.description );
+            dispatch(updateInfo( {...state.user, uid: result._id, token: result._token, registered: true } ))
         }
-        saveUserInfo();
-        */
+        catch(err) {
+            console.log(err);
+        }
     }
 
     return (

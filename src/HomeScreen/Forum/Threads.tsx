@@ -9,7 +9,7 @@
         
 */
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Platform} from 'react-native';
 //@ts-ignore
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 
