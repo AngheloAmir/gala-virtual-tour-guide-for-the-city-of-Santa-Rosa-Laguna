@@ -11,8 +11,9 @@
         If the user has been registered (something has been store to its Async Storage)
 */
 import React from 'react';
-import { Text, Button, View } from 'react-native';
+import { Text, Button, View, StyleSheet } from 'react-native';
 import Threads from './ThreadScene/Threads';
+import Reply from './ThreadScene/Reply';
 
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
@@ -26,7 +27,9 @@ export default function ForumIndex() {
     return (
         <localContextProvider.Provider value={{localState, localDispatch}} >
             <Stack.Navigator>
-                <Stack.Screen name="Threads" component={ThreadsContainer} options={{headerShown: false}}/>
+                <Stack.Screen name="Index"   component={ThreadsContainer} options={{headerShown: false}}/>
+                <Stack.Screen name="Threads" component={Threads} options={{headerShown: false}}/>
+                <Stack.Screen name="Reply"  component={Reply} options={{headerShown: false}}/>
             </Stack.Navigator>
         </localContextProvider.Provider>
     );
@@ -41,52 +44,47 @@ import AlertBox             from '../../Utility/AlertBox';
 
 function ThreadsContainer({navigation} :any) {
     const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
-    const [isThreadsLoaded, setLoaded] = React.useState(false);
     const [err, seterr] = React.useState({text: '?', show: false});
-    const [intervalid, setid] = React.useState();
 
     async function loadThreads() {
         const response = await fetch(loadthread);
         const threads = await response.json();
         if(!threads.err) {
             localDispatch( setThreads(threads) );
-            setLoaded(true);
+            navigation.navigate('Threads')
         }
         else
             seterr({text: 'Error: ' + threads.err, show: true});
     }
 
-    function handleLoadThreads() {
-        try {
-            loadThreads();
-            //@ts-ignore
-            setid( setTimeout(() => loadThreads(), 15000));
-        }
-        catch(err) {
-            seterr({text: 'Error: ' + err, show: true});
-        }
-    }
-
-    React.useEffect(() => {
-        return clearTimeout(intervalid);
-    })
-
     return (
-        <View>
-        {
-            !isThreadsLoaded ?
-                <View>
-                    <Text style={{fontSize: 18, textAlign: 'center', marginVertical: 24}}>Load threads</Text>
-                    <Button title='refresh' onPress={() => handleLoadThreads() } />
+        <View style={{flex: 1}}>
+            <View style={styles.container}>
+                <Text style={styles.welcomeText}>Tap to load current topic by the community</Text>
+                <View style={styles.btn}>
+                    <Button title='refresh' onPress={() => loadThreads() } />
                 </View>
-            :
-            <Threads navigation={navigation} />  
-        }
+            </View>
             <AlertBox title='Error loading threads'
                 text={err.text}
                 isshow={err.show}
                 ok={() => seterr({text: '?', show: false})}
             />
         </View>
-    )
+    );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        width: '80%',
+        marginLeft: '10%'
+    },
+    welcomeText: {
+        fontSize: 18,
+        textAlign: 'center',
+        marginVertical: 32
+    },
+    btn: {
+        marginTop: 12,
+    }
+});

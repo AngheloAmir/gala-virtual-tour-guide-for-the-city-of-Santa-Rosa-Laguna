@@ -16,17 +16,36 @@ import EntypoIcon from 'react-native-vector-icons/Entypo';
 
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI, Thread } from '../localstateAPI/interface';
+import { setCurrentThread } from '../localstateAPI/actions';
 
 import AvatarIcon from '../functions/AvatarIcon';
 import CalculateAgo from '../functions/calculateago';
 import AlertBox from '../../../Utility/AlertBox';
 
-export default function ForumThreads({navigation, deletecd} :any) {
-    const { localState } :LocalStateAPI = React.useContext(localContextProvider);
-    const [deletedialog, setDelete] = React.useState(false);
+//secret
+import { loadsinglethread } from '../../../../secret/key';
 
-    function handleOpenThread(threadId :string) {
-        console.log('opening a thread with id: ' + threadId);
+export default function ForumThreads({navigation} :any) {
+    const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
+    const [deletedialog, setDelete] = React.useState(false);
+    const [errorDialog, setErr] = React.useState({text: '', show: false});
+
+    async function handleOpenThread(threadId :string) {
+        try {
+            const response = await fetch( loadsinglethread , {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({threadid: threadId})
+            });
+            const thethread :Thread = await response.json();
+        //@ts-ignore
+            if(thethread.err) throw new Error(thethread.err);
+            localDispatch( setCurrentThread(thethread) );
+            navigation.navigate('Reply');
+        }
+        catch(err) {
+            setErr({text: 'Check your internet connection and try again. \n' + err, show: true});
+        }
     }
 
     return (
@@ -63,6 +82,12 @@ export default function ForumThreads({navigation, deletecd} :any) {
                 ok={() =>       { setDelete(false); console.log('deleting')}}
                 cancel={() =>   { setDelete(false); console.log('canceled')}}
                 isshow={deletedialog}
+            />
+            <AlertBox
+                title='Error opening a thread'
+                text={errorDialog.text}
+                ok={() => setErr({text: '', show: false}) }
+                isshow={errorDialog.show}
             />
         </View>
     );

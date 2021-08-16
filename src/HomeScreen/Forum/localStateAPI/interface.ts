@@ -14,6 +14,7 @@ export interface ActionInterface {
 export enum actionType {
     test,
     setThreads,
+    setCurrentThread,
 }
 
 export interface ForumDataInterface {

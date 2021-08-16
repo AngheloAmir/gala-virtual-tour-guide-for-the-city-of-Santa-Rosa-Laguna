@@ -8,6 +8,11 @@ export function rootReducer(state :ForumDataInterface, action :ActionInterface) 
             return {
                 ...state, forum: action.payload
             }
+        
+        case actionType.setCurrentThread:
+            return {
+                ...state, currentThread: action.payload
+            }
 
         case actionType.test:
             console.log('working');

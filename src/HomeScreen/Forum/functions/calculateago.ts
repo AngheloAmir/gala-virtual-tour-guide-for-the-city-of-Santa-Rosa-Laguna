@@ -2,7 +2,9 @@
     Calculate the time passed
 */
 
-export default function CalculateAgo(threadms :number) :string {
+export default function CalculateAgo(threadms :number | undefined) :string {
+    if(threadms == undefined ) return 'undefined';
+    
     const ago = Date.now() - threadms;
 //check if less than a hour
     if(ago <= (59*60*1000)) {

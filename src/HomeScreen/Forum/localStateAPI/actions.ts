@@ -7,3 +7,9 @@ export function setThreads(threads :Thread) :ActionInterface{
         type: actionType.setThreads, payload: threads
     }
 }
+
+export function setCurrentThread(thread :Thread) :ActionInterface {
+    return {
+        type: actionType.setCurrentThread, payload: thread
+    }
+}
