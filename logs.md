@@ -1,3 +1,7 @@
+## August 19, 0.6.7.1 Minor UI improvements
+-Added GlobalStyle.ts  
+-Make UI a little better
+
 ## August 17, 0.6.7 Forum building
 -Added Reply.tsx
 -Other code changes

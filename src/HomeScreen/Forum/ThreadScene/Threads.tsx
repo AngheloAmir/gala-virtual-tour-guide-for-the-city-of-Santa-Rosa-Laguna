@@ -14,6 +14,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 //@ts-ignore
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 
+import { contextProvider, StateAPI } from '../../../StateAPI/State';
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI, Thread } from '../localstateAPI/interface';
 import { setCurrentThread } from '../localstateAPI/actions';
@@ -26,6 +27,7 @@ import AlertBox from '../../../Utility/AlertBox';
 import { loadsinglethread } from '../../../../secret/key';
 
 export default function ForumThreads({navigation} :any) {
+    const { state } : StateAPI = React.useContext(contextProvider);
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
     const [deletedialog, setDelete] = React.useState(false);
     const [errorDialog, setErr] = React.useState({text: '', show: false});
@@ -59,9 +61,12 @@ export default function ForumThreads({navigation} :any) {
                         <View style={styles.metaContainer}>
                             <View style={styles.UserName}>
                                 <Text style={styles.userNameText}>{item.creator.username}</Text>
+                            {
+                            state.user.uid == item._id &&
                                 <TouchableOpacity onPress={() => setDelete(true)}>
                                     <EntypoIcon name='dots-three-horizontal' size={16} color='black' />
                                 </TouchableOpacity>
+                            }    
                             </View>
                             <Text style={styles.date}>{CalculateAgo(item.thread.date)}</Text>
                             <Text style={styles.title}>{item.thread.title}</Text>
@@ -77,8 +82,8 @@ export default function ForumThreads({navigation} :any) {
             })}
             </ScrollView>
             <AlertBox
-                title='Delete the thread?'
-                text='Delete the thread (if you own the thread)'
+                title='Delete?'
+                text='Delete the thread'
                 ok={() =>       { setDelete(false); console.log('deleting')}}
                 cancel={() =>   { setDelete(false); console.log('canceled')}}
                 isshow={deletedialog}
@@ -95,6 +100,8 @@ export default function ForumThreads({navigation} :any) {
 
 const themestyle = require('../../../../database/styles.json');
 import { WindowDimension } from '../../../Utility/useResponsive';
+import GlobalStyle from '../../../Utility/GloabalStyles';
+
 const styles = StyleSheet.create({
     container: {
         width:          '95%',
@@ -102,9 +109,8 @@ const styles = StyleSheet.create({
         marginVertical: 12,
     },
     threadContainer: {
-        borderColor:    themestyle.bordercolor,
-        borderRadius:   themestyle.borderradius,
-        borderWidth:    1,
+        ...GlobalStyle.defaultBackground,
+        ...GlobalStyle.border,
         padding:        8,
         marginBottom:   16,
     },
