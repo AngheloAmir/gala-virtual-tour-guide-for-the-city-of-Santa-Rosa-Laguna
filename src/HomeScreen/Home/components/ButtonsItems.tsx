@@ -73,6 +73,7 @@ export default function ButtonsItems( {navigation} :any ) {
     );
 }
 
+import GlobalStyle from '../../../Utility/GloabalStyles';
 const styles = StyleSheet.create({
     container: {
         width: '95%', alignSelf: 'center',
@@ -84,6 +85,7 @@ const styles = StyleSheet.create({
         borderColor: 'rgba(115, 170, 220, 1)',
         padding: 4,
         textAlign: 'justify',
+        ...GlobalStyle.defaultBackground,
     },
     icon: {
         marginRight: 16,

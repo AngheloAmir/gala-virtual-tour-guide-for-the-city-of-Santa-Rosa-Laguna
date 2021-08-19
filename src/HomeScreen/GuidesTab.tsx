@@ -77,11 +77,12 @@ function Guides( {navigation} :any) {
     );
 }
 
+import GlobalStyle from '../Utility/GloabalStyles';
 const styles = StyleSheet.create({
     container: {
         marginLeft: '5%',
         width: '90%',
-        marginTop: 8,
+        marginTop: 16,
     },
     guideContainer: {
         flexDirection: 'row',
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 12,
         borderColor: 'rgba(115, 170, 220, 1)',
+        ...GlobalStyle.defaultBackground,
         padding: 4,
     },
     icon: {

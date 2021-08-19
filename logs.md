@@ -1,3 +1,8 @@
+## August 20, 0.7 Forum Requirement Complete
+-Added NewThread.tsx
+-Forum feature improvement
+-Some UI adjustments
+
 ## August 19, 0.6.7.1 Minor UI improvements
 -Added GlobalStyle.ts  
 -Make UI a little better

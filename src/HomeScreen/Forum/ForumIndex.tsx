@@ -14,6 +14,7 @@ import React from 'react';
 import { Text, Button, View, StyleSheet } from 'react-native';
 import Threads from './ThreadScene/Threads';
 import Reply from './ThreadScene/Reply';
+import NewThread from './ThreadScene/NewThread';
 
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
@@ -30,6 +31,7 @@ export default function ForumIndex() {
                 <Stack.Screen name="Index"   component={ThreadsContainer} options={{headerShown: false}}/>
                 <Stack.Screen name="Threads" component={Threads} options={{headerShown: false}}/>
                 <Stack.Screen name="Reply"  component={Reply} options={{headerShown: false}}/>
+                <Stack.Screen name="NewThread"  component={NewThread} options={{headerShown: false}}/>
             </Stack.Navigator>
         </localContextProvider.Provider>
     );

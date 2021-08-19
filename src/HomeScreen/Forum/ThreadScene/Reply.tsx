@@ -10,20 +10,30 @@
         check whether the current thread does exist or not.
 */
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput, Button } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TextInput, Button, TouchableOpacity } from 'react-native';
+//@ts-ignore
+import Icon from 'react-native-vector-icons/AntDesign';
 
 import { contextProvider, StateAPI } from '../../../StateAPI/State';
 import { localContextProvider } from '../localstateAPI/state';
-import { LocalStateAPI, TReplies } from '../localstateAPI/interface';
-//import { setCurrentThread } from '../localstateAPI/actions';
+import { LocalStateAPI, TReplies, Thread } from '../localstateAPI/interface';
+import { setCurrentThread } from '../localstateAPI/actions';
 
 import AvatarIcon from '../functions/AvatarIcon';
 import CalculateAgo from '../functions/calculateago';
+import AlertBox from '../../../Utility/AlertBox';
+
+//secret apis
+import { makecomment, deletecomment, loadsinglethread } from '../../../../secret/key';
 
 export default function Reply({navigation} :any) {
     const { state } : StateAPI = React.useContext(contextProvider);
-    const { localState } :LocalStateAPI = React.useContext(localContextProvider);
-    const [text ,setText ] = React.useState('');
+    const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
+    const [text ,setText ]          = React.useState('');
+    const [isSending, setSendin]    = React.useState(false);
+    const [errorDialog, setErr]     = React.useState({text: '', show: false});
+    const [delrep, setdelrep]       = React.useState({id: '0', show: false});
+    const scrollviewref :any        = React.useRef({});
 
     function whichStyle(reply :TReplies) {
         if( reply.userid == state.user.uid )
@@ -31,19 +41,87 @@ export default function Reply({navigation} :any) {
         return styles.replyContainer;
     }
 
-    function handleSendText() {
-        
+    async function handleSendText() {
+        if(isSending) return;
+        setSendin(true);
+        try {
+            const response = await fetch( makecomment , {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    threadid:     localState.currentThread?._id,
+                    username:     state.user.name,
+                    userid:       state.user.uid,
+                    avatar:       state.user.avatar,
+                    _token:       state.user.token,
+                    text:         text
+                })
+            });
+            const result = await response.json();
+            if(result.err) 
+                setErr({text: result.err, show: true});
+            else {
+                await loadThread();
+                setText('');
+                scrollviewref.current.scrollToEnd({animated: true});
+            }
+            setSendin(false);
+        }
+        catch(err) {
+            setErr({text: 'Check your internet connection and try again. \n' + err, show: true});
+            setSendin(false);
+        }
+    }
+
+    async function loadThread() {
+        try {
+            const response = await fetch( loadsinglethread , {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({threadid: localState.currentThread?._id})
+            });
+            const thethread :Thread = await response.json();
+        //@ts-ignore
+            if(thethread.err) throw new Error(thethread.err);
+            localDispatch( setCurrentThread(thethread) );
+        }
+        catch(err) {
+            setErr({text: 'Check your internet connection and try again. \n' + err, show: true});
+        }
+    }
+
+    async function deleteComment() {
+        if(isSending) return;
+        setSendin(true);
+        try {
+            await fetch( deletecomment , {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    threadid:   localState.currentThread?._id,
+                    commentid:  delrep.id,
+                    _token:     state.user.token,
+                })
+            });
+            await loadThread();
+            setSendin(false);
+        }
+        catch(err) {
+            setErr({text: 'Check your internet connection and try again. \n' + err, show: true});
+            setSendin(false);
+        }
     }
 
     return (
         <View style={{flex: 1}}>
-        <ScrollView style={styles.scrollView}>
+        <ScrollView style={styles.scrollView} ref={scrollviewref}>
             <View style={styles.threadContainer}>
                 <View style={styles.headingStyle}>
                     <AvatarIcon avatarid={localState.currentThread?.creator.avatar} />
                     <View style={styles.metaContainer}>
                         <View style={styles.UserName}>
                             <Text style={styles.userNameText}>{localState.currentThread?.creator.username}</Text>
+
                         </View>
                         <Text style={styles.date}>{CalculateAgo(localState.currentThread?.thread.date)}</Text>
                         <Text style={styles.title}>{localState.currentThread?.thread.title}</Text>
@@ -57,11 +135,19 @@ export default function Reply({navigation} :any) {
                 return (
                     <View style={whichStyle(reply)} key={index}>
                         <View style={styles.replyHeading}>
-                            <AvatarIcon avatarid={reply.avatar} width={42} height={42} />
+                            <AvatarIcon avatarid={reply.avatar} isAdmin={reply.isAdmin} width={42} height={42} />
                             <View style={{flexDirection: 'column'}}>
                                 <Text style={styles.replyusername}>{reply.username}</Text>
                                 <Text style={styles.replyago}>{CalculateAgo(reply.time)}</Text>
                             </View>
+                            {
+                                reply.userid == state.user.uid &&
+                                <View style={{marginLeft: 16}}>
+                                <TouchableOpacity onPress={() => setdelrep({id: '' + reply._id, show: true})}>
+                                    <Icon name='delete' size={16} color='red' />
+                                </TouchableOpacity>
+                                </View>
+                            } 
                         </View>
                         <Text style={styles.replyText}>{reply.text}</Text>
                     </View>    
@@ -74,12 +160,33 @@ export default function Reply({navigation} :any) {
                 style={styles.textinput}
                 placeholder='reply' value={text}
                 onChangeText={e => setText(e)}
+                maxLength={240}
             />
             <View style={styles.inputbtn}>
-                <Button title='send' onPress={() => console.log('pressed')} />
+                <Button title='send' onPress={handleSendText} />
             </View>
         </View>
 
+        <View style={{position: 'absolute', bottom: 70, right: 0}}>
+            <Button title='refresh' onPress={() => { loadThread(); scrollviewref.current.scrollToEnd({animated: true}) }} />
+        </View>
+
+        <AlertBox
+            title='Delete?'
+            text='Delete your reply to this thread?'
+            ok={() => {
+                setdelrep({id: delrep.id, show: false});
+                deleteComment();
+            }}
+            cancel={() => setdelrep({id: '', show: false})}
+            isshow={delrep.show}
+        />
+        <AlertBox
+                title='Error replying'
+                text={errorDialog.text}
+                ok={() => setErr({text: '', show: false}) }
+                isshow={errorDialog.show}
+        />
         </View>
     );
 }
@@ -135,7 +242,7 @@ const styles = StyleSheet.create({
     },
 
     replyContainer: {
-        ...GlobalStyle.shadow,
+        ...GlobalStyle.border,
         ...GlobalStyle.defaultBackground,
         width: '92%',
         borderTopEndRadius: 16,
@@ -144,12 +251,15 @@ const styles = StyleSheet.create({
         marginBottom: 12,
     },
     replyContainerUser: {
-        ...GlobalStyle.shadow,
         ...GlobalStyle.defaultBackground,
+        ...GlobalStyle.border,
+        borderTopStartRadius : 16,
+        borderBottomStartRadius: 16,
         width: '92%',
-        marginLeft: '7%',
+        marginLeft: '8%',
         padding: '2.5%',
         marginBottom: 12,
+
     },
     replyHeading: {
         flexDirection: 'row',

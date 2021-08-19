@@ -62,12 +62,14 @@ export default function OfflineStories( {navigation} :any ) {
     )
 }
 
+import GlobalStyle from '../../../Utility/GloabalStyles';
 const styles = StyleSheet.create({
     container: {
         width: '90%',
         alignSelf: 'center',
         marginTop: 8,
         borderColor:  'rgba(115, 170, 220, 1)',
+        ...GlobalStyle.defaultBackground,
         borderWidth: 1,
         borderRadius: 8,
         paddingTop: 12,
@@ -87,7 +89,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 4,
         marginTop: 8,
-        borderColor:  'rgba(115, 170, 220, 0.4)',
+        borderColor:  'rgba(115, 170, 220, 1)',
+        backgroundColor: '#eee',   
         borderWidth: 1,
         borderRadius: 8,
         textAlign: 'justify',

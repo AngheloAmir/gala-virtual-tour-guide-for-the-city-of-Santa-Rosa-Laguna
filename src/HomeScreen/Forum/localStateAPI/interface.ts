@@ -50,7 +50,7 @@ export interface TReplies {
     text        :string;
     userid      :string;
     _token      :string;
-    _id?        :string;
+    _id         :string;
     isAdmin     :boolean;
 }
 

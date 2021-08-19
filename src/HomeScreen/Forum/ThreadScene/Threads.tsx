@@ -12,25 +12,30 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 //@ts-ignore
-import EntypoIcon from 'react-native-vector-icons/Entypo';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+//@ts-ignore
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+//@ts-ignore
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import { contextProvider, StateAPI } from '../../../StateAPI/State';
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI, Thread } from '../localstateAPI/interface';
-import { setCurrentThread } from '../localstateAPI/actions';
+import { setCurrentThread, setThreads } from '../localstateAPI/actions';
 
 import AvatarIcon from '../functions/AvatarIcon';
 import CalculateAgo from '../functions/calculateago';
 import AlertBox from '../../../Utility/AlertBox';
 
 //secret
-import { loadsinglethread } from '../../../../secret/key';
+import { loadsinglethread, loadthread, deletethread } from '../../../../secret/key';
 
 export default function ForumThreads({navigation} :any) {
     const { state } : StateAPI = React.useContext(contextProvider);
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
-    const [deletedialog, setDelete] = React.useState(false);
+    const [deletedialog, setDelete] = React.useState({show: false, threadid: '0'});
     const [errorDialog, setErr] = React.useState({text: '', show: false});
+    const [isSending, setSending] = React.useState(false);
 
     async function handleOpenThread(threadId :string) {
         try {
@@ -50,9 +55,44 @@ export default function ForumThreads({navigation} :any) {
         }
     }
 
+    async function handleDeleteThread() {
+        if(isSending) return;
+        setSending(true);
+        try {
+            const response = await fetch( deletethread , {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    threadid:       deletedialog.threadid,
+                    usertoken:      state.user.token
+                })
+            });
+            const result = await response.json();
+        //@ts-ignore
+            if(result.err) throw new Error(result.err);
+            await loadThreads();
+            setSending(false);
+            setDelete({show: false, threadid: '0'});
+        }
+        catch(err) {
+            setDelete({show: false, threadid: '0'});
+            setErr({text: '' + err, show: true});
+            setSending(false);
+        }
+    }
+
+    async function loadThreads() {
+        const response = await fetch(loadthread);
+        const threads = await response.json();
+        if(!threads.err) 
+            localDispatch( setThreads(threads) );
+        else
+            setErr({text: 'Error: ' + threads.err, show: true});
+    }
+
     return (
-        <View>
-            <ScrollView style={styles.container}>
+        <View style={{flex: 1}}>
+            <ScrollView style={styles.scrollview}>
             { localState.forum.map((item :Thread, index :number) => {
             return (
                 <View key={index} style={styles.threadContainer}>
@@ -62,9 +102,9 @@ export default function ForumThreads({navigation} :any) {
                             <View style={styles.UserName}>
                                 <Text style={styles.userNameText}>{item.creator.username}</Text>
                             {
-                            state.user.uid == item._id &&
-                                <TouchableOpacity onPress={() => setDelete(true)}>
-                                    <EntypoIcon name='dots-three-horizontal' size={16} color='black' />
+                            state.user.uid == item.creator.uid &&
+                                <TouchableOpacity onPress={() => setDelete({show: true, threadid: '' + item._id})}>
+                                    <AntDesign name='delete' size={16} color='red' />
                                 </TouchableOpacity>
                             }    
                             </View>
@@ -81,12 +121,24 @@ export default function ForumThreads({navigation} :any) {
             )
             })}
             </ScrollView>
+
+            <View style={styles.inputContainer}>
+                <TouchableOpacity style={styles.btninput} onPress={() => navigation.navigate('NewThread')}>
+                    <FontAwesome5 name='newspaper' size={16} color='white' />
+                    <Text style={styles.btntext}>New thread</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btninput} onPress={() => loadThreads()}>
+                    <FontAwesome name='refresh' size={16} color='white' />
+                    <Text  style={styles.btntext}>Refresh</Text>
+                </TouchableOpacity>
+            </View>
+
             <AlertBox
                 title='Delete?'
-                text='Delete the thread'
-                ok={() =>       { setDelete(false); console.log('deleting')}}
-                cancel={() =>   { setDelete(false); console.log('canceled')}}
-                isshow={deletedialog}
+                text='Delete the thread you made?'
+                ok={() => handleDeleteThread()}
+                cancel={() => setDelete({show: false, threadid: '0'})}
+                isshow={deletedialog.show}
             />
             <AlertBox
                 title='Error opening a thread'
@@ -104,13 +156,18 @@ import GlobalStyle from '../../../Utility/GloabalStyles';
 
 const styles = StyleSheet.create({
     container: {
+
+    },
+    scrollview: {
         width:          '95%',
         alignSelf:      'center',
         marginVertical: 12,
+        height: WindowDimension.height - 100 - 120,
     },
     threadContainer: {
         ...GlobalStyle.defaultBackground,
         ...GlobalStyle.border,
+        borderRadius:   16,
         padding:        8,
         marginBottom:   16,
     },
@@ -154,5 +211,27 @@ const styles = StyleSheet.create({
         fontSize:       themestyle.defaultfontsize,
         color:          'blue',
         textDecorationLine: 'underline',
+    },
+
+    inputContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        backgroundColor: 'rgba(115, 170, 220, 1)',
+        paddingHorizontal: 8,
+        paddingVertical: 16,
+    },
+    btninput: {
+        width: '40%',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        backgroundColor: 'rgb(33, 150, 243)',
+        paddingVertical: 6,
+
+
+    },
+    btntext: {
+        ...GlobalStyle.textbold,
+        fontWeight: '500',
+        color: 'white',
     }
 });

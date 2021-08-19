@@ -14,7 +14,6 @@ interface globalstyle {
 const GlobalStyle :globalstyle = {
     border: {
         borderColor:    'rgba(115, 170, 220, 1)',
-        borderRadius:   12,
         borderWidth:    1,
     },
     date: {

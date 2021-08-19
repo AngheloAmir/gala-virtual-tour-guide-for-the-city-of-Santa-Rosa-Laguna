@@ -9,8 +9,10 @@ export default function CalculateAgo(threadms :number | undefined) :string {
 //check if less than a hour
     if(ago <= (59*60*1000)) {
         let mins = Math.round(ago / (60*1000));
-        if(mins <= 1)
-            return mins + ' min ago';
+        if(mins < 1)
+            return 'seconds ago';
+        else if(mins == 1)
+            return '1 min ago';
         else return mins + ' mins ago';
     }
 
