@@ -121,7 +121,6 @@ export default function Reply({navigation} :any) {
                     <View style={styles.metaContainer}>
                         <View style={styles.UserName}>
                             <Text style={styles.userNameText}>{localState.currentThread?.creator.username}</Text>
-
                         </View>
                         <Text style={styles.date}>{CalculateAgo(localState.currentThread?.thread.date)}</Text>
                         <Text style={styles.title}>{localState.currentThread?.thread.title}</Text>

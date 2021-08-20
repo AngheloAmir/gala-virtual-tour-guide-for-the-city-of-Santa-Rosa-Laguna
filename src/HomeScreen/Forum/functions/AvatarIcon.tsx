@@ -22,7 +22,7 @@ export default function AvatarIcon(props :propsReceive) {
     });
     if(props.isAdmin) 
         return <Image source={gala} style={styles.iconStyle} resizeMode='contain' />
-    else if(props.avatarid < AVATARICONS_MALE.length -1 )
+    else if(props.avatarid < AVATARICONS_MALE.length )
             return <Image source={AVATARICONS_MALE[props.avatarid]} style={styles.iconStyle} resizeMode='contain' />
     const id = props.avatarid - AVATARICONS_MALE.length;
     return <Image source={AVATARICONS_FEMALE[id]} style={styles.iconStyle} resizeMode='contain' />

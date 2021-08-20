@@ -6,7 +6,7 @@
         Show the create new threads 
 
     * VISIBLE WHEN
-        
+        When the user press create new thread
 */
 import React from 'react';
 import { View, Text, TextInput, StyleSheet, Button } from 'react-native';

@@ -1,14 +1,18 @@
+## August 20, 0.7.1 Account Screen
+-Added the ability to view and change user account 
+-Forum UI improvements
+
 ## August 20, 0.7 Forum Requirement Complete
--Added NewThread.tsx
--Forum feature improvement
--Some UI adjustments
+-Added NewThread.tsx  
+-Forum feature improvement  
+-Some UI adjustments  
 
 ## August 19, 0.6.7.1 Minor UI improvements
 -Added GlobalStyle.ts  
 -Make UI a little better
 
 ## August 17, 0.6.7 Forum building
--Added Reply.tsx
+-Added Reply.tsx  
 -Other code changes
 
 ## August 16, Version 0.6.4 User Registration update

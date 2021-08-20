@@ -28,7 +28,7 @@ import CalculateAgo from '../functions/calculateago';
 import AlertBox from '../../../Utility/AlertBox';
 
 //secret
-import { loadsinglethread, loadthread, deletethread } from '../../../../secret/key';
+import { loadsinglethread, loadthread, deletethread, viewuser} from '../../../../secret/key';
 
 export default function ForumThreads({navigation} :any) {
     const { state } : StateAPI = React.useContext(contextProvider);
@@ -36,6 +36,7 @@ export default function ForumThreads({navigation} :any) {
     const [deletedialog, setDelete] = React.useState({show: false, threadid: '0'});
     const [errorDialog, setErr] = React.useState({text: '', show: false});
     const [isSending, setSending] = React.useState(false);
+    const [vuser, setviewuser] = React.useState({username: '0', description: '0', last: 0, show: false});
 
     async function handleOpenThread(threadId :string) {
         try {
@@ -90,6 +91,26 @@ export default function ForumThreads({navigation} :any) {
             setErr({text: 'Error: ' + threads.err, show: true});
     }
 
+    async function handleViewUser(userid :string | any) {
+        if(isSending) return;
+        setSending(true);
+        try {
+            const response = await fetch( viewuser , {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({userid: userid})
+            });
+            const result = await response.json();
+            if(result.err) throw new Error('' + result.err);
+            setviewuser({username: result.username, description: result.description, last: result.lastreply, show: true});
+            setSending(false);
+        }
+        catch(err) {
+            setErr({text: 'Check your internet connection and try again. \n' + err, show: true});
+            setSending(false);
+        }
+    }
+
     return (
         <View style={{flex: 1}}>
             <ScrollView style={styles.scrollview}>
@@ -100,7 +121,9 @@ export default function ForumThreads({navigation} :any) {
                         <AvatarIcon avatarid={item.creator.avatar} />
                         <View style={styles.metaContainer}>
                             <View style={styles.UserName}>
-                                <Text style={styles.userNameText}>{item.creator.username}</Text>
+                                <TouchableOpacity onPress={() => handleViewUser(item.creator.uid)}>
+                                    <Text style={styles.userNameText}>{item.creator.username}</Text>
+                                </TouchableOpacity>
                             {
                             state.user.uid == item.creator.uid &&
                                 <TouchableOpacity onPress={() => setDelete({show: true, threadid: '' + item._id})}>
@@ -134,6 +157,12 @@ export default function ForumThreads({navigation} :any) {
             </View>
 
             <AlertBox
+                title='Viewed User'
+                text={`${vuser.username}\n"${vuser.description}"\n\nLast replied: ${CalculateAgo(vuser.last)}`}
+                ok={() => setviewuser({username: '', description: '', last: 0, show: false}) }
+                isshow={vuser.show}
+            />
+            <AlertBox
                 title='Delete?'
                 text='Delete the thread you made?'
                 ok={() => handleDeleteThread()}
@@ -161,8 +190,8 @@ const styles = StyleSheet.create({
     scrollview: {
         width:          '95%',
         alignSelf:      'center',
-        marginVertical: 12,
-        height: WindowDimension.height - 100 - 120,
+        height: WindowDimension.height - 100 - 65,
+        paddingVertical: 18,
     },
     threadContainer: {
         ...GlobalStyle.defaultBackground,
@@ -188,6 +217,8 @@ const styles = StyleSheet.create({
     userNameText: {
         fontSize:       themestyle.defaultfontsize,
         fontWeight:     'bold',
+        color:          'blue',
+        textDecorationLine: 'underline',
     },
     date: {
         fontSize:       themestyle.defaultfontsize,

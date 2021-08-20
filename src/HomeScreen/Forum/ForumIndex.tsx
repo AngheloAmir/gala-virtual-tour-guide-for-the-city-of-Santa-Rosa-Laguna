@@ -45,7 +45,7 @@ import { loadthread }       from '../../../secret/key';
 import AlertBox             from '../../Utility/AlertBox';
 
 function ThreadsContainer({navigation} :any) {
-    const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
+    const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
     const [err, seterr] = React.useState({text: '?', show: false});
 
     async function loadThreads() {
@@ -53,25 +53,31 @@ function ThreadsContainer({navigation} :any) {
         const threads = await response.json();
         if(!threads.err) {
             localDispatch( setThreads(threads) );
-            navigation.navigate('Threads')
+            //navigation.navigate('Threads')
         }
         else
             seterr({text: 'Error: ' + threads.err, show: true});
     }
-
+    
     return (
-        <View style={{flex: 1}}>
-            <View style={styles.container}>
-                <Text style={styles.welcomeText}>Tap to load current topic by the community</Text>
-                <View style={styles.btn}>
-                    <Button title='refresh' onPress={() => loadThreads() } />
+        <View>
+            { localState.forum.length >= 1 ?
+            <Threads navigation={navigation} />
+            :
+            <View style={{flex: 1}}>
+                <View style={styles.container}>
+                    <Text style={styles.welcomeText}>Tap to load current topic by the community</Text>
+                    <View style={styles.btn}>
+                        <Button title='refresh' onPress={() => loadThreads() } />
+                    </View>
                 </View>
+                <AlertBox title='Error loading threads'
+                    text={err.text}
+                    isshow={err.show}
+                    ok={() => seterr({text: '?', show: false})}
+                />
             </View>
-            <AlertBox title='Error loading threads'
-                text={err.text}
-                isshow={err.show}
-                ok={() => seterr({text: '?', show: false})}
-            />
+            }
         </View>
     );
 }
