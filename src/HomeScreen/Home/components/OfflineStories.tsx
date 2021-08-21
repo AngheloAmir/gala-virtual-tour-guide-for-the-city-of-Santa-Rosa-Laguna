@@ -33,7 +33,7 @@ export default function OfflineStories( {navigation} :any ) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.headingText}>Top Stories To Read</Text>
+            <Text style={styles.headingText}>Featured Offline Stories</Text>
 
             <View style={styles.news}>
                 {

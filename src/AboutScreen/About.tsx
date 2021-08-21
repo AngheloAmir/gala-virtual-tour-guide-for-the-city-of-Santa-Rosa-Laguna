@@ -1,13 +1,24 @@
+/*
+    The about page
+*/
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View }             from 'react-native';
+import { StoryContent }     from '../../database/!interfaces/StoryContent';
+import galaabout            from '../../database/galaabout.json';
+import StoryViewer          from '../Utility/StoryViewer';
+import Topbar               from '../Topbar';
+import ASSETS               from '../../database/assets';
 
-import TopBar from '../Topbar';
-
-export default function IndexAbout( {navigation} :any) {
+export default function GuideView({navigation} :any) {
+    const theguide   :StoryContent | any    = {
+        ...galaabout,
+        headerImage: ASSETS['about.png']
+    };
+    
     return (
-        <View>
-            <TopBar navigation={navigation} title='About' />
-            <Text>You are in the Index About Page</Text>
+        <View style={{flex: 1}}>
+            <Topbar title='about' navigation={navigation} />
+            <StoryViewer story={theguide} />
         </View>
     );
 }

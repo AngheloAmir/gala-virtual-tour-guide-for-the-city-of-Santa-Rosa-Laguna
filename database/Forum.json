@@ -1,9 +1,20 @@
 {
-    "termsAndCondTitle": "the terms and condition",
+    "termsAndCondTitle": "Terms and Condition",
     "termsAndCondition": [
         {
-            "heading": "heading one",
-            "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis velit, delectus dolorum ipsam tempora blanditiis consequuntur, dolorem quae numquam dignissimos officia ratione! Fugit rem veritatis inventore maiores voluptas vitae iste dolorem deserunt corrupti eos ullam placeat excepturi quibusdam perspiciatis provident pariatur tempore beatae nostrum quidem, recusandae mollitia! Ipsa, aperiam distinctio?"
+            "text": "Welcome to the forum! Ask the community for some guidance!"
+        },
+        {
+            "heading": "Privacy Policy",
+            "text": "All of the information that you provided can be read and retrieve by the moderator and the community. Please NEVER PROVIDE ANY PERSONAL INFORMATION SUCH AS EMAILS. Be anonymous at all times."
+        },
+        {
+            "heading": "Purpose of the forum",
+            "text": "The computer conferencing system (the forum) is added to provide additional aid from the other users. It is meant for convenience and not a replacement for social media. The usage of the forum is quite strict, users can't reply to another replier after one minute, and the user must NOT REPLY AT LEASE 15 MINS TO MAKE A THREAD. "
+        },
+        {
+            "heading": "Forum rules",
+            "text": "All chats must not contain anything such as spam, implicit content, malicious intent, bad words, and others. Remain courteous and kind to anyone in the forum. Every chat can be read by anyone including the forum moderator."
         }
     ]
 }

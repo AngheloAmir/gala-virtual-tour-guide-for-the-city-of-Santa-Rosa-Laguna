@@ -58,6 +58,7 @@ function RegisterScreen({navigation} :any) {
             uid:            'secret token',
             token:          'secret token',
             registered:     false,
+            joined:         0,
         }));
         navigation.navigate('TermsNCondScreen');
     }

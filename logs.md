@@ -1,3 +1,14 @@
+## August 22, 1.0 Initial Releasable Version
+-The app is ready to ship waiting for additonal changes  
+
+## August 21, 0.7.3 Improvements
+-Minor improvements  
+
+## August 21, 0.7.2 Improvements
+-Added content for About Screen  
+-Improve the Account Screen  
+-Improve Forum  
+
 ## August 20, 0.7.1 Account Screen
 -Added the ability to view and change user account 
 -Forum UI improvements

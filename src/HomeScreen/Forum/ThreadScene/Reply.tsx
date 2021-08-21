@@ -20,7 +20,7 @@ import { LocalStateAPI, TReplies, Thread } from '../localstateAPI/interface';
 import { setCurrentThread } from '../localstateAPI/actions';
 
 import AvatarIcon from '../functions/AvatarIcon';
-import CalculateAgo from '../functions/calculateago';
+import CalculateAgo from '../../../Utility/calculateago';
 import AlertBox from '../../../Utility/AlertBox';
 
 //secret apis
@@ -74,6 +74,8 @@ export default function Reply({navigation} :any) {
     }
 
     async function loadThread() {
+        if(isSending) return;
+        setSendin(true);
         try {
             const response = await fetch( loadsinglethread , {
                 method: 'POST',
@@ -84,9 +86,11 @@ export default function Reply({navigation} :any) {
         //@ts-ignore
             if(thethread.err) throw new Error(thethread.err);
             localDispatch( setCurrentThread(thethread) );
+            setSendin(false);
         }
         catch(err) {
             setErr({text: 'Check your internet connection and try again. \n' + err, show: true});
+            setSendin(false);
         }
     }
 

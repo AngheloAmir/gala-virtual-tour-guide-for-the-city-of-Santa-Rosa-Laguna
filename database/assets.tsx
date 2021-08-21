@@ -20,6 +20,8 @@ export const AVATARICONS_FEMALE = [
 ];
 
 const IMAGES = {
+    "about.png":            require('../assets/app/about.png'),
+
     "arch.jpg":             require('../assets/santarosa/places/arch.jpg'),
     "balibago.jpg":         require('../assets/santarosa/places/balibago.jpg'),
     "basilo.jpg":           require('../assets/santarosa/places/basilo.jpg'),

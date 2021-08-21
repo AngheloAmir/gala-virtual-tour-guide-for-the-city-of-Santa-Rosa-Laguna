@@ -12,7 +12,6 @@ import { Responsive, useResponsive } from './Utility/useResponsive';
 import HomeScreenIndex from './HomeScreen/Index';
 import AccountIndex from './AccountScreen/Index';
 import AboutSceenIndex from './AboutScreen/About';
-import FeedbackScreenIndex from './FeedbackScreen/Feedback';
 
 export default function Index() {
   const responsive :Responsive = useResponsive();
@@ -51,8 +50,8 @@ export default function Index() {
           </View>
           )}>
         <Drawer.Screen name="Home" component={HomeScreenIndex} /> 
-        <Drawer.Screen name="View your account" component={AccountIndex} />
-        <Drawer.Screen name="Support" component={FeedbackScreenIndex} />
+        <Drawer.Screen name="View your forum account" component={AccountIndex} />
+        
         <Drawer.Screen name="About" component={AboutSceenIndex} />
       </Drawer.Navigator>
     </NavigationContainer>

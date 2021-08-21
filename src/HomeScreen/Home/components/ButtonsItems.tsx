@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     },
     menuItemContainer: {
         borderWidth: 1, borderRadius: 16,
-        marginTop: 24, flexDirection: 'row',
+        marginTop: 16, flexDirection: 'row',
         borderColor: 'rgba(115, 170, 220, 1)',
         padding: 4,
         textAlign: 'justify',

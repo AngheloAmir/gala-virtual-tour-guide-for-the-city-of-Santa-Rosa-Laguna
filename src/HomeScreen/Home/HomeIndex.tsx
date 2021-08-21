@@ -20,7 +20,7 @@ import Footer         from './components/Footer';
 
 export default function Home( {navigation} :any) {
     return (
-      <ScrollView style={{marginBottom: 24}}>
+      <ScrollView style={{paddingBottom: 32}}>
         <HomeHeading />
         <OfflineStories navigation={navigation} />
         <ButtonsItems   navigation={navigation} />

@@ -114,6 +114,13 @@ export default function NewThread({navigation} :any) {
                 <Button title='  Cancel  ' onPress={() => navigation.navigate('Threads')} />
                 <Button title=' Create new thread ' onPress={() => createNewThread()} />
             </View>
+
+            <View>
+                <Text style={{fontSize: 12, textAlign: 'center'}}>
+                    Please dont make any reply for 15mins to create a new thread!
+                </Text>
+            </View>
+
             </View>
             <AlertBox
                 title='Error creating a thread'
@@ -163,6 +170,7 @@ const styles = StyleSheet.create({
     createBtnContainer: {
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        marginVertical: 32,
+        marginTop: 32,
+        marginBottom: 8
     }
 });

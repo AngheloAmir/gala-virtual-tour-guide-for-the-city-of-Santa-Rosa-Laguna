@@ -67,6 +67,7 @@ export default function RegisterScreen({navigation} :any) {
                 avatar:     avid,
                 description: descrp,
                 registered:     true,
+                joined: state.user.joined
             }));
             setSendin(false);
             navigation.navigate('AccountMain');

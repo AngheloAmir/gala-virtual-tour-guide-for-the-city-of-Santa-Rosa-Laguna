@@ -36,37 +36,39 @@ export default function TermsNCondScreen({navigation} :any) {
             if(result.err) 
                 seterr({text: 'Registration failed. Try again. \nError: ' + result.err, ishow: true});
 
-            dispatch(updateInfo( {...state.user, uid: result._id, token: result._token, registered: true } ))
+            dispatch(updateInfo( {...state.user, uid: result._id, token: result._token, joined: result.joined, registered: true } ))
         }
         catch(err) {
-            seterr({text: err, ishow: true});
+            seterr({text: err + '', ishow: true});
         }
     }
 
     return (
+        <View style={{flex: 1}}>
         <ScrollView>
-        <View style={styles.container}>
-            <Text style={styles.headingText}>{forumjson.termsAndCondTitle}</Text>
-            {
-                forumjson.termsAndCondition.map((item :TermsAndCondText, index :number) => {
-                    return (
-                    <View key={index} style={styles.termsContainer}>
-                        <Text style={styles.termsHeading}>{item.heading}</Text>
-                        <Text style={styles.termsText}>{item.text}</Text>
-                    </View>
-                    )
-                })
-            }
+            <View style={styles.container}>
+                <Text style={styles.headingText}>{forumjson.termsAndCondTitle}</Text>
+                {
+                    forumjson.termsAndCondition.map((item :TermsAndCondText, index :number) => {
+                        return (
+                        <View key={index} style={styles.termsContainer}>
+                            <Text style={styles.termsHeading}>{item.heading}</Text>
+                            <Text style={styles.termsText}>{item.text}</Text>
+                        </View>
+                        )
+                    })
+                }
 
-            <View style={styles.aceptBtn}>
-                <Button title='i accept and register' onPress={handleRegister} />
+                <View style={styles.aceptBtn}>
+                    <Button title='i accept and register' onPress={handleRegister} />
+                </View>
             </View>
-        </View>
+        </ScrollView>
 
         { isRegistering &&
-        <View style={styles.registering}>
-            <Text style={styles.registeringText}>REGISTERING</Text>
-        </View>
+            <View style={styles.registering}>
+                <Text style={styles.registeringText}>REGISTERING</Text>
+            </View>
         }
 
         <AlertBox title='Error on registering'
@@ -77,7 +79,7 @@ export default function TermsNCondScreen({navigation} :any) {
                 navigation.navigate('RegisterScreen');
             }}
         />
-        </ScrollView>
+        </View>
     );
 }
 
@@ -111,11 +113,13 @@ const styles = StyleSheet.create({
     },
     registeringText: {
         marginTop: (WindowDimension.height / 2) - 100,
+        width: WindowDimension.width,
         color: 'white',
         backgroundColor: 'orange',
         padding: 12,
         fontSize: 24,
         fontWeight: 'bold',
         textAlign: 'center',
+        position: 'absolute'
     }
 })

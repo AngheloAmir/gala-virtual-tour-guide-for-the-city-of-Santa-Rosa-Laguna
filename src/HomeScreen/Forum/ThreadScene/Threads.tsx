@@ -24,7 +24,7 @@ import { LocalStateAPI, Thread } from '../localstateAPI/interface';
 import { setCurrentThread, setThreads } from '../localstateAPI/actions';
 
 import AvatarIcon from '../functions/AvatarIcon';
-import CalculateAgo from '../functions/calculateago';
+import CalculateAgo from '../../../Utility/calculateago';
 import AlertBox from '../../../Utility/AlertBox';
 
 //secret
@@ -36,9 +36,11 @@ export default function ForumThreads({navigation} :any) {
     const [deletedialog, setDelete] = React.useState({show: false, threadid: '0'});
     const [errorDialog, setErr] = React.useState({text: '', show: false});
     const [isSending, setSending] = React.useState(false);
-    const [vuser, setviewuser] = React.useState({username: '0', description: '0', last: 0, show: false});
+    const [vuser, setviewuser] = React.useState({username: '0', description: '0', last: 0, joined: 0, show: false});
 
     async function handleOpenThread(threadId :string) {
+        if(isSending) return;
+        setSending(true);
         try {
             const response = await fetch( loadsinglethread , {
                 method: 'POST',
@@ -49,16 +51,19 @@ export default function ForumThreads({navigation} :any) {
         //@ts-ignore
             if(thethread.err) throw new Error(thethread.err);
             localDispatch( setCurrentThread(thethread) );
+            setSending(false);
             navigation.navigate('Reply');
         }
         catch(err) {
             setErr({text: 'Check your internet connection and try again. \n' + err, show: true});
+            setSending(false);
         }
     }
 
     async function handleDeleteThread() {
         if(isSending) return;
         setSending(true);
+        setDelete({show: false, threadid: '0'});
         try {
             const response = await fetch( deletethread , {
                 method: 'POST',
@@ -73,7 +78,6 @@ export default function ForumThreads({navigation} :any) {
             if(result.err) throw new Error(result.err);
             await loadThreads();
             setSending(false);
-            setDelete({show: false, threadid: '0'});
         }
         catch(err) {
             setDelete({show: false, threadid: '0'});
@@ -102,7 +106,13 @@ export default function ForumThreads({navigation} :any) {
             });
             const result = await response.json();
             if(result.err) throw new Error('' + result.err);
-            setviewuser({username: result.username, description: result.description, last: result.lastreply, show: true});
+            setviewuser({
+                username: result.username,
+                description: result.description,
+                last: result.lastreply,
+                joined: result.joined,
+                show: true
+            });
             setSending(false);
         }
         catch(err) {
@@ -158,8 +168,8 @@ export default function ForumThreads({navigation} :any) {
 
             <AlertBox
                 title='Viewed User'
-                text={`${vuser.username}\n"${vuser.description}"\n\nLast replied: ${CalculateAgo(vuser.last)}`}
-                ok={() => setviewuser({username: '', description: '', last: 0, show: false}) }
+                text={`${vuser.username}\n"${vuser.description}"\n\nLast replied: ${CalculateAgo(vuser.last)}\nJoined: ${CalculateAgo(vuser.joined)}`}
+                ok={() => setviewuser({username: '', description: '', last: 0, joined: 0, show: false}) }
                 isshow={vuser.show}
             />
             <AlertBox

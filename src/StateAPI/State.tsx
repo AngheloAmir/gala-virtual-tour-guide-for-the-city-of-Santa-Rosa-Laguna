@@ -21,7 +21,8 @@ export function createDefaultState() :StateInterface {
             avatar:      0,
             uid:         'secret token = asdacso85asdq;Ad21',
             token:       'secret token = utbcosab976faa',
-            registered:  false
+            registered:  false,
+            joined:      0,
         },
         features: {
         },

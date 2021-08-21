@@ -21,6 +21,7 @@ export interface UserInfo {
     uid         :string;
     registered  :boolean;
     token       :string;
+    joined      :number;
 }
 
 export interface StateInterface {
