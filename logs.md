@@ -1,3 +1,7 @@
+## October 12, 1.1 Fixes 
+-Fix error due to border attribute whih work in web browser but not with mobiles
+-Added a minor feature
+
 ## August 22, 1.0 Initial Releasable Version
 -The app is ready to ship waiting for additonal changes  
 

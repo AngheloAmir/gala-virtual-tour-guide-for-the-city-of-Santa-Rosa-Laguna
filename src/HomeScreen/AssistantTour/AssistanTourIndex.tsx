@@ -89,7 +89,8 @@ import DialogMessage        from './windowDialogs/DialogMessage';
 import AttributionInfo      from './windowDialogs/AttributionInfo';
 import PointOfInterestInfo  from './windowDialogs/PointOfInterestInfo';
 
-import { Init, checkIfGalaBookShow } from './functions';
+import { CheckIfGalaBookShow } from './functions/isShowGalaBook';
+import { init } from './functions/init';
 const mapjson = require('../../../database/map.json');
 
 export default function AssistanTourIndex() {
@@ -99,7 +100,7 @@ export default function AssistanTourIndex() {
 
     React.useEffect(() => {
         async function SetUpTheInitialEffectAndWatcher() {
-            await Init(localDispatch);
+            await init(localDispatch);
             const interval = await Location.watchPositionAsync({
                 accuracy:                   Location.Accuracy.BestForNavigation,
                 timeInterval:               mapjson.gpsUpdateSpeed.timeInterval,
@@ -125,7 +126,7 @@ export default function AssistanTourIndex() {
             localDispatch( setMapCenter(localState.mapmarkers[0].position));
 
         //will show gala book if the user is really close to a point of interest marker
-        checkIfGalaBookShow({localState, localDispatch}, localState.mapmarkers[0].position);
+        CheckIfGalaBookShow({localState, localDispatch}, localState.mapmarkers[0].position);
     }, [localState.mapmarkers[0].position])
 
     return (

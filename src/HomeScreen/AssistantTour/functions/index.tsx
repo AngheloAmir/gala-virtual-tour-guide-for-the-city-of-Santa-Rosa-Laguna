@@ -23,5 +23,3 @@ export const getPathWays = GetPathWays;
 //( pointA :Position, pointB :Position, howclose :number) :boolean
 export const isClose = IsClose;
 
-//A void function that set the gala book if show
-export const checkIfGalaBookShow = CheckIfGalaBookShow;

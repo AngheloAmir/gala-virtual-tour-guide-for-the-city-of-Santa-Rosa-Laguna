@@ -20,7 +20,7 @@ import { setUserPosition, setDialogMessage } from '../localstateAPI/actions';
 import { Responsive, useResponsive } from '../../../Utility/useResponsive';
 
 import { mapOptions, mapLayers } from '../functions/options';
-import { checkIfGalaBookShow }   from '../functions';
+import { CheckIfGalaBookShow }   from '../functions/isShowGalaBook';
 
 export default function LeafletContainer() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
@@ -31,7 +31,7 @@ export default function LeafletContainer() {
             case 'onMapClicked':
                 if(Platform.OS == 'web') {
                     localDispatch( setUserPosition(event.location) );
-                    checkIfGalaBookShow({localState, localDispatch}, event.location);
+                    CheckIfGalaBookShow({localState, localDispatch}, event.location);
                     console.log(event.location);
                 }
                 break;

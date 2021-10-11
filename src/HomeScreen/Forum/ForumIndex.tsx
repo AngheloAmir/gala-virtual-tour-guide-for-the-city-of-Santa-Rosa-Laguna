@@ -23,7 +23,7 @@ import { localContextProvider, createDefaultState } from './localstateAPI/state'
 import { rootReducer } from './localstateAPI/reducer';
 
 export default function ForumIndex() {
-    const [localState, localDispatch] = React.useReducer(rootReducer, createDefaultState());
+ const [localState, localDispatch] = React.useReducer(rootReducer, createDefaultState());
 
     return (
         <localContextProvider.Provider value={{localState, localDispatch}} >
@@ -57,6 +57,8 @@ function ThreadsContainer({navigation} :any) {
         }
         else
             seterr({text: 'Error: ' + threads.err, show: true});
+
+            console.log("Pressed");
     }
     
     return (
@@ -64,14 +66,14 @@ function ThreadsContainer({navigation} :any) {
             { localState.forum.length >= 1 ?
             <Threads navigation={navigation} />
             :
-            <View style={{flex: 1}}>
+            <View>
                 <View style={styles.container}>
                     <Text style={styles.welcomeText}>Tap to load current topic by the community</Text>
-                    <View style={styles.btn}>
+                    <View style={styles.btn}>                        
                         <Button title='refresh' onPress={() => loadThreads() } />
                     </View>
                 </View>
-                <AlertBox title='Error loading threads'
+                <AlertBox title='Error loading threads...'
                     text={err.text}
                     isshow={err.show}
                     ok={() => seterr({text: '?', show: false})}
@@ -93,6 +95,6 @@ const styles = StyleSheet.create({
         marginVertical: 32
     },
     btn: {
-        marginTop: 12,
+        marginTop: 12
     }
 });

@@ -122,7 +122,7 @@ export default function ForumThreads({navigation} :any) {
     }
 
     return (
-        <View style={{flex: 1}}>
+        <View style={styles.container}>
             <ScrollView style={styles.scrollview}>
             { localState.forum.map((item :Thread, index :number) => {
             return (
@@ -195,7 +195,7 @@ import GlobalStyle from '../../../Utility/GloabalStyles';
 
 const styles = StyleSheet.create({
     container: {
-
+        height: WindowDimension.height - 110,
     },
     scrollview: {
         width:          '95%',

@@ -117,7 +117,7 @@ export default function NewThread({navigation} :any) {
 
             <View>
                 <Text style={{fontSize: 12, textAlign: 'center'}}>
-                    Please dont make any reply for 15mins to create a new thread!
+                    Please dont make any reply for 5 mins to create a new thread!
                 </Text>
             </View>
 

@@ -1,0 +1,8 @@
+POST https://galavtg.herokuapp.com/api/thread/deletereply
+content-type: application/json
+
+{
+   "threadid":"61644d8039c16c0016155f94",
+   "commentid":"61645a5039c16c00161564ec",
+   "_token":"t7C6fkIxThulPrRRk1BBKH7hwDkFPpNcPR3dMiiLIO0dYMRPJihUbLpO9XMfnMO9a3YM3D0sJbRrzLGpdqW0hb"
+}

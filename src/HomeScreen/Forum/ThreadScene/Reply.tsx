@@ -96,6 +96,8 @@ export default function Reply({navigation} :any) {
 
     async function deleteComment() {
         if(isSending) return;
+
+        console.log("deleting");
         setSendin(true);
         try {
             await fetch( deletecomment , {
@@ -171,9 +173,14 @@ export default function Reply({navigation} :any) {
         </View>
 
         <View style={{position: 'absolute', bottom: 70, right: 0}}>
+            { isSending ?
+                <Text style={{
+                    padding: 8, backgroundColor: 'lightblue'
+                }}>Please wait...</Text> :
             <Button title='refresh' onPress={() => { loadThread(); scrollviewref.current.scrollToEnd({animated: true}) }} />
+         }
         </View>
-
+        
         <AlertBox
             title='Delete?'
             text='Delete your reply to this thread?'
@@ -292,7 +299,6 @@ const styles = StyleSheet.create({
         height: 32,
         fontSize: 16,
         width: '75%',
-        border: '1px solid black',
         borderRadius: 8,
         padding: 8,
         backgroundColor: 'white',
