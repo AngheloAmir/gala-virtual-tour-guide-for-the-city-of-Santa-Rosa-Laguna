@@ -57,8 +57,6 @@ function ThreadsContainer({navigation} :any) {
         }
         else
             seterr({text: 'Error: ' + threads.err, show: true});
-
-            console.log("Pressed");
     }
     
     return (
