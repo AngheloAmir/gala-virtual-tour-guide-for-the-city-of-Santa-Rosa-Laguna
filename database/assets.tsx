@@ -44,6 +44,7 @@ const GALATOURS = {
     "enchantedkingdom.json":require('./assistantour/enchantedkingdom.json'),
     "paseonuvali.json":     require('./assistantour/paseonuvali.json'),
     "busterminal.json":     require('./assistantour/busterminal.json'),
+    "test.json":            require('./assistantour/test.json'),
 };
 
 const GUIDESASSETS = {
@@ -102,6 +103,24 @@ const PLACESJSON = {
     "zavallahouse.json":    require('./places/Zavalla House.json'),
 };
 
+export const ALLPLACES = [
+    require('./places/Arambulo House.json'),
+    require('./places/Arch.json'),
+    require('./places/Casa Gonzalez.json'),
+    require('./places/Casa Zavalla.json'),
+    require('./places/Cuartel de Santo Domingo.json'),
+    require('./places/Santa Rosa De Lima Parish Church.json'),
+    require('./places/Former Gomez Residence.json'),
+    require('./places/Gonzalez Statue.json'),
+    require('./places/Museo ng Santa Rosa.json'),
+    require('./places/Enchanted Kingdom.json'),
+    require('./places/Nuvali.json'),
+    require('./places/City Plaza.json'),
+    require('./places/Chair of St. Peter Parish Church.json'),
+    require('./places/Tiongco Ancestral House.json'),
+    require('./places/Zavalla House.json'),
+]
+
 const MARKERSJSON = {
     "belair.json":          require('./places/infomarker/belair.json'),
     "complex.json":         require('./places/infomarker/complex.json'),
@@ -127,6 +146,7 @@ const MP3SPEECH = {
     "plaza.mp3":            require('../assets/santarosa/speech/Plaza.mp3'),
     "stpeterchruch.mp3":    require('../assets/santarosa/speech/Chair of St. Peter Parish Church.mp3'),
     "sample.mp3":           require('../assets/santarosa/speech/sample.mp3'),
+    "stibldg2.mp3":         require('../assets/test/stibldg2.mp3'),
 };
 
 const ASSETS = {

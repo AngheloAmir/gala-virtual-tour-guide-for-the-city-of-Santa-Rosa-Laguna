@@ -33,6 +33,28 @@ export function rootreducer(state :HomeStateInterface, action :ActionInterface )
             return {
                 ...state, storyToRead: action.payload
             }
+        
+        case actionType.flipSearchButton:
+            return {
+                ...state, isSearchBarShow: !state.isSearchBarShow
+            }
+        
+        case actionType.offSearchBar:
+            return {
+                ...state, isSearchBarShow: false
+            }
+        
+        case actionType.setMapCenter:
+            return {
+                ...state,
+                mapCenterPosition: action.payload
+            }
+        
+        case actionType.setZoomlevel:
+            return {
+                ...state,
+                zoomlevel: action.payload
+            }
 
         default:
             console.error('Action not defined in the reducer!');

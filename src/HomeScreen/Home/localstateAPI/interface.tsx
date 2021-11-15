@@ -12,9 +12,16 @@ export interface HomeStateInterface {
     mapMarkerId                 :number; //an index equal to database/places/allplaces array
     placeInfoShow               :boolean;
     isMarkerShow                :boolean;
+    isSearchBarShow             :boolean;
     webviewlink                 :string;
     isInstantSVCreadit          :number;
     storyToRead?                :StoryContent;
+
+    mapCenterPosition           :{
+        lat:    number;
+        lang:   number;
+    },
+    zoomlevel                   :number;
 }
 
 export interface ActionInterface {
@@ -30,4 +37,9 @@ export enum actionType {
     setWebviewLink,
     setDialogOpenStreetMapProviderCreadit,
     setStory,
+    flipSearchButton,
+    offSearchBar,
+
+    setMapCenter,
+    setZoomlevel,
 }

@@ -38,3 +38,27 @@ export function setStoryToRead(story :StoryContent) :ActionInterface {
         type: actionType.setStory, payload: story
     }
 }
+
+export function flipSearchButton() :ActionInterface {
+    return {
+        type: actionType.flipSearchButton
+    }
+}
+
+export function offSearchBar() :ActionInterface {
+    return {
+        type: actionType.offSearchBar
+    }
+}
+
+export function setMapCenter(geolocation: {lat :number, lng :number}) :ActionInterface {
+    return {
+        type: actionType.setMapCenter, payload: geolocation
+    }
+}
+
+export function setZoomLevel(level :number) :ActionInterface {
+    return {
+        type: actionType.setZoomlevel, payload: level
+    }
+}

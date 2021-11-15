@@ -1,3 +1,7 @@
+## November 15, 1.2 Minor new features
+-Added search for place in Home > Map
+-Added test tour (temporary) for capstone defense
+
 ## October 12, 1.1 Fixes 
 -Fix error due to border attribute whih work in web browser but not with mobiles
 -Added a minor feature

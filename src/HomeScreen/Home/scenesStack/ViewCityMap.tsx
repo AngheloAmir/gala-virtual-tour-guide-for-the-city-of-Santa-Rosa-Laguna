@@ -10,21 +10,22 @@
         "view the city map" button.
 */
 import React from 'react';
-import { ActivityIndicator, View, Platform, Linking } from 'react-native';
+import { ActivityIndicator, View, Platform, Text, Linking } from 'react-native';
 import { ExpoLeaflet, LeafletWebViewEvent, MapMarker } from "expo-leaflet";
 import { WindowDimension } from '../../../Utility/useResponsive';
 import { mapOptions, mapLayers} from './ViewCityMap/options';
 
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI }        from '../localstateAPI/interface';
-import { setMapMarkerId,
+import { setMapMarkerId, offSearchBar,
         setPlaceInfoShow,
         setInstantSVCreadit }   from '../localstateAPI/actions';
 import { loadAllMapMarkers }    from './ViewCityMap/functions';
+import SearchButton             from './ViewCityMap/SearchButton';
 import Attribution              from './ViewCityMap/Attribution';
 import AttributionInfo          from './ViewCityMap/AttributionInfo';
 import PlaceInfo                from './ViewCityMap/PlaceInfo';
-import AlertBox                from '../../../Utility/AlertBox';
+import AlertBox                 from '../../../Utility/AlertBox';
 
 const mapmakers     :Array<MapMarker> = loadAllMapMarkers();
 const emptymarker   :Array<MapMarker> = [{ id: '0', position: {lat: 0, lng: 0}, icon: '', size: [0, 0] }];
@@ -47,6 +48,7 @@ export default function MapIndex({navigation} :any) {
                 break;
             case 'onMapClicked':
                 localDispatch( setPlaceInfoShow(false) );
+                localDispatch( offSearchBar() );
             default:
                 break;
         }
@@ -71,8 +73,8 @@ export default function MapIndex({navigation} :any) {
             <View style={styles}>
                 <ExpoLeaflet
                     loadingIndicator={() => <ActivityIndicator/>}
-                    mapCenterPosition={ {lat: 14.296238, lng: 121.105799} }
-                    zoom={14}
+                    mapCenterPosition={ localState.mapCenterPosition }
+                    zoom={ localState.zoomlevel }
                     mapMarkers={ localState.isMarkerShow ? mapmakers : emptymarker}
                     mapLayers={mapLayers}
                     mapOptions={mapOptions}
@@ -80,7 +82,9 @@ export default function MapIndex({navigation} :any) {
                     onMessage={onMapClicked}
                 />
             </View>
+            <SearchButton />
             <Attribution />
+
             { localState.attributionDialogShow &&   <AttributionInfo /> }
             { localState.placeInfoShow &&           <PlaceInfo navigation={navigation} /> }
 
