@@ -16,6 +16,12 @@ export function RootReducer(state :StateInterface, action :ActionInterface) :Sta
                     ...state.features, guideInfo: action.payload
                 }
             }
+        
+        case actionType.setIsHideBottomTabs:
+            return {
+                ...state,
+                isHideBottomTabs: action.payload
+            }
 
         default:
             console.error('Action not defined in RootReducer!');

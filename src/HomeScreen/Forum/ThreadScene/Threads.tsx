@@ -37,10 +37,12 @@ export default function ForumThreads({navigation} :any) {
     const [errorDialog, setErr] = React.useState({text: '', show: false});
     const [isSending, setSending] = React.useState(false);
     const [vuser, setviewuser] = React.useState({username: '0', description: '0', last: 0, joined: 0, show: false});
+    const [sendingMessage, setSendingMessage] = React.useState('Please wait...');
 
     async function handleOpenThread(threadId :string) {
         if(isSending) return;
         setSending(true);
+        setSendingMessage('Loading...');
         try {
             const response = await fetch( loadsinglethread , {
                 method: 'POST',
@@ -64,6 +66,7 @@ export default function ForumThreads({navigation} :any) {
         if(isSending) return;
         setSending(true);
         setDelete({show: false, threadid: '0'});
+        setSendingMessage('Deleting...');
         try {
             const response = await fetch( deletethread , {
                 method: 'POST',
@@ -86,6 +89,14 @@ export default function ForumThreads({navigation} :any) {
         }
     }
 
+    async function handleRefesh() {
+        if(isSending) return;
+        setSending(true);
+        setSendingMessage('Refreshing...');
+        await loadThreads();
+        setSending(false);
+    }
+
     async function loadThreads() {
         const response = await fetch(loadthread);
         const threads = await response.json();
@@ -98,6 +109,7 @@ export default function ForumThreads({navigation} :any) {
     async function handleViewUser(userid :string | any) {
         if(isSending) return;
         setSending(true);
+        setSendingMessage('Please wait...');
         try {
             const response = await fetch( viewuser , {
                 method: 'POST',
@@ -160,7 +172,7 @@ export default function ForumThreads({navigation} :any) {
                     <FontAwesome5 name='newspaper' size={16} color='white' />
                     <Text style={styles.btntext}>New thread</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.btninput} onPress={() => loadThreads()}>
+                <TouchableOpacity style={styles.btninput} onPress={() => handleRefesh()}>
                     <FontAwesome name='refresh' size={16} color='white' />
                     <Text  style={styles.btntext}>Refresh</Text>
                 </TouchableOpacity>
@@ -185,6 +197,12 @@ export default function ForumThreads({navigation} :any) {
                 ok={() => setErr({text: '', show: false}) }
                 isshow={errorDialog.show}
             />
+
+            { isSending &&
+                <View style={styles.sending}>
+                    <Text style={styles.sendingText}> { sendingMessage } </Text>
+                </View>
+            }
         </View>
     );
 }
@@ -196,12 +214,13 @@ import GlobalStyle from '../../../Utility/GloabalStyles';
 const styles = StyleSheet.create({
     container: {
         height: WindowDimension.height - 110,
+        paddingBottom: 12,
     },
     scrollview: {
         width:          '95%',
         alignSelf:      'center',
-        height: WindowDimension.height - 100 - 65,
-        paddingVertical: 18,
+        height: WindowDimension.height - 100 - 50,
+        paddingTop: 18,
     },
     threadContainer: {
         ...GlobalStyle.defaultBackground,
@@ -258,7 +277,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         backgroundColor: 'rgba(115, 170, 220, 1)',
-        paddingHorizontal: 8,
+        paddingTop: 8,
         paddingVertical: 16,
     },
     btninput: {
@@ -274,5 +293,24 @@ const styles = StyleSheet.create({
         ...GlobalStyle.textbold,
         fontWeight: '500',
         color: 'white',
+    },
+    sending: {
+        position: 'absolute',
+        top: 0, left: 0,
+        width: WindowDimension.width,
+        height: WindowDimension.height,
+        zIndex: 20,
+        backgroundColor: 'rgba(0,0,0, 0.5)'
+    },
+    sendingText: {
+        marginTop: (WindowDimension.height / 2) - 100,
+        width: WindowDimension.width,
+        color: 'white',
+        backgroundColor: 'orange',
+        padding: 12,
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        position: 'absolute'
     }
 });

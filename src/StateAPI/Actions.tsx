@@ -10,6 +10,12 @@ export function updateInfo(info :UserInfo) :ActionInterface {
     }
 }
 
+export function setIsHideBottomTabs( isHidden :boolean ) :ActionInterface {
+    return {
+        type: actionType.setIsHideBottomTabs, payload: isHidden
+    }
+}
+
 import { StoryContent } from '../../database/!interfaces/StoryContent';
 export function setGuideInfo(guidedata :StoryContent) :ActionInterface {
     return {

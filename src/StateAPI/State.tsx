@@ -26,5 +26,6 @@ export function createDefaultState() :StateInterface {
         },
         features: {
         },
+        isHideBottomTabs: false,
     };
 }

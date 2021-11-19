@@ -10,7 +10,7 @@
         It is always show when the GPS Navigation feature of the app is shown.
 */
 import React from 'react';
-import { ActivityIndicator, Platform, View } from 'react-native';
+import { ActivityIndicator, Platform, SafeAreaView, View } from 'react-native';
 import { ExpoLeaflet, LeafletWebViewEvent } from "expo-leaflet";
 
 //Local State API imports 
@@ -59,8 +59,11 @@ export default function LeafletContainer() {
     const styles = {
         //the value 100 is the height of the toolbar
         //the value 108 is the height of the topbar + bottom tab navigatior
-        height: responsive.height - 100 - 108,
-        width:  responsive.width,
+        //height: responsive.height - 100 - 108,
+        //width:  responsive.width,
+        flex: 1
+        //height: WindowDimension.height - 100,
+        //width:  WindowDimension.width,
     }
 
     return (

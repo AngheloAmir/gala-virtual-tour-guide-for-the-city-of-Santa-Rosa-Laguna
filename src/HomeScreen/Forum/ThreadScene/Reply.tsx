@@ -10,11 +10,12 @@
         check whether the current thread does exist or not.
 */
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TextInput, Button, TouchableOpacity } from 'react-native';
-//@ts-ignore
+import { 
+    View, Text, StyleSheet, ScrollView, TextInput, Button, TouchableOpacity, } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 
 import { contextProvider, StateAPI } from '../../../StateAPI/State';
+
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI, TReplies, Thread } from '../localstateAPI/interface';
 import { setCurrentThread } from '../localstateAPI/actions';
@@ -26,8 +27,8 @@ import AlertBox from '../../../Utility/AlertBox';
 //secret apis
 import { makecomment, deletecomment, loadsinglethread } from '../../../../secret/key';
 
-export default function Reply({navigation} :any) {
-    const { state } : StateAPI = React.useContext(contextProvider);
+export default function Reply() {
+    const { state, dispatch } : StateAPI = React.useContext(contextProvider);
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
     const [text ,setText ]          = React.useState('');
     const [isSending, setSendin]    = React.useState(false);
@@ -43,7 +44,9 @@ export default function Reply({navigation} :any) {
 
     async function handleSendText() {
         if(isSending) return;
+        if(text.trim().length <= 0) return;
         setSendin(true);
+
         try {
             const response = await fetch( makecomment , {
                 method: 'POST',
@@ -54,7 +57,7 @@ export default function Reply({navigation} :any) {
                     userid:       state.user.uid,
                     avatar:       state.user.avatar,
                     _token:       state.user.token,
-                    text:         text
+                    text:         text.trim()
                 })
             });
             const result = await response.json();
@@ -210,7 +213,7 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         width: WindowDimension.width,
-        height: WindowDimension.height - 100 - 120,
+        //height: WindowDimension.height - 100 - 160,
     },
     threadContainer: {
         ...GlobalStyle.shadow,
@@ -288,7 +291,6 @@ const styles = StyleSheet.create({
     replyText: GlobalStyle.text,
 
     inputContainer: {
-        flex: 1,
         flexDirection: 'row',
         padding: 12,
         borderColor:    themestyle.bordercolor,

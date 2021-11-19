@@ -2,7 +2,7 @@
     The index container for Account Screen
 */
 import React from 'react';
-import { View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
@@ -21,18 +21,18 @@ import EditDetails from './EditDetails';
 
 function AccountContainer({navigation} :any) {
     return (
-        <View>
+        <SafeAreaView>
             <Topbar navigation={navigation} title='Forum Account' />
             <Account navigation={navigation} />
-        </View>
+        </SafeAreaView>
     )
 }
 
 function EditDetailsContainer({navigation} :any) {
     return (
-        <View>
+        <SafeAreaView>
             <Topbar navigation={navigation} title='Edit Details' />
             <EditDetails navigation={navigation} />
-        </View>
+        </SafeAreaView>
     )
 }

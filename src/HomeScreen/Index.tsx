@@ -11,29 +11,41 @@
       When the user is in Home Screen (see the drawer navigation)
 */
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, View, Keyboard } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-//@ts-ignore
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-//@ts-ignore
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-//@ts-ignore
 import FontistoIcon from 'react-native-vector-icons/Fontisto';
-
-import { Responsive, useResponsive } from '../Utility/useResponsive';
 const Tab = createBottomTabNavigator();
 
-export default function HomeIndex() {
-  const responsive :Responsive = useResponsive();
+import { contextProvider, StateAPI } from '../StateAPI/State';
+import { setIsHideBottomTabs } from '../StateAPI/Actions';
 
-  const styles = StyleSheet.create({
-    tabContainer: {
-      height: responsive.isWeb ? responsive.height : responsive.height - 24,
-    },
-  })
+export default function HomeIndex() {
+  const { state, dispatch } :StateAPI = React.useContext( contextProvider );
+
+  //This use effect is used to hide bottom tab navigation when the user is typing something
+  React.useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow',
+      () => {
+        dispatch( setIsHideBottomTabs(true) );
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        dispatch( setIsHideBottomTabs(false) );
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
 
   return (
-    <View style={styles.tabContainer}>
+    <SafeAreaView style={{flex: 1}}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({color}) => {
@@ -56,14 +68,23 @@ export default function HomeIndex() {
             }
           },
         })}
-        tabBarOptions={{ activeTintColor: 'tomato', inactiveTintColor: 'gray', style: { height: 54, paddingBottom: 8}}}>
+        tabBarOptions={{
+          activeTintColor: 'tomato',
+          inactiveTintColor: 'gray',
+          style: {
+            height:        state.isHideBottomTabs ? 0  : 54,
+            paddingBottom: state.isHideBottomTabs ? 0  : 8,
+            marginBottom:  state.isHideBottomTabs ? -2 : 0,
+          }
+        }}>
         <Tab.Screen name="Home"            component={HomeContainer} />
         <Tab.Screen name="Guides"          component={GuidesContainer} />
         <Tab.Screen name="Assistant Tour"  component={AssistantTourContainer} />
         <Tab.Screen name="Forum"           component={ForumContainer} />
       </Tab.Navigator>
-    </View>
-  );
+    </SafeAreaView>
+  )
+
 }
 
 //The FF component were created to have a FIXED navbar at the top of the screen

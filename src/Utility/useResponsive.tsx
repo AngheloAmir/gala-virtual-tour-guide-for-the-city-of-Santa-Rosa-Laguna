@@ -12,7 +12,7 @@
 import React from 'react';
 import { Dimensions, Platform } from 'react-native';
 
-const { height, width } = Dimensions.get('screen');
+const { height, width } = Dimensions.get('window');
 export const WindowDimension = { height, width };
 
 export interface Responsive {
@@ -26,7 +26,7 @@ export interface Responsive {
 }
 
 function setResponsiveData() :Responsive {
-    const { height, width } = Dimensions.get('screen');
+    const { height, width } = Dimensions.get('window');
 
     let marginHorizontal :number = 0;
     if( height > 1000 )      marginHorizontal = height * 0.2;

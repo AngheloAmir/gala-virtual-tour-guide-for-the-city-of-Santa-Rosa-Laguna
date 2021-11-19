@@ -1,3 +1,10 @@
+## November 20, 1.3 Safe area view fixes
+-Use Safe Area View to make sure that virtual buttons does not interfer
+-Bottom tabs gets hidden when typing
+-Fix a typo in the database
+-Added loading scene when the user: loads a thread, delete a thread, update user info...
+-useResponsive now uses 'window' instead of 'screen'
+
 ## November 15, 1.2 Minor new features
 -Added search for place in Home > Map
 -Added test tour (temporary) for capstone defense

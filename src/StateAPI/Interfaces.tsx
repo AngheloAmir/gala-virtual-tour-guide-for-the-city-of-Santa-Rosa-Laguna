@@ -12,6 +12,7 @@ export interface ActionInterface {
 export enum actionType {
     setUserInfo,
     setguideinfo,
+    setIsHideBottomTabs,
 }
 
 export interface UserInfo {
@@ -25,7 +26,8 @@ export interface UserInfo {
 }
 
 export interface StateInterface {
-    user            :UserInfo,
+    user              :UserInfo,
+    isHideBottomTabs  :boolean;
 
     features :{
         guideInfo? :StoryContent;

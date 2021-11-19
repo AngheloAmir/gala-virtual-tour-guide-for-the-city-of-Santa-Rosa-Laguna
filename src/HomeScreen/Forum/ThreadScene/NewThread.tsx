@@ -22,7 +22,7 @@ import AlertBox from '../../../Utility/AlertBox';
 import { addthread, loadthread } from '../../../../secret/key';
 
 export default function NewThread({navigation} :any) {
-    const { state } :StateAPI = React.useContext(contextProvider); 
+    const { state, dispatch } :StateAPI = React.useContext(contextProvider); 
     const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
 
     const [title, settitle] = React.useState('');
@@ -31,10 +31,11 @@ export default function NewThread({navigation} :any) {
     const [errorDialog, setErr] = React.useState({text: '', show: false});
 
     async function createNewThread() {
-        if(title.length < 1 || description.length < 1 ) {
+        if(title.trim().length < 1 || description.trim().length < 1) {
             setErr({text: 'Please fill up thread title and description', show: true});
             return;
         }
+
         if(isSending) return;
         setSending(true);
 
@@ -49,8 +50,8 @@ export default function NewThread({navigation} :any) {
                         uid:        state.user.uid
                     },
                     thread: {
-                        title:      title,
-                        text:       description,
+                        title:      title.trim(),
+                        text:       description.trim(),
                     },
                     _token:         state.user.token
                 })
@@ -83,45 +84,53 @@ export default function NewThread({navigation} :any) {
 
     return (
         <View>
-        <View style={styles.container}>
-            <View>
-                <Text style={styles.headingText}>Create new thread</Text>
-            </View>
-           
-            <View style={styles.form}>
-                <Text style={styles.formText}>Thread Title</Text>
-                <TextInput
-                    style={styles.formInput}
-                    placeholder='thread title'
-                    value={title}
-                    onChangeText={e => settitle(e)}
-                    maxLength={64}
-                />
+            <View style={styles.container}>
+                <View>
+                    <Text style={styles.headingText}>Create new thread</Text>
+                </View>
+            
+                <View style={styles.form}>
+                    <Text style={styles.formText}>Thread Title</Text>
+                    <TextInput
+                        style={styles.formInput}
+                        placeholder='thread title'
+                        value={title}
+                        onChangeText={e => settitle(e)}
+                        maxLength={64}
+                    />
+                </View>
+
+                <View style={styles.form}>
+                    <Text style={styles.formText}>Description</Text>
+                    <TextInput
+                        style={styles.formInput}
+                        placeholder='description'
+                        value={description}
+                        onChangeText={e => setdes(e)}
+                        maxLength={256}
+                    />
+                </View>
+
+                { !errorDialog.show && !isSending &&
+                    <View style={styles.createBtnContainer}>
+                    <Button title='  Cancel  ' onPress={() => navigation.navigate('Threads')} />
+                    <Button title=' Create new thread ' onPress={() => createNewThread()} />
+                </View>
+                }
+
+                <View>
+                    <Text style={{fontSize: 12, textAlign: 'center'}}>
+                        Please dont make any reply for 5 mins to create a new thread!
+                    </Text>
+                </View>
             </View>
 
-            <View style={styles.form}>
-                <Text style={styles.formText}>Description</Text>
-                <TextInput
-                    style={styles.formInput}
-                    placeholder='description'
-                    value={description}
-                    onChangeText={e => setdes(e)}
-                    maxLength={256}
-                />
-            </View>
+            { isSending &&
+                <View style={styles.sending}>
+                    <Text style={styles.sendingText}>CREATING...</Text>
+                </View>
+            } 
 
-            <View style={styles.createBtnContainer}>
-                <Button title='  Cancel  ' onPress={() => navigation.navigate('Threads')} />
-                <Button title=' Create new thread ' onPress={() => createNewThread()} />
-            </View>
-
-            <View>
-                <Text style={{fontSize: 12, textAlign: 'center'}}>
-                    Please dont make any reply for 5 mins to create a new thread!
-                </Text>
-            </View>
-
-            </View>
             <AlertBox
                 title='Error creating a thread'
                 text={errorDialog.text}
@@ -131,6 +140,8 @@ export default function NewThread({navigation} :any) {
         </View>
     )
 }
+
+import { WindowDimension } from '../../../Utility/useResponsive';
 
 const styles = StyleSheet.create({
     container: {
@@ -172,5 +183,24 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         marginTop: 32,
         marginBottom: 8
+    },
+    sending: {
+        position: 'absolute',
+        top: 0, left: 0,
+        width: WindowDimension.width,
+        height: WindowDimension.height,
+        zIndex: 20,
+        backgroundColor: 'rgba(0,0,0, 0.5)'
+    },
+    sendingText: {
+        marginTop: (WindowDimension.height / 2) - 100,
+        width: WindowDimension.width,
+        color: 'white',
+        backgroundColor: 'orange',
+        padding: 12,
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        position: 'absolute'
     }
 });

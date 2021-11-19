@@ -79,7 +79,7 @@ export default function RegisterScreen({navigation} :any) {
     }
 
     return (
-        <View>
+        <View style={{paddingBottom: 32}}>
         <ScrollView style={styles.container}>
             <Text style={styles.headingText}> Edit account</Text>
             <View>
@@ -154,11 +154,18 @@ export default function RegisterScreen({navigation} :any) {
                 ok={() => setErr({text: '', show: false}) }
                 isshow={errorDialog.show}
             />
+
+            { isSending &&
+                <View style={styles.sending}>
+                    <Text style={styles.sendingText}>Updating your information...</Text>
+                </View>
+            } 
         </View>
 
     );
 }
 
+import { WindowDimension } from '../Utility/useResponsive';
 const styles = StyleSheet.create({
     container: {
         width: '90%',
@@ -214,4 +221,23 @@ const styles = StyleSheet.create({
     avatarNonActive: {
         padding: 12,
     },
+    sending: {
+        position: 'absolute',
+        top: 0, left: 0,
+        width: WindowDimension.width,
+        height: WindowDimension.height,
+        zIndex: 20,
+        backgroundColor: 'rgba(0,0,0, 0.5)'
+    },
+    sendingText: {
+        marginTop: (WindowDimension.height / 2) - 100,
+        width: WindowDimension.width,
+        color: 'white',
+        backgroundColor: 'orange',
+        padding: 12,
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        position: 'absolute'
+    }
 });
