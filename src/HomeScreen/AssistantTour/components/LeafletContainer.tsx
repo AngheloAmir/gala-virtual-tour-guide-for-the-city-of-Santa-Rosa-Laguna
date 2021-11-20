@@ -56,7 +56,7 @@ export default function LeafletContainer() {
         }
     }
 
-    const styles = {
+    //const styles = {
         //the value 100 is the height of the toolbar
         //the value 108 is the height of the topbar + bottom tab navigatior
         //height: responsive.height - 100 - 108,
@@ -64,21 +64,19 @@ export default function LeafletContainer() {
         flex: 1
         //height: WindowDimension.height - 100,
         //width:  WindowDimension.width,
-    }
+    //}
 
     return (
-        <View style={styles}>
-            <ExpoLeaflet
-                loadingIndicator={() => <ActivityIndicator/>}
-                mapCenterPosition={ localState.mapcenter }
-                mapMarkers={ localState.mapmarkers }
-                mapShapes={ localState.polylines }
-                zoom={ localState.zoomlevel }
-                mapLayers={mapLayers}
-                mapOptions={mapOptions}
-                maxZoom={18}
-                onMessage={onMapClicked}
-            />
-        </View>
+        <ExpoLeaflet
+            loadingIndicator={() => <ActivityIndicator/>}
+            mapCenterPosition={ localState.mapcenter }
+            mapMarkers={ localState.mapmarkers }
+            mapShapes={ localState.polylines }
+            zoom={ localState.zoomlevel }
+            mapLayers={mapLayers}
+            mapOptions={mapOptions}
+            maxZoom={18}
+            onMessage={onMapClicked}
+        />
     );       
 }

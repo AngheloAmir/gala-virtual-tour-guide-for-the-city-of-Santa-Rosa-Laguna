@@ -1,3 +1,8 @@
+## November 20, 1.3b Safe area view fixes
+-Uses Asset preloading with Expo Assets, to fix images not showing on build apk on some devices
+-Online map (Expoleaflet) now use flex: 1, instead of a fix height.
+-Remove spaces for assets name (mp3) and applied these changes to asset.tsx
+
 ## November 20, 1.3 Safe area view fixes
 -Use Safe Area View to make sure that virtual buttons does not interfer
 -Bottom tabs gets hidden when typing

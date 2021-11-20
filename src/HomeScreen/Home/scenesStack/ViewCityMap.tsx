@@ -12,7 +12,6 @@
 import React from 'react';
 import { ActivityIndicator, View, Linking } from 'react-native';
 import { ExpoLeaflet, LeafletWebViewEvent, MapMarker } from "expo-leaflet";
-import { WindowDimension } from '../../../Utility/useResponsive';
 import { mapOptions, mapLayers} from './ViewCityMap/options';
 
 import { localContextProvider } from '../localstateAPI/state';
@@ -29,10 +28,6 @@ import AlertBox                 from '../../../Utility/AlertBox';
 
 const mapmakers     :Array<MapMarker> = loadAllMapMarkers();
 const emptymarker   :Array<MapMarker> = [{ id: '0', position: {lat: 0, lng: 0}, icon: '', size: [0, 0] }];
-const styles = {
-    height: WindowDimension.height - 100,
-    width:  WindowDimension.width,
-}
 
 export default function MapIndex({navigation} :any) {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
@@ -69,8 +64,8 @@ export default function MapIndex({navigation} :any) {
     }
 
     return (
-        <View>
-            <View style={styles}>
+        <View style={{flex: 1}}>
+            <View style={{flex: 1}}>
                 <ExpoLeaflet
                     loadingIndicator={() => <ActivityIndicator/>}
                     mapCenterPosition={ localState.mapCenterPosition }

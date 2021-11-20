@@ -19,9 +19,54 @@ export const AVATARICONS_FEMALE = [
     require('../assets/icons/female4.png'),
 ];
 
+export const ALLASSETS =  [
+    require('../assets/app/about.png'),
+    require('../assets/santarosa/places/arch.jpg'),
+    require('../assets/santarosa/places/balibago.jpg'),
+    require('../assets/santarosa/places/basilo.jpg'),
+    require('../assets/santarosa/places/casaarambulo.jpg'),
+    require('../assets/santarosa/places/casagonzalez.jpg'),
+    require('../assets/santarosa/places/casazavalla.jpg'),
+    require('../assets/santarosa/places/cuartel.jpg'),
+    require('../assets/santarosa/places/delima_church.jpg'),
+    require('../assets/santarosa/places/ek.jpg'),
+    require('../assets/santarosa/places/museo.jpg'),
+    require('../assets/santarosa/places/plaza.jpg'),
+    require('../assets/santarosa/places/saint_peter_church.jpg'),
+    require('../assets/santarosa/places/tiongco.jpg'),
+    require('../assets/santarosa/places/zavallahouse.jpg'),
+    require('../assets/santarosa/guides/balibagoroadmap.jpg'),
+    require('../assets/santarosa/guides/balibagomap.jpg'),
+    require('../assets/santarosa/guides/balibagoterminal.jpg'),
+    require('../assets/santarosa/guides/building.png'),
+    require('../assets/santarosa/guides/bus.png'),
+    require('../assets/santarosa/guides/globe.png'),
+    require('../assets/santarosa/guides/list.png'),
+    require('../assets/santarosa/guides/jeepneymap.jpg'),
+    require('../assets/santarosa/guides/journey.jpg'),
+    require('../assets/santarosa/guides/slexmap.jpg'),
+    require('../assets/santarosa/guides/travellingto.jpg'),
+    require('../assets/icons/gala.png'),
+    require('../assets/santarosa/story/cityhood.jpg'),
+    require('../assets/santarosa/story/tiongcobrothers.jpg'),
+    require('../assets/santarosa/story/studentcanteen.jpg'),
+    require('../assets/santarosa/story/santarosa.jpg'),
+    require('../assets/santarosa/story/delimastatue.jpg'),
+    require('../assets/santarosa/speech/Arch.mp3'),
+    require('../assets/santarosa/speech/CaseGonzalez.mp3'),
+    require('../assets/santarosa/speech/DelimaParishChurch.mp3'),
+    require('../assets/santarosa/speech/GonzalezStatue.mp3'),
+    require('../assets/santarosa/speech/MuseongSantaRosa.mp3'),
+    require('../assets/santarosa/speech/Plaza.mp3'),
+    require('../assets/santarosa/speech/ChairofStPeterParishChurch.mp3'),
+    require('../assets/santarosa/speech/sample.mp3'),
+    require('../assets/test/stibldg2.mp3'),
+    ...AVATARICONS_MALE,
+    ...AVATARICONS_FEMALE,
+];
+
 const IMAGES = {
     "about.png":            require('../assets/app/about.png'),
-
     "arch.jpg":             require('../assets/santarosa/places/arch.jpg'),
     "balibago.jpg":         require('../assets/santarosa/places/balibago.jpg'),
     "basilo.jpg":           require('../assets/santarosa/places/basilo.jpg'),
@@ -103,24 +148,6 @@ const PLACESJSON = {
     "zavallahouse.json":    require('./places/Zavalla House.json'),
 };
 
-export const ALLPLACES = [
-    require('./places/Arambulo House.json'),
-    require('./places/Arch.json'),
-    require('./places/Casa Gonzalez.json'),
-    require('./places/Casa Zavalla.json'),
-    require('./places/Cuartel de Santo Domingo.json'),
-    require('./places/Santa Rosa De Lima Parish Church.json'),
-    require('./places/Former Gomez Residence.json'),
-    require('./places/Gonzalez Statue.json'),
-    require('./places/Museo ng Santa Rosa.json'),
-    require('./places/Enchanted Kingdom.json'),
-    require('./places/Nuvali.json'),
-    require('./places/City Plaza.json'),
-    require('./places/Chair of St. Peter Parish Church.json'),
-    require('./places/Tiongco Ancestral House.json'),
-    require('./places/Zavalla House.json'),
-]
-
 const MARKERSJSON = {
     "belair.json":          require('./places/infomarker/belair.json'),
     "complex.json":         require('./places/infomarker/complex.json'),
@@ -139,17 +166,17 @@ const MARKERSJSON = {
 
 const MP3SPEECH = {
     "arch.mp3":             require('../assets/santarosa/speech/Arch.mp3'),
-    "casagonzales.mp3":     require('../assets/santarosa/speech/Case Gonzalez.mp3'),
-    "delimachurch.mp3":     require('../assets/santarosa/speech/Delima Parish Church.mp3'),
-    "gonzales.mp3":         require('../assets/santarosa/speech/Gonzalez Statue.mp3'),
-    "museo.mp3":            require('../assets/santarosa/speech/Museo ng Santa Rosa.mp3'),
+    "casagonzales.mp3":     require('../assets/santarosa/speech/CaseGonzalez.mp3'),
+    "delimachurch.mp3":     require('../assets/santarosa/speech/DelimaParishChurch.mp3'),
+    "gonzales.mp3":         require('../assets/santarosa/speech/GonzalezStatue.mp3'),
+    "museo.mp3":            require('../assets/santarosa/speech/MuseongSantaRosa.mp3'),
     "plaza.mp3":            require('../assets/santarosa/speech/Plaza.mp3'),
-    "stpeterchruch.mp3":    require('../assets/santarosa/speech/Chair of St. Peter Parish Church.mp3'),
+    "stpeterchruch.mp3":    require('../assets/santarosa/speech/ChairofStPeterParishChurch.mp3'),
     "sample.mp3":           require('../assets/santarosa/speech/sample.mp3'),
     "stibldg2.mp3":         require('../assets/test/stibldg2.mp3'),
 };
 
-const ASSETS = {
+let ASSETS = {
     ...IMAGES,
     ...GUIDESASSETS,
     ...GUIDESJSON,
@@ -160,4 +187,23 @@ const ASSETS = {
     ...MARKERSJSON,
     ...MP3SPEECH,
 }
+
+export const ALLPLACES = [
+    require('./places/Arambulo House.json'),
+    require('./places/Arch.json'),
+    require('./places/Casa Gonzalez.json'),
+    require('./places/Casa Zavalla.json'),
+    require('./places/Cuartel de Santo Domingo.json'),
+    require('./places/Santa Rosa De Lima Parish Church.json'),
+    require('./places/Former Gomez Residence.json'),
+    require('./places/Gonzalez Statue.json'),
+    require('./places/Museo ng Santa Rosa.json'),
+    require('./places/Enchanted Kingdom.json'),
+    require('./places/Nuvali.json'),
+    require('./places/City Plaza.json'),
+    require('./places/Chair of St. Peter Parish Church.json'),
+    require('./places/Tiongco Ancestral House.json'),
+    require('./places/Zavalla House.json'),
+]
+
 export default ASSETS;

@@ -1,6 +1,6 @@
 {
-    "name":               "Test (Excluded in release)",
-    "description":        "Testing for demostration",
+    "name":               "Test",
+    "description":        "Testing demostration for Capstone defense",
     "longdescription":    "Testing for demostration for Capstone Project 2 defense",
     "destinations": [
         {
@@ -9,7 +9,7 @@
                 "lat":      14.295143636015476,
                 "lng":      121.10374331474306,
                 "name":     "STI College Santa Rosa",
-                "commute":  "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10"
+                "commute":  "Ride a jeep with a sign \"Complex\". The common fare rate is P10"
             }
         }
     ],
