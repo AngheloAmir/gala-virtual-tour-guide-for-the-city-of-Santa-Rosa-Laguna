@@ -1,0 +1,41 @@
+{
+    "title":        "Visiting Guide in Santa Rosa City",
+    "date":         "Jan 2022",
+    "headerImage":  "travellingto.jpg",
+    "contents": [
+        {
+            "paragraph": "As of writing, Santa Rosa City is under Alert Level 2. The restriction is lower. Wearing a facemask is mandatory but a face shield is no longer needed even inside the malls. However, being a FULLY VACCINATED is a MUST to enjoy many perks and privileges as you travel in Santa Rosa city. Please always bring your copy of proof of being fully vacinated! A photocopy or even a picture of the proof you are fully vaccinated can be done. If you are still not vaccinated or even just have a single dose, you can still enjoy Santa Rosa. However, you will be limited to many outdoor establishments. We recommend to you that you visit the philippines.travel to learn about the current travel restriction.",
+            "link":      "https://www.philippines.travel/safetrip",
+            "linkText":  "Tap to visit philipines.travel"
+        }
+    ],
+    "accordion": [
+        {
+            "headingText":  "Ages restriction",
+            "paragraph":    "There is no age restriction currently imposed in Santa Rosa City. However, we do not recommend children wandering around in the city especially in the malls or in theme parks. "
+        },
+        {
+            "headingText":  "Establishments",
+            "paragraph":    "Almost all establishments are open such as malls and hardware stores. Dine-in services are allowed but in order to dine in the customer must be fully vaccinated as per IATF guidance. You don't need to fill up a form where you write your information for the purpose of contact tracing."
+        },
+        {
+            "headingText":  "Outdoor tourist attractions",
+            "paragraph":    "Outdoor tourist attractions are allowed to operate at 70% capacity including indoor tourist attractions. If you are planning to visit Enchanted Kindom, please bring proof that you are fully vaccinated and also take a look at their official website.",
+            "link":         "https://www.enchantedkingdom.ph/",
+            "linkText":     "Visit enchantedkindom.ph"
+        },
+        {
+            "headingText":  "One Way Roads",
+            "paragraph":    "There are some one-way roads in Santa Rosa to be watched out for. One of the possible confusing one-way roads in Santa Rosa is in Barangay Balibago Complex (Bus terminals). The image above shows the road map. The Assistant Tour may help you in your journey.",
+            "image":        "balibagoroadmap.jpg",
+            "links": {
+                "link": "https://www.openstreetmap.org/copyright",
+                "text": "© OpenStreetMap"
+            }
+        },
+        {
+            "headingText":  "Recomendation",
+            "paragraph":    "If you live outside the NCR+ (which includes CALARZON), we recommend that you should be careful when visiting. Also, avoid visiting the city on particular days of the month that are close to 15 or 30; on these days, a new quarantine protocol or alert levels will be implemented."
+        }
+    ]
+}

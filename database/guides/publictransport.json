@@ -1,6 +1,6 @@
 {
     "title":        "Public transport to the Santa Rosa City",
-    "date":         "June 2021 ",
+    "date":         "Dec 2021 ",
     "headerImage":  "balibagoterminal.jpg" ,
     "contents": [
         { "paragraph":
@@ -10,7 +10,7 @@
     "accordion": [
         {
             "headingText":  "Notice",
-            "paragraph":    "As of writing, Santa Rosa City is under General Community Quarantine (GCQ  with enhanced restriction. Therefore, wearing a face mask and face shield is a must at all times. If your area (city/region  is under Modified Enhance Community Quaritine (MECQ , please avoid traveling. We recommend to you that you visit the philippines.travel to learn about the current travel restriction.",
+            "paragraph":    "As of writing, Santa Rosa City is under Alert Level 2. The restriction is lower. Wearing a facemask is mandatory but a face shield is no longer needed even inside the malls. However, being a FULLY VACCINATED is a MUST to enjoy many perks and privileges as you travel in Santa Rosa city. We recommend to you that you visit the philippines.travel to learn about the current travel restriction.",
             "link":         "https://www.philippines.travel/safetrip",
             "linkText":     "Tap to visit philipines.travel "
         },

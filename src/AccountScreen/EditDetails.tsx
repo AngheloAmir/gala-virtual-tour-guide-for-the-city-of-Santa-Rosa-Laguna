@@ -10,6 +10,7 @@
 
 */
 import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { View, Text, TextInput, ScrollView,
         StyleSheet, TouchableOpacity, ImageSourcePropType,
         Image, Button }
@@ -41,6 +42,13 @@ export default function RegisterScreen({navigation} :any) {
         return styles.avatarNonActive;
     };
 
+    //update the user info that is stored in the Async storage of the app
+    function saveuserinfo() {
+        setTimeout( async () => {
+            await AsyncStorage.setItem('userinfo', JSON.stringify(state.user) );
+        }, 100)
+    }
+
     async function handleRegister() {
         if(isSending) return;
         setSendin(true);
@@ -71,6 +79,7 @@ export default function RegisterScreen({navigation} :any) {
             }));
             setSendin(false);
             navigation.navigate('AccountMain');
+            saveuserinfo();
         }
         catch(err) {
             setErr({text: 'Check your internet connection and try again. \n' + err, show: true});

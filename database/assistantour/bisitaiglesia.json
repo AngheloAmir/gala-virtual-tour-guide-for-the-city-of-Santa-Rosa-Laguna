@@ -1,7 +1,7 @@
 {
     "name":               "Bisita Iglesia",
     "description":        "Visit Catholic churches",
-    "longdescription":    "Here are the churches that you for Holy Week for religious reasons? Here are the churches that you may visit in Santa Rosa. However, due to the rising Covid-19 in Laguna, these churches are likely to be close. These were opened back then in 2020 December at 30% capacity.",
+    "longdescription":    "Here are the churches that you for Holy Week for religious reasons? Here are the churches that you may visit in Santa Rosa. However, due to the Covid-19 the churches may be close. Please check the lastest IATF guide lines before visiting. ",
     "destinations": [
         {
             "from": "user",

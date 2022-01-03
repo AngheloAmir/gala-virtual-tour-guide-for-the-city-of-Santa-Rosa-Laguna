@@ -19,6 +19,8 @@ export const AVATARICONS_FEMALE = [
     require('../assets/icons/female4.png'),
 ];
 
+//this function is used to preload all of the assets in the app
+//contents defined in this object is not important however.
 export const ALLASSETS =  [
     require('../assets/app/about.png'),
     require('../assets/santarosa/places/arch.jpg'),
@@ -108,10 +110,11 @@ const GUIDESASSETS = {
 };
 
 const GUIDESJSON = {
-    "visitingguide.json":   require('./guides/visitingguide.json'),
-    "publictransport.json": require('./guides/publictransport.json'),
-    "journeyguide.json":    require('./guides/journeyguide.json'),
-    "jeepneyroutes.json":   require('./guides/jeepneyroutes.json'),
+    "visitingguide.json":           require('./guides/visitingguide.json'),
+    "visitingguideJAN2022.json":    require('./guides/visitingguideJAN2022.json'),
+    "publictransport.json":         require('./guides/publictransport.json'),
+    "journeyguide.json":            require('./guides/journeyguide.json'),
+    "jeepneyroutes.json":           require('./guides/jeepneyroutes.json'),
 };
 
 const STORIES = {
@@ -120,6 +123,8 @@ const STORIES = {
     "ekstory.json":         require('./home/ekstory.json'),
     "aboutthecity.json":    require('./home/aboutthecity.json'),
     "externallinks.json":   require('./home/externallinks.json'),
+    "ekreopens.json":         require('./home/ekreopens.json'),
+    "santarosalocalhero.json": require('./home/santarosalocalhero.json')
 };
 
 const STORIESASSETS = {
@@ -128,6 +133,8 @@ const STORIESASSETS = {
     "studentcanteen.jpg":   require('../assets/santarosa/story/studentcanteen.jpg'),
     "santarosa.jpg":        require('../assets/santarosa/story/santarosa.jpg'),
     "delimastatue.jpg":     require('../assets/santarosa/story/delimastatue.jpg'),
+    "ekreopens.jpg":        require('../assets/santarosa/story/ekreopen.jpg'),
+    "statuemap.jpg":        require('../assets/santarosa/story/statuemap.jpg')
 };
 
 const PLACESJSON = {

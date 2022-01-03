@@ -1,3 +1,8 @@
+## January 4, 1.4 (Maintenace) Added new articles and minor fixes
+-Added new articles: EK Reopens and Santa Rosa Local Hero
+-Updated the contents of the guides
+-Fix the issue where the info is updated but it does get update the async storage
+
 ## November 20, 1.3b Safe area view fixes
 -Uses Asset preloading with Expo Assets, to fix images not showing on build apk on some devices
 -Online map (Expoleaflet) now use flex: 1, instead of a fix height.

@@ -4,8 +4,8 @@
         {
             "title":        "Visiting Guide",
             "description":  "Regulations and safety you should know when before visiting.",
-            "icon":         "listicon.png" ,
-            "guidedata":    "visitingguide.json"
+            "icon":         "listicon.png",
+            "guidedata":    "visitingguideJAN2022.json"
         },
         {
             "title":        "Public transport",

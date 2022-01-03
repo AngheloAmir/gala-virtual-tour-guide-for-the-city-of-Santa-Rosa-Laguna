@@ -31,13 +31,18 @@
         "interval":    8500,
         "transistion": 1500
     },
-
     "offlineStories": [
         {
-            "title": "The 17th City Hood Anniversary",
-            "date": "July 2021",
-            "text": "The Lion City of the South celebrates its 17th anniversary of the declaration of cityhood on July 10.",
-            "storyjson": "cityhood.json"
+            "title": "Enchanted Kingdom Reopens",
+            "date": "Dec 2021",
+            "text": "Atlas! After a long closure due to pandemic, Enchanted Kingdom now reopen.",
+            "storyjson": "ekreopens.json"
+        },
+        {
+            "title": "The Santa Rosa City Local Hero",
+            "date": "Dec 2021",
+            "text": "Santa Rosa city has its own local hero, his name is Col. Basilio Barroma Gonzalez.",
+            "storyjson": "santarosalocalhero.json"
         },
         {
             "title": "The Tiongco Brothers",
@@ -46,10 +51,10 @@
             "storyjson": "tioncobrothers.json"
         },
         {
-            "title": "Enchanted Kingdom",
+            "title": "The 17th City Hood Anniversary",
             "date": "July 2021",
-            "text": "Read the current info about the Enchanted Kingdom (EK) - the most visited tourist spot in Laguna.",
-            "storyjson": "ekstory.json"
+            "text": "The Lion City of the South celebrates its 17th anniversary of the declaration of cityhood on July 10.",
+            "storyjson": "cityhood.json"
         }
     ],
     

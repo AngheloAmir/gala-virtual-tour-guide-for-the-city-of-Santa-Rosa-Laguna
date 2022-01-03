@@ -17,14 +17,14 @@ import { ExpoLeaflet, LeafletWebViewEvent } from "expo-leaflet";
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI } from '../localstateAPI/interface';
 import { setUserPosition, setDialogMessage } from '../localstateAPI/actions';
-import { Responsive, useResponsive } from '../../../Utility/useResponsive';
+//import { Responsive, useResponsive } from '../../../Utility/useResponsive';
 
 import { mapOptions, mapLayers } from '../functions/options';
 import { CheckIfGalaBookShow }   from '../functions/isShowGalaBook';
 
 export default function LeafletContainer() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
-    const responsive :Responsive = useResponsive();
+    //const responsive :Responsive = useResponsive();
     
     function onMapClicked(event :LeafletWebViewEvent) {
         switch(event.tag) {
@@ -61,22 +61,24 @@ export default function LeafletContainer() {
         //the value 108 is the height of the topbar + bottom tab navigatior
         //height: responsive.height - 100 - 108,
         //width:  responsive.width,
-        flex: 1
+        //flex: 1
         //height: WindowDimension.height - 100,
         //width:  WindowDimension.width,
     //}
 
     return (
-        <ExpoLeaflet
-            loadingIndicator={() => <ActivityIndicator/>}
-            mapCenterPosition={ localState.mapcenter }
-            mapMarkers={ localState.mapmarkers }
-            mapShapes={ localState.polylines }
-            zoom={ localState.zoomlevel }
-            mapLayers={mapLayers}
-            mapOptions={mapOptions}
-            maxZoom={18}
-            onMessage={onMapClicked}
-        />
+        
+            <ExpoLeaflet
+                loadingIndicator={() => <ActivityIndicator/>}
+                mapCenterPosition={ localState.mapcenter }
+                mapMarkers={ localState.mapmarkers }
+                mapShapes={ localState.polylines }
+                zoom={ localState.zoomlevel }
+                mapLayers={mapLayers}
+                mapOptions={mapOptions}
+                maxZoom={18}
+                onMessage={onMapClicked}
+            />
+        
     );       
 }
