@@ -1,6 +1,6 @@
 {
     "headingText": "Welcome To Assistant Tour!",
-    "introductoryText": " Hi! My name is Gala, your virtual tour guide (assistant tour). I'll help you the best I can amid your travel. This feature requires LOCATION (GPS) enable and MOBILE DATA (internet) connection. Have a great day!",
+    "introductoryText": " Hi! My name is Gala, your virtual tour guide (assistant tour). I'll help you the best I can during your travel. This feature requires LOCATION (GPS) enable and MOBILE DATA (internet) connection. Have a great day!",
     "galaIcon": "tourguide.png", 
     "introAttribution": "© router.project-osrm.org, © www.overpass-api",
 
@@ -69,10 +69,10 @@
         {
             "category": "Fast Foods",
             "items": [
-                { "name": "Complex Fast Foods",   "lat": 14.293596, "lng": 121.103247 },
-                { "name": "Cowking Bayan",        "lat": 14.314906, "lng": 121.112127 },
-                { "name": "Jollibe Bayan",        "lat": 14.312913, "lng": 121.112207 },
-                { "name": "Jollibe",              "lat": 14.29389,  "lng": 121.104617 }
+                { "name": "Fastfoods in Complex",  "lat": 14.293596, "lng": 121.103247 },
+                { "name": "Cowking Bayan",         "lat": 14.314906, "lng": 121.112127 },
+                { "name": "Jollibee Bayan",        "lat": 14.312913, "lng": 121.112207 },
+                { "name": "Jollibee",              "lat": 14.29389,  "lng": 121.104617 }
             ]
         },
         {

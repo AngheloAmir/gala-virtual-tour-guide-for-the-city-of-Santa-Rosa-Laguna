@@ -50,17 +50,17 @@ export default function PlaceInfo({navigation} :any) {
         if(!link || !isClickable) return;
 
         localDispatch(setPlaceInfoShow(false));
-        if( Platform.OS == 'web') {
+        //if( Platform.OS == 'web') {
             link && Linking.canOpenURL(link).then(supported => {
                 if (supported) {
-                Linking.openURL(link);
+                    Linking.openURL(link);
                 }
             });
-        }
-        else {
-            localDispatch(setWebviewLink(link));
-            navigation.navigate('WebView');
-        }
+        //}
+        //else {
+            //localDispatch(setWebviewLink(link));
+           //navigation.navigate('WebView');
+        //}
     }
 
     function handleLearnMore() {

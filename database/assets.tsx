@@ -19,54 +19,6 @@ export const AVATARICONS_FEMALE = [
     require('../assets/icons/female4.png'),
 ];
 
-//this function is used to preload all of the assets in the app
-//contents defined in this object is not important however.
-export const ALLASSETS =  [
-    require('../assets/app/about.png'),
-    require('../assets/santarosa/places/arch.jpg'),
-    require('../assets/santarosa/places/balibago.jpg'),
-    require('../assets/santarosa/places/basilo.jpg'),
-    require('../assets/santarosa/places/casaarambulo.jpg'),
-    require('../assets/santarosa/places/casagonzalez.jpg'),
-    require('../assets/santarosa/places/casazavalla.jpg'),
-    require('../assets/santarosa/places/cuartel.jpg'),
-    require('../assets/santarosa/places/delima_church.jpg'),
-    require('../assets/santarosa/places/ek.jpg'),
-    require('../assets/santarosa/places/museo.jpg'),
-    require('../assets/santarosa/places/plaza.jpg'),
-    require('../assets/santarosa/places/saint_peter_church.jpg'),
-    require('../assets/santarosa/places/tiongco.jpg'),
-    require('../assets/santarosa/places/zavallahouse.jpg'),
-    require('../assets/santarosa/guides/balibagoroadmap.jpg'),
-    require('../assets/santarosa/guides/balibagomap.jpg'),
-    require('../assets/santarosa/guides/balibagoterminal.jpg'),
-    require('../assets/santarosa/guides/building.png'),
-    require('../assets/santarosa/guides/bus.png'),
-    require('../assets/santarosa/guides/globe.png'),
-    require('../assets/santarosa/guides/list.png'),
-    require('../assets/santarosa/guides/jeepneymap.jpg'),
-    require('../assets/santarosa/guides/journey.jpg'),
-    require('../assets/santarosa/guides/slexmap.jpg'),
-    require('../assets/santarosa/guides/travellingto.jpg'),
-    require('../assets/icons/gala.png'),
-    require('../assets/santarosa/story/cityhood.jpg'),
-    require('../assets/santarosa/story/tiongcobrothers.jpg'),
-    require('../assets/santarosa/story/studentcanteen.jpg'),
-    require('../assets/santarosa/story/santarosa.jpg'),
-    require('../assets/santarosa/story/delimastatue.jpg'),
-    require('../assets/santarosa/speech/Arch.mp3'),
-    require('../assets/santarosa/speech/CaseGonzalez.mp3'),
-    require('../assets/santarosa/speech/DelimaParishChurch.mp3'),
-    require('../assets/santarosa/speech/GonzalezStatue.mp3'),
-    require('../assets/santarosa/speech/MuseongSantaRosa.mp3'),
-    require('../assets/santarosa/speech/Plaza.mp3'),
-    require('../assets/santarosa/speech/ChairofStPeterParishChurch.mp3'),
-    require('../assets/santarosa/speech/sample.mp3'),
-    require('../assets/test/stibldg2.mp3'),
-    ...AVATARICONS_MALE,
-    ...AVATARICONS_FEMALE,
-];
-
 const IMAGES = {
     "about.png":            require('../assets/app/about.png'),
     "arch.jpg":             require('../assets/santarosa/places/arch.jpg'),
@@ -107,6 +59,9 @@ const GUIDESASSETS = {
     "slexmap.jpg":          require('../assets/santarosa/guides/slexmap.jpg'),
     "travellingto.jpg":     require('../assets/santarosa/guides/travellingto.jpg'),
     "tourguide.png":        require('../assets/icons/gala.png'),
+    "news.png":             require('../assets/santarosa/guides/news.png'),
+
+    "fbicon.png":           require('../assets/icons/fbicon.png'),
 };
 
 const GUIDESJSON = {
@@ -194,6 +149,58 @@ let ASSETS = {
     ...MARKERSJSON,
     ...MP3SPEECH,
 }
+
+//this function is used to preload all of the assets in the app
+//contents defined in this object is not important however.
+export const ALLASSETS =  [
+    require('../assets/app/about.png'),
+    require('../assets/santarosa/places/arch.jpg'),
+    require('../assets/santarosa/places/balibago.jpg'),
+    require('../assets/santarosa/places/basilo.jpg'),
+    require('../assets/santarosa/places/casaarambulo.jpg'),
+    require('../assets/santarosa/places/casagonzalez.jpg'),
+    require('../assets/santarosa/places/casazavalla.jpg'),
+    require('../assets/santarosa/places/cuartel.jpg'),
+    require('../assets/santarosa/places/delima_church.jpg'),
+    require('../assets/santarosa/places/ek.jpg'),
+    require('../assets/santarosa/places/museo.jpg'),
+    require('../assets/santarosa/places/plaza.jpg'),
+    require('../assets/santarosa/places/saint_peter_church.jpg'),
+    require('../assets/santarosa/places/tiongco.jpg'),
+    require('../assets/santarosa/places/zavallahouse.jpg'),
+    require('../assets/santarosa/guides/balibagoroadmap.jpg'),
+    require('../assets/santarosa/guides/balibagomap.jpg'),
+    require('../assets/santarosa/guides/balibagoterminal.jpg'),
+    require('../assets/santarosa/guides/building.png'),
+    require('../assets/santarosa/guides/bus.png'),
+    require('../assets/santarosa/guides/globe.png'),
+    require('../assets/santarosa/guides/list.png'),
+    require('../assets/santarosa/guides/jeepneymap.jpg'),
+    require('../assets/santarosa/guides/journey.jpg'),
+    require('../assets/santarosa/guides/slexmap.jpg'),
+    require('../assets/santarosa/guides/travellingto.jpg'),
+    require('../assets/icons/gala.png'),
+    require('../assets/santarosa/story/cityhood.jpg'),
+    require('../assets/santarosa/story/tiongcobrothers.jpg'),
+    require('../assets/santarosa/story/studentcanteen.jpg'),
+    require('../assets/santarosa/story/santarosa.jpg'),
+    require('../assets/santarosa/story/delimastatue.jpg'),
+    require('../assets/santarosa/speech/Arch.mp3'),
+    require('../assets/santarosa/speech/CaseGonzalez.mp3'),
+    require('../assets/santarosa/speech/DelimaParishChurch.mp3'),
+    require('../assets/santarosa/speech/GonzalezStatue.mp3'),
+    require('../assets/santarosa/speech/MuseongSantaRosa.mp3'),
+    require('../assets/santarosa/speech/Plaza.mp3'),
+    require('../assets/santarosa/speech/ChairofStPeterParishChurch.mp3'),
+    require('../assets/santarosa/speech/sample.mp3'),
+    require('../assets/test/stibldg2.mp3'),
+    ...AVATARICONS_MALE,
+    ...AVATARICONS_FEMALE,
+
+    require('./home/ekreopens.json'),
+    require('../assets/santarosa/guides/news.png'),
+    require('../assets/icons/fbicon.png'),
+];
 
 export const ALLPLACES = [
     require('./places/Arambulo House.json'),

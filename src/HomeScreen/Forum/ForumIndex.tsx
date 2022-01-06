@@ -11,10 +11,11 @@
         If the user has been registered (something has been store to its Async Storage)
 */
 import React from 'react';
-import { Text, Button, View, StyleSheet } from 'react-native';
+import { Text, Button, View, StyleSheet, Image, Linking, TouchableOpacity} from 'react-native';
 import Threads from './ThreadScene/Threads';
 import Reply from './ThreadScene/Reply';
 import NewThread from './ThreadScene/NewThread';
+import ASSETS from '../../../database/assets';
 
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
@@ -58,6 +59,23 @@ function ThreadsContainer({navigation} :any) {
         else
             seterr({text: 'Error: ' + threads.err, show: true});
     }
+
+    function handleOpenFBPage() {
+        try {
+            Linking.openURL('fb://page/1593672690984992').then((supported :any) => {
+                if (supported) {
+                    Linking.openURL('fb://page/1593672690984992');
+                }
+                else {
+                    Linking.openURL('https://web.facebook.com/groups/1593672690984992').then((supported :any) => {
+                        if (supported) Linking.openURL('https://web.facebook.com/groups/1593672690984992');
+                    });
+                }
+            });
+        }
+        catch(err) {
+        }
+    }
     
     return (
         <View>
@@ -70,6 +88,17 @@ function ThreadsContainer({navigation} :any) {
                     <View style={styles.btn}>                        
                         <Button title='refresh' onPress={() => loadThreads() } />
                     </View>
+
+                {
+                /*
+                    <TouchableOpacity onPress={handleOpenFBPage}>
+                        <Image source={ASSETS['fbicon.png']} style={{width: 32, height: 32}} />
+                        <Text>Or use our official Facebook page</Text>
+                    </TouchableOpacity>
+                */
+                }
+                    
+
                 </View>
                 <AlertBox title='Error loading threads...'
                     text={err.text}

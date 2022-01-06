@@ -16,6 +16,12 @@ export function setIsHideBottomTabs( isHidden :boolean ) :ActionInterface {
     }
 }
 
+export function setGuideLink( link :string ) :ActionInterface {
+    return {
+        type: actionType.setguidelink, payload: link
+    }
+}
+
 import { StoryContent } from '../../database/!interfaces/StoryContent';
 export function setGuideInfo(guidedata :StoryContent) :ActionInterface {
     return {

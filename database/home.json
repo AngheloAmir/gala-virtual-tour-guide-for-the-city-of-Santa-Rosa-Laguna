@@ -33,12 +33,6 @@
     },
     "offlineStories": [
         {
-            "title": "Enchanted Kingdom Reopens",
-            "date": "Dec 2021",
-            "text": "Atlas! After a long closure due to pandemic, Enchanted Kingdom now reopen.",
-            "storyjson": "ekreopens.json"
-        },
-        {
             "title": "The Santa Rosa City Local Hero",
             "date": "Dec 2021",
             "text": "Santa Rosa city has its own local hero, his name is Col. Basilio Barroma Gonzalez.",

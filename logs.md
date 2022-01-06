@@ -1,3 +1,11 @@
+## January 6, 1.5 Improvements
+-Guides tab now has online and offline articles
+-Added news in the guide tab
+-move the Visiting Guide into an online article to easier to update it content
+-update typo in Assistant Tour
+-Assistant Tour GPS now works properly in the web browser
+-Added checking of the status of internet connection before nav path is made
+
 ## January 4, 1.4 (Maintenace) Added new articles and minor fixes
 -Added new articles: EK Reopens and Santa Rosa Local Hero
 -Updated the contents of the guides

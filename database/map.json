@@ -43,7 +43,7 @@
         "x":      121.041694,  "endy": 14.21141,
         "endx":   121.135533,  "y":    14.339070
     },
-    "pointOfInterestAcquisitionRange": 0.00025,
+    "pointOfInterestAcquisitionRange": 0.00028,
 
     "gpsUpdateSpeed": {
         "timeInterval": 1500,

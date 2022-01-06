@@ -16,22 +16,24 @@ import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'rea
 import { createStackNavigator } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
-export default function GuidesIndex() {
-    return (
-        <Stack.Navigator>
-            <Stack.Screen name="Guides"    component={Guides}    options={{headerShown: false}}/>
-            <Stack.Screen name="GuideInfo" component={GuideView} options={{headerShown: false}}/>
-        </Stack.Navigator>
-    );
-}
-
 import { contextProvider, StateAPI } from '../StateAPI/State';
-import { setGuideInfo } from '../StateAPI/Actions';
+import { setGuideInfo, setGuideLink } from '../StateAPI/Actions';
 
 import { GuideItem, GuideData }    from '../../database/!interfaces/GuideItem';
 import ASSETS from '../../database/assets';
 import GuideView from './Guides/GuideView';
+import Webview  from './Guides/Webview';
 const guidejson :GuideData = require('../../database/guides.json'); 
+
+export default function GuidesIndex() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Guides"             component={Guides}    options={{headerShown: false}}/>
+            <Stack.Screen name="GuideInfo"          component={GuideView} options={{headerShown: false}}/>
+            <Stack.Screen name="NewsInfoWebview"    component={Webview}   options={{headerShown: false}}/>
+        </Stack.Navigator>
+    );
+}
 
 function Guides( {navigation} :any) {
     const { dispatch } :StateAPI = React.useContext(contextProvider);
@@ -57,6 +59,37 @@ function Guides( {navigation} :any) {
 
     return (
     <ScrollView style={styles.container}>
+        <Text style={styles.headtext}>Online Articles</Text>
+        <TouchableOpacity style={styles.guideContainer} onPress={() => {
+            dispatch( setGuideLink(guidejson.news.link) );
+            navigation.navigate('NewsInfoWebview');
+        }}>
+            <View style={styles.iconContainer}>
+                <Image source={ASSETS[ guidejson.news.icon ]} style={styles.icon} />
+            </View>
+            <View style={styles.descriptionContainer}>
+                <Text style={styles.guideTitle}>{guidejson.news.title}</Text>
+                <Text style={styles.guideDescription}>{guidejson.news.description}</Text>
+            </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.guideContainer} onPress={() => {
+            dispatch( setGuideLink(guidejson.visitingguide.link) );
+            navigation.navigate('NewsInfoWebview');
+        }}>
+            <View style={styles.iconContainer}>
+                <Image source={ASSETS[ guidejson.visitingguide.icon ]} style={styles.icon} />
+            </View>
+            <View style={styles.descriptionContainer}>
+                <Text style={styles.guideTitle}>{guidejson.visitingguide.title}</Text>
+                <Text style={styles.guideDescription}>{guidejson.visitingguide.description}</Text>
+            </View>
+        </TouchableOpacity>
+
+        <View style={{paddingTop: 8}}></View>
+        <Text style={styles.headtext}>Offline Articles</Text>
+
+        {/* Enumerate each other guides */}
         {
         guidejson.guidelist.map( (guide :GuideItem, index :number) => {
             return (
@@ -83,6 +116,10 @@ const styles = StyleSheet.create({
         marginLeft: '5%',
         width: '90%',
         marginTop: 16,
+    },
+    headtext: {
+        fontSize: 16,
+        marginBottom: 8,
     },
     guideContainer: {
         flexDirection: 'row',

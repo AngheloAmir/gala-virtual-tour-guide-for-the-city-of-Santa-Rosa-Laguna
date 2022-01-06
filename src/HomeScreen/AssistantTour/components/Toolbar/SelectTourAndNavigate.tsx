@@ -24,6 +24,7 @@ import { setSelectTourOpen,
         setDialogMessage,
         setPoiIndex
 } from '../../localstateAPI/actions';
+import NetInfo from "@react-native-community/netinfo";
 import { getMapDestinationMarkers, getPathWays } from '../../functions';
 import { FromToInterface }    from '../../../../../database/!interfaces/GalaSelfGuidedTour';
 import { GalaTours }          from '../../functions/options';
@@ -40,6 +41,14 @@ export default function SelectTourAndNavigate( props :propsReceive) {
             props.setnotifmsg('Please select your tour first');
             return;
         };
+
+        //Check internet connection before a request is made
+        const networkstatus = await NetInfo.fetch();
+        if(!networkstatus.isConnected) {
+            props.setnotifmsg('There is no internet connection');
+            console.log('There is no internet connection');
+            return;
+        }
 
         const destinationsAndPointOfInterestMarkers =
             getMapDestinationMarkers(GalaTours[localState.currenttour.index], 1);

@@ -1,12 +1,21 @@
 {
     "title": "Guides that help your adventure",
+
+    "news": {
+        "title": "Latest News",
+        "icon": "news.png",
+        "description": "Get the lastest news about Santa Rosa and latest Covid restriction",
+        "link":         "https://galavtg.github.io/assets_online/news"
+    },
+
+    "visitingguide": {
+        "title":        "Visiting Guide",
+        "description":  "Regulations and safety you should know when before visiting.",
+        "icon":         "listicon.png",
+        "link":         "https://galavtg.github.io/assets_online/visitingguide"
+    },
+
     "guidelist": [
-        {
-            "title":        "Visiting Guide",
-            "description":  "Regulations and safety you should know when before visiting.",
-            "icon":         "listicon.png",
-            "guidedata":    "visitingguideJAN2022.json"
-        },
         {
             "title":        "Public transport",
             "description":  "Public transport route that you may take to get into Santa Rosa.",

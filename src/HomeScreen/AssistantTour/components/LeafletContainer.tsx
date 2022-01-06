@@ -17,14 +17,13 @@ import { ExpoLeaflet, LeafletWebViewEvent } from "expo-leaflet";
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI } from '../localstateAPI/interface';
 import { setUserPosition, setDialogMessage } from '../localstateAPI/actions';
-//import { Responsive, useResponsive } from '../../../Utility/useResponsive';
+import { WindowDimension } from '../../../Utility/useResponsive';
 
 import { mapOptions, mapLayers } from '../functions/options';
 import { CheckIfGalaBookShow }   from '../functions/isShowGalaBook';
 
 export default function LeafletContainer() {
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
-    //const responsive :Responsive = useResponsive();
     
     function onMapClicked(event :LeafletWebViewEvent) {
         switch(event.tag) {
@@ -56,29 +55,44 @@ export default function LeafletContainer() {
         }
     }
 
-    //const styles = {
+    const styles = {
         //the value 100 is the height of the toolbar
         //the value 108 is the height of the topbar + bottom tab navigatior
         //height: responsive.height - 100 - 108,
         //width:  responsive.width,
-        //flex: 1
-        //height: WindowDimension.height - 100,
-        //width:  WindowDimension.width,
-    //}
+        flex: 1,
+        height: WindowDimension.height - 100,
+        width:  WindowDimension.width,
+    }
+
+    if(Platform.OS == 'web')
+        return (
+            <View style={styles}>
+                <ExpoLeaflet
+                    loadingIndicator={() => <ActivityIndicator/>}
+                    mapCenterPosition={ localState.mapcenter }
+                    mapMarkers={ localState.mapmarkers }
+                    mapShapes={ localState.polylines }
+                    zoom={ localState.zoomlevel }
+                    mapLayers={mapLayers}
+                    mapOptions={mapOptions}
+                    maxZoom={18}
+                    onMessage={onMapClicked}
+                />
+            </View>
+        ); 
 
     return (
-        
-            <ExpoLeaflet
-                loadingIndicator={() => <ActivityIndicator/>}
-                mapCenterPosition={ localState.mapcenter }
-                mapMarkers={ localState.mapmarkers }
-                mapShapes={ localState.polylines }
-                zoom={ localState.zoomlevel }
-                mapLayers={mapLayers}
-                mapOptions={mapOptions}
-                maxZoom={18}
-                onMessage={onMapClicked}
-            />
-        
+        <ExpoLeaflet
+            loadingIndicator={() => <ActivityIndicator/>}
+            mapCenterPosition={ localState.mapcenter }
+            mapMarkers={ localState.mapmarkers }
+            mapShapes={ localState.polylines }
+            zoom={ localState.zoomlevel }
+            mapLayers={mapLayers}
+            mapOptions={mapOptions}
+            maxZoom={18}
+            onMessage={onMapClicked}
+        /> 
     );       
 }
