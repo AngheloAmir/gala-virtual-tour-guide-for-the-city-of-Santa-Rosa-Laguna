@@ -47,29 +47,8 @@ const GALATOURS = {
 };
 
 const GUIDESASSETS = {
-    "balibagoroadmap.jpg":  require('../assets/santarosa/guides/balibagoroadmap.jpg'),
-    "balibagomap.jpg":      require('../assets/santarosa/guides/balibagomap.jpg'),
-    "balibagoterminal.jpg": require('../assets/santarosa/guides/balibagoterminal.jpg'),
-    "buildingicon.png":     require('../assets/santarosa/guides/building.png'),
-    "busicon.png":          require('../assets/santarosa/guides/bus.png'),
-    "globeicon.png":        require('../assets/santarosa/guides/globe.png'),
-    "listicon.png":         require('../assets/santarosa/guides/list.png'),
-    "jeepneymap.jpg":       require('../assets/santarosa/guides/jeepneymap.jpg'),
-    "journey.jpg":          require('../assets/santarosa/guides/journey.jpg'),
-    "slexmap.jpg":          require('../assets/santarosa/guides/slexmap.jpg'),
-    "travellingto.jpg":     require('../assets/santarosa/guides/travellingto.jpg'),
-    "tourguide.png":        require('../assets/icons/gala.png'),
-    "news.png":             require('../assets/santarosa/guides/news.png'),
-
     "fbicon.png":           require('../assets/icons/fbicon.png'),
-};
-
-const GUIDESJSON = {
-    "visitingguide.json":           require('./guides/visitingguide.json'),
-    "visitingguideJAN2022.json":    require('./guides/visitingguideJAN2022.json'),
-    "publictransport.json":         require('./guides/publictransport.json'),
-    "journeyguide.json":            require('./guides/journeyguide.json'),
-    "jeepneyroutes.json":           require('./guides/jeepneyroutes.json'),
+    "tourguide.png":        require('../assets/icons/gala.png'),
 };
 
 const STORIES = {
@@ -78,7 +57,6 @@ const STORIES = {
     "ekstory.json":         require('./home/ekstory.json'),
     "aboutthecity.json":    require('./home/aboutthecity.json'),
     "externallinks.json":   require('./home/externallinks.json'),
-    "ekreopens.json":         require('./home/ekreopens.json'),
     "santarosalocalhero.json": require('./home/santarosalocalhero.json')
 };
 
@@ -88,7 +66,6 @@ const STORIESASSETS = {
     "studentcanteen.jpg":   require('../assets/santarosa/story/studentcanteen.jpg'),
     "santarosa.jpg":        require('../assets/santarosa/story/santarosa.jpg'),
     "delimastatue.jpg":     require('../assets/santarosa/story/delimastatue.jpg'),
-    "ekreopens.jpg":        require('../assets/santarosa/story/ekreopen.jpg'),
     "statuemap.jpg":        require('../assets/santarosa/story/statuemap.jpg')
 };
 
@@ -141,7 +118,6 @@ const MP3SPEECH = {
 let ASSETS = {
     ...IMAGES,
     ...GUIDESASSETS,
-    ...GUIDESJSON,
     ...STORIES,
     ...STORIESASSETS,
     ...GALATOURS,
@@ -168,17 +144,6 @@ export const ALLASSETS =  [
     require('../assets/santarosa/places/saint_peter_church.jpg'),
     require('../assets/santarosa/places/tiongco.jpg'),
     require('../assets/santarosa/places/zavallahouse.jpg'),
-    require('../assets/santarosa/guides/balibagoroadmap.jpg'),
-    require('../assets/santarosa/guides/balibagomap.jpg'),
-    require('../assets/santarosa/guides/balibagoterminal.jpg'),
-    require('../assets/santarosa/guides/building.png'),
-    require('../assets/santarosa/guides/bus.png'),
-    require('../assets/santarosa/guides/globe.png'),
-    require('../assets/santarosa/guides/list.png'),
-    require('../assets/santarosa/guides/jeepneymap.jpg'),
-    require('../assets/santarosa/guides/journey.jpg'),
-    require('../assets/santarosa/guides/slexmap.jpg'),
-    require('../assets/santarosa/guides/travellingto.jpg'),
     require('../assets/icons/gala.png'),
     require('../assets/santarosa/story/cityhood.jpg'),
     require('../assets/santarosa/story/tiongcobrothers.jpg'),
@@ -197,8 +162,6 @@ export const ALLASSETS =  [
     ...AVATARICONS_MALE,
     ...AVATARICONS_FEMALE,
 
-    require('./home/ekreopens.json'),
-    require('../assets/santarosa/guides/news.png'),
     require('../assets/icons/fbicon.png'),
 ];
 
@@ -218,6 +181,14 @@ export const ALLPLACES = [
     require('./places/Chair of St. Peter Parish Church.json'),
     require('./places/Tiongco Ancestral House.json'),
     require('./places/Zavalla House.json'),
+    require('../assets/icons/male1.png'),
+    require('../assets/icons/male2.png'),
+    require('../assets/icons/male3.png'),
+    require('../assets/icons/male4.png'),
+    require('../assets/icons/female1.png'),
+    require('../assets/icons/female2.png'),
+    require('../assets/icons/female3.png'),
+    require('../assets/icons/female4.png'),
 ]
 
 export default ASSETS;

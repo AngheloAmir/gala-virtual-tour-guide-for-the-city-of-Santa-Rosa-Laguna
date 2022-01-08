@@ -1,3 +1,24 @@
+## TODO
+
+-Migration of all guides into online
+-Migration of all articles into online
+-Adding Socket IO connection
+	when the user press the load forum
+		it actually connect to the socket server
+		when the user is not registered, the user should register again
+
+		on emit('addthread'/
+		on emit('addreply.. delete reply...)
+		on emit
+	
+  Add a notification that a user has receive new replies in his thread.
+  The forum tab has (!) marker when someone reply in the thread
+
+## January 9, 1.5 All of Guides is in Github
+-Move all of the guides into Github
+-remove guides assets
+-remove unused assets
+
 ## January 6, 1.5 Improvements
 -Guides tab now has online and offline articles
 -Added news in the guide tab
