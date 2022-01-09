@@ -2,6 +2,7 @@
     The root reducer that handles dispatch calls
 */
 import { ActionInterface, AssistantTourState, actionType } from './interface'
+const mapdata = require('../../../../database/map.json');
 
 export function rootReducer(state :AssistantTourState, action :ActionInterface) :AssistantTourState {
     switch(action.type) {
@@ -11,9 +12,12 @@ export function rootReducer(state :AssistantTourState, action :ActionInterface) 
                     if(index == 0)
                         return {
                             id: '0',
-                            position: action.payload,
-                            icon: '<div style="margin-top: -16px; color: "blue">🏃</div>',
-                            size: [32, 32]
+                            position: {
+                                lat: action.payload.lat + mapdata.mapusericonadjustlat,
+                                lng: action.payload.lng + mapdata.mapusericonadjustlng
+                            },
+                            icon: mapdata.mapusericonbase64,
+                            size: mapdata.mapusericonsize
                         }
                     else return marker;
                 })

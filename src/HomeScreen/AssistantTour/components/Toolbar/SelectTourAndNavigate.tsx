@@ -28,6 +28,7 @@ import NetInfo from "@react-native-community/netinfo";
 import { getMapDestinationMarkers, getPathWays } from '../../functions';
 import { FromToInterface }    from '../../../../../database/!interfaces/GalaSelfGuidedTour';
 import { GalaTours }          from '../../functions/options';
+const mapjson = require('../../../../../database/map.json');
 
 interface propsReceive {
     setnotifmsg :(text :string) => void;
@@ -63,7 +64,12 @@ export default function SelectTourAndNavigate( props :propsReceive) {
             return;
         }
 
-        const userPosition = localState.mapmarkers[0].position;
+        //user position is actually offset due to the image (the marker) not being the center of the 
+        //of the actual position
+        const userPosition = {
+            lat: localState.mapmarkers[0].position.lat - mapjson.mapusericonadjustlat,
+            lng: localState.mapmarkers[0].position.lng - mapjson.mapusericonadjustlng
+        };
         localDispatch( setMapMarkers(destinationsAndPointOfInterestMarkers) );
         localDispatch( setMapLock(true) );
         localDispatch( setZoomlevel(12) );

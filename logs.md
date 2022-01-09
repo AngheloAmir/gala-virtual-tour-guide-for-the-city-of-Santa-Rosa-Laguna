@@ -1,18 +1,7 @@
-## TODO
-
--Migration of all guides into online
--Migration of all articles into online
--Adding Socket IO connection
-	when the user press the load forum
-		it actually connect to the socket server
-		when the user is not registered, the user should register again
-
-		on emit('addthread'/
-		on emit('addreply.. delete reply...)
-		on emit
-	
-  Add a notification that a user has receive new replies in his thread.
-  The forum tab has (!) marker when someone reply in the thread
+## January 10, 1.6 Image Adjustment in Assistant tour
+-The image icon of the user is change
+	- including the offset value marker
+-Fix guide tab not capturing backbutton (to back at homepage)
 
 ## January 9, 1.5 All of Guides is in Github
 -Move all of the guides into Github

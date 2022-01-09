@@ -11,7 +11,10 @@ export function loadAllMapMarkers() :Array<MapMarker>{
         if(item.type && item.type == 'info')
             return {
                 id:             i + '',
-                position:       { lat: item.lat, lng: item.lng },
+                position:       {
+                    lat: item.lat + mapjson.mapinfoicondjustlat,
+                    lng: item.lng + + mapjson.mapinfoiconadjustlng
+                },
                 icon:           mapjson.mapinfoicon,
                 size:           mapjson.mapinfoiconSize,
                 name:           item.name,
@@ -20,7 +23,10 @@ export function loadAllMapMarkers() :Array<MapMarker>{
         else
             return {
                 id:             i + '',
-                position:       { lat: item.lat, lng: item.lng },
+                position:       {
+                    lat: item.lat + mapjson.mappointofinterestadjustlat,
+                    lng: item.lng + mapjson.mappointofinterestadjustlng
+                },
                 icon:           mapjson.mappointofinteresticon,
                 size:           mapjson.mappointofinteresticonSize,
                 name:           item.name,

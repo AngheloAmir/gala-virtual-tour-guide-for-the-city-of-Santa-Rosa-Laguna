@@ -116,7 +116,7 @@ function GuidesContainer( props :any) {
   return (
     <View style={{flex: 1}}>
       <TopBar navigation={props.navigation} title='Guides'/>
-      <Guides />
+      <Guides navigation={props.navigation} />
     </View>
   );
 }

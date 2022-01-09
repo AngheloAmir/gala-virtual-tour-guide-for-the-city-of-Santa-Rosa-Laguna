@@ -1,7 +1,7 @@
 {
     "name":               "Enchanted Kingdom",
     "description":        "Visit the theme park*",
-    "longdescription":    "The Enchanted Kingdom opened in 1995 and is also the most visited tourist spot in Laguna. It is a fun-filled experience theme park that you should visit at least once. There tag line \"The magic stays with you\" as the rides were magical and fun. However, due to the Covid-19 restriction, the park may be closed. Visit https://www.enchantedkingdom.ph/ to see if the park is open or not.",
+    "longdescription":    "Entrance fee may reach P800 per person. Bringing food inside is forbidden so when planning a visit, prepare at lease P1000 when in the theme park. PLEASE read the lastest news if the park is open or not.\n\nThe Enchanted Kingdom opened in 1995 and is also the most visited tourist spot in Laguna. It is a fun-filled experience theme park that you should visit at least once. There tag line \"The magic stays with you\" as the rides were magical and fun.",
     "destinations": [
         {
             "from": "user",

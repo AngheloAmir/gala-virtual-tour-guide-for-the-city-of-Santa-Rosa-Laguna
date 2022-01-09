@@ -10,7 +10,6 @@ import { localContextProvider } from '../../localstateAPI/state';
 import { LocalStateAPI }        from '../../localstateAPI/interface';
 import { flipSearchButton, setMapCenter, setZoomLevel}     from '../../localstateAPI/actions';
 
-
 const places = ALLPLACES.map((place :any) => {
     return {
         name: place.name,
@@ -24,19 +23,24 @@ export default function SearchButton() {
     const [matching, setmatching] = React.useState([{name: '', lat: 0, lng: 0}]);
 
     function searchbarChange( text :string) {
-        if(!text || text.length <= 0) {
-            setmatching([]);
-            return;
-        };
-        text = text.toLocaleLowerCase();
-        let matchingplaces :any = [];
-        places.forEach( place => {
-            const pname =  place.name.toLowerCase();
-           if(pname.includes(text))
-                //console.log('Found: ' + place.name );
-                matchingplaces.push(place);
-        });
-        setmatching(matchingplaces);
+        try {
+            if(!text || text.length <= 0) {
+                setmatching([]);
+                return;
+            };
+            text = text.toLocaleLowerCase();
+            let matchingplaces :any = [];
+            places.forEach( place => {
+                const pname =  place.name.toLowerCase();
+            if(pname.includes(text))
+                    //console.log('Found: ' + place.name );
+                    matchingplaces.push(place);
+            });
+            setmatching(matchingplaces);
+        }
+        catch(err) {
+            console.log(err)
+        }
     }
 
     function handlePlaceClick(place :any) {
@@ -105,15 +109,3 @@ const styles = StyleSheet.create({
         paddingLeft: 8
     },
 });
-
-/*
-{
-                                ALLPLACES.map((place :any, index :number) => {
-                                    return (
-                                        <View key={index}>
-                                            <Text>{place.name}</Text>
-                                        </View>
-                                    )
-                                })
-                            }
-                            */

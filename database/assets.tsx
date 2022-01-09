@@ -181,14 +181,6 @@ export const ALLPLACES = [
     require('./places/Chair of St. Peter Parish Church.json'),
     require('./places/Tiongco Ancestral House.json'),
     require('./places/Zavalla House.json'),
-    require('../assets/icons/male1.png'),
-    require('../assets/icons/male2.png'),
-    require('../assets/icons/male3.png'),
-    require('../assets/icons/male4.png'),
-    require('../assets/icons/female1.png'),
-    require('../assets/icons/female2.png'),
-    require('../assets/icons/female3.png'),
-    require('../assets/icons/female4.png'),
 ]
 
 export default ASSETS;

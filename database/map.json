@@ -17,15 +17,36 @@
          }
     ],
 
-    "mapdestinationicon":         "<div style=\"margin-top: -32px; margin-left: 30px\">🏁</div>",
-    "mapdestinationiconSize":     [32, 32],
+    "mapusericon": "<div style=\"margin-top: -16px; color: \"blue\">🏃</div>",
+    "mapusericonbase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAApCAYAAADAk4LOAAAFgUlEQVR4Aa1XA5BjWRTN2oW17d3YaZtr2962HUzbDNpjszW24mRt28p47v7zq/bXZtrp/lWnXr337j3nPCe85NcypgSFdugCpW5YoDAMRaIMqRi6aKq5E3YqDQO3qAwjVWrD8Ncq/RBpykd8oZUb/kaJutow8r1aP9II0WmLKLIsJyv1w/kqw9Ch2MYdB++12Onxee/QMwvf4/Dk/Lfp/i4nxTXtOoQ4pW5Aj7wpici1A9erdAN2OH64x8OSP9j3Ft3b7aWkTg/Fm91siTra0f9on5sQr9INejH6CUUUpavjFNq1B+Oadhxmnfa8RfEmN8VNAsQhPqF55xHkMzz3jSmChWU6f7/XZKNH+9+hBLOHYozuKQPxyMPUKkrX/K0uWnfFaJGS1QPRtZsOPtr3NsW0uyh6NNCOkU3Yz+bXbT3I8G3xE5EXLXtCXbbqwCO9zPQYPRTZ5vIDXD7U+w7rFDEoUUf7ibHIR4y6bLVPXrz8JVZEql13trxwue/uDivd3fkWRbS6/IA2bID4uk0UpF1N8qLlbBlXs4Ee7HLTfV1j54APvODnSfOWBqtKVvjgLKzF5YdEk5ewRkGlK0i33Eofffc7HT56jD7/6U+qH3Cx7SBLNntH5YIPvODnyfIXZYRVDPqgHtLs5ABHD3YzLuespb7t79FY34DjMwrVrcTuwlT55YMPvOBnRrJ4VXTdNnYug5ucHLBjEpt30701A3Ts+HEa73u6dT3FNWwflY86eMHPk+Yu+i6pzUpRrW7SNDg5JHR4KapmM5Wv2E8Tfcb1HoqqHMHU+uWDD7zg54mz5/2BSnizi9T1Dg4QQXLToGNCkb6tb1NU+QAlGr1++eADrzhn/u8Q2YZhQVlZ5+CAOtqfbhmaUCS1ezNFVm2imDbPmPng5wmz+gwh+oHDce0eUtQ6OGDIyR0uUhUsoO3vfDmmgOezH0mZN59x7MBi++WDL1g/eEiU3avlidO671bkLfwbw5XV2P8Pzo0ydy4t2/0eu33xYSOMOD8hTf4CrBtGMSoXfPLchX+J0ruSePw3LZeK0juPJbYzrhkH0io7B3k164hiGvawhOKMLkrQLyVpZg8rHFW7E2uHOL888IBPlNZ1FPzstSJM694fWr6RwpvcJK60+0HCILTBzZLFNdtAzJaohze60T8qBzyh5ZuOg5e7uwQppofEmf2++DYvmySqGBuKaicF1blQjhuHdvCIMvp8whTTfZzI7RldpwtSzL+F1+wkdZ2TBOW2gIF88PBTzD/gpeREAMEbxnJcaJHNHrpzji0gQCS6hdkEeYt9DF/2qPcEC8RM28Hwmr3sdNyht00byAut2k3gufWNtgtOEOFGUwcXWNDbdNbpgBGxEvKkOQsxivJx33iow0Vw5S6SVTrpVq11ysA2Rp7gTfPfktc6zhtXBBC+adRLshf6sG2RfHPZ5EAc4sVZ83yCN00Fk/4kggu40ZTvIEm5g24qtU4KjBrx/BTTH8ifVASAG7gKrnWxJDcU7x8X6Ecczhm3o6YicvsLXWfh3Ch1W0k8x0nXF+0fFxgt4phz8QvypiwCCFKMqXCnqXExjq10beH+UUA7+nG6mdG/Pu0f3LgFcGrl2s0kNNjpmoJ9o4B29CMO8dMT4Q5ox8uitF6fqsrJOr8qnwNbRzv6hSnG5wP+64C7h9lp30hKNtKdWjtdkbuPA19nJ7Tz3zR/ibgARbhb4AlhavcBebmTHcFl2fvYEnW0ox9xMxKBS8btJ+KiEbq9zA4RthQXDhPa0T9TEe69gWupwc6uBUphquXgf+/FrIjweHQS4/pduMe5ERUMHUd9xv8ZR98CxkS4F2n3EUrUZ10EYNw7BWm9x1GiPssi3GgiGRDKWRYZfXlON+dfNbM+GgIwYdwAAAAASUVORK5CYII=",
+    "mapusericonsize": [32, 40],
+    "mapusericonadjustlat": 0.0001,
+    "mapusericonadjustlng": 0,
 
-    "mappointofinteresticon":     "<div style=\"margin-top: -25px; margin-left: 25px\">🚩</div>",
-    "mappointofinteresticonSize": [24, 24],
+    "mapdestinationicondef": "<div style=\"margin-top: -32px; margin-left: 30px\">🏁</div>",
+    "mapdestinationicon": "data:image/png;base64,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",
+    "mapdestinationiconSize": [32, 40],
+    "mapdestinationadjustlat": 0.00011,
+    "mapdestinationadjustlng": 0,
 
-    "mapinfoicon":                "<div>❓</div>",
-    "mapinfoiconSize":            [24, 24],
+    "mappointofinteresticondef": "<div style=\"margin-top: -25px; margin-left: 25px\">🚩</div>",
+    "mappointofinteresticon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAsCAYAAAB2d9g5AAAACXBIWXMAABJ0AAASdAHeZh94AAABnklEQVRYw+3UsWtaURTH8e+9+voWA1FwKh2soFs2N4WgbqWOPnAQHDpEMOQPeOODrAkdpJDg1EHtfyAIoZrFqdS6FHFoh2YwQ9pBQ/JuhvDAhKTTu29o328858CHc+FcMZ1O1Ww2I4hkMhmEaZpqvV4HAhqGgQDUIfBLI/ReguuCZVlEveJRsagFOxgOcV3I5XJ0u10hdT5hbzjkGEilUkwmEwEgdWIWkEjEWSwWwqtLXVgtAi8Mg37/04OeFvBdTOK6gpPTU0qlktjsRf3GXn074+qPi+M41Ot18bjv64Y7P874eXFLo9HAtm3x1Ixv4Jvrz3z9fku5XKbT6Yjn5nwDz7/cAFCr1f465xv44bciGhU0m3uMx2OlHawWi3y8UaxWayqVt/o39NAusFxekk6nlXZwE53P5+TzeaUd3ERHoxHValVpBz309UtJr9fDtm2lHQSYZ3fZ3pI4jkO73VbawftzcYlI2G+1GAwGSgCKgBKPx+8/71gsRjab1Q56hioUCoFtKQk4IRiCIRiCIRiCIfhfgKZpkkwm+WdzB3flfZhQzOD+AAAAAElFTkSuQmCC",
+    "mappointofinteresticonSize": [32, 32],
+    "mappointofinterestadjustlat": 0.0001,
+    "mappointofinterestadjustlng": 0.00008,
+
+    "mapinfoicondef": "<div>❓</div>",
+    "mapinfoicon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAoCAYAAACb3CikAAAACXBIWXMAABJ0AAASdAHeZh94AAAEIklEQVRYw7WYXWxUVRDHf2e7awurNrFVH6CKbSLrg1gSllqsWYmNfAotrWKkFKXWGHBjE4wJiZoYTIwmYDWIH6V+pDSAYrtNRGtotNtAamjxwcaPrA9CNS21YIimtVug48N13T179+7eu63zsvfMmfmf/845Z2buVTiUz4+L/PgTnB+BS5fieqUgPx8WLIDFPlizViknuLaMv+kX+aoHfjnrjHRxCVRWgn95ZlIZDV7eI3LuLLOS4ttg9/PpyVhOftkt0vEpzMxYO+fNg/le43lyAqb+trZ1u6H2Ibi/MjWhlMq2j0T6+lKD3XkX+JdZh3vgtMjgafhuCK5cMc+vXAmP1pl9TYpDbSLhXjPAinvg8e3ODuD7B0X6++2R0QY9J0SOHtGdrr8O9jY7I5Asu5pE/vxL19XVQyAQx3UlTh77RDcuLJg9CTAwbijUdYfbLbbmtVdFfo7EJ7zXQvMb1iS6QiJnBuDCRbjGAyW3QzCYnnRTUGRiMj723QG7njV8/nNsbBBJdGpptQbd/ZzIhYspTr6CDRth/YPWvlbruABe36dPlpZa/6sXX0hNAkAEukIwOKDjJcqSJfr4zWbD1gXww/f65M40IR4dyXwmOjqt54LP6NhDQ/8e1r6wzr64JP0iHo9+pVtalWppVSonJ64fH0uPsahYH586KeKKRHRlum0BOPCOUuUrjCyZmFcWFtm/RUuT1ohEwDUyqivtVM3tDUqtWq3b/farfSJr1+m+I6Pg/mM8+/xw/DOR7m6jxly9GtfffJMznPExcEensyfSFTJuiqliv+IsCU5PJ2XW2YpSUFXt3G9mBlzz52W/cPUmyMsDrxdKl8J7B5Vat955SfB6wV1QAMkFya44bQetpPBGcC28RVeGOq2z4lxJxzF9jaIicC326UaDg/zv8u0ZfezzgausTM+KY+ftA374gUhjg0hT0FkUx36PP+fkwDK/Ui4Avz/p+r1kD/jUSeN3YhLe2m/PZ08S9vKyhMaooVE/dOeGofuLzMBut97J2XknGh42Z2mtQ7u7XDfo7MgM/Pa7St26yIjo1m2Zb1AoqSqXl1v0rMm9ZW4u7D8wN1f06R0i0WhCBPNh7744tmmRJ58QSdyUuSCTTEIpI/kl2phSfP02wzAm0agBNJck6h8z25mIVNyr1JatZjI7nnJOJrjTTGLzI1BRYeMFKybhsEh7m15dPR6jMbJLYmrKTMLqldOy+gYC5shcvmwvMskkYgXSioStrwFOI5OKxKaazAUyYz8SCCi1pc5eZLIlYYsIQOC+zGSstsNuq+AoP/ScEPn4qL5Nubnxm5UoNbWweo39/OM4UYV7RdoPpe5VY1JVDU47tawyZjoy2ZCwfUZSnZmHN+tnBmBjVXYkso5ITHq/Fjly2IhMTS08sCr7mvQPLzWTEJMRYCsAAAAASUVORK5CYII=",
+    "mapinfoicondjustlat": 0.0001,
+    "mapinfoiconadjustlng": 0.00008,
+    "mapinfoiconSize": [26, 32],
     
+    "mapestablishmenticondef": "<div style=\"margin-top: -28px; margin-left: 26px\">🏨</div>",
+    "mapestablishmenticon": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAaCAYAAACtv5zzAAAACXBIWXMAABJ0AAASdAHeZh94AAACvklEQVRIx61VXUhTYRh+vnPOnKuJZDNJlhZNyCJy5TDKCMJQy18qMJoYQnXRdUlBVzmrmzBIvAkqFCLCyqDyIvoFQUg2KFLSomhhy8CfPE49nvN2cdxxx23uuPVene893/c83/P+fQwGTep+RMoPPwCA22CHqbqWGTkXd9Pstask9TyDYE0DM6WAZBnzgREQzyOlphbmc00sYQKx3k385CQYz4OC0yBJAgFQpv4CRCpAfj5W3+lgKyaYudBE1N8PZVoESdKyKoWSg0j1XGErIhD3FBERAYpiKEfWvvdRsbiocW+9TiTLOnC+0AVzcwvMzS3gnbsiz9xopajqojmV4SHdmnc6YWlrZ2hr13zBM6dI9nkXzwwNwbACCs7ob1FZHXmzyqoldTxnnIDl5uod8/ORm+QlvuzslVXRVFGhFtNopSjWu4k+D8ZNshCzLLLWAYHfasgGBiC6j5OpuhZgDFL3Q4SDw2ZLrNHCVSRSojFzoFXP4Yq44Hx5eXKzaKrqEIVCFWE2G6xPe5bF4OIRfKg6G/Ofr/Sk9v3krV8LZ9frEYpQ0HDZGzPe9b7b2O3v1fl6s3bi1pZjKHCswsXTe9n5mx8pMLY4s+5ecjJDCgDgwbY6jFkytPW4OQ33HBXgBBPGZ61qG6wVYoeo47l/2WqZMVnQuaMBxFTBnXk1mLNmwmxJx+iEetSeqScIYXIA8O3XdFwVg7ateJezH2/sxfiUUwzBlKrOoIV34WiJQ5fsEKYAAN8DQUMj+f72E1FLr+vFMB0pcTCeY5AVlTCEyQGAJBmb+bHs5x91LmWm84uzbwFTAACLmdOewERsdEIl2LQ+BROibKzB/pcxAOh+9VV9HpOwmgObGQA8fvmFwn2s0eOjUGKSsXKXFXVleazR4yVZCfUAg7CvICNpcCIFdWUbGQCUutZAnGNgCz3zD0tUAORZwtCUAAAAAElFTkSuQmCC",
+    "mapestablishmentadjustlng": 0.00003,
+    "mapestablishmentadjustlat": 0.00003,
+    "mapestablishmenticonsize": [32, 32],
+
     "mapOptions": {
         "attributionControl": false,
         "zoomControl": false
@@ -43,7 +64,7 @@
         "x":      121.041694,  "endy": 14.21141,
         "endx":   121.135533,  "y":    14.339070
     },
-    "pointOfInterestAcquisitionRange": 0.00028,
+    "pointOfInterestAcquisitionRange": 0.00022,
 
     "gpsUpdateSpeed": {
         "timeInterval": 1500,

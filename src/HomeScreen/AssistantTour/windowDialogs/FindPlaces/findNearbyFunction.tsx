@@ -23,6 +23,7 @@ import { LocalStateAPI }    from '../../localstateAPI/interface';
 
 import { EstablishmentCategory }    from '../../../../../database/!interfaces/Establishment';
 const tourjson                      = require ('../../../../../database/assistantour.json');
+const mapjson                       = require('../../../../../database/map.json');
 const establishments :Array<EstablishmentCategory> = tourjson.establishments;
 
 export default async function findNearbyFunction({localDispatch, localState} :LocalStateAPI, index :number) {
@@ -51,8 +52,13 @@ export default async function findNearbyFunction({localDispatch, localState} :Lo
     const mapmarkers = localState.mapmarkers.filter((marker, index) => index !== 0);
     localDispatch( setMapMarkers([...mapmarkers, {
             id: localState.mapmarkers.length + '' ,
-            position: closestEst,
-            icon: '<div style="margin-top: -28px; margin-left: 26px">🏨</div>', size: [24, 24],
+            position: {
+                lat: closestEst.lat + mapjson.mapestablishmentadjustlng,
+                lng: closestEst.lng + mapjson.mapestablishmentadjustlat,
+            },
+            icon: mapjson.mapestablishmenticon,
+            size: mapjson.mapestablishmenticonsize,
+
             //@ts-ignore
             name: establishments[index].items[establishmentIndex].name,
             commute: 'Establishment',

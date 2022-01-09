@@ -9,7 +9,10 @@ export function GetMapDestinationMarkers(tours :GalaSelfGuidedTour, startingInde
     const destinations :Array<MapMarker> = tours.destinations.map((item :FromToInterface, i :number) => {
         return {
           id: i + startingIndex + '' ,
-          position: { lat: item.to.lat, lng: item.to.lng },
+          position: {
+            lat: item.to.lat + mapjson.mapdestinationadjustlat,
+            lng: item.to.lng + mapjson.mapdestinationadjustlng
+          },
           icon:     mapjson.mapdestinationicon,
           size:     mapjson.mapdestinationiconSize,
           name:     item.to.name,
@@ -21,7 +24,10 @@ export function GetMapDestinationMarkers(tours :GalaSelfGuidedTour, startingInde
         const poi :Array<MapMarker> = tours.pointOfInterests?.map((item, i) => {
             return {
               id:       i + prevLastIndex + '' ,
-              position: { lat: item.lat, lng: item.lng },
+              position: {
+                lat: item.lat + mapjson.mappointofinterestadjustlat,
+                lng: item.lng + mapjson.mappointofinterestadjustlng
+              },
               icon:     mapjson.mappointofinteresticon,
               size:     mapjson.mappointofinteresticonSize,
               name:     item.name,
