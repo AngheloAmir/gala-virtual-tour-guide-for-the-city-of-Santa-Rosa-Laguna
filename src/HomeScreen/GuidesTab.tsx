@@ -13,8 +13,15 @@
 import React from 'react';
 import { View, Platform, Linking, Text, BackHandler} from 'react-native';
 import { WebView } from 'react-native-webview';
-import { WindowDimension } from '../Utility/useResponsive';
 const guidelist = require('../../database/guides.json');
+
+//another tricky operation here.
+//when the bottom tab of the guide is pressed, the guide should return to the home page
+//as the default behavoir. However, the web view does not allow this by default
+//a work arround will implemented for this
+export let webview;
+//the webview contains the reference from the webview ref for it to be accessed by
+//the index.tsx of the home screen
 
 export default function GuidesIndex({navigation} :any) {
     const [isLoading, setLoading] = React.useState(true);
@@ -33,6 +40,8 @@ export default function GuidesIndex({navigation} :any) {
     }
 
     function backpress() {
+        //enable the back button as the "back from prevoius url" behavoir
+        //since the back button is absorb by the React Navigation
         if(navigation.isFocused()) {
             if(backrate.current == 0)
                 return false;
@@ -45,6 +54,7 @@ export default function GuidesIndex({navigation} :any) {
 
     React.useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', backpress);
+        webview = webViewRef;
         return () => {
             try {
                 removeEventListener("hardwareBackPress", backpress);
@@ -71,8 +81,8 @@ export default function GuidesIndex({navigation} :any) {
                 ref={webViewRef}
                 onNavigationStateChange={handleURLChange}
                 source={{uri: guidelist.homelink}}
-                style={{flex: 1, width: WindowDimension.width, height: '100%'}}
                 onLoadEnd={() => setLoading(false) }
+                incognito={true}
             />
         </View>
     );

@@ -15,7 +15,7 @@ interface UserPosition {
     accurancy:  number;
 }
 
-export async function init( localDispatch :any) {
+export async function init( localDispatch :any, isdevmode :boolean= false) {
     try {
         await RequestPermission();
         const userlocation :UserPosition = await getLocation();
@@ -36,17 +36,25 @@ export async function init( localDispatch :any) {
         }, 3000);
     }
     catch(err) {
-        if(err.message == 'PermissionException') 
+        if(err.message == 'PermissionException' && !isdevmode) 
             localDispatch( setDialogMessage('Location error', 'Location permision not granted or there is no data connection.') );
-        else if(err.message == 'OutOfRangeException')
+        else if(err.message == 'OutOfRangeException' && !isdevmode)
             localDispatch( setDialogMessage('Out of service range', 'Out of service range. Too far from the city') );
         else 
             localDispatch( setDialogMessage('Error', err) );
-        localDispatch( permissionLocationNotGranted() ); 
         localDispatch( setUserPosition(IntroPosition) );
         localDispatch( setZoomlevel(17) );
         localDispatch( setMapWasLoaded() );
         localDispatch( setMapLock(false) );
+
+        if(isdevmode) {
+            localDispatch( setDialogMessage('Development mode', 'You are at development mode. Tap on the map to teleport to that area') );
+        }
+
+        //suppress error during devmode
+        if(!isdevmode) {
+            localDispatch( permissionLocationNotGranted() );
+        }
     }
 }
 

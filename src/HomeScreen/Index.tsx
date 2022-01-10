@@ -21,6 +21,10 @@ const Tab = createBottomTabNavigator();
 import { contextProvider, StateAPI } from '../StateAPI/State';
 import { setIsHideBottomTabs } from '../StateAPI/Actions';
 
+//when the guides tab is pressed, the guides show go to the home page
+//another work arround for the webview in the guides tab behavoir
+import { webview } from './GuidesTab';
+
 export default function HomeIndex() {
   const { state, dispatch } :StateAPI = React.useContext( contextProvider );
 
@@ -78,7 +82,22 @@ export default function HomeIndex() {
           }
         }}>
         <Tab.Screen name="Home"            component={HomeContainer} />
-        <Tab.Screen name="Guides"          component={GuidesContainer} />
+        <Tab.Screen name="Guides"
+            component={GuidesContainer}
+          //when the guides tab is pressed, the guides show go to the home page
+          //another work arround for the webview in the guides tab behavoir
+            listeners={({ navigation }) => ({
+              tabPress: (e) => {
+                e.preventDefault();
+                try {
+                  webview.current.goBack();
+                }
+                catch(err) {
+                }
+                navigation.navigate("Guides"); 
+              },
+            })}
+        />
         <Tab.Screen name="Assistant Tour"  component={AssistantTourContainer} />
         <Tab.Screen name="Forum"           component={ForumContainer} />
       </Tab.Navigator>

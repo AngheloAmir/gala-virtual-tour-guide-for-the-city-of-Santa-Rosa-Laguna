@@ -38,19 +38,24 @@ function DialogContent() {
     const [sound, setSound] = React.useState();
 
     async function playSound() {
-      if( !localState.playsound) return;
-      //@ts-ignore
-      //check if the mp3 is available to close POI found (see NotifyWhenClose component on it find out the nearest POI)
-      if( GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset) {
-        const { sound } = await Audio.Sound.createAsync(
-            ASSETS[
+        try {
+            if( !localState.playsound) return;
+            //@ts-ignore
+            //check if the mp3 is available to close POI found (see NotifyWhenClose component on it find out the nearest POI)
+            if( GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset) {
+                const { sound } = await Audio.Sound.createAsync(
+                    ASSETS[
+                        //@ts-ignore
+                        GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset
+                    ]
+                );
                 //@ts-ignore
-                GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset
-            ]
-        );
-        //@ts-ignore
-        setSound(sound);
-        await sound.playAsync();
+                setSound(sound);
+                await sound.playAsync();
+            }
+        }
+        catch(err) {
+
         }
     }
   
@@ -62,31 +67,63 @@ function DialogContent() {
         : undefined;
     }, [sound]);
 
+    function PlayTourVoice() {
+        try {
+            if(GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset
+                && localState.playsound)
+                return (
+                    <View style={{marginBottom: 8}}>
+                        <Button title='Play Tour Voice' onPress={playSound} />
+                    </View>
+                )
+            return <View></View>
+        }
+        catch(err) {
+            console.warn(err);
+            return <View></View>
+        }
+    }
+
+    function PointOfInterestName() {
+        try {
+            if(GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].name)
+                return (
+                <Text style={{fontSize: 20, fontWeight: '600', lineHeight: 24}}>
+                    { GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].name }
+                </Text>
+                )
+            else
+                return <View></View>
+        }
+        catch(err) {
+            console.warn(err);
+            return <View></View>
+        }
+    }
+
+    function PointOfInterestDescription() {
+        try {
+            if(GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description) {
+                return (
+                    <Text style={{fontSize: 19, marginTop: 8, lineHeight: 28}}>
+                    {  '   ' + GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description }
+                    </Text>
+                )
+            }
+            else
+                return <View></View>
+        }
+        catch(err) {
+            console.warn(err);
+            return <View></View>
+        }
+    }
+
     return (
-    <View style={{paddingHorizontal: 4}}>
-        { /* @ts-ignore */
-            GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].voiceasset &&
-            localState.playsound &&
-            <View style={{marginBottom: 8}}>
-                <Button title='Play Tour Voice' onPress={playSound} />
-            </View>
-        }
-        { /* @ts-ignore */
-            GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].name &&
-            <Text style={{fontSize: 20, fontWeight: '600', lineHeight: 24}}>
-            { /* @ts-ignore */
-                GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].name
-            }
-            </Text>
-        }
-        { /* @ts-ignore */
-            GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description &&
-            <Text style={{fontSize: 19, marginTop: 8, lineHeight: 28}}>
-            { /* @ts-ignore */
-                '   ' + GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex].description
-            }
-            </Text>
-        }
-    </View>
+        <View style={{paddingHorizontal: 4}}>
+            { PlayTourVoice() }
+            { PointOfInterestName() }
+            { PointOfInterestDescription() }
+        </View>
     );
 }

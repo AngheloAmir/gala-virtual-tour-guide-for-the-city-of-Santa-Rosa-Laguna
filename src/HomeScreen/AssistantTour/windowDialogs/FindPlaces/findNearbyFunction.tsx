@@ -63,7 +63,7 @@ export default async function findNearbyFunction({localDispatch, localState} :Lo
             name: establishments[index].items[establishmentIndex].name,
             commute: 'Establishment',
     }]) );
-    localDispatch( setDialogMessage('Found Establishment', 'Nearest ' + establishments[index].category + ' is ' + establishments[index].items[establishmentIndex].name) );           
+              
     localDispatch( setMapLock(true) );
     localDispatch( setZoomlevel(12) );
     localDispatch( setMapCenter(userLocation));
@@ -71,11 +71,25 @@ export default async function findNearbyFunction({localDispatch, localState} :Lo
 
 //Create a navigational path between the user and the establishment
     ( async () => {
+        let distance :string = '0 meter';
+        let isError  :boolean = false;
         try {
             const id   :number = localState.mapmarkers.length;
             const poly :MapShape | any = await getPathWays(id, userLocation, closestEst, true);
-            localDispatch( setMapPolyLines([...localState.polylines, poly]) );
+            localDispatch( setMapPolyLines([...localState.polylines, poly.navpath]) );
+
+            //calculate distance
+            if(poly.distance > 1000) {
+                const d = (poly.distance / 1000).toFixed(2);
+                distance = d + ' kilometer';
+            }
+            else {
+                const d = poly.distance.toFixed(0);
+                distance = d + ' meters';
+            }
+
         } catch(err) {
+            isError = true;
             localDispatch( setMapLock(false) );
             localDispatch( setDialogMessage('Failed...',
                 'Failed to create navigational path. Please check your internet connection or try again (the server might be busy).\n' + err) );           
@@ -84,6 +98,8 @@ export default async function findNearbyFunction({localDispatch, localState} :Lo
         setTimeout(() => {
             localDispatch( setMapLock(false) );
             localDispatch( setZoomlevel(17) );
+            if(!isError)
+                localDispatch( setDialogMessage('Found Establishment', 'Nearest ' + establishments[index].category + ' is ' + establishments[index].items[establishmentIndex].name + '. It away by: ' + distance) ); 
         }, 3000);
     })();
 }

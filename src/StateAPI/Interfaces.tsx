@@ -14,6 +14,7 @@ export enum actionType {
     setguideinfo,
     setIsHideBottomTabs,
     setguidelink,
+    devmode,
 }
 
 export interface UserInfo {
@@ -29,6 +30,7 @@ export interface UserInfo {
 export interface StateInterface {
     user              :UserInfo,
     isHideBottomTabs  :boolean;
+    devmode           :boolean;
 
     features :{
         guideInfo? :StoryContent;

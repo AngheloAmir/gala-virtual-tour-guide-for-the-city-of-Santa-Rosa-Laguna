@@ -32,6 +32,12 @@ export function RootReducer(state :StateInterface, action :ActionInterface) :Sta
                 }
             }    
 
+        case actionType.devmode:
+            return {
+                ...state,
+                devmode: true
+            }
+
         default:
             console.error('Action not defined in RootReducer!');
             return state;

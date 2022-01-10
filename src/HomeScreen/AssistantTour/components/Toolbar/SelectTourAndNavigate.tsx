@@ -28,6 +28,7 @@ import NetInfo from "@react-native-community/netinfo";
 import { getMapDestinationMarkers, getPathWays } from '../../functions';
 import { FromToInterface }    from '../../../../../database/!interfaces/GalaSelfGuidedTour';
 import { GalaTours }          from '../../functions/options';
+
 const mapjson = require('../../../../../database/map.json');
 
 interface propsReceive {
@@ -83,12 +84,17 @@ export default function SelectTourAndNavigate( props :propsReceive) {
         ( async () => {
             try {
               let polylines :Array<MapShape> = [];
+              //This method enumerate each of point of destination available to the selected tour
+              //for each destination, a new mapshape of polyline is obtained.
               for(let i = 0; i <  GalaTours[localState.currenttour.index].destinations.length; i++ ) {
                 const fromTo :FromToInterface = GalaTours[localState.currenttour.index].destinations[i];
                 const from  = fromTo.from === 'user' ? userPosition : { lat: fromTo.from.lat, lng: fromTo.from.lng };
                 const to    = { lat: fromTo.to.lat, lng: fromTo.to.lng };
                 const poly :MapShape | any = await getPathWays(i, from, to, false);
-                polylines.push(poly);
+                polylines.push(poly.navpath);
+
+                //console.log('Distance: ' + poly.distance + 'kilometer');
+                
               }
               localDispatch( setMapPolyLines(polylines) );
             } catch(err) {

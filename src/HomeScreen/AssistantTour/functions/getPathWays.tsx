@@ -1,31 +1,50 @@
 /*
-    return a MapShape (polyline) that draws between two points
+    return a MapShape (polyline) that draws between two points.
+    The returned value is readily to be used with Expoleaftlet
 */
 import { NAVCOLORS } from './options';
+import { MapShape } from "expo-leaflet";
 
 interface Position {
     lat :number; lng: number
 }
 
-export async function GetPathWays(id :number, current :Position, destination :Position, isRed? :boolean) {
+interface returnedPath {
+    navpath     :MapShape;
+    distance    :number;
+}
+
+interface FindPathInteface {
+    paths       :Array<Position>;
+    distance    :number;
+}
+
+export async function GetPathWays(id :number, current :Position, destination :Position, isRed? :boolean)  :Promise<returnedPath> {
     try {
-        const paths :any = await FindPath(current, destination);
+        const paths :FindPathInteface = await FindPath(current, destination);
+
         if(isRed) return {
-        // @ts-ignore
-        //color attribute is causing a TS Error although it is not. A problem with the ExpoLeaftlet package
-            shapeType: 'polyline', id: id + '', color: 'red', positions: [...paths], 
+            distance: paths.distance,
+            navpath: {
+            // @ts-ignore
+            //color attribute is causing a TS Error although it is not. A problem with the ExpoLeaftlet package
+                shapeType: 'polyline', id: id + '', color: 'red', positions: [...paths.paths],
+            } 
         }
         return {
-        // @ts-ignore
-        //color attribute is causing a TS Error although it is not. A problem with the ExpoLeaftlet package
-            shapeType: 'polyline', id: id + '', color: NAVCOLORS[id], positions: [...paths], 
+            distance: paths.distance,
+            navpath: {
+                // @ts-ignore
+                //color attribute is causing a TS Error although it is not. A problem with the ExpoLeaftlet package
+                shapeType: 'polyline', id: id + '', color: NAVCOLORS[id], positions: [...paths.paths],
+            }
         }
     } catch(err) {
         throw err;
     }
 }
 
-async function FindPath(from :Position, to :Position) {
+async function FindPath(from :Position, to :Position) :Promise<FindPathInteface> {
     const position1 = from;
     const position2 = to;
 
@@ -35,6 +54,7 @@ async function FindPath(from :Position, to :Position) {
     let nodes         :any;
     let overpass_res  :any;
     let opresult      :any;
+    let distance      :number;
    
     //First, obtain the node (street nodes in OSM) that connects two places
     try {
@@ -42,6 +62,7 @@ async function FindPath(from :Position, to :Position) {
         result        = await osrm_response.json();
         nodes         = result.routes[0].legs[0].annotation.nodes;
         stringnode    = nodes.map((node :any) => { return "" + node });
+        distance      = result.routes[0].legs[0].distance;
     }
     catch(err) {
         console.error('router.project-osrm.org. Result was: ' + JSON.stringify(result) );
@@ -75,7 +96,11 @@ async function FindPath(from :Position, to :Position) {
         //this ensure that line do not overlap with markers
         pathway[0] = position1;
         pathway[pathway.length - 1] = position2;
-        return pathway;
+
+        return {
+            paths :pathway,
+            distance: distance
+        }
     }
     catch(err) {
         console.error('Error after processing API request');

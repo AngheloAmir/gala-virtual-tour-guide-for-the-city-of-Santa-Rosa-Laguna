@@ -1,3 +1,12 @@
+##
+-(TODO) Fix an error with glimp of history with emulator
+
+## January 11, 1.7 Move Articles
+-Added a prevoius behavior in the Guides Tab. This require some work arround to work.
+-Home Tab articles and assets are move to github website
+-Removing the assoicated json and codes
+-Add -dev to enable gps jump
+
 ## January 10, 1.6 Image Adjustment in Assistant tour
 -The image icon of the user is change
 	- including the offset value marker

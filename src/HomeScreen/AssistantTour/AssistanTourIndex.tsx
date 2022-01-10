@@ -73,6 +73,7 @@
 import React from 'react';
 import * as Location from 'expo-location';
 
+import { StateAPI, contextProvider } from '../../StateAPI/State';
 import { localContextProvider, defaultLocalState } from './localstateAPI/state';
 import { rootReducer } from './localstateAPI/reducer';
 import { setMapCenter, setUserPosition } from './localstateAPI/actions';
@@ -93,27 +94,40 @@ import { CheckIfGalaBookShow } from './functions/isShowGalaBook';
 import { init } from './functions/init';
 const mapjson = require('../../../database/map.json');
 
+//use to determine if still mounted
+import { setMountedState, isMounted } from './functions/IsMounted';
+
 export default function AssistanTourIndex() {
+    const { state } :StateAPI = React.useContext(contextProvider);
     const intervalid :{ remove?: () => void } = {};
     const [localState, localDispatch] = React.useReducer(rootReducer, defaultLocalState);
     const [intervalID, setIntervalID] = React.useState(intervalid);
+    const isDevModeRef = React.useRef(state.devmode);
 
     React.useEffect(() => {
         async function SetUpTheInitialEffectAndWatcher() {
-            await init(localDispatch);
-            const interval = await Location.watchPositionAsync({
-                accuracy:                   Location.Accuracy.BestForNavigation,
-                timeInterval:               mapjson.gpsUpdateSpeed.timeInterval,
-                distanceInterval:           mapjson.gpsUpdateSpeed.distance,
-                mayShowUserSettingsDialog:  mapjson.gpsUpdateSpeed.mayShowUserSettingsDialog
-            }, userLocation => {
-                const position = { lat: userLocation.coords.latitude, lng: userLocation.coords.longitude };
-                localDispatch(setUserPosition(position));
-            });
-            setIntervalID(interval);
+            //Check if the user is in dev mode
+            if(!isDevModeRef.current) {
+                await init(localDispatch);
+                const interval = await Location.watchPositionAsync({
+                    accuracy:                   Location.Accuracy.BestForNavigation,
+                    timeInterval:               mapjson.gpsUpdateSpeed.timeInterval,
+                    distanceInterval:           mapjson.gpsUpdateSpeed.distance,
+                    mayShowUserSettingsDialog:  mapjson.gpsUpdateSpeed.mayShowUserSettingsDialog
+                }, userLocation => {
+                    const position = { lat: userLocation.coords.latitude, lng: userLocation.coords.longitude };
+                    localDispatch(setUserPosition(position));
+                });
+                setIntervalID(interval);
+            }
+            else {
+                await init(localDispatch, true); 
+            }
         }
+        setMountedState(true);
         SetUpTheInitialEffectAndWatcher();
         return () => {
+            setMountedState(false);
             try {
                 intervalID.remove && intervalID.remove();
             } catch(err) { }
@@ -121,6 +135,8 @@ export default function AssistanTourIndex() {
     }, []);
 
     React.useEffect(() => {
+        if(!isMounted) return;
+        
         //update map center if enable by the user
         if(localState.hasLoaded && localState.ismapcenter )
             localDispatch( setMapCenter(localState.mapmarkers[0].position));

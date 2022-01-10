@@ -22,6 +22,12 @@ export function setGuideLink( link :string ) :ActionInterface {
     }
 }
 
+export function setDevModeTrue() :ActionInterface {
+    return {
+        type: actionType.devmode
+    }
+}
+
 import { StoryContent } from '../../database/!interfaces/StoryContent';
 export function setGuideInfo(guidedata :StoryContent) :ActionInterface {
     return {

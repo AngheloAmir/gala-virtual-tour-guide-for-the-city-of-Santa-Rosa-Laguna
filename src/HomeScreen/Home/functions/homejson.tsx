@@ -4,7 +4,6 @@
 //@ts-nocheck
 import ASSETS                       from '../../../../database/assets';
 import { HomeTabInterface, Slides } from '../../../../database/!interfaces/HomeInterface';
-import { Stories }                  from '../../../../database/!interfaces/HomeInterface';
 import { StoryContent }             from '../../../../database/!interfaces/StoryContent';
 import { DestinationLocation }      from '../../../../database/!interfaces/GalaSelfGuidedTour';
 
@@ -16,8 +15,6 @@ interface ButtonsText {
 }
 
 interface Websites {
-    morearticles    :string;
-    covidcase       :string;
     officialsite    :string;
     githubsite      :string;
 }
@@ -29,7 +26,6 @@ interface SlideAnimation {
 
 export const homejson :HomeTabInterface = require('../../../../database/home.json');
 export const slideanimation     :SlideAnimation = homejson.slidesAnimation;
-export const offlinestories     :Array<Stories> = homejson.offlineStories;
 export const website            :Websites = homejson.websites;
 
 export const buttonstext        :ButtonsText = {
@@ -61,15 +57,4 @@ export const aboutTheCity :StoryContent = {
     }})
 }
 
-export const allstories :Array<StoryContent> = homejson.offlineStories.map((item) => {
-    const storyjson = ASSETS[ item.storyjson ];
-    return {
-        ...storyjson,
-        headerImage: ASSETS[ storyjson.headerImage ],
-        contents: storyjson.contents.map((contentitem) => {
-            return {
-                ...contentitem,
-                image: ASSETS[ contentitem.image ],
-        }})
-    }
-});
+export const storiesLink :string = homejson.storiesLink;

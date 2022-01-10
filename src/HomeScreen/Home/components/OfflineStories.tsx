@@ -13,51 +13,73 @@ import * as React from 'react';
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI }        from '../localstateAPI/interface';
-import { setStoryToRead, setWebviewLink } from '../localstateAPI/actions';
-
+import { setWebviewLink }       from '../localstateAPI/actions';
 import { Stories }              from '../../../../database/!interfaces/HomeInterface';
-import { offlinestories, allstories, website } from '../functions/homejson';
+import { storiesLink }          from '../functions/homejson';
 
 export default function OfflineStories( {navigation} :any ) {
     const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
+    const [stories, setstories] = React.useState([]);
 
-    function handleReadStory(index :number) {
-        localDispatch( setStoryToRead(allstories[index]) );
-        navigation.navigate('ReadStory');
-    }
-
-    function handleReadMore() {
-        localDispatch(setWebviewLink(website.morearticles));
+    function handleReadArticle(link :string) {
+        localDispatch(setWebviewLink(link));
         navigation.navigate('WebView');
     }
 
+    async function reloadArticles() {
+        try {
+            const result = await fetch(storiesLink);
+            const res = await result.json();
+            setstories(res.articles);
+        }
+        catch(err) { 
+        }
+    }
+
+    React.useEffect(() => {
+        reloadArticles();
+    }, []);
+
     return (
         <View style={styles.container}>
-            <Text style={styles.headingText}>Featured Offline Stories</Text>
-
-            <View style={styles.news}>
-                {
-                    offlinestories.map((story :Stories, index :number) => {
-                        return (
-                            <View style={styles.newsContainer} key={index}>
-                                <View style={styles.descriptionContainer}>
-                                    <Text style={styles.newsTitle}>{story.title}</Text>
-                                    <Text style={styles.datePublish}>{story.date}</Text>
-                                    <Text style={styles.newsDescription}>{story.text}</Text>
-                                    <TouchableOpacity style={styles.readMoreContainer}
-                                        onPress={() => handleReadStory(index)}>
-                                        <Text style={styles.readMoreText}>Read more...</Text>
-                                    </TouchableOpacity>
-                                </View>
+            <Text style={styles.headingText}>Featured Stories</Text>
+                { stories.length <= 0 ?
+                    <View style={styles.news}>
+                        <View style={styles.newsContainer}>
+                            <View style={styles.descriptionContainer}>
+                                <Text style={styles.newsDescription}>No stories are loaded. Check internet connection</Text>
+                                <TouchableOpacity style={styles.readMoreContainer}>
+                                    <Text style={styles.readMoreText}>..Reload..</Text>
+                                </TouchableOpacity>
                             </View>
-                        )
-                    })
+                        </View>
+                    </View>
+                :
+                    <View>
+                    <View style={styles.news}>
+                    {
+                        stories.map((story :Stories, index :number) => {
+                            return (
+                                <View style={styles.newsContainer} key={index}>
+                                    <View style={styles.descriptionContainer}>
+                                        <Text style={styles.newsTitle}>{story.title}</Text>
+                                        <Text style={styles.datePublish}>{story.date}</Text>
+                                        <Text style={styles.newsDescription}>{story.text}</Text>
+                                        <TouchableOpacity style={styles.readMoreContainer}
+                                            onPress={() => handleReadArticle(story.link)}>
+                                            <Text style={styles.readMoreText}>Read more...</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
+                            )
+                        })
+                    }
+                    </View>
+                    <TouchableOpacity style={styles.readMoreContainer} onPress={reloadArticles}>
+                        <Text style={styles.readMoreTextArticle}> Refresh Articles </Text>
+                    </TouchableOpacity>
+                    </View>
                 }
-            </View>
-
-            <TouchableOpacity style={styles.readMoreContainer} onPress={handleReadMore}>
-                <Text style={styles.readMoreTextArticle}> Look for more articles online </Text>
-            </TouchableOpacity>
         </View>
     )
 }
@@ -132,3 +154,16 @@ const styles = StyleSheet.create({
     }
 
 });
+
+/*
+
+
+function handleReadStory(index :number) {
+        localDispatch( setStoryToRead(allstories[index]) );
+        navigation.navigate('ReadStory');
+    }
+
+            <TouchableOpacity style={styles.readMoreContainer} onPress={handleReadMore}>
+                <Text style={styles.readMoreTextArticle}> Look for more articles online </Text>
+            </TouchableOpacity>
+*/

@@ -52,21 +52,12 @@ const GUIDESASSETS = {
 };
 
 const STORIES = {
-    "cityhood.json":        require('./home/cityhood.json'),
-    "tioncobrothers.json":  require('./home/tioncobrothers.json'),
-    "ekstory.json":         require('./home/ekstory.json'),
     "aboutthecity.json":    require('./home/aboutthecity.json'),
-    "externallinks.json":   require('./home/externallinks.json'),
-    "santarosalocalhero.json": require('./home/santarosalocalhero.json')
 };
 
 const STORIESASSETS = {
-    "cityhood.jpg":         require('../assets/santarosa/story/cityhood.jpg'),
-    "tiongcobrothers.jpg":  require('../assets/santarosa/story/tiongcobrothers.jpg'),
-    "studentcanteen.jpg":   require('../assets/santarosa/story/studentcanteen.jpg'),
     "santarosa.jpg":        require('../assets/santarosa/story/santarosa.jpg'),
     "delimastatue.jpg":     require('../assets/santarosa/story/delimastatue.jpg'),
-    "statuemap.jpg":        require('../assets/santarosa/story/statuemap.jpg')
 };
 
 const PLACESJSON = {
@@ -145,9 +136,6 @@ export const ALLASSETS =  [
     require('../assets/santarosa/places/tiongco.jpg'),
     require('../assets/santarosa/places/zavallahouse.jpg'),
     require('../assets/icons/gala.png'),
-    require('../assets/santarosa/story/cityhood.jpg'),
-    require('../assets/santarosa/story/tiongcobrothers.jpg'),
-    require('../assets/santarosa/story/studentcanteen.jpg'),
     require('../assets/santarosa/story/santarosa.jpg'),
     require('../assets/santarosa/story/delimastatue.jpg'),
     require('../assets/santarosa/speech/Arch.mp3'),

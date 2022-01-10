@@ -10,21 +10,25 @@
         When the user is in Home Screen and in the Home Tab
 */
 import * as React from 'react';
-import { Text, TouchableOpacity, View, StyleSheet, Linking } from 'react-native';
+import { View} from 'react-native';
+
+export default function Footer( {navigation} :any) {
+    return (
+        <View style={{marginBottom: 16}}></View>
+    )
+}
+
+/*
+//import { Text, TouchableOpacity, View, StyleSheet, Linking } from 'react-native';
 
 //@ts-ignore
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+//import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 //@ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { website } from '../functions/homejson';
 
-export default function Footer( {navigation} :any) {
+....
 
-    return (
-        <View></View>
-    )
-}
-    /*
     const iconColor = 'rgba(40, 100, 160, 1)';
     const iconSize  = 32;
     

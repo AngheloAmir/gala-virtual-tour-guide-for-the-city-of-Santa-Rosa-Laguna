@@ -38,4 +38,5 @@ export interface Stories {
     date    :string;
     text    :string;
     storyjson :string;
+    link   :string;
 }

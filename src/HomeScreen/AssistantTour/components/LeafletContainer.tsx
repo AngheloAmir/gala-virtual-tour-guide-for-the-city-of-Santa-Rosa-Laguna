@@ -12,6 +12,7 @@
 import React from 'react';
 import { ActivityIndicator, Platform, SafeAreaView, View } from 'react-native';
 import { ExpoLeaflet, LeafletWebViewEvent } from "expo-leaflet";
+import { StateAPI, contextProvider } from '../../../StateAPI/State';
 
 //Local State API imports 
 import { localContextProvider } from '../localstateAPI/state';
@@ -23,15 +24,18 @@ import { mapOptions, mapLayers } from '../functions/options';
 import { CheckIfGalaBookShow }   from '../functions/isShowGalaBook';
 
 export default function LeafletContainer() {
+    const { state } :StateAPI = React.useContext(contextProvider);
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
     
     function onMapClicked(event :LeafletWebViewEvent) {
         switch(event.tag) {
             case 'onMapClicked':
-                if(Platform.OS == 'web') {
+                if(state.devmode ) {
                     localDispatch( setUserPosition(event.location) );
                     CheckIfGalaBookShow({localState, localDispatch}, event.location);
-                    console.log(event.location);
+                    if(Platform.OS == 'web') {
+                        console.log(event.location);
+                    }
                 }
                 break;
             case 'onMapMarkerClicked':

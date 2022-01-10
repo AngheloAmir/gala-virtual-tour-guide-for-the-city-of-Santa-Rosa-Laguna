@@ -5,6 +5,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Dimensions, TextInput } from 
 //@ts-ignore
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import { StateAPI, contextProvider } from '../../../../StateAPI/State';
+import { setDevModeTrue } from '../../../../StateAPI/Actions';
 import { ALLPLACES } from '../../../../../database/assets';
 import { localContextProvider } from '../../localstateAPI/state';
 import { LocalStateAPI }        from '../../localstateAPI/interface';
@@ -19,10 +21,17 @@ const places = ALLPLACES.map((place :any) => {
 })
 
 export default function SearchButton() {
+    const { dispatch } :StateAPI = React.useContext(contextProvider);
     const { localState, localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
-    const [matching, setmatching] = React.useState([{name: '', lat: 0, lng: 0}]);
+    const [matching, setmatching] = React.useState([]);
+    const [isdevmode, setdevmode] = React.useState(false);
 
     function searchbarChange( text :string) {
+        if(text == '-dev') {
+            setdevmode(true);
+            dispatch( setDevModeTrue() );
+            return;
+        }
         try {
             if(!text || text.length <= 0) {
                 setmatching([]);
@@ -63,16 +72,17 @@ export default function SearchButton() {
                             />
                             <MaterialCommunityIcons name='map-search' size={42} color='black' />
                         </View>
-                            { matching.map((p :any, i :number) => {
-                                return (
-                                    <TouchableOpacity key={i}
-                                        style={{marginBottom: 8}}
-                                        onPress={() => handlePlaceClick(p)}
-                                    >
-                                        <Text style={{fontSize: 18}}>{p.name}</Text>
-                                    </TouchableOpacity>
-                                )
-                            })}
+                        { isdevmode && <Text style={styles.devmode}>Dev mode is now active</Text> }
+                        { matching.map((p :any, i :number) => {
+                            return (
+                                <TouchableOpacity key={i}
+                                    style={{marginBottom: 8}}
+                                    onPress={() => handlePlaceClick(p)}
+                                >
+                                    <Text style={{fontSize: 16}}>{p.name}</Text>
+                                </TouchableOpacity>
+                            )
+                        })}
                     </View>
                             :
                     <TouchableOpacity onPress={() => localDispatch(flipSearchButton()) }>
@@ -102,10 +112,14 @@ const styles = StyleSheet.create({
     },
     textinput: {
         borderWidth: 1,
-        fontSize: 18,
-        height: 24,
+        fontSize: 16,
+        height: 28,
         width: '80%',
-        padding: 4,
         paddingLeft: 8
     },
+    devmode: {
+        color: 'red',
+        marginTop: -8,
+        marginBottom: 4,
+    }
 });

@@ -1,10 +1,18 @@
 /*
     The root reducer that handles dispatch calls
 */
-import { ActionInterface, AssistantTourState, actionType } from './interface'
+import { ActionInterface, AssistantTourState, actionType } from './interface';
+import { isMounted } from '../functions/IsMounted';
 const mapdata = require('../../../../database/map.json');
 
 export function rootReducer(state :AssistantTourState, action :ActionInterface) :AssistantTourState {
+    if(!isMounted) {
+        console.warn('aborted');
+        //@ts-ignore
+        //force to not rerender
+        return {};
+    }
+    
     switch(action.type) {
         case actionType.setUserPosition:
             return {

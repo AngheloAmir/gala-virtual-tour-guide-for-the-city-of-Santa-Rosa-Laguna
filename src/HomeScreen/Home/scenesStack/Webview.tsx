@@ -19,6 +19,7 @@ import { WindowDimension }      from '../../../Utility/useResponsive';
 
 export default function StreetView() {
     const { localState } :LocalStateAPI = React.useContext(localContextProvider);
+    const [isLoading, setLoading] = React.useState(true);
 
     if( !localState.webviewlink )
         return <Text style={{fontSize: 20, color: 'red'}}>Error: Missing Link</Text>
@@ -33,8 +34,14 @@ export default function StreetView() {
 
     return (
         <View style={{flex: 1, flexDirection:'column'}}>
+            { isLoading && <Text style={{
+                width: '80%', marginLeft: '10%', fontSize: 18
+            }}> Please wait loading from the internet...</Text> }
             <WebView source={{uri: localState.webviewlink}}
-                style={{flex: 1, width: WindowDimension.width, height: '100%'}} />
+                style={{flex: 1, width: WindowDimension.width, height: '100%'}}
+                onLoadEnd={() => setLoading(false) }
+                incognito={true}
+            />
         </View>
     );
 }

@@ -13,6 +13,7 @@
 import React from 'react';
 import { Image, View, Platform } from 'react-native';
 import { Magnetometer } from 'expo-sensors';
+import { isMounted } from '../functions/IsMounted';
 
 const compassIcon = require('../../../../assets/icons/compass.png');
 const mapjson = require('../../../../database/map.json');
@@ -21,12 +22,12 @@ export default function Compass() {
     if( Platform.OS == 'web' ) {
         return <View style={{position: 'absolute'}}></View>
     }
-
     const [magnet, setMagnet] = React.useState(0);
     const [subscription, setSubscription] = React.useState(null);
 
     function subscribe() {
         const sub = Magnetometer.addListener(result => {
+            if(!isMounted) return;
             let angle = Math.atan2(result.y, result.x);
             angle = angle * (180 / Math.PI)
             angle = angle + 90
