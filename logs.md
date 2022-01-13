@@ -1,6 +1,3 @@
-##
--(TODO) Fix an error with glimp of history with emulator
-
 ## January 13, 1.8 Assistant tour new features
 -Added a feedback when a guide is opened
 -(probally fix) cant update on unmounted component at assistant tour, probally due

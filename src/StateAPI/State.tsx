@@ -27,6 +27,6 @@ export function createDefaultState() :StateInterface {
         features: {
         },
         isHideBottomTabs: false,
-        devmode:          true,
+        devmode:          false,
     };
 }
