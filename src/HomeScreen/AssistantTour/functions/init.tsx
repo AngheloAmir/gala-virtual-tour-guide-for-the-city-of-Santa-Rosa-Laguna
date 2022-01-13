@@ -17,6 +17,8 @@ interface UserPosition {
 
 export async function init( localDispatch :any, isdevmode :boolean= false) {
     try {
+        if(isdevmode) throw new Error('dev mode');
+        
         await RequestPermission();
         const userlocation :UserPosition = await getLocation();
         localDispatch( setUserPosition(userlocation) );

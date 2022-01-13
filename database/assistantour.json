@@ -101,10 +101,12 @@
         {
             "category": "Banks",
             "items": [
-                { "name": "Land Bank ATM",  "lat": 14.314729, "lng": 121.112442 },
-                { "name": "Maybank",        "lat": 14.313729, "lng": 121.112292 },
-                { "name": "Metro Bank",     "lat": 14.298118, "lng": 121.105135 },
-                { "name": "PS Bank",        "lat": 14.263618, "lng": 121.074365 }
+                { "name": "China Saving Bank",  "lat": 14.295623, "lng": 121.105751 },
+                { "name": "Land Bank ATM",      "lat": 14.314729, "lng": 121.112442 },
+                { "name": "Maybank",            "lat": 14.313729, "lng": 121.112292 },
+                { "name": "Metro Bank",         "lat": 14.298118, "lng": 121.105135 },
+                { "name": "PS Bank",            "lat": 14.263618, "lng": 121.074365 },
+                { "name": "Security Bank",      "lat": 14.295479, "lng": 121.105723 }
             ]
         },
         {

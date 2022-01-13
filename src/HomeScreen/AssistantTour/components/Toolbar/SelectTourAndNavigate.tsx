@@ -22,13 +22,16 @@ import { setSelectTourOpen,
         setMapCenter,
         setMapPathIsLoading,
         setDialogMessage,
-        setPoiIndex
+        setPoiIndex,
+        setDestinationStatus,
+        setIsLookingForAPlace
 } from '../../localstateAPI/actions';
+import { StatusDestination } from '../../localstateAPI/interface';
+
 import NetInfo from "@react-native-community/netinfo";
 import { getMapDestinationMarkers, getPathWays } from '../../functions';
 import { FromToInterface }    from '../../../../../database/!interfaces/GalaSelfGuidedTour';
 import { GalaTours }          from '../../functions/options';
-
 const mapjson = require('../../../../../database/map.json');
 
 interface propsReceive {
@@ -84,6 +87,7 @@ export default function SelectTourAndNavigate( props :propsReceive) {
         ( async () => {
             try {
               let polylines :Array<MapShape> = [];
+              let places :Array<StatusDestination> = [];
               //This method enumerate each of point of destination available to the selected tour
               //for each destination, a new mapshape of polyline is obtained.
               for(let i = 0; i <  GalaTours[localState.currenttour.index].destinations.length; i++ ) {
@@ -92,11 +96,15 @@ export default function SelectTourAndNavigate( props :propsReceive) {
                 const to    = { lat: fromTo.to.lat, lng: fromTo.to.lng };
                 const poly :MapShape | any = await getPathWays(i, from, to, false);
                 polylines.push(poly.navpath);
-
-                //console.log('Distance: ' + poly.distance + 'kilometer');
-                
+                places.push({
+                    placename: fromTo.to.name, 
+                    distance: poly.distance,
+                    destinations: to
+                 });
               }
               localDispatch( setMapPolyLines(polylines) );
+              localDispatch( setIsLookingForAPlace(true));
+              localDispatch( setDestinationStatus(places) );
             } catch(err) {
                 localDispatch( setMapLock(false) );
                 localDispatch( setDialogMessage(

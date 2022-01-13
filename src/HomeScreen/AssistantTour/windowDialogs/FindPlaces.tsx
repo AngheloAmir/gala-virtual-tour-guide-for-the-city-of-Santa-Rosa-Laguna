@@ -53,6 +53,7 @@ export function dialogContent() {
 
     async function handleFindNearby(index :number) {
         localDispatch(setFindPlacesOpen(false));
+        localDispatch(clearPolyLineAndMarker());
         if(!localState.isGranted)
             notGranted();
         else
@@ -61,6 +62,7 @@ export function dialogContent() {
 
     async function handleFind(index :number, estaIndex :number) {
         localDispatch(setFindPlacesOpen(false));
+        localDispatch(clearPolyLineAndMarker());
         if(!localState.isGranted)
             notGranted();
         else

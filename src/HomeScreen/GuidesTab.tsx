@@ -11,8 +11,10 @@
 */
 //@ts-nocheck
 import React from 'react';
-import { View, Platform, Linking, Text, BackHandler} from 'react-native';
+import { View, Platform, Linking, Text, BackHandler, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
+import { WindowDimension } from '../Utility/useResponsive';
+
 const guidelist = require('../../database/guides.json');
 
 //another tricky operation here.
@@ -25,7 +27,10 @@ export let webview;
 
 export default function GuidesIndex({navigation} :any) {
     const [isLoading, setLoading] = React.useState(true);
+    const [isIgniton, setIgnito] = React.useState(true);
+    const [isDBShow, setShow]    = React.useState(false);
     const webViewRef = React.useRef(null);
+
     //this ref is quite tricky to use. it was created to enable backbutton even on webview
     //because if backbutton does not capture webview history back, it back on the previous screen
     //so b default, use webview for a single page website.
@@ -69,21 +74,45 @@ export default function GuidesIndex({navigation} :any) {
         if(url.url.length <= guidelist.homelink.length + 1)
             return;
         backrate.current = 1;
+
+        //After first load, cache everything
+        setIgnito(false);
+        setShow( !isDBShow);
     }
 
     return (
         <View style={{flex: 1, flexDirection:'column'}}>
-            { isLoading && <Text style={{
-                width: '80%', marginLeft: '10%', fontSize: 18
-            }}
-            >Please wait while the guides are loading from the server...</Text> }
+            { isLoading &&
+                <Text style={styles.textInfo}>
+                    Please wait while the guides are loading from the server...</Text>
+            }
+
+            { isDBShow &&
+                <Text style={styles.textInfo}>Loading from the server...</Text>
+            }
+
             <WebView
                 ref={webViewRef}
                 onNavigationStateChange={handleURLChange}
                 source={{uri: guidelist.homelink}}
                 onLoadEnd={() => setLoading(false) }
-                incognito={true}
+                incognito={isIgniton}
             />
+
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    textInfo: {
+        width: '100%',
+        paddingHorizontal: '10%',
+        paddingVertical: 16,
+        fontSize: 18,
+        backgroundColor: 'orange',
+        position: 'absolute',
+        zIndex: 20,
+        fontSize: 16,
+        textAlign: 'center'
+    }
+})

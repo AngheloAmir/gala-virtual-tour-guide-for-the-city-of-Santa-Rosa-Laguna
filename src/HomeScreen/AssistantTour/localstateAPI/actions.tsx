@@ -1,7 +1,7 @@
 /*
 
 */
-import { actionType, Position } from './interface'; 
+import { actionType, Position, UserStatus, StatusDestination } from './interface'; 
 import { MapShape, MapMarker } from "expo-leaflet";
 
 export function setUserPosition(geolocation :Position) {
@@ -124,4 +124,20 @@ export function setIsCloseToMarker(isClose :boolean) {
     }
 }
 
+export function setUserStatus(status :UserStatus) {
+    return {
+        type: actionType.setUserStatus, payload: status
+    }
+}
 
+export function setDestinationStatus(status :Array<StatusDestination>) {
+    return {
+        type: actionType.setDestinationStatus, payload: status
+    }
+}
+
+export function setIsLookingForAPlace(isLooking :boolean) {
+    return {
+        type: actionType.setIsLookingForAPlace, payload: isLooking
+    }
+}

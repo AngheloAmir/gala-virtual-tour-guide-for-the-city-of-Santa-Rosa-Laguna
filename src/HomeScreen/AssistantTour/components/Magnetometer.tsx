@@ -23,7 +23,7 @@ export default function Compass() {
         return <View style={{position: 'absolute'}}></View>
     }
     const [magnet, setMagnet] = React.useState(0);
-    const [subscription, setSubscription] = React.useState(null);
+    const magnetosubscribtion = React.useRef({});
 
     function subscribe() {
         const sub = Magnetometer.addListener(result => {
@@ -35,20 +35,20 @@ export default function Compass() {
             setMagnet( Math.round(angle));
         });
         //@ts-ignore
-        setSubscription( sub );
+        magnetosubscribtion.current = sub;
         Magnetometer.setUpdateInterval( mapjson.magentoMeterUpdateInterval );
     };
 
-    function unsubscribe() {
-        //@ts-ignore
-        subscription && subscription.remove();
-            setSubscription(null);
-    }
-
     React.useEffect(() => {
         subscribe();
-        return () => {        
-            unsubscribe();
+        return () => {
+            try {
+                //@ts-ignore
+                magnetosubscribtion.current.remove();
+                //console.log('Magnetometer subscription remove');
+            }
+            catch(err) {
+            }
         };
     }, []);
 

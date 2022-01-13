@@ -72,5 +72,6 @@
         "mayShowUserSettingsDialog": true
     },
 
-    "magentoMeterUpdateInterval": 1000
+    "magentoMeterUpdateInterval": 1000,
+    "getDistanceInterval": 16000
 }

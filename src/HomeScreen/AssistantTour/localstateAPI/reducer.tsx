@@ -31,14 +31,37 @@ export function rootReducer(state :AssistantTourState, action :ActionInterface) 
                 })
             }
         
+        case actionType.setUserStatus:
+            return {
+                ...state,
+                statusUser: action.payload
+            }
+        
+        case actionType.setDestinationStatus:
+            return {
+                ...state,
+                statusDestination: action.payload
+            }
+        
+        case actionType.setIsLookingForAPlace:
+            return {
+                ...state,
+                isLookingForAPlace: action.payload
+            }
+
         case actionType.clearShapeNMarkers: {
             return {
                 ...state,
+                currenttour: {
+                    name: '--please select tour--', index: -1
+                },
                 mapmarkers: state.mapmarkers.filter((marker, index) => index == 0),
                 polylines: [
                     { shapeType: 'polyline', id: '0', positions: [ {lat: 0, lng: 0}] }
                 ],
                 poiCloseIndex: -1,
+                isCloseToMarker: false,
+                isLookingForAPlace: false
             }
         }
         

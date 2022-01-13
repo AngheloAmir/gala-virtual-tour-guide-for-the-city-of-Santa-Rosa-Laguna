@@ -17,9 +17,11 @@ import {
     setMapCenter,
     setMapPathIsLoading,
     setMapPolyLines,
+    setIsLookingForAPlace,
+    setDestinationStatus,
     setDialogMessage }      from '../../localstateAPI/actions';
 import { getPathWays }      from '../../functions';
-import { LocalStateAPI }    from '../../localstateAPI/interface';
+import { LocalStateAPI, StatusDestination }    from '../../localstateAPI/interface';
 
 import { EstablishmentCategory }    from '../../../../../database/!interfaces/Establishment';
 const tourjson                      = require ('../../../../../database/assistantour.json');
@@ -48,9 +50,7 @@ export default async function findNearbyFunction({localDispatch, localState} :Lo
         }
     }
 
-//Add the establishment in the Markers of Expo-Leaflet
-    const mapmarkers = localState.mapmarkers.filter((marker, index) => index !== 0);
-    localDispatch( setMapMarkers([...mapmarkers, {
+    localDispatch( setMapMarkers([{
             id: localState.mapmarkers.length + '' ,
             position: {
                 lat: closestEst.lat + mapjson.mapestablishmentadjustlng,
@@ -76,7 +76,7 @@ export default async function findNearbyFunction({localDispatch, localState} :Lo
         try {
             const id   :number = localState.mapmarkers.length;
             const poly :MapShape | any = await getPathWays(id, userLocation, closestEst, true);
-            localDispatch( setMapPolyLines([...localState.polylines, poly.navpath]) );
+            localDispatch( setMapPolyLines([poly.navpath]) );
 
             //calculate distance
             if(poly.distance > 1000) {
@@ -87,6 +87,15 @@ export default async function findNearbyFunction({localDispatch, localState} :Lo
                 const d = poly.distance.toFixed(0);
                 distance = d + ' meters';
             }
+
+            let places :Array<StatusDestination> = [];
+            places.push({
+                placename:  establishments[index].items[establishmentIndex].name, 
+                distance:   poly.distance,
+                destinations: closestEst
+            });
+            localDispatch( setIsLookingForAPlace(true));
+            localDispatch( setDestinationStatus(places) ); 
 
         } catch(err) {
             isError = true;

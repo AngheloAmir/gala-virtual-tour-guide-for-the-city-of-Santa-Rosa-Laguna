@@ -5,5 +5,6 @@
 
 export let isMounted :boolean;
 export function setMountedState(state :boolean) {
+    //console.log('Assitant Tour is: ' + (state ? 'mounted' : 'remove'));
     isMounted = state;
 }

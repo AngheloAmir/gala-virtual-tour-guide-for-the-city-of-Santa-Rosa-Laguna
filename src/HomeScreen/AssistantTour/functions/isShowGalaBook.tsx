@@ -40,3 +40,4 @@ export function CheckIfGalaBookShow( {localState, localDispatch}:LocalStateAPI, 
         localDispatch( setPoiIndex(-1));
     }
 }
+ 

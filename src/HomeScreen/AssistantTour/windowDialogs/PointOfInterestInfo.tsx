@@ -79,7 +79,7 @@ function DialogContent() {
             return <View></View>
         }
         catch(err) {
-            console.warn(err);
+            //console.warn(err);
             return <View></View>
         }
     }
@@ -96,9 +96,9 @@ function DialogContent() {
                 return <View></View>
         }
         catch(err) {
-            console.warn(err);
+            //console.warn(err);
             return <View></View>
-        }
+        } 
     }
 
     function PointOfInterestDescription() {
@@ -114,9 +114,19 @@ function DialogContent() {
                 return <View></View>
         }
         catch(err) {
-            console.warn(err);
+            //console.warn(err);
             return <View></View>
         }
+    }
+
+    try {
+        console.log('#1: ' + GalaTours[localState.currenttour.index]);
+        console.log('#2: ' + GalaTours[localState.currenttour.index].pointOfInterests);
+        console.log('#3: ' + GalaTours[localState.currenttour.index].pointOfInterests[localState.poiCloseIndex]);
+        console.log('#4: ' + localState.poiCloseIndex + ', while length: ' + GalaTours[localState.currenttour.index].pointOfInterests.length);
+    }
+    catch(err) {
+        console.error(err);
     }
 
     return (

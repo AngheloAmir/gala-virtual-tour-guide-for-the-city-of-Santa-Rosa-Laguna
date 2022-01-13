@@ -9,28 +9,32 @@
     * VISIBLE WHEN
         It is always show when the GPS Navigation feature of the app is shown at the bottom
 */
-import React from 'react';
+
+/*
 import { Image, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 //@ts-ignore
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { setAttributionshow } from '../localstateAPI/actions';
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI } from '../localstateAPI/interface';
-import { setAttributionshow } from '../localstateAPI/actions';
 
+ const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
+   
+<TouchableOpacity style={styles.icon} onPress={handleOpenAttribution}>
+                <Icon name='info-outline' size={28} color='blue' />
+            </TouchableOpacity>
+ function handleOpenAttribution() {
+        localDispatch(setAttributionshow(true));
+    }
+*/
+import React from 'react';
+import { Image, View, StyleSheet} from 'react-native';
 const mapboxicon = require('../../../../assets/icons/mapbox-logo-black.png');
 
 export default function Attribution() {
-    const { localDispatch } :LocalStateAPI = React.useContext(localContextProvider);
-    function handleOpenAttribution() {
-        localDispatch(setAttributionshow(true));
-    }
-
     return (
         <View style={styles.container}>
             <Image source={mapboxicon} style={{width: 80, height: 30}} resizeMode='contain' />
-            <TouchableOpacity style={styles.icon} onPress={handleOpenAttribution}>
-                <Icon name='info-outline' size={28} color='blue' />
-            </TouchableOpacity>
         </View>
     )
 }
@@ -44,3 +48,4 @@ const styles = StyleSheet.create({
         marginRight: 0,
     },
 });
+

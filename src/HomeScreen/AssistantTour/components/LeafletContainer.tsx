@@ -10,7 +10,7 @@
         It is always show when the GPS Navigation feature of the app is shown.
 */
 import React from 'react';
-import { ActivityIndicator, Platform, SafeAreaView, View } from 'react-native';
+import { ActivityIndicator, Platform, View } from 'react-native';
 import { ExpoLeaflet, LeafletWebViewEvent } from "expo-leaflet";
 import { StateAPI, contextProvider } from '../../../StateAPI/State';
 
@@ -18,7 +18,7 @@ import { StateAPI, contextProvider } from '../../../StateAPI/State';
 import { localContextProvider } from '../localstateAPI/state';
 import { LocalStateAPI } from '../localstateAPI/interface';
 import { setUserPosition, setDialogMessage } from '../localstateAPI/actions';
-import { WindowDimension } from '../../../Utility/useResponsive';
+//import { WindowDimension } from '../../../Utility/useResponsive';
 
 import { mapOptions, mapLayers } from '../functions/options';
 import { CheckIfGalaBookShow }   from '../functions/isShowGalaBook';
@@ -64,39 +64,28 @@ export default function LeafletContainer() {
         //the value 108 is the height of the topbar + bottom tab navigatior
         //height: responsive.height - 100 - 108,
         //width:  responsive.width,
-        flex: 1,
-        height: WindowDimension.height - 100,
-        width:  WindowDimension.width,
-    }
-
-    if(Platform.OS == 'web')
-        return (
-            <View style={styles}>
-                <ExpoLeaflet
-                    loadingIndicator={() => <ActivityIndicator/>}
-                    mapCenterPosition={ localState.mapcenter }
-                    mapMarkers={ localState.mapmarkers }
-                    mapShapes={ localState.polylines }
-                    zoom={ localState.zoomlevel }
-                    mapLayers={mapLayers}
-                    mapOptions={mapOptions}
-                    maxZoom={18}
-                    onMessage={onMapClicked}
-                />
-            </View>
-        ); 
-
+        //flex: 1,
+        height: '100%'
+        //width:  WindowDimension.width,
+        //transform: [{ rotate: '180deg' }],
+        //flex: 1,
+        //height: WindowDimension.height - 100,
+        //width:  WindowDimension.width,
+        }
+    
     return (
-        <ExpoLeaflet
-            loadingIndicator={() => <ActivityIndicator/>}
-            mapCenterPosition={ localState.mapcenter }
-            mapMarkers={ localState.mapmarkers }
-            mapShapes={ localState.polylines }
-            zoom={ localState.zoomlevel }
-            mapLayers={mapLayers}
-            mapOptions={mapOptions}
-            maxZoom={18}
-            onMessage={onMapClicked}
-        /> 
-    );       
+        <View style={styles}>
+            <ExpoLeaflet
+                loadingIndicator={() => <ActivityIndicator/>}
+                mapCenterPosition={ localState.mapcenter }
+                mapMarkers={ localState.mapmarkers }
+                mapShapes={ localState.polylines }
+                zoom={ localState.zoomlevel }
+                mapLayers={mapLayers}
+                mapOptions={mapOptions}
+                maxZoom={18}
+                onMessage={onMapClicked}
+            />
+        </View>
+    );
 }

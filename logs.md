@@ -1,6 +1,13 @@
 ##
 -(TODO) Fix an error with glimp of history with emulator
 
+## January 13, 1.8 Assistant tour new features
+-Added a feedback when a guide is opened
+-(probally fix) cant update on unmounted component at assistant tour, probally due
+    to the magnetometer being not fully unsubscribe
+-when the user is looking for a establishment, the markers are now clear
+-Added status info in the Assistant Tour
+
 ## January 11, 1.7 Move Articles
 -Added a prevoius behavior in the Guides Tab. This require some work arround to work.
 -Home Tab articles and assets are move to github website

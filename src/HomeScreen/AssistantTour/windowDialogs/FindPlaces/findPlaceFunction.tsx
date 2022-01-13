@@ -10,9 +10,11 @@ import {
     setMapCenter,
     setMapPathIsLoading,
     setMapPolyLines,
+    setIsLookingForAPlace,
+    setDestinationStatus,
     setDialogMessage }      from '../../localstateAPI/actions';
 import { getPathWays }      from '../../functions';
-import { LocalStateAPI }    from '../../localstateAPI/interface';
+import { LocalStateAPI, StatusDestination }    from '../../localstateAPI/interface';
 
 import { EstablishmentCategory }    from '../../../../../database/!interfaces/Establishment';
 const tourjson                      = require ('../../../../../database/assistantour.json');
@@ -25,8 +27,9 @@ export default async function findPlaceFunction({localDispatch, localState} :Loc
         lat: establishments[index].items[estaIndex].lat,
         lng: establishments[index].items[estaIndex].lng
     };
-    const mapmarkers = localState.mapmarkers.filter((marker :any, index :number) => index !== 0);
-    localDispatch( setMapMarkers([...mapmarkers, {
+    //const mapmarkers = localState.mapmarkers.filter((marker :any, index :number) => index !== 0);
+    //localDispatch( setMapMarkers([ ...mapmarkers, {
+    localDispatch( setMapMarkers([{
             id: localState.mapmarkers.length + '' ,
             position: {
                 lat: establishmentPos.lat + mapjson.mapestablishmentadjustlng,
@@ -53,7 +56,8 @@ export default async function findPlaceFunction({localDispatch, localState} :Loc
             const id   :number = localState.mapmarkers.length;
             const poly :MapShape | any = await getPathWays(id, userPosition, establishmentPos, true);
             //polylines.push(poly);
-            localDispatch( setMapPolyLines([...localState.polylines, poly.navpath]) );
+            //localDispatch( setMapPolyLines([...state.polylines, poly.navpath]) );
+            localDispatch( setMapPolyLines([poly.navpath]) );
 
             //calculate distance
             if(poly.distance > 1000) {
@@ -64,6 +68,15 @@ export default async function findPlaceFunction({localDispatch, localState} :Loc
                 const d = poly.distance.toFixed(0);
                 distance = d + ' meters';
             }
+
+            let places :Array<StatusDestination> = [];
+            places.push({
+                placename:  establishments[index].items[estaIndex].name, 
+                distance:   poly.distance,
+                destinations: establishmentPos
+            });
+            localDispatch( setIsLookingForAPlace(true));
+            localDispatch( setDestinationStatus(places) ); 
         } catch(err) {
             isError = true;
             localDispatch( setMapLock(false) );

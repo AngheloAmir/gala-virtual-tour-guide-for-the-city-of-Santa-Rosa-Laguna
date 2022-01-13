@@ -41,4 +41,21 @@ export const defaultLocalState :AssistantTourState = {
     isCloseToMarker: false,
     isPOIBoxOpen: false,
     poiCloseIndex: -1,
+
+    //Additional features status for the user of the app
+    statusUser: {
+        facing: -1,
+        speed: 0,
+    },
+
+    isLookingForAPlace: false,
+    statusDestination: [
+        {
+            placename: 'Bayan',
+            destinations: {
+                lat: 0, lng: 0
+            },
+            distance: 10
+        }
+    ]
 }
