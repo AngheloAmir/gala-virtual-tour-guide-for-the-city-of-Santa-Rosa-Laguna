@@ -1,4 +1,4 @@
-## January 14, 1.8 Fixes
+## January 14, 1.9 Fixes
 -Added a features when the timeout happen if the geolocation is not permitted
 -Fix when opening Home > External links. It was due to missing json in Asset.tsx
 -fixes that user is not in the center
