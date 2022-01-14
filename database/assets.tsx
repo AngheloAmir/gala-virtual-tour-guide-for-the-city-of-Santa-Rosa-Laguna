@@ -107,6 +107,7 @@ const MP3SPEECH = {
 };
 
 let ASSETS = {
+    "externallinks.json":  require('../database/home/externallinks.json'),
     ...IMAGES,
     ...GUIDESASSETS,
     ...STORIES,

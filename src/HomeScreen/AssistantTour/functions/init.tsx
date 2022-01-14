@@ -16,11 +16,34 @@ interface UserPosition {
 }
 
 export async function init( localDispatch :any, isdevmode :boolean= false) {
+    let isGranted = false;
+    let isBreak   = false;
+
+    setTimeout(() => {
+        if(!isGranted) {
+            isBreak = true;
+            localDispatch(
+                setDialogMessage(
+                'Request for location has time out',
+                'The request for your geolocation has timed out. It may be that permission for location is not granted, location is off, Google Service is not present, or the device has a problem getting its geolocation. \n\nYou can still see how this feature work but the marker is not your actual location.'
+            ));
+            localDispatch( setUserPosition(IntroPosition) );
+            localDispatch( setZoomlevel(17) );
+            localDispatch( setMapWasLoaded() );
+            localDispatch( setMapLock(false) );
+            localDispatch( permissionLocationNotGranted() );
+        }
+    }, 20000);
+
     try {
         if(isdevmode) throw new Error('dev mode');
-        
         await RequestPermission();
         const userlocation :UserPosition = await getLocation();
+
+        //This is used for timeout when requesting for geolocation
+        isGranted = true;
+        if(isBreak) return;
+
         localDispatch( setUserPosition(userlocation) );
         localDispatch( setMapCenter(userlocation) );
         setTimeout( () => {
@@ -38,6 +61,8 @@ export async function init( localDispatch :any, isdevmode :boolean= false) {
         }, 3000);
     }
     catch(err) {
+        if(isBreak) return;
+
         if(err.message == 'PermissionException' && !isdevmode) 
             localDispatch( setDialogMessage('Location error', 'Location permision not granted or there is no data connection.') );
         else if(err.message == 'OutOfRangeException' && !isdevmode)

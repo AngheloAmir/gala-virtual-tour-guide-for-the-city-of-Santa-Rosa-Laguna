@@ -31,6 +31,15 @@ export function rootReducer(state :AssistantTourState, action :ActionInterface) 
                 })
             }
         
+        case actionType.setMapCenter: 
+            return {
+                ...state,
+                mapcenter: {
+                    lat: action.payload.lat,
+                    lng: action.payload.lng,
+                }
+            }  
+        
         case actionType.setUserStatus:
             return {
                 ...state,
@@ -73,12 +82,7 @@ export function rootReducer(state :AssistantTourState, action :ActionInterface) 
         case actionType.setMapPolylines:
             return {
                 ...state, polylines: action.payload
-            }
-        
-        case actionType.setMapCenter: 
-            return {
-                ...state, mapcenter: action.payload
-            }    
+            }  
 
         case actionType.flipIsMapCenter:
             return {

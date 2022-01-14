@@ -6,7 +6,7 @@
 */
 
 import React from 'react';
-import ReactNative from 'react-native';
+import { View } from 'react-native';
 import * as Location from 'expo-location';
 
 import { StateAPI, contextProvider } from '../../../StateAPI/State';
@@ -35,11 +35,13 @@ export default function UseEffects() {
     const refUserPosition     = React.useRef(localState.mapmarkers[0].position);
     const refDestinations     = React.useRef(localState.statusDestination);
     const refIsMapLock        = React.useRef(localState.ismaplock);
+    const isDoneLoading       = React.useRef(false);
 
     async function SetUpTheInitialEffectAndWatcher() {
         //Check if the user is NOT in dev mode
         if(!isDevModeRef.current) {
-            await Init(localDispatch);
+            await Init(localDispatch, false);
+            isDoneLoading.current = true;
             const interval = await Location.watchPositionAsync({
                 accuracy:                   Location.Accuracy.BestForNavigation,
                 timeInterval:               mapjson.gpsUpdateSpeed.timeInterval,
@@ -59,6 +61,7 @@ export default function UseEffects() {
         }
         else {
             await Init(localDispatch, true); 
+            isDoneLoading.current = true;
         }
     }
 
@@ -141,6 +144,6 @@ export default function UseEffects() {
     }, [localState.ismaplock]);
 
     return (
-        <ReactNative.View></ReactNative.View>
+        <View></View>
     );
 }
