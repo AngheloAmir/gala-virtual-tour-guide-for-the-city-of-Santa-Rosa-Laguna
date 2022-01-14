@@ -62,6 +62,7 @@ export async function init( localDispatch :any, isdevmode :boolean= false) {
     }
     catch(err) {
         if(isBreak) return;
+        isGranted = true;
 
         if(err.message == 'PermissionException' && !isdevmode) 
             localDispatch( setDialogMessage('Location error', 'Location permision not granted or there is no data connection.') );
