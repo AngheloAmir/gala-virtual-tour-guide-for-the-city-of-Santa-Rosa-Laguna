@@ -35,13 +35,11 @@ export default function UseEffects() {
     const refUserPosition     = React.useRef(localState.mapmarkers[0].position);
     const refDestinations     = React.useRef(localState.statusDestination);
     const refIsMapLock        = React.useRef(localState.ismaplock);
-    const isDoneLoading       = React.useRef(false);
 
     async function SetUpTheInitialEffectAndWatcher() {
         //Check if the user is NOT in dev mode
         if(!isDevModeRef.current) {
             await Init(localDispatch, false);
-            isDoneLoading.current = true;
             const interval = await Location.watchPositionAsync({
                 accuracy:                   Location.Accuracy.BestForNavigation,
                 timeInterval:               mapjson.gpsUpdateSpeed.timeInterval,
@@ -61,7 +59,6 @@ export default function UseEffects() {
         }
         else {
             await Init(localDispatch, true); 
-            isDoneLoading.current = true;
         }
     }
 
