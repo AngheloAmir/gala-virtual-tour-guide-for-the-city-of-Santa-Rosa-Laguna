@@ -1,6 +1,7 @@
 ## January 14, 1.8 Fixes
 -Added a features when the timeout happen if the geolocation is not permitted
 -Fix when opening Home > External links. It was due to missing json in Asset.tsx
+-fixes that user is not in the center
 
 ## January 13, 1.8 Assistant tour new features
 -Added a feedback when a guide is opened
