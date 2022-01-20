@@ -20,6 +20,7 @@ export enum actionType {
 export interface ForumDataInterface {
     forum           :Array<Thread>;
     currentThread?  :Thread;
+    pendingPost     :Array<Thread>;
 }
 
 
@@ -29,6 +30,7 @@ export interface Thread {
     replies?    :Array<TReplies>;
     _id         :string;
     _token      :string;
+    isPending?  :boolean;
 }
 
 export interface Creator {

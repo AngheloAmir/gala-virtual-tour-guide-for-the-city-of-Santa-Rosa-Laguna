@@ -1,10 +1,24 @@
 {
     "title":        "About",
-    "date":         "Copyright 2021",
+    "date":         "Copyright 2022",
     "headerImage":  "about.png",
     "contents":       [
         {
             "paragraph": "Gala: Virtual Tour Guide in the City of Santa Rosa, Laguna is created for the capstone project. It is an innovative mobile application aimed to support tourists amid their travel and lets them known the historical sites found in the city."
+        },
+        {
+            "headingText": "Website",
+            "paragraph": "Visit our website for updates: \n",
+            "link": " https://galavtg.github.io",
+            "linkText": "https://galavtg.github.io"
+        },
+        {
+            "headingText": "Comments and Suggestion",
+            "paragraph": "For suggestion and commets, contact us in our email: \n\t\tgalavtg@gmail.com"
+        },
+        {
+            "headingText": "Facebook official page",
+            "paragraph": "You may reach to our official Facebook page: Gala VTG"
         }
     ]
 }

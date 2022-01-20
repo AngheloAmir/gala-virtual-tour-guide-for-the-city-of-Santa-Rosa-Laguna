@@ -64,10 +64,14 @@ export async function init( localDispatch :any, isdevmode :boolean= false) {
         if(isBreak) return;
         isGranted = true;
 
+        let isCanStillBeUse = false;
+
         if(err.message == 'PermissionException' && !isdevmode) 
             localDispatch( setDialogMessage('Location error', 'Location permision not granted or there is no data connection.') );
-        else if(err.message == 'OutOfRangeException' && !isdevmode)
-            localDispatch( setDialogMessage('Out of service range', 'Out of service range. Too far from the city') );
+        else if(err.message == 'OutOfRangeException' && !isdevmode) {
+            localDispatch( setDialogMessage('Too far from Santa Rosa', 'This application is optimize to work inside Santa Rosa City but it will still works as intended. ') );
+            isCanStillBeUse = true;
+        }
         else 
             localDispatch( setDialogMessage('Error', err) );
         localDispatch( setUserPosition(IntroPosition) );
@@ -80,7 +84,7 @@ export async function init( localDispatch :any, isdevmode :boolean= false) {
         }
 
         //suppress error during devmode
-        if(!isdevmode) {
+        if(!isdevmode && !isCanStillBeUse) {
             localDispatch( permissionLocationNotGranted() );
         }
     }

@@ -30,7 +30,7 @@ export default function LeafletContainer() {
     function onMapClicked(event :LeafletWebViewEvent) {
         switch(event.tag) {
             case 'onMapClicked':
-                if(state.devmode ) {
+                if(state.devmode || Platform.OS == 'web' ) {
                     localDispatch( setUserPosition(event.location) );
                     CheckIfGalaBookShow({localState, localDispatch}, event.location);
                     if(Platform.OS == 'web') {
@@ -73,6 +73,24 @@ export default function LeafletContainer() {
         //width:  WindowDimension.width,
         //}
     
+    if(Platform.OS == 'web') {
+        return (
+            <View style={{flex: 1}}>
+                <ExpoLeaflet
+                    loadingIndicator={() => <ActivityIndicator/>}
+                    mapCenterPosition={ localState.mapcenter }
+                    mapMarkers={ localState.mapmarkers }
+                    mapShapes={ localState.polylines }
+                    zoom={ localState.zoomlevel }
+                    mapLayers={mapLayers}
+                    mapOptions={mapOptions}
+                    maxZoom={18}
+                    onMessage={onMapClicked}
+                />
+            </View>
+        );
+    }
+
     return (
         <ExpoLeaflet
             loadingIndicator={() => <ActivityIndicator/>}

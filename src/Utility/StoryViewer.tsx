@@ -167,7 +167,8 @@ function Paragraph( props :ParagraphProps) {
         link: {
             color: 'blue',
             fontStyle: 'italic',
-            textDecorationLine: 'underline'
+            textDecorationLine: 'underline',
+            fontSize: 18,
         },
     });
 

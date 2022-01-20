@@ -50,14 +50,19 @@ function ThreadsContainer({navigation} :any) {
     const [err, seterr] = React.useState({text: '?', show: false});
 
     async function loadThreads() {
-        const response = await fetch(loadthread);
-        const threads = await response.json();
-        if(!threads.err) {
-            localDispatch( setThreads(threads) );
-            //navigation.navigate('Threads')
+        try {
+            const response = await fetch(loadthread);
+            const threads = await response.json();
+            if(!threads.err) {
+                localDispatch( setThreads(threads) );
+                //navigation.navigate('Threads')
+            }
+            else
+                seterr({text: 'Error: ' + threads.err, show: true});
         }
-        else
-            seterr({text: 'Error: ' + threads.err, show: true});
+        catch(err) {
+            seterr({text: 'Error: ' + err, show: true});
+        }
     }
 
     function handleOpenFBPage() {

@@ -6,28 +6,10 @@
         {
             "from": "user",
             "to": {
-                "lat":      14.294119,
-                "lng":      121.105482,
-                "name":     "Balibago Complex",
-                "commute":  "Busses will drop you to Balibago Complex. If not, ride a jeep with a sign \"Complex\". The common fare rate is P10"
-            }
-        },
-        {
-            "from": "user",
-            "to":  {
-                "lat":      14.313694,
-                "lng":      121.111536,
-                "name":     "Santa Rosa Bayan",
-                "commute":  "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10"
-            }
-        },
-        {
-            "from": "user",
-            "to": {
-                "lat":      14.282589,
-                "lng":      121.11161,
-                "name":     "Santa Isidro Labrador Parish Church",
-                "commute":  "Ride a jeep with a sign \"Calamba\". The common fare rate is P12"
+                "lat": 14.313727,
+                "lng": 121.112185,
+                "name": "Santa Rosa Bayan",
+                "commute": "Ride a jeep with a sign \"Bayan\" or \"Tagapo\". The common fare rate is P10"
             }
         },
         {
@@ -43,6 +25,17 @@
     
     "pointOfInterests": [
         "stpeterchruch.json",
-        "delimachurch.json" 
+        "delimachurch.json",
+        "cuartel.json",
+        "gonzalezstatue.json",
+        "plaza.json",
+        "arch.json",
+        "casagonzalez.json",
+        "casazavalla.json",
+        "zavallahouse.json",
+        "arambulohouse.json",
+        "gomezhouse.json",
+        "tiongcohouse.json",
+        "museo.json"
     ]
 }

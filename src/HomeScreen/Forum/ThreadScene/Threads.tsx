@@ -98,12 +98,17 @@ export default function ForumThreads({navigation} :any) {
     }
 
     async function loadThreads() {
-        const response = await fetch(loadthread);
-        const threads = await response.json();
-        if(!threads.err) 
-            localDispatch( setThreads(threads) );
-        else
-            setErr({text: 'Error: ' + threads.err, show: true});
+        try {
+            const response = await fetch(loadthread);
+            const threads = await response.json();
+            if(!threads.err) 
+                localDispatch( setThreads(threads) );
+            else
+                setErr({text: 'Error: ' + threads.err, show: true});
+        }
+        catch(err) {
+            setErr({text: 'Error: ' + err, show: true});
+        }
     }
 
     async function handleViewUser(userid :string | any) {
@@ -137,15 +142,41 @@ export default function ForumThreads({navigation} :any) {
         <View style={styles.container}>
             <ScrollView style={styles.scrollview}>
             { localState.forum.map((item :Thread, index :number) => {
+            if(item.isPending && state.user.uid == item.creator.uid) {
+                return (
+                    <View key={index} style={styles.threadContainer}>
+                    <View style={styles.headingStyle}>
+                        <AvatarIcon avatarid={item.creator.avatar} />
+                        <View style={styles.metaContainer}>
+                            <View style={styles.UserName}>
+                            <Text style={styles.pending}>Your pending Post</Text>
+                                
+                            {
+                            state.user.uid == item.creator.uid &&
+                                <TouchableOpacity onPress={() => setDelete({show: true, threadid: '' + item._id})}>
+                                    <AntDesign name='delete' size={16} color='red' />
+                                </TouchableOpacity>
+                            }    
+                            </View>
+                            <Text style={styles.date}>{CalculateAgo(item.thread.date)}</Text>
+                            <Text style={styles.title}>{item.thread.title}</Text>
+                        </View>
+                    </View>
+                    <Text style={styles.text}>{item.thread.text}</Text>
+                </View>
+                )
+            }
+
             return (
                 <View key={index} style={styles.threadContainer}>
                     <View style={styles.headingStyle}>
                         <AvatarIcon avatarid={item.creator.avatar} />
                         <View style={styles.metaContainer}>
                             <View style={styles.UserName}>
-                                <TouchableOpacity onPress={() => handleViewUser(item.creator.uid)}>
+                              <TouchableOpacity onPress={() => handleViewUser(item.creator.uid)}>
                                     <Text style={styles.userNameText}>{item.creator.username}</Text>
                                 </TouchableOpacity>
+                               
                             {
                             state.user.uid == item.creator.uid &&
                                 <TouchableOpacity onPress={() => setDelete({show: true, threadid: '' + item._id})}>
@@ -312,5 +343,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         position: 'absolute'
+    },
+    pending: {
+        fontSize: 18,
+        color: 'red'
     }
 });
